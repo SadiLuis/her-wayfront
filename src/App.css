@@ -1,0 +1,13 @@
+/* TAMAÑO DE LA IMAGENES QUE SE VAN A TOMAR COMO CARRUSEL PARA EL LOGIN */
+
+.tamaño{
+    width: 90%;
+    height: 900px;
+    image-resolution: contain;
+}
+
+/*cierre de la clase tamaño*/
+
+.app{
+    background-color: plum;
+}
