@@ -15,19 +15,21 @@ function App() {
     <div className='app' >
       <BrowserRouter>
         <Routes>
-          <Route path="/" element={<Home usuario={usuario} />} />
+          
           <Route path="/login" element={<Login setUsuario={setUsuario} />} />
           <Route path="/registro" element={<Registro />} />
         </Routes>
-      </BrowserRouter>
+      
 
-    <div className="App">
-      <header className="App-header">
 
         <img src={mujeres} className="App-logo" alt="logo" />
         <h1>HER WAY APP</h1>
 
-      
+        <Routes>
+        <Route path="/" element={<Home usuario={usuario} />} />
+        </Routes>
+
+        </BrowserRouter>
 
     </div>
   );
