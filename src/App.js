@@ -1,10 +1,13 @@
+
 import mujeres from './assets/mujeresconductoras.webp';
+
 import './App.css';
 
 function App() {
   return (
     <div className="App">
       <header className="App-header">
+
         <img src={mujeres} className="App-logo" alt="logo" />
         <h1>HER WAY APP</h1>
         <a
@@ -15,6 +18,7 @@ function App() {
         >
         
         </a>
+      
       </header>
     </div>
   );
