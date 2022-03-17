@@ -1,7 +1,5 @@
+import { initializeApp } from 'firebase/app';
 
-
-import firebase from 'firebase/app';
-import 'firebase/analytics';
 const firebaseConfig = {
 	// apiKey: '',
 	// authDomain: '',
@@ -20,5 +18,4 @@ const firebaseConfig = {
   
 };
 // Initialize Firebase
-firebase.initializeApp(firebaseConfig);
-firebase.analytics();
+export const app = initializeApp(firebaseConfig);
