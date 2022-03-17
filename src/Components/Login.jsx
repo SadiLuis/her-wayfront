@@ -1,3 +1,4 @@
+import { Button } from 'bootstrap'
 import React from 'react'
 import { Link } from 'react-router-dom'
 import uno from '../image/1.jpg'
@@ -56,7 +57,18 @@ export default function Login() {
             </div>
             <button type="submit" className="btn btn-primary">Entrar</button>
 
-           
+            <div className='text-center '>
+              <span>¿No tienes cuenta?</span>
+              <Link to='/registro' style={{
+                color: '#0066ff',
+                textDecoration: 'none',
+                margin: '5px',
+                fontWeight: 'bold'
+                
+              }} >
+                Registrarse
+              </Link>
+            </div>       
 
 
           </form>
