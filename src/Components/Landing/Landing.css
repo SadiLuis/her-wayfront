@@ -1,0 +1,28 @@
+.mujerPasajera {
+    position: relative;
+    width: 100%;
+    height: 100vh;
+}
+
+.mujerPasajera_image{
+    width: 100%;
+    height: 100vh;
+    object-fit: cover;
+    position: absolute;
+}
+
+.primerTexto{
+    position: absolute;
+    bottom: 15%;
+    right: 10%;
+    color: whitesmoke;
+    font-size: 5rem;
+    padding: 15px;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: bold;
+    text-shadow: 0 0 5px #646464;
+}
+
+.Landing{
+    background-color: #FFA8D9 (255,168,217);
+}

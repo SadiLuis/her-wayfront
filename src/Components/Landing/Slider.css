@@ -1,0 +1,28 @@
+.slider{
+    display: flex;
+    align-items: center;
+    margin: 20px;
+    opacity: 0;
+    transform: scale(85%);
+    transition: 2s;
+}
+
+.sliderZoom{
+    opacity: 1;
+    transform: scale(100%);
+    transition: 2s;
+}
+
+.imgSlider{
+    width: 60%;
+}
+
+.sliderTitle{
+    flex: 1;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+    text-align: center;
+    font-family: 'Montserrat', sans-serif;
+}
