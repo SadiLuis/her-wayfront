@@ -17,15 +17,11 @@ export const perfilPasajera = (pasajeraId) => async (dispatch) =>{
                 payload: error.response && error.response.data.messsge 
                 ? error.response.data.messsge
                 : error.messsge
-            })
-            
+            })       
         }
-        
-
-   
     }
 
 
 export const modificarPerfilPasajera = (pasajeraId) => async (dispatch) => {
-    
+
 }

@@ -6,14 +6,15 @@ const initialState={
 }
 
 export default function pedirConductoraReducer(state=initialState, action){
-    const {type, payload}=action;
-    switch(type){
+
+    switch(action.type){
         case PEDIR_CONDUCTORA:
             return {
                 ...state,
-                todasLasConductoras:payload,
-                conductoras:payload
+                todasLasConductoras: action.payload,
+                conductoras: action.payload
             }
-
+        default:
+            return state;
     }
 }
