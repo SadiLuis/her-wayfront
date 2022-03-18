@@ -1,4 +1,4 @@
-import { Button } from 'bootstrap'
+//import { Button } from 'bootstrap'
 import React from 'react'
 import { Link } from 'react-router-dom'
 import uno from '../image/1.jpg'

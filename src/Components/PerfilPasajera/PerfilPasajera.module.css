@@ -1,0 +1,62 @@
+
+.mainContainer{
+    display: flex;
+    height: 100vh;
+    width: 80%;
+    background-color: #ff97d9;
+    margin: 10px;
+}
+
+
+.profileCard{
+    background-color: #a6a6a6;
+    width: 60%;
+    height: 52rem;
+    border-radius: 1rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    overflow: hidden;
+    min-height: 550px;
+    min-width: 400px;
+    max-width: 700px;
+}
+
+
+.userPhoto{
+   
+    overflow: hidden;
+    width: 10rem;
+    height: 10rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 2rem;
+}
+.photo{
+    width: 20rem;
+}
+
+.cardContainer{
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.editButton{
+    align-self: end;
+    font-size: 1rem;
+    font-weight: 600;
+    color: #939eb0;
+    background-color: transparent;
+    border: none;
+    margin: 1rem 1rem 0 0;
+    display: inline-block;
+    cursor: pointer;
+}
+
+.editButton:hover{
+    color: #e44f9c;
+}
