@@ -2,7 +2,9 @@ import React from 'react'
 
 function FiltrosConductoras() {
   return (
-    <div>FiltrosConductoras</div>
+    <div>
+      
+    </div>
   )
 }
 

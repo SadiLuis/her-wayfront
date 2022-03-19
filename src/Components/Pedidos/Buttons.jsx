@@ -1,29 +1,30 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { styled } from '@mui/material/styles';
 import Box from '@mui/material/Box';
 import ButtonBase from '@mui/material/ButtonBase';
 import Typography from '@mui/material/Typography';
 import { useNavigate } from 'react-router-dom';
-//import { useDispatch } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
+import { pedirConductora} from '../../actions/conductora'
 
 
 const images = [
   {
       id:1,
-    url: require('../../Media/auto1.png'),
-    title: 'Movil Gama Media',
+    url: require('../../Media/gama_media.jpg'),
+    tipo_auto: 'Movil Gama Media',
     width: '33.33%',
   },
   {
       id:2,
-    url: require('../../Media/order_food1.png'),
-    title: 'Movil Gama Alta',
+    url: require('../../Media/alta_gama.jpg'),
+    tipo_auto: 'Movil Gama Alta',
     width: '33.33%',
   },
   {
       id:3,
-    url: require('../../Media/pulgarArriba.JPG'),
-    title: 'Utilitario',
+    url: require('../../Media/utilitarios.jpg'),
+    tipo_auto: 'Utilitario',
     width: '33.33%',
   },
 ];
@@ -95,20 +96,33 @@ const ImageMarked = styled('span')(({ theme }) => ({
 
 
 export default function ButtonBases() {
-    const navigate = useNavigate();
-    const handleClick = (e) => {   
-        console.log('soy el boton')
-        navigate('/conductoras')
-        
-    }
+  const dispatch = useDispatch()
+  const navigate = useNavigate();
+  const conductoras = useSelector((state)=> state.pedirConductoraReducer.conductoras)
+console.log('conductoras :>> ', conductoras);
 
+useEffect(() => {
+  dispatch(pedirConductora())
+  
+}, [dispatch]);
+
+  const handleClick = (e, tipo_auto) => {   
+    e.preventDefault();
+    if(conductoras.length){
+      return conductoras.filter(c=>c.tipo_auto===tipo_auto)
+    }
+  
+    console.log('soy el boton')
+    navigate('/conductoras')
+    
+}
   return (
     <Box sx={{ display: 'flex', flexWrap: 'wrap', minWidth: 300, width: '100%' }}>
       {images.map((image) => (
         <ImageButton
-          onClick={(e) => handleClick(e.target.value)}
+          onClick={handleClick}
           focusRipple
-          key={image.id}
+          key={image.tipo_auto}
           style={{
             width: image.width,
           }}
@@ -128,9 +142,9 @@ export default function ButtonBases() {
                 pb: (theme) => `calc(${theme.spacing(1)} + 6px)`,
               }}
             >
-              {image.title}
+              {image.tipo_auto}
               <ImageMarked className="MuiImageMarked-root" />
-            </Typography>
+            </Typography>        
           </Image>
         </ImageButton>
       ))}

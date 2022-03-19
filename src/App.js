@@ -32,7 +32,7 @@ function App() {
     <div  >
       <BrowserRouter>
         <Routes>
-          <Route exact path="/" element={<Home />} />
+          <Route path="/" element={<Home />} />
           <Route path="/login" element={<Login/>} />
           <Route path="/registro" element={<Registro />} />
           <Route path="/pedidos" element={<Pedido />} />

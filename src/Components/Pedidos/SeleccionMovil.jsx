@@ -1,10 +1,14 @@
 import React from 'react'
 import ButtonBases from './Buttons'
 
+
 function SeleccionMovil() {
+  
+
   return (
     <div>
-      <ButtonBases />
+      <ButtonBases 
+      />
     </div>
   )
 }
