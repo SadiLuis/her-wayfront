@@ -1,7 +1,8 @@
-const initialState = {
-    user: [],
-    conductora: [],
-}
+import { combineReducers } from "redux";
+import LoginRegisReducer from "./LoginRegistro";
 
-export default function rootReducer(state = initialState, action) {
-}
+const rootReducer = combineReducers({
+    LoginRegisReducer
+});
+
+export default rootReducer;
