@@ -12,7 +12,10 @@ import PulgarArriba from './Media/pulgarArriba.JPG'
 import Home from './Screens/Home';
 import Login from './Components/Login';
 import Registro from './Components/Registro';
-import PerfilPasajera from './Components/PerfilPasajera/PerfilPasajer';
+import Pedido from './Components/Pedidos/SeleccionMovil';
+import FiltrosConductoras from './Components/Pedidos/FiltrosConductoras';
+
+
 
 function App() {
   // const [usuario, setUsuario] = useState(null);
@@ -29,10 +32,11 @@ function App() {
     <div  >
       <BrowserRouter>
         <Routes>
+          <Route exact path="/" element={<Home />} />
           <Route path="/login" element={<Login/>} />
           <Route path="/registro" element={<Registro />} />
-          <Route exact  path="/" element={<Home />} />
-          <Route path='/perfilPasajera' element={<PerfilPasajera />} />
+          <Route path="/pedidos" element={<Pedido />} />
+          <Route path="/conductoras" element={<FiltrosConductoras />} />
         </Routes>
 
         </BrowserRouter>

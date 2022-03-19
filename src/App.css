@@ -1,6 +1,7 @@
 
 .App {
   background-color: #FFA8D9 (255,168,217);
+}
 
 /* TAMAÑO DE LA IMAGENES QUE SE VAN A TOMAR COMO CARRUSEL PARA EL LOGIN */
 
@@ -22,7 +23,7 @@
     justify-content: center;
     align-items: center;
 
-
+}
 /* .App-logo {
   height: 40vmin;
   pointer-events: none;
@@ -66,6 +67,7 @@
    align-items: center;
    text-align: center;   
 }
+
 .btn{
   background-color: black;
   color: white;

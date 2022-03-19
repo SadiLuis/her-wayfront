@@ -1,7 +1,10 @@
-const initialState = {
-    user: [],
-    conductora: [],
-}
+import { combineReducers } from "redux";
+import pedirConductoraReducer  from "./pedirConductora";
+import recorridoReducer from "./recorridoReducer";
 
-export default function rootReducer(state = initialState, action) {
-}
+
+const rootReducer= combineReducers({
+    pedirConductoraReducer,
+    recorrido: recorridoReducer,
+})
+export default rootReducer;

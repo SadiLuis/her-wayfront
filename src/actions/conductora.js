@@ -1,5 +1,5 @@
 import axios from "axios";
-import {PEDIR_CONDUCTORA} from "./index"
+import {FILTRAR_CONDUCTORA_SEGUN_AUTO, PEDIR_CONDUCTORA} from "./actionsTypes"
 
 
 export const pedirConductora =()=> async dispatch=> {
@@ -14,3 +14,11 @@ export const pedirConductora =()=> async dispatch=> {
         return console.log("No se encontraron conductoras")
     }
 }
+
+export const filtrarConductora = (payload) => {
+    return ({
+        type: FILTRAR_CONDUCTORA_SEGUN_AUTO,
+        payload
+    });
+};
+

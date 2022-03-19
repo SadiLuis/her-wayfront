@@ -64,21 +64,14 @@ export default function Login() {
                 textDecoration: 'none',
                 margin: '5px',
                 fontWeight: 'bold'
-                
+               
               }} >
                 Registrarse
               </Link>
             </div>       
-
-
-          </form>
-              
+          </form>            
         </div>
-
-
       </div>
-
-
     </div>  
   )
 }
