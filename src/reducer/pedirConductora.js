@@ -1,21 +1,9 @@
 import { FILTRAR_CONDUCTORA_SEGUN_AUTO, PEDIR_CONDUCTORA } from "../actions/actionsTypes";
 
 const initialState={
-    todasLasConductoras:[
-        {
-            name:'ana',
-            tipo_auto:'Movil Gama Media'
-        },
-        {
-            name:'lore',
-            tipo_auto:'Movil Alta Gama'
-        },
-        {
-            name:'maria',
-            tipo_auto:'Utilitario'
-        }
-    ],
-    conductoras:[]
+    todasLasConductoras:[],
+    conductora:[],
+    filtros: []
 }
 
 export default function pedirConductoraReducer(state=initialState, action){
@@ -24,7 +12,7 @@ export default function pedirConductoraReducer(state=initialState, action){
             return {
                 ...state,
                 todasLasConductoras: action.payload,
-                conductoras: action.payload
+                filtros: action.payload
             }
 
         case FILTRAR_CONDUCTORA_SEGUN_AUTO:
@@ -33,7 +21,7 @@ export default function pedirConductoraReducer(state=initialState, action){
             : state.todasLasConductoras.filter((conductora) => conductora.tipo_auto === action.payload)
             return {
                 ...state,
-                conductoras: filtroConductoras
+                filtros: filtroConductoras
             }   
              
         default:

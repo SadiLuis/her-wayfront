@@ -4,7 +4,7 @@ import recorridoReducer from "./recorridoReducer";
 
 
 const rootReducer= combineReducers({
-    pedirConductoraReducer,
+    conductoras: pedirConductoraReducer,
     recorrido: recorridoReducer,
 })
 export default rootReducer;

@@ -98,8 +98,8 @@ const ImageMarked = styled('span')(({ theme }) => ({
 export default function ButtonBases() {
   const dispatch = useDispatch()
   const navigate = useNavigate();
-  const conductoras = useSelector((state)=> state.pedirConductoraReducer.conductoras)
-console.log('conductoras :>> ', conductoras);
+  const filtros = useSelector((state)=> state.conductoras.filtros)
+console.log('filtros :>> ', filtros);
 
 useEffect(() => {
   dispatch(pedirConductora())
@@ -108,10 +108,9 @@ useEffect(() => {
 
   const handleClick = (e, tipo_auto) => {   
     e.preventDefault();
-    if(conductoras.length){
-      return conductoras.filter(c=>c.tipo_auto===tipo_auto)
+    if(filtros.length){
+      return filtros.filter((c)=>c.tipo_auto===tipo_auto)
     }
-  
     console.log('soy el boton')
     navigate('/conductoras')
     

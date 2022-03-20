@@ -5,8 +5,7 @@ const SERVER = 'http://localhost:3001';
 
 export const pedirConductora =()=> async (dispatch)=> {
     try {
-        const respuesta= await axios.get(`${SERVER}/conductoras`) 
-        console.log('respuesta', respuesta.data)
+        const respuesta= await axios.get(`${SERVER}/conductora`) 
         return dispatch({
             type: PEDIR_CONDUCTORA,
             payload: respuesta.data
