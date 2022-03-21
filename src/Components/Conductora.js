@@ -1,6 +1,58 @@
 import React, {useEffect, useState} from 'react';
 import {postConductoras, getAllConductoras} from '../actions/conductora';
 import { useDispatch, useSelector } from 'react-redux';
+import { Link } from 'react-router-dom';
+
+
+export function validate(conductora){
+    let errors={};
+    if(!conductora.nombre){
+        errors.nombre = 'debe ingresar nombre completo'
+    }
+    if(!conductora.apellido){
+        errors.apellido = 'debe ingresar apellido '
+    }
+    if(!conductora.usuario){
+        errors.usuario = ' debe ingresar un usuario'
+    }
+    // if(!conductora.contrasena){
+    //     errors.contrasena = 'ingrese sus contraseña'
+    // }
+    if(!conductora.email){
+        errors.email= 'debe ingresar un email valido'
+    }
+    if(!conductora.pais){
+        errors.pais='debe ingresar el pais'
+    }
+    if(!conductora.provincia){
+        errors.provincia='debe ingresar la provincia donde reside'
+    }
+    if(!conductora.fotoPerfil){
+        errors.fotoPerfil='debe colocar una foto de perfil'
+    }
+    if(!conductora.direccion){
+        errors.direccion='debe ingresar su direccion de residencia'
+    }
+    if(!conductora.telefono){
+        errors.telefono='numero telefonico con codigo de area ej ... 011 para Bs. As.'
+    }
+    if(!conductora.localidad){
+        errors.localidad='debe ingresear la localidad donde reside'
+    }
+    if(!conductora.automovil){
+        errors.automovil='ingrese marca y modelo del vehiculo'
+    }
+    if(!conductora.patente){
+        errors.patente='ingrese la patente del vehiculo'
+    }
+    if(!conductora.seguro){
+        errors.seguro='ingrese seguro y poliza'
+    }
+    if(!conductora.habilitacion){
+        errors.habilitacion='ingrese la hbilitacion correspondiete del vehiculo'
+    }
+    return errors
+}
 
 export default function CreateConductora(){
     const dispatch = useDispatch();
@@ -23,13 +75,19 @@ export default function CreateConductora(){
         habilitacion:"",
     });
 
+    const [errors, setErrors]=useState({})
+
+
     useEffect(()=>{
         dispatch(getAllConductoras())
     },[dispatch]);
 
 
-    function handleSubmit(){
-        dispatch(postConductoras(conductora))
+    function handleSubmit(e){
+        e.preventDefault()
+        let errors = Object.keys(validate(conductora))
+        if(!errors.length !==0){
+            dispatch(postConductoras(conductora))
         setConductora({
         nombre:"",
         apellido:"",
@@ -47,26 +105,34 @@ export default function CreateConductora(){
         seguro:"",
         habilitacion:"",
         })
+        alert('usuario creado con exito')
+        }else{
+            alert('rellenar los comapos correctamente')
+        }   
     };
     
-    function handleSelect(e){
-        //console.log(e.target.files[0])
-        setConductora(e.target.files[0])
+    // function handleSelect(e){
+    //     //console.log(e.target.files[0])
+    //     setConductora(e.target.files[0])
         
-    }
+    // }
 
-    function handleSend(){
-        if(!conductora){
-            alert('debe seleccionar un archivo')
-            return
-        }
-    }
+    // function handleSend(){
+    //     if(!conductora){
+    //         alert('debe seleccionar un archivo')
+    //         return
+    //     }
+    // }
 
     function handleChange(e){
         setConductora({
             ...conductora,
-            [e.target.name] : e.target.name,
+            [e.target.name] : e.target.value,
         })
+        setErrors(validate({
+            ...conductora,
+            [e.target.name] : e.target.value,
+        }))
     }
 
     return(
@@ -80,13 +146,18 @@ export default function CreateConductora(){
                 <form onSubmit={(e)=> handleSubmit(e)}>
                 <div>
                 <label>Nombre *</label>
-                <input name='name'
+                <input name='nombre'
                     type='text'
                     value={conductora.name}
                     placeholder='ingrese su/s nombre/s'
                     onChange={handleChange}
                     required>
-                    </input>  
+                    </input> 
+                    {errors.nombre &&(
+                        <p className="error">
+                            {errors.nombre}
+                        </p>
+                    )} 
                 </div>
                 <div>
                 <label>Apellido *</label>
@@ -96,7 +167,12 @@ export default function CreateConductora(){
                     placeholder='ingrese su/s apellido/s'
                     onChange={handleChange}
                     required>
-                    </input>  
+                    </input> 
+                    {errors.apellido &&(
+                        <p className="error">
+                            {errors.apellido}
+                        </p>
+                    )}  
                 </div>
                 <div>
                 <label>Usuario *</label>
@@ -106,18 +182,28 @@ export default function CreateConductora(){
                     placeholder='ingrese su usuario'
                     onChange={handleChange}
                     required>
-                    </input>  
+                    </input> 
+                    {errors.usuario &&(
+                        <p className="error">
+                            {errors.usuario}
+                        </p>
+                    )}  
                 </div>
                 <div>
                 <label>Contraseña *</label>
-                <input name='contraseña'
-                    id='contraseña'
-                    type='text'
+                <input name='contrasena'
+                    id='contrasena'
+                    type='password'
                     value={conductora.contrasena}
                     placeholder='ingrese su contraseña'
                     onChange={handleChange}
                     required>
-                    </input>  
+                    </input> 
+                    {/* {errors.contrasena &&(
+                        <p className="error">
+                            {errors.contrasena}
+                        </p>
+                    )}   */}
                 </div>
                 <div>
                 <label>Email *</label>
@@ -128,7 +214,12 @@ export default function CreateConductora(){
                     placeholder='ingrese su email'
                     onChange={handleChange}
                     required>
-                    </input>  
+                    </input> 
+                    {errors.email &&(
+                        <p className="error">
+                            {errors.email}
+                        </p>
+                    )}  
                 </div>
                 <div>
                 <label>Pais *</label>
@@ -140,6 +231,11 @@ export default function CreateConductora(){
                     onChange={handleChange}
                     required>
                     </input>  
+                    {errors.pais &&(
+                        <p className="error">
+                            {errors.pais}
+                        </p>
+                    )} 
                 </div>
                 <div>
                 <label>Provincia *</label>
@@ -150,11 +246,16 @@ export default function CreateConductora(){
                     placeholder='ingrese la provincia donde reside'
                     onChange={handleChange}
                     required>
-                    </input>  
+                    </input> 
+                    {errors.provincia &&(
+                        <p className="error">
+                            {errors.provincia}
+                        </p>
+                    )}  
                 </div>
                 <div>
                 <label>Localidad *</label>
-                <input name='Localidad'
+                <input name='localidad'
                     id='localidad'
                     type='text'
                     value={conductora.localidad}
@@ -162,19 +263,28 @@ export default function CreateConductora(){
                     onChange={handleChange}
                     required>
                     </input>  
+                    {errors.localidad &&(
+                        <p className="error">
+                            {errors.localidad}
+                        </p>
+                    )} 
                 </div>
                 <div>
                 <label>Foto de Perfil *</label>
                 <input name='fotoPerfil'
                     id='fotoPerfil'
-                    type='file'
+                    type='text'
                     value={conductora.fotoPerfil}
                     placeholder='...img url'
-                    onChange={handleSelect}
+                    onChange={handleChange}
                     required>
                     </input>  
-                    <button onClick={handleSend} type='button'>Upload</button>
-
+                    {/* <button onClick={handleSend} type='button'>Upload</button> */}
+                    {errors.fotoPerfil &&(
+                        <p className="error">
+                            {errors.fotoPerfil}
+                        </p>
+                    )} 
                 </div>
                 <div>
                 <label>Direccion *</label>
@@ -186,6 +296,11 @@ export default function CreateConductora(){
                     onChange={handleChange}
                     required>
                     </input>  
+                    {errors.direccion &&(
+                        <p className="error">
+                            {errors.direccion}
+                        </p>
+                    )} 
                 </div>
                 <div>
                 <label>Telefono *</label>
@@ -196,7 +311,12 @@ export default function CreateConductora(){
                     placeholder='numero telefonico con codigo de area ej ... 011 para Bs. As.'
                     onChange={handleChange}
                     required>
-                    </input>  
+                    </input> 
+                    {errors.telefono &&(
+                        <p className="error">
+                            {errors.telefono}
+                        </p>
+                    )}  
                 </div>
                 
                 <div>
@@ -208,7 +328,12 @@ export default function CreateConductora(){
                     placeholder='ingrese marca y modelo del vehiculo'
                     onChange={handleChange}
                     required>
-                    </input>  
+                    </input> 
+                    {errors.automovil &&(
+                        <p className="error">
+                            {errors.automovil}
+                        </p>
+                    )}  
                 </div>
                 <div>
                 <label>Patente *</label>
@@ -219,7 +344,12 @@ export default function CreateConductora(){
                     placeholder='ingrese la petente del vehiculo'
                     onChange={handleChange}
                     required>
-                    </input>  
+                    </input> 
+                    {errors.patente &&(
+                        <p className="error">
+                            {errors.patente}
+                        </p>
+                    )}  
                 </div>
                 <div>
                 <label>Seguro *</label>
@@ -231,6 +361,11 @@ export default function CreateConductora(){
                     onChange={handleChange}
                     required>
                     </input>  
+                    {errors.seguro &&(
+                        <p className="error">
+                            {errors.seguro}
+                        </p>
+                    )} 
                 </div>
                 <div>
                 <label>Habilitacion *</label>
@@ -242,9 +377,20 @@ export default function CreateConductora(){
                     onChange={handleChange}
                     required>
                     </input>  
+                    {errors.habilitacion &&(
+                        <p className="error">
+                            {errors.habilitacion}
+                        </p>
+                    )} 
                 </div>
-                <button type='submit'>Registrarse</button>
-
+                <button type='submit' disabled={conductora.nombre&&conductora.apellido&&conductora.usuario&&conductora.contrasena&&
+                conductora.direccion&&conductora.email&&conductora.fotoPerfil&&conductora.localidad&&conductora.pais&&conductora.automovil&&
+                conductora.patente&&conductora.habilitacion&&conductora.seguro&&conductora.provincia&&conductora.telefono ? false : true}>Registrarse</button>
+                <div>
+                    <Link to='/login'>
+                        <button>Volver</button>
+                    </Link>
+                </div>
                 </form>
             </div>
         </div>

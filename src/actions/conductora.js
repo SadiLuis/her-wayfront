@@ -46,7 +46,7 @@ export function conductorasDetail(id){
 export function postConductoras(payload){
     try{
         return async function (dispatch){
-            const create = await axios.get('http://localhost:3001/conductoras/register' + payload);
+            const create = await axios.post('http://localhost:3001/conductoras/register' + payload);
             return dispatch({
                 type:'POST_CONDUCTORAS',
                 create,
