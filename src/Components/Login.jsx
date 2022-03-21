@@ -1,4 +1,4 @@
-import { Button } from 'bootstrap'
+//import { Button } from 'bootstrap'
 import React, { useState} from 'react'
 import { useDispatch } from 'react-redux';
 import { Link, useNavigate } from "react-router-dom";
@@ -103,11 +103,14 @@ return (
                 textDecoration: 'none',
                 margin: '5px',
                 fontWeight: 'bold'
-                
+               
               }} >
                 Registrarse
               </Link>
             </div>       
+
+          </form>            
+
             <div className='text-center '>
               
               <Link to='/resetPassword' style={{
@@ -123,12 +126,9 @@ return (
 
           </form>
               
+
         </div>
-
-
       </div>
-
-
     </div>  
   )
 }

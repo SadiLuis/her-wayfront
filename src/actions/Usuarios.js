@@ -9,8 +9,12 @@ import {
     LOGOUT_USER,
     AUTHENTICATION_ERROR,
     UPDATE_USER,
+
+    //REFORCE_PASSWORD
+
     RESET_PASSWORD,
     RELOADING_PAG
+
 } from "../actions/index";
 
 export function updateUser (newUser){

@@ -1,5 +1,5 @@
-import React , { useState }  from 'react';
-import { Routes, Route, BrowserRouter,Navigate } from "react-router-dom";
+import React   from 'react';
+import { Routes, Route, BrowserRouter } from "react-router-dom";
 
 import './App.css';
 
@@ -12,6 +12,10 @@ import PulgarArriba from './Media/pulgarArriba.JPG'
 import Home from './Screens/Home';
 import Login from './Components/Login';
 import Registro from './Components/Registro';
+
+import Pedido from './Components/Pedidos/SeleccionMovil';
+import FiltrosConductoras from './Components/Pedidos/FiltrosConductoras';
+
 import ResetPassword from './Components/ResetPassword';
 
 function App() {
@@ -29,13 +33,20 @@ function App() {
     <div  >
       <BrowserRouter>
         <Routes>
+          <Route path="/" element={<Home />} />
           <Route path="/login" element={<Login/>} />
           <Route path="/registro" element={<Registro />} />
+
+          <Route path="/pedidos" element={<Pedido />} />
+          <Route path="/conductoras" element={<FiltrosConductoras />} />
+
           <Route exact  path="/" element={<Home />} />
           <Route path='/resetPassword' element={<ResetPassword />} />
+
         </Routes>
 
         </BrowserRouter>
+    </div>
     </div>
   );
 }
