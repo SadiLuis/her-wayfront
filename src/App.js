@@ -12,6 +12,7 @@ import PulgarArriba from './Media/pulgarArriba.JPG'
 import Home from './Screens/Home';
 import Login from './Components/Login';
 import Registro from './Components/Registro';
+import ResetPassword from './Components/ResetPassword';
 
 function App() {
   // const [usuario, setUsuario] = useState(null);
@@ -31,6 +32,7 @@ function App() {
           <Route path="/login" element={<Login/>} />
           <Route path="/registro" element={<Registro />} />
           <Route exact  path="/" element={<Home />} />
+          <Route path='/resetPassword' element={<ResetPassword />} />
         </Routes>
 
         </BrowserRouter>
