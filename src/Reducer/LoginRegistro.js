@@ -7,7 +7,8 @@ import {
     GET_USER_DETAILS,
     AUTHENTICATION_ERROR,
     UPDATE_USER,
-    REFORCE_PASSWORD,
+    RESET_PASSWORD,
+    RELOADING_PAG,
     GET_USERS
 } from "../actions/index";
 
@@ -15,7 +16,7 @@ const initialState = {
     token: localStorage.getItem("token"),
     isAuth: null,
     detalleUsuario: null,
-    reforPass: [],
+    resetPass: [],
     userInfo: [],
 }
 
@@ -25,21 +26,22 @@ export default function LoginRegisReducer(state = initialState, action) {
             return {
                 ...state,
                 isAuth: true,
-                userInfo: action.payload.user
+                detalleUsuario: action.payload.user
             }
             case LOGIN_USER_SUCCESS:
-                localStorage.setItem("token", action.payload.idToken)
+                //localStorage.setItem("token", action.payload.idToken)
+                console.log(action.payload)
                 return {
                     ...state,
                     isAuth: true,
-                    token: action.payload.idToken,
-                    userInfo: action.payload.user
+                    token: action.payload.stsTokenManager.accessToken,
+                    userInfo: action.payload
                 }
             case REGISTER_USER_SUCCESS:
-                localStorage.setItem("token", action.payload.idToken);
+               // localStorage.setItem("token", action.payload.idToken);
                 return {
                     ...state,
-                    token: action.payload.idToken,
+                    token: action.payload.stsTokenManager.accessToken,
                     isAuth: true,
                 }
             case LOGIN_USER_ERROR:
@@ -58,10 +60,15 @@ export default function LoginRegisReducer(state = initialState, action) {
                     ...state,
                     detalleUsuario: action.payload
                 }
-            case REFORCE_PASSWORD:
+            case RESET_PASSWORD:
                 return {
                     ...state,
-                    reforPass: action.payload
+                    resetPass: action.payload
+                }
+            case RELOADING_PAG:
+                return {
+                    ...state,
+                    resetPass: action.payload
                 }
                 
             default: return state;

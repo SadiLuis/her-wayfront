@@ -9,13 +9,18 @@ import {
     LOGOUT_USER,
     AUTHENTICATION_ERROR,
     UPDATE_USER,
+
     //REFORCE_PASSWORD
+
+    RESET_PASSWORD,
+    RELOADING_PAG
+
 } from "../actions/index";
 
 export function updateUser (newUser){
     return async function (dispach){
         try{
-            await axios.put(`http://localhost:3001/usuarios/${newUser.id}`, newUser, tokenUser())
+            await axios.put(`http://localhost:3001/usuario/${newUser.id}`, newUser, tokenUser())
             dispach(getuserDetails())
             return{
                 type: UPDATE_USER,
@@ -26,14 +31,11 @@ export function updateUser (newUser){
     }
 }
 
-export function getuserDetails (){
+export function getuserDetails (id){
     return async function (dispach){
         try{
-            const res = await axios.get(`http://localhost:3001/usuarios/detalle`, tokenUser())
-            dispach({
-                type: GET_USER_DETAILS,
-                payload: res.data
-            })
+            const res = await axios.get(`http://localhost:3001/usuario/${id}`, tokenUser())
+          
             dispach({
                 type: GET_USER_DETAILS,
                 payload: res.data
@@ -62,13 +64,15 @@ export function login ( {email, contrasena} ){
             //     }
             // }
             const body = {email, contrasena}
-            console.log(body)
-            const res = await axios.post(`http://localhost:3001/usuario/login`, body, )
+            
+            const {data} = await axios.post(`http://localhost:3001/usuario/login`, body )
+            const infoUser = data.user
             dispach({
                 type: LOGIN_USER_SUCCESS,
-                payload: res.data
+                payload: infoUser
             })
-            
+            console.log(data)
+           
         } catch (error) {
             console.log(error)
             return dispach({
@@ -108,12 +112,13 @@ export function register ({
                 telefono,
                 localidad
             }
-            const res = await axios.post(`http://localhost:3001/usuarios`, body, config)
+            const {data} = await axios.post(`http://localhost:3001/usuario/register`, body, config)
+            const infoUser = data.user
             dispach({
                 type: REGISTER_USER_SUCCESS,
-                payload: res.data
+                payload: infoUser
             })
-            dispach(getuserDetails())
+           
         } catch (error) {
             console.log(error)
             return dispach({
@@ -123,20 +128,32 @@ export function register ({
     }
 }
 
-// export const reforcePassword = async (email) => {
-//     try{
-//         const config = {
-//             headers: {
-//                 "Content-Type": "application/json"
-//             }
-//         }
-//         const body = {email}
-//         const res = await axios.post(`http://localhost:3001/usuarios/reforcePassword`, body, config)
-//         return {
-//             type: REFORCE_PASSWORD,
-//             payload: res.data
-//         }
-//     } catch (error) {
-//         console.log(error)
-//     }
-// }
+ export const resetPassword =  (email) => {
+     return async function (dispatch){
+     try{
+         const config = {
+             headers: {
+                 "Content-Type": "application/json"
+             }
+         }
+         const body = {email}
+         const res = await axios.post(`http://localhost:3001/reset`, body, config)
+         dispatch({
+             type: RESET_PASSWORD,
+             payload: res.data
+         })
+     } catch (error) {
+        dispatch({
+            type: RESET_PASSWORD,
+            payload: error.message
+        })
+     }
+    }
+}
+
+export const reloadingPage = (payload)=> {
+    return {
+      type:RELOADING_PAG,
+      payload
+    }
+}

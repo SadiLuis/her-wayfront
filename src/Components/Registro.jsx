@@ -1,6 +1,7 @@
 import React, {useState, useEffect} from 'react'
 import { Link, useNavigate } from 'react-router-dom'
 import { register, updateUser } from '../actions/Usuarios'
+import {useDispatch} from 'react-redux'
 import { Button } from 'bootstrap'
 import { auth, provider } from '../Firebase-config'
 import uno from '../image/1.jpg'
@@ -27,7 +28,7 @@ export default function Registro (){
   // eslint-disable-next-line react-hooks/rules-of-hooks
   const [form, setForm] = useState(formulario)
   const [error, setError] = useState()
-  
+  const dispatch= useDispatch()
 
   const handleChange = (e) => {
     const { name, value } = e.target
@@ -59,7 +60,7 @@ export default function Registro (){
       localidad: ''
     } 
     setError(errors)
-    register(form)
+    dispatch(register(form))
     navigate('/')
        
 }

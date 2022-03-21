@@ -20,9 +20,8 @@ export const LOGOUT_USER="LOGOUT_USER"
 export const GET_USER_DETAILS="GET_USER_DETAILS"
 export const AUTHENTICATION_ERROR="AUTHENTICATION_ERROR"
 export const UPDATE_USER="UPDATE_USER"
-export const REFORCE_PASSWORD="REFORCE_PASSWORD"
-
-
+export const RESET_PASSWORD="RESET_PASSWORD"
+export const RELOADING_PAG="RELOADING_PAG"
 
 
 ////////////////////////////////////////////////////////////////////////

@@ -108,7 +108,25 @@ return (
                 Registrarse
               </Link>
             </div>       
+
           </form>            
+
+            <div className='text-center '>
+              
+              <Link to='/resetPassword' style={{
+                color: '#0066ff',
+                textDecoration: 'none',
+                margin: '5px',
+                fontWeight: 'bold'
+                
+              }} >
+               ¿ Olvidaste tu contraseña ?
+              </Link>
+            </div>       
+
+          </form>
+              
+
         </div>
       </div>
     </div>  
