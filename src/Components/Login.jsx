@@ -59,7 +59,7 @@ export default function Login() {
 
             <div className='text-center '>
               <span>¿No tienes cuenta?</span>
-              <Link to='/registro' style={{
+              <Link to='/conductoras/register' style={{
                 color: '#0066ff',
                 textDecoration: 'none',
                 margin: '5px',

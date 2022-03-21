@@ -28,7 +28,10 @@ switch(action.type){
          case 'POST_CONDUCTORAS':
              return{
                  ...state,
-             }      
+             } 
+        default:
+            return state         
 }
+
 
 }

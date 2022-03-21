@@ -13,7 +13,7 @@ export function getAllConductoras(){
             console.log(err)
         }
     }
-}
+};
 export function getConductorasName(name){
     try{
         return async function (dispatch){
