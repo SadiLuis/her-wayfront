@@ -1,4 +1,4 @@
-import { DESTINO, ORIGEN, TIEMPO_DE_VIAJE } from "./actionsTypes"
+import { DESTINO, ORIGEN, TIEMPO_DE_VIAJE } from "./index"
 
 export const origen= (payload) => {
     return({

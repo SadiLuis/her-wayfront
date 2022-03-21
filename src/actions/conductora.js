@@ -1,5 +1,5 @@
 import axios from "axios";
-import {FILTRAR_CONDUCTORA_SEGUN_AUTO, PEDIR_CONDUCTORA} from "./actionsTypes"
+import {FILTRAR_CONDUCTORA_SEGUN_AUTO, PEDIR_CONDUCTORA} from "./index"
 
 const SERVER = 'http://localhost:3001';
 
