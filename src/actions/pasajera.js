@@ -1,12 +1,13 @@
 import {INFO_PASAJERA_FAIL, INFO_PASAJERA_REQUEST, INFO_PASAJERA_SUCCESS } from "./index";
 import axios from 'axios';
+import tokenUser from "../Helpers/TokenUser";
 
 export const perfilPasajera = (pasajeraId) => async (dispatch) =>{
         dispatch({
             type: INFO_PASAJERA_REQUEST,  
         })
         try {
-            const {pasajera} = await axios.get(`ruta pasajera ${pasajeraId}`)
+            const {pasajera} = await axios.get(`ruta pasajera ${pasajeraId}`,tokenUser())
             return dispatch({
                 type: INFO_PASAJERA_SUCCESS,
                 payload: pasajera

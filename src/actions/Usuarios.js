@@ -9,7 +9,7 @@ import {
     LOGOUT_USER,
     AUTHENTICATION_ERROR,
     UPDATE_USER,
-    REFORCE_PASSWORD
+    //REFORCE_PASSWORD
 } from "../actions/index";
 
 export function updateUser (newUser){
