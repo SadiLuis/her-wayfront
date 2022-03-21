@@ -36,7 +36,7 @@ export default function Home() {
           color: '#fff',
           border: 'none',
           borderRadius: '10px',
-
+          
         }} >Iniciar sesión</button>
       </Link>
 
