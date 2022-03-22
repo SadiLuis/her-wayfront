@@ -1,14 +1,18 @@
 import axios from "axios";
-import { FILTRAR_CONDUCTORA_SEGUN_AUTO, PEDIR_CONDUCTORA } from "./index"
+import {FILTRAR_CONDUCTORA_SEGUN_AUTO, PEDIR_CONDUCTORA,DETALLE_CONDUCTORA } from "./index"
 import tokenUser from '../Helpers/TokenUser'
+import tokenConductora from "../Helpers/TokenConductora";
+      
 
-export const GET_PERFILC = 'GET_PERFILC'
+
+ export const GET_PERFILC = 'GET_PERFILC'
 
 const SERVER = 'http://localhost:3001';
 
 export const pedirConductora = () => async dispatch => {
     try {
-        const respuesta = await axios(`${SERVER}/conductora`)
+        const respuesta = await axios.get(`${SERVER}/conductora`)
+        console.log(respuesta.data)
         return dispatch({
             type: PEDIR_CONDUCTORA,
             payload: respuesta.data
@@ -17,6 +21,21 @@ export const pedirConductora = () => async dispatch => {
         console.log("No se encontraron conductoras")
     }
 }
+
+// export  function pedirConductora () {
+//     return async function(dispatch){
+//     try {
+//         const respuesta= await axios.get("http://localhost:3001/conductora")
+        
+//         return dispatch({
+//             type:PEDIR_CONDUCTORA,
+//             payload:respuesta.data
+//         })
+//     } catch (error) {
+//         console.log("No se encontraron conductoras")
+//     }
+// }
+// }
 
 
 export function getPerfilConductora(id) {
@@ -34,4 +53,3 @@ export const filtrarConductora = (payload) => {
         payload
     });
 };
-

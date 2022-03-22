@@ -1,3 +1,95 @@
+
+/* TAMAÑO DE LA IMAGENES QUE SE VAN A TOMAR COMO CARRUSEL PARA EL LOGIN */
+
+.tamaño{
+    width: 90%;
+    height: 900px;
+    image-resolution: contain;
+}
+  
+/*cierre de la clase tamaño*/
+
+/* .app{
+    background-color: plum;
+    background-size: cover;
+    background-repeat: no-repeat;
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center; 
+  }*/
+
+
+/* .App-logo {
+  height: 40vmin;
+  pointer-events: none;
+
+}
+
+.App-logo{
+  margin: 15px;
+  border-radius: 15px;
+}
+
+.herway{
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    margin: 15px;
+    padding: 15px;
+    width: 100%;
+    background-color: white;
+    border-radius: 15px;
+    margin-bottom: 40%;
+}
+
+.conteiner{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 10%;  
+    margin-left: -40%;
+    padding: 15px;
+    background-color: rgba(255, 0, 255, 0.363);
+    opacity: 0.8;
+    border-radius: 15px;
+    
+}
+
+.pasajerayconductora{ 
+   font-size: 25px;
+   margin: 10px;
+   align-items: center;
+   text-align: center;   
+}
+
+.btn{
+  background-color: black;
+  color: white;
+  
+}
+
+
+@keyframes App-logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+} */
+
+@media (prefers-reduced-motion: no-preference) {
+  /* .App-logo {
+    animation: App-logo-spin infinite 20s linear;
+  } */
+
+}
+
+
  .App {
   background-color: #FFA8D9 (255,168,217); 
  }
+

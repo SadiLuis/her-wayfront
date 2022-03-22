@@ -8,10 +8,23 @@ import LoginRegisReducer from "./LoginRegistro";
 
 
 const rootReducer= combineReducers({
-    //conductoras: pedirConductoraReducer,
-    recorrido: recorridoReducer,
-    LoginRegisReducer,
+
+     pedirConductoraReducer,
+     recorridoReducer,
+    LoginRegisReducer
 })
+
+// function rootReducer(state = initialState, action) {
+//     switch (action.type) {
+//         case GET_PERFILC:
+//             return {
+//                 ...state,
+//                 perfilConductora: action.payload
+//             }
+//         default:
+//             break;
+//     }
+// }
 
 
 
