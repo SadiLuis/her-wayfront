@@ -14,8 +14,10 @@ function VistaMap() {
     }, [])
   return (
       <>
-    <CssBaseline />
-      
+   <div className='row conteiner p-4' >
+      <div className='col-md-8'>
+
+
           <Grid item xs={12} md={8}>
           <Map 
               setCoordinates={setCoordinates}
@@ -23,6 +25,10 @@ function VistaMap() {
               coordinates={coordinates}
           />
           </Grid>
+    
+   </div>
+   </div>
+    
     </>
   )
 }
