@@ -1,5 +1,5 @@
 //import { Button } from 'bootstrap'
-import React, { useState} from 'react'
+import React, { useState } from 'react'
 import { useDispatch } from 'react-redux';
 import { Link, useNavigate } from "react-router-dom";
 import { login } from '../actions/Usuarios';
@@ -17,10 +17,10 @@ export default function Login() {
   const [formlogin, setFormLogin] = useState(initialLogin)
   const [error, setError] = useState()
   const navigate = useNavigate()
-  const dispach= useDispatch()
+  const dispach = useDispatch()
 
   const handleChange = (e) => {
-    
+
     setFormLogin({
       ...formlogin,
       [e.target.name]: e.target.value
@@ -42,12 +42,12 @@ export default function Login() {
     }
     setError(errors)
 
-    dispach (login(formlogin))
+    dispach(login(formlogin))
     console.log(formlogin)
-    navigate('/')
+    navigate('/perfilPasajera')
   }
-  
-return (
+
+  return (
     <div className='row conteiner p-4' >
       <div className='col-md-8'>
 
@@ -127,6 +127,6 @@ return (
         </div>
       </div>
     </div>
-       
+
   )
 }

@@ -6,9 +6,10 @@ import Home from './Screens/Home';
 import Login from './Components/Login';
 import Registro from './Components/Registro';
 import PerfilConductora from './Components/Perfiles/PerfilConductora';
-// import PerfilPasajera from './Components/Perfiles/PerfilPasajera';
+import PerfilPasajera from './Components/Perfiles/PerfilPasajera';
 
 import FiltrosConductoras from './Components/Pedidos/FiltrosConductoras';
+import LoginConductora from './Components/LoginConductora'
 
 import ResetPassword from './Components/ResetPassword';
 
@@ -27,17 +28,18 @@ function App() {
             <Route path="/home" element={<Home />} />
             <Route exact path="/" element={<Landing />} />
             <Route path="/perfilConductora" element={<PerfilConductora />} />
-          
-          <Route path="/conductoras" element={<FiltrosConductoras />} />
-          <Route path='/resetPassword' element={<ResetPassword />} />
+            <Route path="/perfilPasajera" element={<PerfilPasajera />} />
+            <Route path="/loginConductora" element={<LoginConductora />} />
+            <Route path="/conductoras" element={<FiltrosConductoras />} />
+            <Route path='/resetPassword' element={<ResetPassword />} />
 
-        </Routes>
+          </Routes>
 
 
         </BrowserRouter>
       </div>
     </div>
-    
+
   );
 }
 
