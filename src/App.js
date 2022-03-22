@@ -16,6 +16,7 @@ import FiltrosConductoras from './Components/Pedidos/FiltrosConductoras';
 import ResetPassword from './Components/ResetPassword';
 import PedirConductora from './Components/PedirConductora';
 import TarjetaConductora from './Screens/TarjetaConductora';
+import VistaMap from './Screens/VistaMap.jsx'
 
 function App() {
 
@@ -40,6 +41,7 @@ function App() {
           <Route path='/resetPassword' element={<ResetPassword />} />
           <Route path="/pedirconductora" element={<PedirConductora/>} />
           <Route path="/tarjetaconductora" element={<TarjetaConductora/>} />
+          <Route path="/mapa" element={<VistaMap />} />
 
         </Routes>
 
