@@ -1,3 +1,7 @@
+import { combineReducers } from "redux";
+import pedirConductoraReducer  from "./pedirConductora";
+import recorridoReducer from "./recorridoReducer";
+import LoginRegisReducer from "./LoginRegistro";
 import { GET_PERFILC } from '../actions/conductora'
 
 const initialState = {
@@ -6,7 +10,14 @@ const initialState = {
     perfilConductora: []
 }
 
-export default function rootReducer(state = initialState, action) {
+
+const rootReducer= combineReducers({
+    conductoras: pedirConductoraReducer,
+    recorrido: recorridoReducer,
+    LoginRegisReducer
+})
+
+function rootReducer(state = initialState, action) {
     switch (action.type) {
         case GET_PERFILC:
             return {
@@ -17,4 +28,8 @@ export default function rootReducer(state = initialState, action) {
             break;
     }
 }
+
+
+
+export default rootReducer;
 

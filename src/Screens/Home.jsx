@@ -1,14 +1,21 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
+import { useSelector } from 'react-redux';
 import { Link } from 'react-router-dom'
 import mujeres from '../assets/mujeresconductoras.webp';
+import userInfo from '../Reducer/LoginRegistro';
 
 
 export default function Home() {
+ 
+  
+
+
   return (
     <div className='app' >
       
       <img src={mujeres} className="App-logo" alt="logo" />
-        <h1 className='herway' >HER WAY APP</h1>
+        <h1 className='herway' >HER WAY APP  </h1>
+        
 
       <div className='conteiner' >
       <h1 className='pasajerayconductora' >Eres pasajera?</h1>
@@ -29,7 +36,7 @@ export default function Home() {
           color: '#fff',
           border: 'none',
           borderRadius: '10px',
-
+          
         }} >Iniciar sesión</button>
       </Link>
 

@@ -6,7 +6,6 @@ export const GET_PERFILC = 'GET_PERFILC'
 
 const SERVER = 'http://localhost:3001';
 
-
 export const pedirConductora = () => async dispatch => {
     try {
         const respuesta = await axios(`${SERVER}/conductora`)
@@ -19,6 +18,7 @@ export const pedirConductora = () => async dispatch => {
     }
 }
 
+
 export function getPerfilConductora(id) {
     return async dispatch => {
         const request = await axios.get(`${SERVER}/conductora/${id}`, tokenUser())
@@ -26,3 +26,12 @@ export function getPerfilConductora(id) {
         dispatch({ type: GET_PERFILC, payload: request.data })
     }
 }
+
+
+export const filtrarConductora = (payload) => {
+    return ({
+        type: FILTRAR_CONDUCTORA_SEGUN_AUTO,
+        payload
+    });
+};
+

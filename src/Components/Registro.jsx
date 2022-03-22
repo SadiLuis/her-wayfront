@@ -1,7 +1,7 @@
-import React, { useState, useEffect } from 'react'
+import React, {useState, useEffect} from 'react'
 import { Link, useNavigate } from 'react-router-dom'
 import { register, updateUser } from '../actions/Usuarios'
-import { useDispatch } from 'react-redux'
+import {useDispatch} from 'react-redux'
 import { Button } from 'bootstrap'
 import { auth, provider } from '../Firebase-config'
 import uno from '../image/1.jpg'
@@ -22,13 +22,17 @@ const formulario = {
   localidad: ''
 }
 
-export default function Registro() {
+
+export default function Registro (){
+
   // eslint-disable-next-line react-hooks/rules-of-hooks
   const navigate = useNavigate()
   // eslint-disable-next-line react-hooks/rules-of-hooks
   const [form, setForm] = useState(formulario)
   const [error, setError] = useState()
+
   const dispatch = useDispatch()
+
 
   const handleChange = (e) => {
     const { name, value } = e.target
@@ -58,12 +62,11 @@ export default function Registro() {
       direccion: '',
       telefono: '',
       localidad: ''
-    }
+    } 
     setError(errors)
     dispatch(register(form))
     navigate('/')
-
-  }
+}
 
   // eslint-disable-next-line react-hooks/rules-of-hooks
   // useEffect(() => {
@@ -90,10 +93,7 @@ export default function Registro() {
 
   //   }
   //   isAuth && db()
-
   // }, [isAuth, user, edit])
-
-
 
 
 
@@ -178,20 +178,18 @@ export default function Registro() {
               <input type="text" className="form-control" id="exampleInputPassword1"
                 onChange={handleChange} value={form.direccion} placeholder="Direccion" name='direccion' />
             </div>
+          {/* Telefono */}
+          <div className="form-group">
+            <label htmlFor="exampleInputPassword1">Telefono</label>
+            <input type="text" className="form-control" id="exampleInputPassword1"
+            onChange={handleChange} value={form.telefono} placeholder="Telefono" name = 'telefono' />
+          </div>
 
-            {/* Telefono */}
-            <div className="form-group">
-              <label htmlFor="exampleInputPassword1">Telefono</label>
-              <input type="text" className="form-control" id="exampleInputPassword1"
-                onChange={handleChange} value={form.telefono} placeholder="Telefono" name='telefono' />
-            </div>
-
-            <div className="form-group form-check">
-              <input type="checkbox" className="form-check-input" id="exampleCheck1" />
-              <label className="form-check-label" htmlFor="exampleCheck1">Comprendo</label>
-            </div>
-            <button type="submit" className="btn btn-primary" >Registrarse</button>
-
+          <div className="form-group form-check">
+            <input type="checkbox" className="form-check-input" id="exampleCheck1" />
+            <label className="form-check-label" htmlFor="exampleCheck1">Comprendo</label>
+          </div>
+          <button type="submit" className="btn btn-primary" >Registrarse</button>
 
 
 
