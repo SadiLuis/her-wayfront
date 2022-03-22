@@ -11,7 +11,10 @@ export default function rootReducer(state = initialState, action) {
         case GET_PERFILC:
             return {
                 ...state,
-                getPerfilConductora: action.payload
+                perfilConductora: action.payload
             }
+        default:
+            break;
     }
 }
+
