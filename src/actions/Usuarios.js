@@ -17,12 +17,14 @@ import {
 
 } from "../actions/index";
 
-export function updateUser (newUser){
-    return async function (dispach){
-        try{
+
+export function updateUser(newUser) {
+    return async function (dispach) {
+        try {
             await axios.put(`http://localhost:3001/usuario/${newUser.id}`, newUser, tokenUser())
             dispach(getuserDetails())
-            return{
+            return {
+
                 type: UPDATE_USER,
             }
         } catch (error) {
@@ -31,11 +33,12 @@ export function updateUser (newUser){
     }
 }
 
-export function getuserDetails (id){
-    return async function (dispach){
-        try{
+
+export function getuserDetails(id) {
+    return async function (dispach) {
+        try {
             const res = await axios.get(`http://localhost:3001/usuario/${id}`, tokenUser())
-          
+
             dispach({
                 type: GET_USER_DETAILS,
                 payload: res.data
@@ -50,29 +53,32 @@ export function getuserDetails (id){
     }
 }
 
-export function logout (){
+
+export function logout() {
     return { type: LOGOUT_USER }
 }
 
-export function login ( {email, contrasena} ){
+export function login({ email, contrasena }) {
     return async (dispach) => {
         console.log('action')
-        try{
+        try {
+
             // const config = {
             //     headers: {
             //         "Content-Type": "application/json"
             //     }
             // }
-            const body = {email, contrasena}
-            
-            const {data} = await axios.post(`http://localhost:3001/usuario/login`, body )
+
+            const body = { email, contrasena }
+
+            const { data } = await axios.post(`http://localhost:3001/usuario/login`, body)
+
             const infoUser = data.user
             dispach({
                 type: LOGIN_USER_SUCCESS,
                 payload: infoUser
             })
             console.log(data)
-           
         } catch (error) {
             console.log(error)
             return dispach({
@@ -94,8 +100,10 @@ export function register ({
     telefono,
     localidad
 }) {
-    return async function (dispach){
-        try{
+
+    return async function (dispach) {
+        try {
+
             const config = {
                 headers: {
                     "Content-Type": "application/json"
@@ -112,13 +120,14 @@ export function register ({
                 telefono,
                 localidad
             }
-            const {data} = await axios.post(`http://localhost:3001/usuario/register`, body, config)
+
+            const { data } = await axios.post(`http://localhost:3001/usuario/register`, body, config)
+
             const infoUser = data.user
             dispach({
                 type: REGISTER_USER_SUCCESS,
                 payload: infoUser
             })
-           
         } catch (error) {
             console.log(error)
             return dispach({

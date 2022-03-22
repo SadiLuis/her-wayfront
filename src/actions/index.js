@@ -1,17 +1,17 @@
-export const PEDIR_CONDUCTORA="PEDIR_CONDUCTORA"
+export const PEDIR_CONDUCTORA = "PEDIR_CONDUCTORA";
+export const DETALLE_CONDUCTORA="DETALLE_CONDUCTORA";
 export const FILTRAR_CONDUCTORA_SEGUN_AUTO = 'FILTRO_CONDUCTORA_SEGUN_AUTO'
-
 export const INFO_PASAJERA_REQUEST = "INFO_PASAJERA_REQUEST"
 export const INFO_PASAJERA_SUCCESS = "INFO_PASAJERA_SUCCESS"
 export const INFO_PASAJERA_FAIL = "INFO_PASAJERA_FAIL"
-
-export const ORIGEN ="ORIGEN";
-export const DESTINO="DESTINO";
-export const TIEMPO_DE_VIAJE ="TIEMPO_DE_VIAJE";
+export const ORIGEN = "ORIGEN";
+export const DESTINO = "DESTINO";
+export const TIEMPO_DE_VIAJE = "TIEMPO_DE_VIAJE";
 
 
 
 ///////////////////Autenticacion y usuario/////////////////////////////
+
 export const LOGIN_USER_ERROR="LOGIN_USER_ERROR"
 export const LOGIN_USER_SUCCESS="LOGIN_USER_SUCCESS"
 export const REGISTER_USER_ERROR="REGISTER_USER_ERROR"
@@ -25,3 +25,4 @@ export const RELOADING_PAG="RELOADING_PAG"
 
 
 ////////////////////////////////////////////////////////////////////////
+

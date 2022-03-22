@@ -1,8 +1,4 @@
 
-.App {
-  background-color: #FFA8D9 (255,168,217);
-}
-
 /* TAMAÑO DE LA IMAGENES QUE SE VAN A TOMAR COMO CARRUSEL PARA EL LOGIN */
 
 .tamaño{
@@ -13,7 +9,7 @@
   
 /*cierre de la clase tamaño*/
 
-.app{
+/* .app{
     background-color: plum;
     background-size: cover;
     background-repeat: no-repeat;
@@ -21,9 +17,10 @@
     height: 100vh;
     display: flex;
     justify-content: center;
-    align-items: center;
+    align-items: center; 
+  }*/
 
-}
+
 /* .App-logo {
   height: 40vmin;
   pointer-events: none;
@@ -90,4 +87,9 @@
   } */
 
 }
+
+
+ .App {
+  background-color: #FFA8D9 (255,168,217); 
+ }
 
