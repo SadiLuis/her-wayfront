@@ -1,5 +1,5 @@
 //import { Button } from 'bootstrap'
-import React, { useState} from 'react'
+import React, { useEffect, useState} from 'react'
 import { useDispatch } from 'react-redux';
 import { Link, useNavigate } from "react-router-dom";
 import { login } from '../actions/Usuarios';
@@ -8,6 +8,9 @@ import dos from '../image/2.jpg'
 import tres from '../image/3.jpg';
 import styles from "./Login.module.css"
 import PedirConductora from './PedirConductora';
+
+import { pedirConductora } from '../actions/conductora';
+
 
 const initialLogin = {
   contraseña: '',
@@ -19,7 +22,7 @@ export default function Login() {
   const [formlogin, setFormLogin] = useState(initialLogin)
   const [error, setError] = useState()
   const navigate = useNavigate()
-  const dispach= useDispatch()
+  const dispatch= useDispatch()
 
   const handleChange = (e) => {
     
@@ -44,10 +47,19 @@ export default function Login() {
     }
     setError(errors)
 
-    dispach (login(formlogin))
+    dispatch (login(formlogin))
     console.log(formlogin)
     navigate('/')
   }
+  useEffect(()=>{
+    dispatch(pedirConductora())
+  }, [dispatch])
+
+   const handleClickEntrar=(e)=>{
+     e.preventDefault();
+     navigate("/pedirConductora")
+
+   }
   
 return (
     <div className='row conteiner p-4' >
@@ -96,7 +108,8 @@ return (
               <input type="checkbox" className="form-check-input" id="exampleCheck1" />
               <label className="form-check-label" htmlFor="exampleCheck1">Comprendo</label>
             </div>
-            <button type="submit" className="btn btn-primary">Entrar</button>
+            <button type="submit" className="btn btn-primary" onClick={handleClickEntrar}>Entrar</button>
+            
 
             <div className='text-center '>
               <span>¿No tienes cuenta?</span>
@@ -133,7 +146,7 @@ return (
         </div>
       </div>
 
-      <div >
+      {/* <div >
       <button  className={styles.botonPedirConductora}   
      >
     <Link to="/pedirconductora" style={{color:"#fff"}}> 
@@ -142,7 +155,7 @@ return (
       </Link>
     </button>
 
-      </div>
+      </div> */}
 
     </div>  
     
