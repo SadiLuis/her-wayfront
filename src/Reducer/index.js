@@ -1,5 +1,5 @@
 import { combineReducers } from "redux";
-//import pedirConductoraReducer  from "./pedirConductora";
+import pedirConductoraReducer  from "./pedirConductora";
 import recorridoReducer from "./recorridoReducer";
 import LoginRegisReducer from "./LoginRegistro";
 
@@ -8,10 +8,9 @@ import LoginRegisReducer from "./LoginRegistro";
 
 
 const rootReducer= combineReducers({
-
      pedirConductoraReducer,
      recorridoReducer,
-    LoginRegisReducer
+     LoginRegisReducer
 })
 
 // function rootReducer(state = initialState, action) {
