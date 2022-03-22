@@ -1,17 +1,14 @@
 import { combineReducers } from "redux";
-import pedirConductoraReducer  from "./pedirConductora";
+//import pedirConductoraReducer  from "./pedirConductora";
 import recorridoReducer from "./recorridoReducer";
 import LoginRegisReducer from "./LoginRegistro";
-import { GET_PERFILC } from '../actions/conductora'
 
-const initialState = {
-    user: [],
-    conductora: [],
-    perfilConductora: []
-}
+
+
 
 
 const rootReducer= combineReducers({
+
      pedirConductoraReducer,
      recorridoReducer,
     LoginRegisReducer
@@ -28,6 +25,7 @@ const rootReducer= combineReducers({
 //             break;
 //     }
 // }
+
 
 
 
