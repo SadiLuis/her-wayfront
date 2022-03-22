@@ -6,12 +6,13 @@ import Home from './Screens/Home';
 import Login from './Components/Login';
 import Registro from './Components/Registro';
 import PerfilConductora from './Components/Perfiles/PerfilConductora';
-// import PerfilPasajera from './Components/Perfiles/PerfilPasajera';
+import PerfilPasajera from './Components/Perfiles/PerfilPasajera';
 
 import RegConductora from './Components/RegConductora/RegConductora'
 import LoginConductora from './Components/LoginConductora'
 
 import FiltrosConductoras from './Components/Pedidos/FiltrosConductoras';
+import LoginConductora from './Components/LoginConductora'
 
 import ResetPassword from './Components/ResetPassword';
 import PedirConductora from './Components/PedirConductora';
@@ -31,23 +32,24 @@ function App() {
             <Route path="/registro" element={<Registro />} />
             <Route path="/home" element={<Home />} />
             <Route exact path="/" element={<Landing />} />
+              
             <Route path="/perfilConductora" element={<PerfilConductora />} />
+            <Route path="/perfilPasajera" element={<PerfilPasajera />} />
+            <Route path="/conductoras" element={<FiltrosConductoras />} />
+            <Route path='/resetPassword' element={<ResetPassword />} />
 
             <Route path="/loginConductora" element={<LoginConductora />} />
             <Route path='/conductora/register' element={<RegConductora />}/>
-
-          <Route path="/conductoras" element={<FiltrosConductoras />} />
-          <Route path='/resetPassword' element={<ResetPassword />} />
           <Route path="/pedirconductora" element={<PedirConductora/>} />
           <Route path="/tarjetaconductora" element={<TarjetaConductora/>} />
 
-        </Routes>
+          </Routes>
 
 
         </BrowserRouter>
       </div>
     </div>
-    
+
   );
 }
 

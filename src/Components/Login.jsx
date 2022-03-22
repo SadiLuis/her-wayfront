@@ -22,10 +22,11 @@ export default function Login() {
   const [formlogin, setFormLogin] = useState(initialLogin)
   const [error, setError] = useState()
   const navigate = useNavigate()
+
   const dispatch= useDispatch()
 
   const handleChange = (e) => {
-    
+
     setFormLogin({
       ...formlogin,
       [e.target.name]: e.target.value
@@ -47,10 +48,13 @@ export default function Login() {
     }
     setError(errors)
 
+
     dispatch (login(formlogin))
+
     console.log(formlogin)
-    navigate('/')
+    navigate('/perfilPasajera')
   }
+
   useEffect(()=>{
     dispatch(pedirConductora())
   }, [dispatch])
@@ -145,6 +149,7 @@ return (
 
         </div>
       </div>
+
 
       {/* <div >
       <button  className={styles.botonPedirConductora}   

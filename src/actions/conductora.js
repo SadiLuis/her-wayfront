@@ -43,7 +43,7 @@ export const pedirConductora = () => async dispatch => {
 
 export function getPerfilConductora(id) {
     return async dispatch => {
-        const request = await axios.get(`${SERVER}/conductora/${id}`, tokenUser())
+        const request = await axios.get(`${SERVER}/conductora/${id}`)
         console.log(request)
         dispatch({ type: GET_PERFILC, payload: request.data })
     }
