@@ -42,9 +42,6 @@ export default function Login() {
     }
     setError(errors)
 
-
-
-  return (
     dispach (login(formlogin))
     console.log(formlogin)
     navigate('/')

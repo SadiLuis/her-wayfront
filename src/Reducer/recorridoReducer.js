@@ -1,4 +1,4 @@
-import { DESTINO, ORIGEN, TIEMPO_DE_VIAJE } from "../actions/actionsTypes";
+import { DESTINO, ORIGEN, TIEMPO_DE_VIAJE } from "../actions/index";
 
 
 const initialState ={
