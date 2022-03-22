@@ -5,6 +5,7 @@ import mujeres from '../assets/mujeresconductoras.webp';
 import userInfo from '../Reducer/LoginRegistro';
 
 
+
 export default function Home() {
 
 
@@ -18,27 +19,28 @@ export default function Home() {
 
 
       <div className='conteiner' >
-        <h1 className='pasajerayconductora' >Eres pasajera?</h1>
-        <Link to="/login">
-          <button style={{
-            backgroundColor: 'black',
-            color: '#fff',
-            border: 'none',
-            borderRadius: '10px',
 
-          }}>Iniciar sesión</button>
-        </Link>
+      <h1 className='pasajerayconductora' >Eres pasajera?</h1>
+      <Link to="/login">
+        <button style={{
+          backgroundColor: 'black',
+          color: '#fff',
+          border: 'none',
+          borderRadius: '10px',
+          
+        }}>Iniciar sesión</button>
+      </Link>
 
-        <h1 className='pasajerayconductora' > Eres conductora? </h1>
-        <Link to="/loginConductora"  >
-          <button style={{
-            backgroundColor: 'black',
-            color: '#fff',
-            border: 'none',
-            borderRadius: '10px',
-
-          }} >Iniciar sesión</button>
-        </Link>
+      <h1 className='pasajerayconductora' > Eres conductora? </h1>
+      <Link to='/loginConductora'  >
+        <button style={{
+          backgroundColor: 'black',
+          color: '#fff',
+          border: 'none',
+          borderRadius: '10px',
+          
+        }} >Iniciar sesión</button>
+      </Link>
 
       </div>
 

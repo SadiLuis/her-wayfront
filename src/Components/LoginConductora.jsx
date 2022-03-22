@@ -1,5 +1,5 @@
 //import { Button } from 'bootstrap'
-import React, { useState } from 'react'
+import React, { useState} from 'react'
 import { useDispatch } from 'react-redux';
 import { Link, useNavigate } from "react-router-dom";
 import { login } from '../actions/Usuarios';
@@ -8,8 +8,8 @@ import dos from '../image/2.jpg'
 import tres from '../image/3.jpg'
 
 const initialLogin = {
-    contraseña: '',
-    email: ''
+  contraseña : '',
+  email: ''
 }
 
 export default function Login() {
