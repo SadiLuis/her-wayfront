@@ -1,0 +1,30 @@
+.perfilCard{
+width: 100%;
+height: max-content;
+border-radius: 10px;
+background: white;
+box-shadow: 0px 1px 10px 1px black;
+}
+
+.upperContainer{ 
+    height: max-content;
+    width: 100%;
+border-radius: 10px 10px 0 0;
+    background: linear-gradient(to right, #f988ff, #7f00b2);
+}
+
+.imageContainer{
+background: none;
+height: 100px;
+width: 100px;
+border-radius: 50%;
+}
+
+.lowerContainer{
+    height: 100px;
+    width: 100%;
+}
+
+.editIcon{
+    object-position: left;
+}

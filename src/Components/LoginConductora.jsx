@@ -1,19 +1,14 @@
 //import { Button } from 'bootstrap'
-import React, { useEffect, useState} from 'react'
+import React, { useState} from 'react'
 import { useDispatch } from 'react-redux';
 import { Link, useNavigate } from "react-router-dom";
 import { login } from '../actions/Usuarios';
 import uno from '../image/1.jpg'
 import dos from '../image/2.jpg'
-import tres from '../image/3.jpg';
-import styles from "./Login.module.css"
-import PedirConductora from './PedirConductora';
-
-import { pedirConductora } from '../actions/conductora';
-
+import tres from '../image/3.jpg'
 
 const initialLogin = {
-  contraseña: '',
+  contraseña : '',
   email: ''
 }
 
@@ -22,7 +17,7 @@ export default function Login() {
   const [formlogin, setFormLogin] = useState(initialLogin)
   const [error, setError] = useState()
   const navigate = useNavigate()
-  const dispatch= useDispatch()
+  const dispach= useDispatch()
 
   const handleChange = (e) => {
     
@@ -47,19 +42,10 @@ export default function Login() {
     }
     setError(errors)
 
-    dispatch (login(formlogin))
+    dispach (login(formlogin))
     console.log(formlogin)
     navigate('/')
   }
-  useEffect(()=>{
-    dispatch(pedirConductora())
-  }, [dispatch])
-
-   const handleClickEntrar=(e)=>{
-     e.preventDefault();
-     navigate("/pedirConductora")
-
-   }
   
 return (
     <div className='row conteiner p-4' >
@@ -71,7 +57,7 @@ return (
               <img className="tamaño" src={uno} alt="First slide" />
             </div>
             <div className="carousel-item">
-              <img className="tamaño" src={dos} alt="Second slide" />
+             <img className="tamaño" src={dos} alt="Second slide" />
             </div>
             <div className="carousel-item">
               <img className="tamaño" src={tres} alt="Third slide" />
@@ -96,68 +82,53 @@ return (
           <form onSubmit={handleSubmit} >
             <div className="form-group"> {/* CORREO */}
               <label htmlFor="exampleInputEmail1">Correo</label>
-              <input type="email" className="form-control" placeholder="Ingresar Correo" name='email' onChange={handleChange} value={formlogin.email} />
+              <input type="email" className="form-control"   placeholder="Ingresar Correo"   name='email' onChange={handleChange} value={formlogin.email} />
               <small >El equipo de Her-Way jamás bajo ninguna circunstancia pedira su correo o contraseña. </small>
               {/* Contraseña  */}
             </div>
             <div className="form-group">
               <label htmlFor="exampleInputPassword1">Contraseña</label>
-              <input type="password" className="form-control" id="exampleInputPassword1" placeholder="Password" name='contrasena' onChange={handleChange} value={formlogin.contrasena} />
+              <input type="password" className="form-control" id="exampleInputPassword1" placeholder="Password" name='contrasena' onChange={handleChange}  value={formlogin.contrasena}  />
             </div>
             <div className="form-group form-check">
               <input type="checkbox" className="form-check-input" id="exampleCheck1" />
               <label className="form-check-label" htmlFor="exampleCheck1">Comprendo</label>
             </div>
-            <button type="submit" className="btn btn-primary" onClick={handleClickEntrar}>Entrar</button>
-            
+            <button type="submit" className="btn btn-primary">Entrar</button>
 
             <div className='text-center '>
               <span>¿No tienes cuenta?</span>
-              <Link to='/registro' style={{
+              <Link to='/conductora/register' style={{
                 color: '#0066ff',
                 textDecoration: 'none',
                 margin: '5px',
                 fontWeight: 'bold'
-
+               
               }} >
                 Registrarse
               </Link>
-            </div>
+            </div>       
 
-          </form>
-
-          <div className='text-center '>
-
-            <Link to='/resetPassword' style={{
-              color: '#0066ff',
-              textDecoration: 'none',
-              margin: '5px',
-              fontWeight: 'bold'
-
-            }} >
-              ¿ Olvidaste tu contraseña ?
-            </Link>
+          </form>            
+          
+            <div className='text-center '>
+              
+              <Link to='/resetPassword' style={{
+                color: '#0066ff',
+                textDecoration: 'none',
+                margin: '5px',
+                fontWeight: 'bold'
+                
+              }} >
+               ¿ Olvidaste tu contraseña ?
+              </Link>
             </div>       
 
           
-
               
 
         </div>
       </div>
-
-      {/* <div >
-      <button  className={styles.botonPedirConductora}   
-     >
-    <Link to="/pedirconductora" style={{color:"#fff"}}> 
-   
-      Pedir Conductora
-      </Link>
-    </button>
-
-      </div> */}
-
-    </div>  
-    
+     </div>
   )
 }
