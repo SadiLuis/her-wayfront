@@ -5,7 +5,9 @@ import { Link, useNavigate } from "react-router-dom";
 import { login } from '../actions/Usuarios';
 import uno from '../image/1.jpg'
 import dos from '../image/2.jpg'
-import tres from '../image/3.jpg'
+import tres from '../image/3.jpg';
+import styles from "./Login.module.css"
+import PedirConductora from './PedirConductora';
 
 const initialLogin = {
   contraseña: '',
@@ -42,9 +44,6 @@ export default function Login() {
     }
     setError(errors)
 
-
-
-  return (
     dispach (login(formlogin))
     console.log(formlogin)
     navigate('/')
@@ -125,11 +124,27 @@ return (
             }} >
               ¿ Olvidaste tu contraseña ?
             </Link>
-          </div>
+            </div>       
+
+          
+
+              
 
         </div>
       </div>
-    </div>
-       
+
+      <div >
+      <button  className={styles.botonPedirConductora}   
+     >
+    <Link to="/pedirconductora" style={{color:"#fff"}}> 
+   
+      Pedir Conductora
+      </Link>
+    </button>
+
+      </div>
+
+    </div>  
+    
   )
 }

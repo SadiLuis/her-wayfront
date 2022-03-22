@@ -12,22 +12,22 @@ const initialState = {
 
 
 const rootReducer= combineReducers({
-    conductoras: pedirConductoraReducer,
-    recorrido: recorridoReducer,
+     pedirConductoraReducer,
+     recorridoReducer,
     LoginRegisReducer
 })
 
-function rootReducer(state = initialState, action) {
-    switch (action.type) {
-        case GET_PERFILC:
-            return {
-                ...state,
-                perfilConductora: action.payload
-            }
-        default:
-            break;
-    }
-}
+// function rootReducer(state = initialState, action) {
+//     switch (action.type) {
+//         case GET_PERFILC:
+//             return {
+//                 ...state,
+//                 perfilConductora: action.payload
+//             }
+//         default:
+//             break;
+//     }
+// }
 
 
 

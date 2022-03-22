@@ -1,4 +1,4 @@
-export default function tokenUser (){
+export  default function tokenUser (){
     if (localStorage.tokenUser){
         return {
             headers: {
@@ -7,3 +7,4 @@ export default function tokenUser (){
         }
     }
 }
+
