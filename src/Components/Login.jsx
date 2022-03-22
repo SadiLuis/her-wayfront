@@ -7,7 +7,7 @@ import uno from '../image/1.jpg'
 import dos from '../image/2.jpg'
 import tres from '../image/3.jpg';
 import styles from "./Login.module.css"
-import PedirConductora from './PedirConductora';
+
 
 const initialLogin = {
   contraseña: '',
@@ -96,7 +96,9 @@ return (
               <input type="checkbox" className="form-check-input" id="exampleCheck1" />
               <label className="form-check-label" htmlFor="exampleCheck1">Comprendo</label>
             </div>
-            <button type="submit" className="btn btn-primary">Entrar</button>
+            <Link to='/pedirConductora'>
+              <button type="submit" className="btn btn-primary">Entrar</button>
+            </Link>
 
             <div className='text-center '>
               <span>¿No tienes cuenta?</span>
