@@ -1,5 +1,5 @@
 import { combineReducers } from "redux";
-//import pedirConductoraReducer  from "./pedirConductora";
+import pedirConductoraReducer  from "./pedirConductora";
 import recorridoReducer from "./recorridoReducer";
 import LoginRegisReducer from "./LoginRegistro";
 

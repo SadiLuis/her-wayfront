@@ -31,7 +31,7 @@ export default function Home() {
       </Link>
 
       <h1 className='pasajerayconductora' > Eres conductora? </h1>
-      <Link to="/login"  >
+      <Link to='/loginConductora'  >
         <button style={{
           backgroundColor: 'black',
           color: '#fff',
