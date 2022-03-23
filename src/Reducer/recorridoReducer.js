@@ -13,6 +13,7 @@ const recorridoReducer = (state=initialState, action) => {
                 origen: action.payload,
             }
         case DESTINO:
+        
             return {
                 ...state,
                 destino: action.payload,
