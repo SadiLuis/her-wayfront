@@ -1,12 +1,15 @@
 //import { Button } from 'bootstrap'
-import React, { useState} from 'react'
+import React, { useEffect, useState} from 'react'
 import { useDispatch } from 'react-redux';
 import { Link, useNavigate } from "react-router-dom";
 import { login } from '../actions/Usuarios';
 import uno from '../image/1.jpg'
 import dos from '../image/2.jpg'
 import tres from '../image/3.jpg';
-import styles from "./Login.module.css"
+//import styles from "./Login.module.css"
+
+
+import { pedirConductora } from '../actions/conductora';
 
 
 const initialLogin = {
@@ -19,10 +22,11 @@ export default function Login() {
   const [formlogin, setFormLogin] = useState(initialLogin)
   const [error, setError] = useState()
   const navigate = useNavigate()
-  const dispach= useDispatch()
+
+  const dispatch= useDispatch()
 
   const handleChange = (e) => {
-    
+
     setFormLogin({
       ...formlogin,
       [e.target.name]: e.target.value
@@ -44,10 +48,22 @@ export default function Login() {
     }
     setError(errors)
 
-    dispach (login(formlogin))
+
+    dispatch (login(formlogin))
+
     console.log(formlogin)
-    navigate('/')
+    navigate('/perfilPasajera')
   }
+
+  useEffect(()=>{
+    dispatch(pedirConductora())
+  }, [dispatch])
+
+   //const handleClickEntrar=(e)=>{
+   //  e.preventDefault();
+   //  navigate("/pedirConductora")
+
+   //}
   
 return (
     <div className='row conteiner p-4' >
@@ -135,7 +151,8 @@ return (
         </div>
       </div>
 
-      <div >
+
+      {/* <div >
       <button  className={styles.botonPedirConductora}   
      >
     <Link to="/pedirconductora" style={{color:"#fff"}}> 
@@ -144,7 +161,7 @@ return (
       </Link>
     </button>
 
-      </div>
+      </div> */}
 
     </div>  
     

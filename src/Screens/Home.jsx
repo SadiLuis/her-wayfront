@@ -7,18 +7,19 @@ import userInfo from '../Reducer/LoginRegistro';
 
 
 export default function Home() {
- 
-  
+
+
 
 
   return (
     <div className='app' >
-      
+
       <img src={mujeres} className="App-logo" alt="logo" />
-        <h1 className='herway' >HER WAY APP  </h1>
-        
+      <h1 className='herway' >HER WAY APP  </h1>
+
 
       <div className='conteiner' >
+
       <h1 className='pasajerayconductora' >Eres pasajera?</h1>
       <Link to="/login">
         <button style={{
@@ -42,7 +43,7 @@ export default function Home() {
       </Link>
 
       </div>
-      
+
 
     </div>
   )

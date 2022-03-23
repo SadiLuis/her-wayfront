@@ -1,0 +1,42 @@
+/* .container {
+    background-color:  rgb(211, 222, 220);
+    border: solid 1.5px;
+    border-radius: 2px;
+}
+
+h3{
+    color: black
+}
+.boton {
+  background-color: rgb(76, 93, 105);
+  width: 6rem;
+  height: 2.2rem;
+  font-weight: bold;
+  border-radius: 2rem;
+  color: #e3e8f8;
+  border: none;
+  cursor: pointer;
+  box-shadow: 2px 2px 4px #000000;
+  margin-bottom: 8%;
+   
+}
+
+.boton {
+  width: 6rem;
+}
+
+.boton:hover {
+  background-color: #203562;
+  color: #ffffff;
+  border: none;
+  font-weight: bold;
+}
+.boton span {
+    margin-right: 10px;
+    
+    
+   
+}
+input, textarea{
+    box-shadow: 2px 2px 4px #000000 ;
+} */
