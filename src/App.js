@@ -12,11 +12,11 @@ import RegConductora from './Components/RegConductora/RegConductora'
 import LoginConductora from './Components/LoginConductora'
 
 import FiltrosConductoras from './Components/Pedidos/FiltrosConductoras';
-import LoginConductora from './Components/LoginConductora'
 
 import ResetPassword from './Components/ResetPassword';
 import PedirConductora from './Components/PedirConductora';
 import TarjetaConductora from './Screens/TarjetaConductora';
+import BotonPago from './Components/BotonPago/BotonPago';
 
 function App() {
 
@@ -40,8 +40,9 @@ function App() {
 
             <Route path="/loginConductora" element={<LoginConductora />} />
             <Route path='/conductora/register' element={<RegConductora />}/>
-          <Route path="/pedirconductora" element={<PedirConductora/>} />
-          <Route path="/tarjetaconductora" element={<TarjetaConductora/>} />
+            <Route path="/pedirconductora" element={<PedirConductora/>} />
+            <Route path="/tarjetaconductora" element={<TarjetaConductora/>} />
+            <Route path="/botonpago" element={<BotonPago />} />
 
           </Routes>
 
