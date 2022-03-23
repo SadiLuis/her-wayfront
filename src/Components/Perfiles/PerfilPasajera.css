@@ -1,30 +1,45 @@
 .perfilCard{
-width: 100%;
-height: max-content;
-border-radius: 10px;
-background: white;
-box-shadow: 0px 1px 10px 1px black;
-}
-
-.upperContainer{ 
+    width: 100%;
     height: max-content;
-    width: 100%;
-border-radius: 10px 10px 0 0;
-    background: linear-gradient(to right, #f988ff, #7f00b2);
-}
-
-.imageContainer{
-background: none;
-height: 100px;
-width: 100px;
-border-radius: 50%;
-}
-
-.lowerContainer{
+    border-radius: 10px;
+    background: white;
+    box-shadow: 0px 1px 10px 1px black;
+    }
+    
+    .usuario{
+        position: absolute;
+        left: 120px;
+        top: 24px;
+    }
+    
+    .upperContainer{ 
+        height: max-content;
+        width: 100%;
+    border-radius: 10px 10px 0 0;
+        background: linear-gradient(to right, #f988ff, #7f00b2);
+    }
+    
+    .imageContainer{
+    background: none;
     height: 100px;
-    width: 100%;
-}
-
-.editIcon{
-    object-position: left;
-}
+    width: 100px;
+    border-radius: 50%;
+    }
+    
+    .lowerContainer{
+        height: 100px;
+        width: 100%;
+        position: absolute;
+        top: 120px;
+        left: 20px;
+    }
+    
+    .editIcon{
+        object-position: left;
+    }
+    
+    .logoutP{
+        position: absolute;
+        top: 455px;
+        left: 20px;
+    }

@@ -32,6 +32,9 @@ export function validate(conductora){
     if(!conductora.fotoPerfil){
         errors.fotoPerfil='debe colocar una foto de perfil'
     }
+    if(!conductora.fotoDni){
+        errors.fotoDni = 'seleccione DNI, permiso de Conducir o Pasaporte'
+    }
     if(!conductora.direccion){
         errors.direccion='debe ingresar su direccion de residencia'
     }
@@ -68,6 +71,7 @@ export default function CreateConductora(){
         pais:"",
         provincia:"",
         fotoPerfil:"",
+        fotoDni:"",
         direccion:"",
         telefono:"",
         localidad:"",
@@ -99,6 +103,7 @@ export default function CreateConductora(){
         pais:"",
         provincia:"",
         fotoPerfil:[],
+        fotoDni:[],
         direccion:"",
         telefono:"",
         localidad:"",
@@ -113,11 +118,11 @@ export default function CreateConductora(){
         }   
     };
     
-    // function handleSelect(e){
-    //     //console.log(e.target.files[0])
-    //     setConductora(e.target.files[0])
+    function handleSelect(e){
+        //console.log(e.target.files[0])
+        setConductora(e.target.files[0])
         
-    // }
+    }
 
     // function handleSend(){
     //     if(!conductora){
@@ -276,16 +281,33 @@ export default function CreateConductora(){
                 <label htmlFor="exampleInputPassword1">Foto de Perfil *</label>
                 <input name='fotoPerfil' className="form-control"
                     id='fotoPerfil'
-                    type='text'
+                    type='file'
                     value={conductora.fotoPerfil}
                     placeholder='...img url'
-                    onChange={handleChange}
+                    onChange={handleSelect}
                     required>
                     </input>  
                     {/* <button onClick={handleSend} type='button'>Upload</button> */}
                     {errors.fotoPerfil &&(
                         <p className="error">
                             {errors.fotoPerfil}
+                        </p>
+                    )} 
+                </div>
+                <div className='form-group'>
+                <label htmlFor="exampleInputPassword1">Credencial de Identificacion *</label>
+                <input name='fotoDni' className="form-control"
+                    id='fotoDni'
+                    type='file'
+                    value={conductora.fotoDni}
+                    placeholder='...img url'
+                    onChange={handleSelect}
+                    required>
+                    </input>  
+                    {/* <button onClick={handleSend} type='button'>Upload</button> */}
+                    {errors.fotoDni &&(
+                        <p className="error">
+                            {errors.fotoDni}
                         </p>
                     )} 
                 </div>
@@ -388,7 +410,7 @@ export default function CreateConductora(){
                 </div>
                 <button className="btn btn-primary" type='submit' disabled={conductora.nombre&&conductora.apellido&&conductora.usuario&&conductora.contrasena&&
                 conductora.direccion&&conductora.email&&conductora.fotoPerfil&&conductora.localidad&&conductora.pais&&conductora.automovil&&
-                conductora.patente&&conductora.habilitacion&&conductora.seguro&&conductora.provincia&&conductora.telefono ? false : true}>Registrarse</button>
+                conductora.patente&&conductora.habilitacion&&conductora.seguro&&conductora.provincia&&conductora.telefono&&conductora.fotoDni ? false : true}>Registrarse</button>
                 <div >
                     <Link className="btn btn-primary" to='/'>
                         <button>Volver</button>
