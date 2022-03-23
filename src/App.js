@@ -9,7 +9,7 @@ import PerfilConductora from './Components/Perfiles/PerfilConductora';
 import PerfilPasajera from './Components/Perfiles/PerfilPasajera';
 
 import RegConductora from './Components/RegConductora/RegConductora'
-import LoginConductora from './Components/LoginConductora'
+
 
 import FiltrosConductoras from './Components/Pedidos/FiltrosConductoras';
 import LoginConductora from './Components/LoginConductora'
