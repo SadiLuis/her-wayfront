@@ -17,6 +17,8 @@ import ResetPassword from './Components/ResetPassword';
 import PedirConductora from './Components/PedirConductora';
 import TarjetaConductora from './Screens/TarjetaConductora';
 import BotonPago from './Components/BotonPago/BotonPago';
+import LoginConductora from './Components/LoginConductora'
+
 
 function App() {
 
