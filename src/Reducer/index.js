@@ -2,6 +2,7 @@ import { combineReducers } from "redux";
 import pedirConductoraReducer  from "./pedirConductora";
 import recorridoReducer from "./recorridoReducer";
 import LoginRegisReducer from "./LoginRegistro";
+import adminReducer from "./adminReducer";
 
 
 
@@ -11,7 +12,8 @@ const rootReducer= combineReducers({
 
      pedirConductoraReducer,
      recorridoReducer,
-    LoginRegisReducer
+    LoginRegisReducer,
+    adminReducer
 })
 
 // function rootReducer(state = initialState, action) {

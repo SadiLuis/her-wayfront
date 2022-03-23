@@ -12,11 +12,16 @@ import RegConductora from './Components/RegConductora/RegConductora'
 import LoginConductora from './Components/LoginConductora'
 
 import FiltrosConductoras from './Components/Pedidos/FiltrosConductoras';
-import LoginConductora from './Components/LoginConductora'
+
 
 import ResetPassword from './Components/ResetPassword';
 import PedirConductora from './Components/PedirConductora';
 import TarjetaConductora from './Screens/TarjetaConductora';
+
+import LoginAdmin from './Components/Admin/LoginAdmin/LoginAdmin';
+import UsuariosAdmin from './Components/Admin/UsuariosAdmin/UsuariosAdmin'
+import DetalleConductora from './Components/Admin/DetalleConductora/DetalleConductora';
+import VerPasajerasAdmin from './Components/Admin/VerPasajerasAdmin/VerPasajerasAdmin';
 
 function App() {
 
@@ -42,6 +47,11 @@ function App() {
             <Route path='/conductora/register' element={<RegConductora />}/>
           <Route path="/pedirconductora" element={<PedirConductora/>} />
           <Route path="/tarjetaconductora" element={<TarjetaConductora/>} />
+
+          <Route path="/admin" element={<LoginAdmin/>}/>
+          <Route path="/admin/usuarios" element={<UsuariosAdmin/>}/>
+          <Route path="/admin/pasajeras" element={<VerPasajerasAdmin/>}/>
+          <Route exact path='/admin/:id' element={<DetalleConductora/>}/>
 
           </Routes>
 
