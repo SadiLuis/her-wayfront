@@ -20,6 +20,7 @@ import VistaMap from './Screens/VistaMap.jsx'
 
 import BotonPago from './Components/BotonPago/BotonPago';
 import LoginConductora from './Components/LoginConductora'
+import Reviews from './Components/Reviews/ReviewsConductora';
 
 
 function App() {
@@ -35,25 +36,19 @@ function App() {
             <Route path="/login" element={<Login />} />
             <Route path="/registro" element={<Registro />} />
             <Route path="/home" element={<Home />} />
-            <Route exact path="/" element={<Landing />} />
-              
+            <Route exact path="/" element={<Landing />} /> 
             <Route path="/perfilConductora" element={<PerfilConductora />} />
             <Route path="/perfilPasajera" element={<PerfilPasajera />} />
             <Route path="/conductoras" element={<FiltrosConductoras />} />
             <Route path='/resetPassword' element={<ResetPassword />} />
-
             <Route path="/loginConductora" element={<LoginConductora />} />
             <Route path='/conductora/register' element={<RegConductora />}/>
-
-          <Route path="/pedirconductora" element={<PedirConductora/>} />
-          <Route path="/tarjetaconductora" element={<TarjetaConductora/>} />
-          <Route path="/mapa" element={<VistaMap />} />
+            <Route path="/pedirconductora" element={<PedirConductora/>} />
+            <Route path="/tarjetaconductora" element={<TarjetaConductora/>} />
+            <Route path="/mapa" element={<VistaMap />} />
             <Route path="/botonpago" element={<BotonPago />} />
-
-
+            <Route path="/reviewConductora" element={<Reviews />} />
           </Routes>
-
-
         </BrowserRouter>
       </div>
     </div>
