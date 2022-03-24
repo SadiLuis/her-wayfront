@@ -16,10 +16,14 @@ import FiltrosConductoras from './Components/Pedidos/FiltrosConductoras';
 import ResetPassword from './Components/ResetPassword';
 import PedirConductora from './Components/PedirConductora';
 import TarjetaConductora from './Screens/TarjetaConductora';
+
+import OrigenDestino from './Components/OrigenDestino/OrigenDestino';
+
 import VistaMap from './Screens/VistaMap.jsx'
 
 import BotonPago from './Components/BotonPago/BotonPago';
 import LoginConductora from './Components/LoginConductora'
+
 
 
 function App() {
@@ -47,8 +51,13 @@ function App() {
 
           <Route path="/pedirconductora" element={<PedirConductora/>} />
           <Route path="/tarjetaconductora" element={<TarjetaConductora/>} />
+
+         
+          <Route path="origendestino" element={<OrigenDestino/>}/>
+
           <Route path="/mapa" element={<VistaMap />} />
             <Route path="/botonpago" element={<BotonPago />} />
+
 
 
           </Routes>
