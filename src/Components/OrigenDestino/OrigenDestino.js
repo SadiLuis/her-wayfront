@@ -4,6 +4,7 @@ import React from 'react';
 import {FaRegDotCircle,FaMapMarkerAlt, FaDirections} from 'react-icons/fa';
 import styles from './OrigenDestino.module.css'
  import Mapa from './Mapa'
+ import GooglePlacesAutocomplete from 'react-google-places-autocomplete';
 
 
 export default function OrigenDestino() {
@@ -32,6 +33,7 @@ export default function OrigenDestino() {
 
   return (
     <div className='jumbotron'>
+        
         <div className='container-fluid'>
             <h1>Calcula la distancia entre dos lugares</h1>
             
@@ -77,6 +79,7 @@ export default function OrigenDestino() {
 
             </div>
     </div>
+    
     </div>
   )
 }
