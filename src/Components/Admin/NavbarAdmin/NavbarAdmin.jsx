@@ -9,7 +9,7 @@ const NavbarAdmin = () => {
         <ul>
             <li><Link to={`../admin/usuarios`}>Ver Conductoras</Link> </li>
             <li><Link to={`../admin/pasajeras`}>Ver Pasajeras</Link></li>
-            <li><Link to={``}>Ver Pagos</Link></li>
+            <li><Link to={`../admin/altaAdmins`}>Dar Alta Admins</Link></li>
         </ul>
     </nav>
     </div>

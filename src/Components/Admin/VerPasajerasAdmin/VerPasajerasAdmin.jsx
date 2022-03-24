@@ -18,37 +18,37 @@ const VerPasajerasAdmin = () => {
   console.log(pasajeras)
   return (
     <div>
-      <NavbarAdmin/>
-       <table className={styles}>
-          <tr>
-    <th>Nombre</th>
-    <th>Usuario</th>
-    <th>Email</th>
-    <th>Direccion</th>
-    <th>Pais</th>
-    <th>Provincia</th>
-    <th>Localidad</th>
-    <th>Telefono</th>
-  </tr>
-        
-      {pasajeras.map(p => (
-
-       
-
+      <NavbarAdmin />
+      <table className={styles}>
         <tr>
-          <td >{p.nombre}</td>
-          <td >{p.usuario}</td>
-          <td >{p.email}</td>
-          <td >{p.direccion}</td>
-          <td >{p.pais}</td>
-          <td >{p.provincia}</td>
-          <td >{p.localidad}</td>
-          <td >{p.telefono}</td>
+          <th>Nombre</th>
+          <th>Usuario</th>
+          <th>Email</th>
+          <th>Direccion</th>
+          <th>Pais</th>
+          <th>Provincia</th>
+          <th>Localidad</th>
+          <th>Telefono</th>
         </tr>
 
-      )
+        {pasajeras.map(p => (
 
-      )}
+
+
+          <tr>
+            <td >{p.nombre}</td>
+            <td >{p.usuario}</td>
+            <td >{p.email}</td>
+            <td >{p.direccion}</td>
+            <td >{p.pais}</td>
+            <td >{p.provincia}</td>
+            <td >{p.localidad}</td>
+            <td >{p.telefono}</td>
+          </tr>
+
+        )
+
+        )}
       </table>
     </div>
   )

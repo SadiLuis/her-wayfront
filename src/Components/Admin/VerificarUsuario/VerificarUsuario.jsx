@@ -1,13 +1,15 @@
 import React,{useEffect} from 'react'
 
 import { useDispatch, useSelector } from 'react-redux';
-import { useParams } from 'react-router-dom'
-import { limpiarDetalle, obtenerConductora } from '../../../actions/administrador';
+import { useNavigate, useParams } from 'react-router-dom'
+import { limpiarDetalle, obtenerConductora, verificarConductora } from '../../../actions/administrador';
 
 
 
-const DetalleConductora = () => {
+const VerificarConductora = () => {
     const { id } = useParams();
+
+    const navigate =useNavigate();
     const dispatch = useDispatch();
 
     const detalle = useSelector(state => state.adminReducer.detalle);
@@ -18,6 +20,14 @@ const DetalleConductora = () => {
             dispatch(limpiarDetalle())
         }
     }, [dispatch, id]);
+
+    const confirmarVerificacion = (ev) => {
+        const confirmar = window.confirm("¿Estas seguro que deseas verificar este Usuario?")
+        if(confirmar){
+            dispatch(verificarConductora(id));
+            navigate('../admin/usuarios');
+        }
+    }
 
 
 
@@ -37,6 +47,7 @@ const DetalleConductora = () => {
                    <li>{detalle.direccion}</li>
                    <li>{detalle.telefono}</li>
                </ul>
+               <button>Ver DNI</button>
                <h3>
                    Detalle Automovil
                </h3>
@@ -46,6 +57,7 @@ const DetalleConductora = () => {
                    <li>{detalle.seguro}</li>
                    <li>{detalle.habilitacion}</li>
                </ul>
+               <button onClick={confirmarVerificacion}>Verificar</button>
                </div> 
 
             }
@@ -53,4 +65,4 @@ const DetalleConductora = () => {
     )
 }
 
-export default DetalleConductora
+export default VerificarConductora

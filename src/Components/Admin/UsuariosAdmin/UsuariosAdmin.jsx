@@ -2,7 +2,6 @@ import React, {useEffect} from 'react'
 import { useDispatch, useSelector } from 'react-redux';
 import { obtenerConductoras } from '../../../actions/administrador';
 import VerConductorasAdmin from '../VerConductorasAdmin/VerConductorasAdmin';
-import { pedirConductora } from '../../../actions/conductora';
 //import styles from "../PedirConductora.module.css"
 import { Link } from 'react-router-dom';
 import NavbarAdmin from '../NavbarAdmin/NavbarAdmin';
@@ -18,10 +17,10 @@ export default function UsuariosAdmin() {
     const dispatch= useDispatch();
     
   useEffect(()=>{
-    dispatch(pedirConductora())
+    dispatch(obtenerConductoras())
   }, [dispatch])
 
-  const conductoras = useSelector(state => state.pedirConductoraReducer.conductoras);
+  const conductoras = useSelector(state => state.adminReducer.conductoras);
   
   // useEffect(()=>{
   //   dispatch(detalleConductora())

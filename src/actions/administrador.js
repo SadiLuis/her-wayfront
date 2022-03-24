@@ -4,7 +4,10 @@ import { GET_ALL_CONDUCTORAS,
     OBTENER_TODAS_LAS_PASAJERAS,
     OBTENER_CONDUCTORA_POR_ID,
     OBTENER_PASAJERA_POR_ID,
-    LIMPIAR_DETALLE} from "./index";
+    LIMPIAR_DETALLE,
+    VERIFICAR_CONDUCTORA,
+    DAR_BAJA_CONDUCTORA,
+    DAR_ALTA} from "./index";
 
 import axios from 'axios';
 
@@ -93,11 +96,42 @@ export const darBajaPasajeras = (id) => {
 }
 
 export const darBajaConductoras = (id) => {
+    return async (dispatch) => {
+        try {
+            const res = await axios.get(`${SERVER}admin/darBaja/${id}`);
+            dispatch ({type: DAR_BAJA_CONDUCTORA, payload:res.data})
+        } catch (error) {
+            console.log(error)
+        }
+    }
+}
 
+export const verificarConductora = (id) => {
+    return async (dispatch) => {
+        try {
+            const res = await axios.get(`${SERVER}admin/verificar/${id}`);
+            dispatch ({type: VERIFICAR_CONDUCTORA, payload: res.data})
+        } catch (error) {
+            console.log(error);
+        }
+    }
 }
 
 export const limpiarDetalle = () => {
     return {
         type: LIMPIAR_DETALLE
+    }
+}
+
+export const darAltaAdmin = (admin) => {
+    console.log(admin)
+    return async (dispatch) => {
+        
+        try {
+            const res = await axios.post((`${SERVER}admin/darAlta`, admin));
+            dispatch({type: DAR_ALTA, payload: res.data})
+        } catch (error) {
+            console.log(error)
+        }
     }
 }

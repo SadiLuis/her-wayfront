@@ -22,6 +22,9 @@ import LoginAdmin from './Components/Admin/LoginAdmin/LoginAdmin';
 import UsuariosAdmin from './Components/Admin/UsuariosAdmin/UsuariosAdmin'
 import DetalleConductora from './Components/Admin/DetalleConductora/DetalleConductora';
 import VerPasajerasAdmin from './Components/Admin/VerPasajerasAdmin/VerPasajerasAdmin';
+import VerificarConductora from './Components/Admin/VerificarUsuario/VerificarUsuario';
+import DarBajaConductora from './Components/Admin/DarBajaConductora/DarBajaConductora';
+import AltaAdmins from './Components/Admin/AltaAdmins/AltaAdmins';
 
 function App() {
 
@@ -51,7 +54,10 @@ function App() {
           <Route path="/admin" element={<LoginAdmin/>}/>
           <Route path="/admin/usuarios" element={<UsuariosAdmin/>}/>
           <Route path="/admin/pasajeras" element={<VerPasajerasAdmin/>}/>
-          <Route exact path='/admin/:id' element={<DetalleConductora/>}/>
+          <Route path='/admin/:id' element={<DetalleConductora/>}/>
+          <Route path='/admin/verificar/:id' element={<VerificarConductora/>}/>
+          <Route path='/admin/darBajaConductora/:id' element={<DarBajaConductora/>}/>
+          <Route path='/admin/altaAdmins' element={<AltaAdmins/>}/>
 
           </Routes>
 

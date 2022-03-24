@@ -3,7 +3,7 @@ import {
     OBTENER_TODAS_LAS_PASAJERAS,
     OBTENER_CONDUCTORA_POR_ID,
     OBTENER_PASAJERA_POR_ID,
-    LIMPIAR_DETALLE
+    LIMPIAR_DETALLE,
 } from "../actions";
 
 const initialState = {
@@ -44,14 +44,6 @@ export default function adminReducer(state = initialState, { type, payload }) {
                 ...state,
                 detalle: {}
             }
-        //     case DAR_BAJA:
-        //         return{
-        //             ...state,
-        //             conductoras: payload
-        //         }
-
-
-
 
         default:
             return {

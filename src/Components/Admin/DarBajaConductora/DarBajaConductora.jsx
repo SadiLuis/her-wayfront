@@ -1,14 +1,15 @@
 import React,{useEffect} from 'react'
 
 import { useDispatch, useSelector } from 'react-redux';
-import { useParams } from 'react-router-dom'
-import { limpiarDetalle, obtenerConductora } from '../../../actions/administrador';
+import { useNavigate, useParams } from 'react-router-dom'
+import { darBajaConductoras, limpiarDetalle, obtenerConductora } from '../../../actions/administrador';
 
 
 
-const DetalleConductora = () => {
+const DarBajaConductora = () => {
     const { id } = useParams();
     const dispatch = useDispatch();
+    const navigate = useNavigate();
 
     const detalle = useSelector(state => state.adminReducer.detalle);
 
@@ -18,6 +19,15 @@ const DetalleConductora = () => {
             dispatch(limpiarDetalle())
         }
     }, [dispatch, id]);
+
+    const darBajaConductora = () => {
+        const confirmar = window.confirm("¿Estas seguro que deseas dar de baja este Usuario?")
+        if(confirmar){
+            dispatch(darBajaConductoras(id));
+            navigate('../admin/usuarios');
+        }
+        
+    };
 
 
 
@@ -46,6 +56,7 @@ const DetalleConductora = () => {
                    <li>{detalle.seguro}</li>
                    <li>{detalle.habilitacion}</li>
                </ul>
+               <button onClick={darBajaConductora}>Dar baja</button>
                </div> 
 
             }
@@ -53,4 +64,4 @@ const DetalleConductora = () => {
     )
 }
 
-export default DetalleConductora
+export default DarBajaConductora
