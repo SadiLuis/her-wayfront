@@ -8,6 +8,7 @@ export const ORIGEN = "ORIGEN";
 export const DESTINO = "DESTINO";
 export const TIEMPO_DE_VIAJE = "TIEMPO_DE_VIAJE";
 
+//////////////// Conductoras ////////////////////////
 
 export const GET_ALL_CONDUCTORAS = 'GET_ALL_CONDUCTORAS';
 export const OBTENER_TODAS_LAS_PASAJERAS = 'OBTENER_TODAS_LAS_PASAJERAS';
@@ -22,6 +23,10 @@ export const DAR_ALTA = 'DAR_ALTA';
 // export const CONDUCTORAS_DETAIL= 'CONDUCTORAS_DETAIL';
 export const POST_CONDUCTORAS='POST_CONDUCTORAS'
 export const GET_PERFILC = 'GET_PERFILC'
+
+export const CREAR_REVIEW='CREAR_REVIEW';
+export const OBTENER_REVIEW = 'OBTENER_REVIEW';
+export const BORRAR_REVIEW = 'BORRAR_REVIEW';
 
 
 

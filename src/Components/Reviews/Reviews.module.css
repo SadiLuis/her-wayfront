@@ -1,0 +1,154 @@
+
+  .caja{
+    display: flex;
+    justify-content: center;
+    flex-direction: row;
+    align-items: center;
+    
+  }
+
+  .createStar{
+    margin: 0px 0px 2px 12px;
+  }
+  .description{
+    width: 410px;
+    height: 50px;
+    border: 1px solid rgb(85, 85, 85);
+    margin: 0px 0px 2px 12px;
+    resize: none;
+  }
+  .boton{
+    background-color: rgb(70, 1, 119);
+    color: rgb(255, 255, 255);
+    font-size: 17px;
+    font-family: cursive;
+    padding: 0px 2px 4px 2px;
+    width: 120px;
+    height: 50px;
+    cursor: pointer;
+    border: 1px solid rgb(70, 1, 119);
+    /* border-right: 5px solid rgba(0, 30, 255, 0.371); */
+  }
+
+.form_review{
+    display: flex;
+    /* justify-content: center; */
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+
+/* comentaarioss */
+
+.review_comentario{
+  border-bottom: 1px solid rgba(0, 128, 255, 0.392);
+  margin: 10px;
+  padding: 15px 2px 10px 12px;
+  background-color: rgba(255, 255, 255, 0.337);
+}
+
+.create_reviews{
+  background-color: rgb(248, 245, 239);
+  border-top: 3px solid rgb(0, 109, 167);
+  margin: 15px 0px 0px 0px;
+  padding: 5px 0px 10px 0px;
+}
+
+.total_review{
+  width: 830px;
+}
+
+.valor_review{
+  color: rgb(1, 1, 51);
+  font-size: 15px;
+  font-family: monospace;
+  font-weight: 700;
+}
+
+.count_star{
+  display: flex;
+    /* justify-content: center; */
+    flex-direction: row;
+    align-items: flex-start;
+}
+
+
+/* barra */
+.barra_exterior{
+  margin: 5px 12px 0px 12px;
+}
+.titulo_review{
+  font-family: Georgia, 'Times New Roman', Times, serif;
+  font-weight: 500;
+  font-size: 28px;
+  margin: 19px 12px 0px 12px;
+}
+
+.cuadro_barras{
+  margin: 15px 0px 0px 20px;
+  color: rgb(1, 82, 163);
+  font-size: 17px;
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+}
+.promedio{
+  font-size: 45px;
+  font-weight: 500;
+  color: black;
+  margin: 0px 50px 0px 0px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+}
+
+.tamaño_opinion{
+  font-size: 12px;
+}
+
+  /* .stars_radio_input:checked ~ svg {
+    fill: yellow;
+  } */
+
+.comentario_vacio{
+  margin: 18px;
+  padding: 18px;
+  border-bottom: 2px solid rgb(131, 131, 131);
+}
+
+.editar_remove{
+  display: flex;
+  justify-content: space-between;
+  flex-direction: row;
+  align-items: center;
+}
+
+.boton_editar{
+  margin: 0px 0px 0px 10px;
+  background-color: rgba(233, 231, 231, 0.35);
+  color: rgb(2, 28, 84);
+  border: 2px solid rgba(2, 28, 84, 0.871);
+  padding: 3.5px 6px 3.5px 6px;
+  border-radius: 3px;
+  font-size: 14px;
+  font-weight: 700;
+  cursor: pointer;
+}
+.boton_eliminar{
+  margin: 0px 0px 0px 10px;
+  background-color: rgba(233, 231, 231, 0.35);
+  color: rgb(126, 7, 7);
+  border: 2px solid rgba(128, 8, 8, 0.72);
+  padding: 0px 6px 0px 6px;
+  font-size: 14px;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+
+/* componente editar */
+
+.editar_form{
+  margin: 150px 0px 0px 50px;
+  
+}

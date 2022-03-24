@@ -1,15 +1,16 @@
 import axios from 'axios';
-import { CREAR_REVIEW } from '.';
+import { BORRAR_REVIEW, CREAR_REVIEW, OBTENER_REVIEW } from '.';
 
 const SERVER = 'http://localhost:3001'
 
-//creacion de puntuacion y comentario 
-export const postReview = (idConductora, review) => async(dispatch) => {
+
+//post de puntuacion y comentario 
+export const postReview = (idConductora, payload) => async(dispatch) => {
     try {
-        const crearReview = await axios.post(`${SERVER}/conductora/${idConductora}/reviews`, review)
+        const crearReview = await axios.post(`${SERVER}/conductora/${idConductora}/reviews`, payload)
         return dispatch ({
             type: CREAR_REVIEW,
-            crearReview
+            payload: crearReview
         })     
     } catch (error) {
         console.log('error', error)     
@@ -18,47 +19,30 @@ export const postReview = (idConductora, review) => async(dispatch) => {
 
 
 //obtengo todos mis comentarios por ID de producto
-export function get_Review(idConductora){
-    return dispatch => {
-        axios.get(`${SERVER}/conductora/${idConductora}/reviews`)
-        .then((result) => {
-            //console.log('result', result)
-            return dispatch({
-                type: GET_REVIEWS,
-                payload: result.data
-            })
-        }).catch((err) => {
-            console.log('err', err);
-        });
+export const getReview= (idConductora) => async (dispatch) => {
+    try {
+        const obtenerReview = await axios.get(`${SERVER}/consductora/${idConductora}/reviews`)
+        return dispatch ({
+            type: OBTENER_REVIEW,
+            payload: obtenerReview.data
+        })
+        
+    } catch (error) {
+        console.log('error', error) 
+    }
+};
+
+
+export const deleteReview = (idConductora, idReview) => async (dispatch) =>{
+    try {
+        const borrarReview = await axios.delete(`${SERVER}/consductora/${idConductora}/review/${idReview}`)
+        return dispatch ({
+            type: BORRAR_REVIEW,
+            payload: borrarReview
+        })     
+    } catch (error) {
+        console.log('error', error)
     }
 }
 
-export function delete_review(conductora, id){
-    return dispatch => {
-        axios.delete(`http://localhost:3001/product/${conductora}/review/${id}`)
-        .then((result) => {
-            //console.log('result :>> ', result.data);
-            return dispatch({
-                type: DELETE_REVIEW,
-                payload: result.data
-            })
-        }).catch((err) => {
-            console.log('err :>> ', err);
-        });
-    }
-}
 
-export function update_review(prod,id,values){
-    return dispatch => {
-        axios.put(`http://localhost:3001/product/${prod}/review/${id}`,values)
-        .then((result) => {
-            console.log('result :>> ', result.data);
-            return dispatch({
-                type:UPDATE_REVIEW,
-                payload:result.data
-            })
-        }).catch((err) => {
-            console.log('err :>> ', err);
-        });
-    }
-}

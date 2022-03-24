@@ -5,6 +5,8 @@
   "dependencies": {
     "@emotion/react": "^11.8.2",
     "@emotion/styled": "^11.8.1",
+    "@fortawesome/free-solid-svg-icons": "^6.1.1",
+    "@fortawesome/react-fontawesome": "^0.1.18",
     "@material-ui/core": "^4.12.3",
     "@material-ui/icons": "^4.11.2",
     "@material-ui/lab": "^4.0.0-alpha.60",
@@ -29,6 +31,7 @@
     "react-google-places-autocomplete": "^3.3.4",
     "react-icons": "^4.3.1",
     "react-intersection-observer": "^8.33.1",
+    "react-rating-stars-component": "^2.2.0",
     "react-redux": "^7.2.6",
     "react-router-dom": "^6.2.2",
     "react-scripts": "^5.0.0",
