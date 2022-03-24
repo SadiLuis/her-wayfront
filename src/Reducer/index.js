@@ -2,9 +2,7 @@ import { combineReducers } from "redux";
 import pedirConductoraReducer  from "./pedirConductora";
 import recorridoReducer from "./recorridoReducer";
 import LoginRegisReducer from "./LoginRegistro";
-
 import adminReducer from "./adminReducer";
-
 import perfilConductoraReducer from "./PerfilConduc"
 
 
@@ -13,10 +11,10 @@ import perfilConductoraReducer from "./PerfilConduc"
 
 
 const rootReducer= combineReducers({
-     pedirConductoraReducer,
-     recorridoReducer,
+    pedirConductoraReducer,
+    recorridoReducer,
     LoginRegisReducer,
-    adminReducer
+    adminReducer,
     perfilConductoraReducer
 
 })
