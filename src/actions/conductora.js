@@ -78,3 +78,28 @@ export function getAllConductoras(){
         }
     }
 };
+
+export function conectaConductora(payload){
+    let {id, estado} = payload
+    
+    return async function (dispatch){
+        try{
+            if(estado === "conectar" ) {
+            const conectar = await axios.put(`${SERVER}/conductora/conectar/${id}`);
+            return dispatch({
+                type: "CONECTA_CONDUCTORA",
+                payload
+            })
+        } else if (estado === "desconectar") {
+            const desconectar = await axios.put(`${SERVER}/conductora/desconectar/${id}`);
+            return dispatch({
+                type: "DESCONECTA_CONDUCTORA",
+                payload
+            })
+        }
+        }catch(error){
+            console.log(error)
+   
+        }
+    }  
+}

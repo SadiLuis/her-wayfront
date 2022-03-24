@@ -55,9 +55,9 @@ export default function Login() {
     navigate('/perfilPasajera')
   }
 
-  useEffect(()=>{
-    dispatch(pedirConductora())
-  }, [dispatch])
+  // useEffect(()=>{
+  //   dispatch(pedirConductora())
+  // }, [dispatch])
 
    //const handleClickEntrar=(e)=>{
    //  e.preventDefault();
@@ -112,9 +112,9 @@ return (
               <input type="checkbox" className="form-check-input" id="exampleCheck1" />
               <label className="form-check-label" htmlFor="exampleCheck1">Comprendo</label>
             </div>
-            <Link to='/pedirConductora'>
+            
               <button type="submit" className="btn btn-primary">Entrar</button>
-            </Link>
+            
 
             <div className='text-center '>
               <span>¿No tienes cuenta?</span>
