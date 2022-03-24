@@ -2,7 +2,7 @@
 import React, { useState} from 'react'
 import { useDispatch } from 'react-redux';
 import { Link, useNavigate } from "react-router-dom";
-import { login } from '../actions/Usuarios';
+import { loginConductora } from '../actions/conductora';
 import uno from '../image/1.jpg'
 import dos from '../image/2.jpg'
 import tres from '../image/3.jpg'
@@ -42,7 +42,7 @@ export default function Login() {
         }
         setError(errors)
 
-        dispach(login(formlogin))
+        dispach(loginConductora(formlogin))
         console.log(formlogin)
         navigate('/perfilConductora')
     }

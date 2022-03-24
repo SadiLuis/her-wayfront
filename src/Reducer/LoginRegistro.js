@@ -34,10 +34,10 @@ export default function LoginRegisReducer(state = initialState, action) {
             return {
                 ...state,
                 isAuth: true,
-                detalleUsuario: action.payload.user
+                detalleUsuario: action.payload
             }
             case LOGIN_USER_SUCCESS:
-                //localStorage.setItem("token", action.payload.idToken)
+                localStorage.setItem("token", action.payload.stsTokenManager.accessToken)
                 console.log(action.payload)
                 return {
                     ...state,
@@ -46,7 +46,7 @@ export default function LoginRegisReducer(state = initialState, action) {
                     userInfo: action.payload
                 }
             case REGISTER_USER_SUCCESS:
-               // localStorage.setItem("token", action.payload.idToken);
+                localStorage.setItem("token", action.payload.stsTokenManager.accessToken);
                 return {
                     ...state,
                     token: action.payload.stsTokenManager.accessToken,
