@@ -20,7 +20,7 @@ import VistaMap from './Screens/VistaMap.jsx'
 
 import BotonPago from './Components/BotonPago/BotonPago';
 import LoginConductora from './Components/LoginConductora'
-
+import HomeConductora from './Screens/HomeConductora';
 
 function App() {
 
@@ -49,6 +49,7 @@ function App() {
           <Route path="/tarjetaconductora" element={<TarjetaConductora/>} />
           <Route path="/mapa" element={<VistaMap />} />
             <Route path="/botonpago" element={<BotonPago />} />
+            <Route path="/homeConductora" element={<HomeConductora />} />
 
 
           </Routes>
