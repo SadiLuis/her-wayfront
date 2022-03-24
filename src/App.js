@@ -6,16 +6,21 @@ import Home from './Screens/Home';
 import Login from './Components/Login';
 import Registro from './Components/Registro';
 import PerfilConductora from './Components/Perfiles/PerfilConductora';
-// import PerfilPasajera from './Components/Perfiles/PerfilPasajera';
+import PerfilPasajera from './Components/Perfiles/PerfilPasajera';
 
 import RegConductora from './Components/RegConductora/RegConductora'
-import LoginConductora from './Components/LoginConductora'
+
 
 import FiltrosConductoras from './Components/Pedidos/FiltrosConductoras';
 
 import ResetPassword from './Components/ResetPassword';
 import PedirConductora from './Components/PedirConductora';
 import TarjetaConductora from './Screens/TarjetaConductora';
+import VistaMap from './Screens/VistaMap.jsx'
+
+import BotonPago from './Components/BotonPago/BotonPago';
+import LoginConductora from './Components/LoginConductora'
+
 
 function App() {
 
@@ -31,23 +36,28 @@ function App() {
             <Route path="/registro" element={<Registro />} />
             <Route path="/home" element={<Home />} />
             <Route exact path="/" element={<Landing />} />
+              
             <Route path="/perfilConductora" element={<PerfilConductora />} />
+            <Route path="/perfilPasajera" element={<PerfilPasajera />} />
+            <Route path="/conductoras" element={<FiltrosConductoras />} />
+            <Route path='/resetPassword' element={<ResetPassword />} />
 
             <Route path="/loginConductora" element={<LoginConductora />} />
             <Route path='/conductora/register' element={<RegConductora />}/>
 
-          <Route path="/conductoras" element={<FiltrosConductoras />} />
-          <Route path='/resetPassword' element={<ResetPassword />} />
           <Route path="/pedirconductora" element={<PedirConductora/>} />
           <Route path="/tarjetaconductora" element={<TarjetaConductora/>} />
+          <Route path="/mapa" element={<VistaMap />} />
+            <Route path="/botonpago" element={<BotonPago />} />
 
-        </Routes>
+
+          </Routes>
 
 
         </BrowserRouter>
       </div>
     </div>
-    
+
   );
 }
 

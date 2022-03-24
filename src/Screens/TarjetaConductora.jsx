@@ -45,10 +45,6 @@ export default function TarjetaConductoras({nombre,localidad, automovil, patente
      : <button className={styles.botonDisabled} disabled 
       > Solicitar viaje
        </button> 
-       
-       
-      
-    
      }
     
     </div>
