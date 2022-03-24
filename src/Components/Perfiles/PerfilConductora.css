@@ -6,6 +6,12 @@ background: white;
 box-shadow: 0px 1px 10px 1px black;
 }
 
+.usuario{
+    position: absolute;
+    left: 120px;
+    top: 24px;
+}
+
 .upperContainer{ 
     height: max-content;
     width: 100%;
@@ -23,8 +29,17 @@ border-radius: 50%;
 .lowerContainer{
     height: 100px;
     width: 100%;
+    position: absolute;
+    top: 120px;
+    left: 20px;
 }
 
 .editIcon{
     object-position: left;
+}
+
+.logoutC{
+    position: absolute;
+    top: 675px;
+    left: 20px;
 }

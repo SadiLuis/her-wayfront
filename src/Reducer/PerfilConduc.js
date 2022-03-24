@@ -1,22 +1,32 @@
-import { GET_PERFILC } from '../actions/conductora'
-
+import {GET_PERFILC } from "../actions/index"
 const initialState = {
-    user: [],
-    conductora: [],
-    perfilConductora: []
+    
+    perfilConductora: {},
+    aux: []
+
 }
 
 
-function PerfilConductora(state = initialState, action) {
+export default function perfilConductoraReducer(state = initialState, action) {
     switch (action.type) {
         case GET_PERFILC:
             return {
                 ...state,
                 perfilConductora: action.payload
             }
-        default:
-            break;
+            case "CONECTA_CONDUCTORA":
+                return {
+                    ...state,
+                    aux: action.payload
+                }
+                case "DESCONECTA_CONDUCTORA":
+                    return {
+                        ...state,
+                        aux: action.payload
+                    }    
+            
+            default:
+                return state;
     }
 }
 
-export default PerfilConductora;

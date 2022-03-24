@@ -12,11 +12,11 @@ const Landing = () => {
             <Navbar />
             <div className='mujerPasajera'>
                 <img src={MujerPasajera} alt='mujerPasajera' className='mujerPasajera_image' />
-                <p className='primerTexto'>Tu seguridad es primero. </p>
+                <p className='primerTexto'>Mujeres cuidando a mujeres. </p>
             </div>
             <div>
-                <Slider imageSrc={MujerLibre} title={'Sed ut perspiciatis unde omnis iste natus error sit voluptatem'} />
-                <Slider imageSrc={PulgarArriba} title={'Ut enim ad minima veniam, quis nostrum exercitationem'} flipped={true} />
+                <Slider imageSrc={MujerLibre} title={'Her-Way es una app de transporte por y para nosotras.'} />
+                <Slider imageSrc={PulgarArriba} title={'Se dueña de tu tiempo, trabaja con tu automovil y con toda la seguridad que necesitas.'} flipped={true} />
             </div>
         </div>
     )
