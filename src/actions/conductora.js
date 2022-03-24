@@ -88,13 +88,13 @@ export function conectaConductora(payload){
             const conectar = await axios.put(`${SERVER}/conductora/conectar/${id}`);
             return dispatch({
                 type: "CONECTA_CONDUCTORA",
-                payload
+                payload: "conectar"
             })
         } else if (estado === "desconectar") {
             const desconectar = await axios.put(`${SERVER}/conductora/desconectar/${id}`);
             return dispatch({
                 type: "DESCONECTA_CONDUCTORA",
-                payload
+                payload: "desconectar"
             })
         }
         }catch(error){

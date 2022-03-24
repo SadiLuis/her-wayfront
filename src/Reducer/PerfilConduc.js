@@ -1,7 +1,9 @@
 import {GET_PERFILC } from "../actions/index"
 const initialState = {
     
-    perfilConductora: {}
+    perfilConductora: {},
+    aux: []
+
 }
 
 
@@ -12,6 +14,17 @@ export default function perfilConductoraReducer(state = initialState, action) {
                 ...state,
                 perfilConductora: action.payload
             }
+            case "CONECTA_CONDUCTORA":
+                return {
+                    ...state,
+                    aux: action.payload
+                }
+                case "DESCONECTA_CONDUCTORA":
+                    return {
+                        ...state,
+                        aux: action.payload
+                    }    
+            
             default:
                 return state;
     }
