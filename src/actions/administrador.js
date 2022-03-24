@@ -10,8 +10,10 @@ import { GET_ALL_CONDUCTORAS,
     DAR_ALTA} from "./index";
 
 import axios from 'axios';
+import Server from './VariableGlobal'
 
-const SERVER = 'http://localhost:3001/';
+
+const SERVER = Server.SERVER;
 export function login({ email, contrasena }) {
     return async (dispatch) => {
         
