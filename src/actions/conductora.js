@@ -60,7 +60,7 @@ export const filtrarConductora = (payload) => {
 export function postConductoras(payload){
     try{
         return async function (dispatch){
-            const create = await axios.post('http://localhost:3001/conductora/register' + payload);
+            const create = await axios.post('http://localhost:3001/conductora/register' + payload, tokenUser());
             return dispatch({
                 type: POST_CONDUCTORAS,
                 create,
