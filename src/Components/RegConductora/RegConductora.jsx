@@ -2,6 +2,7 @@ import React, {useEffect, useState} from 'react';
 import {postConductoras, getAllConductoras} from '../../actions/conductora';
 import { useDispatch, useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
+//import { useStorage} from "reactfire"
 //import uno from '../../image/1.jpg'
 //import dos from '../../image/2.jpg'
 //import tres from '../../image/3.jpg'
@@ -29,9 +30,12 @@ export function validate(conductora){
     if(!conductora.provincia){
         errors.provincia='debe ingresar la provincia donde reside'
     }
-    if(!conductora.fotoPerfil){
-        errors.fotoPerfil='debe colocar una foto de perfil'
-    }
+    // if(!conductora.fotoPerfil){
+    //     errors.fotoPerfil='debe colocar una foto de perfil'
+    // }
+    // if(!conductora.fotoDni){
+    //     errors.fotoDni = 'seleccione DNI, permiso de Conducir o Pasaporte'
+    // }
     if(!conductora.direccion){
         errors.direccion='debe ingresar su direccion de residencia'
     }
@@ -68,6 +72,7 @@ export default function CreateConductora(){
         pais:"",
         provincia:"",
         fotoPerfil:"",
+        fotoDni:"",
         direccion:"",
         telefono:"",
         localidad:"",
@@ -86,8 +91,9 @@ export default function CreateConductora(){
 
 
     function handleSubmit(e){
+        //console.log(conductora)
         e.preventDefault()
-        let errors = Object.keys(validate(conductora))
+        let errors = Object(validate(conductora))
         if(!errors.length !==0){
             dispatch(postConductoras(conductora))
         setConductora({
@@ -98,7 +104,8 @@ export default function CreateConductora(){
         email:"",
         pais:"",
         provincia:"",
-        fotoPerfil:[],
+        fotoPerfil:"",
+        fotoDni:"",
         direccion:"",
         telefono:"",
         localidad:"",
@@ -107,17 +114,21 @@ export default function CreateConductora(){
         seguro:"",
         habilitacion:"",
         })
-        alert('usuario creado con exito')
+    
+        alert('datos recibidos')
         }else{
             alert('rellenar los comapos correctamente')
         }   
     };
     
-    // function handleSelect(e){
-    //     //console.log(e.target.files[0])
-    //     setConductora(e.target.files[0])
+    //  function handleSelect(e){
+    //      console.log(e.target.files[0].name)
+    //     setConductora(e.target.files[0].name)
+    //     //{    
+    // //         [e.target.files] : e.target.files
+    // //     })
         
-    // }
+    //  }
 
     // function handleSend(){
     //     if(!conductora){
@@ -272,6 +283,23 @@ export default function CreateConductora(){
                         </p>
                     )} 
                 </div>
+                 {/* <div className='form-group'>
+                <label htmlFor="exampleInputPassword1">Foto de Perfil *</label>
+                <input name='fotoPerfil' className="form-control"
+                    id='fotoPerfil'
+                    type='file'
+                    value={conductora.fotoPerfil}
+                    placeholder='...img url'
+                    onChange={(e)=>handleSelect(e)}
+                    required>
+                    </input>  
+                    {/* <button onClick={handleSend} type='button'>Upload</button> */}
+                    {/* {errors.fotoPerfil &&(
+                        <p className="error">
+                            {errors.fotoPerfil}
+                        </p>
+                    )}  */}
+                {/* </div>*/} 
                 <div className='form-group'>
                 <label htmlFor="exampleInputPassword1">Foto de Perfil *</label>
                 <input name='fotoPerfil' className="form-control"
@@ -283,11 +311,28 @@ export default function CreateConductora(){
                     required>
                     </input>  
                     {/* <button onClick={handleSend} type='button'>Upload</button> */}
-                    {errors.fotoPerfil &&(
+                    {/* {errors.fotoPerfil &&(
                         <p className="error">
                             {errors.fotoPerfil}
                         </p>
-                    )} 
+                    )}  */}
+                </div>
+                <div className='form-group'>
+                <label htmlFor="exampleInputPassword1">Credencial de Identificacion *</label>
+                <input name='fotoDni' className="form-control"
+                    id='fotoDni'
+                    type='text'
+                    value={conductora.fotoDni}
+                    placeholder='...img url'
+                    onChange={handleChange}
+                    required>
+                    </input>  
+                    {/* <button onClick={handleSend} type='button'>Upload</button> */}
+                    {/* {errors.fotoDni &&(
+                        <p className="error">
+                            {errors.fotoDni}
+                        </p>
+                    )}  */}
                 </div>
                 <div className='form-group'>
                 <label htmlFor="exampleInputPassword1" >Direccion *</label>
@@ -307,7 +352,7 @@ export default function CreateConductora(){
                 </div>
                 <div className='form-group'>
                 <label htmlFor="exampleInputPassword1">Telefono *</label>
-                <input name='telefono'  className="form-contro"
+                <input name='telefono'  className="form-control"
                     id='telefono'
                     type='text'
                     value={conductora.telefono}
@@ -324,7 +369,7 @@ export default function CreateConductora(){
                 
                 <div className='form-group'>
                 <label htmlFor="exampleInputPassword1">Vehiculo *</label>
-                <input name='automovil' className="form-contro"
+                <input name='automovil' className="form-control"
                     id='automovil'
                     type='text'
                     value={conductora.automovil}
@@ -340,7 +385,7 @@ export default function CreateConductora(){
                 </div>
                 <div className='form-group'>
                 <label htmlFor="exampleInputPassword1">Patente *</label>
-                <input name= 'patente' className="form-contro"
+                <input name= 'patente' className="form-control"
                     id='patente'
                     type='text'
                     value={conductora.patente}
@@ -356,7 +401,7 @@ export default function CreateConductora(){
                 </div>
                 <div className='form-group'>
                 <label htmlFor="exampleInputPassword1">Seguro *</label>
-                <input name='seguro' className="form-contro"
+                <input name='seguro' className="form-control"
                     id='seguro'
                     type='text'
                     value={conductora.seguro}
@@ -372,7 +417,7 @@ export default function CreateConductora(){
                 </div>
                 <div className='form-group'>
                 <label htmlFor="exampleInputPassword1">Habilitacion *</label>
-                <input name='habilitacion' className="form-contro"
+                <input name='habilitacion' className="form-control"
                     id='habilitacion'
                     type='text'
                     value={conductora.habilitacion}
@@ -387,7 +432,7 @@ export default function CreateConductora(){
                     )} 
                 </div>
                 <button className="btn btn-primary" type='submit' disabled={conductora.nombre&&conductora.apellido&&conductora.usuario&&conductora.contrasena&&
-                conductora.direccion&&conductora.email&&conductora.fotoPerfil&&conductora.localidad&&conductora.pais&&conductora.automovil&&
+                conductora.direccion&&conductora.email&&conductora.localidad&&conductora.pais&&conductora.automovil&&
                 conductora.patente&&conductora.habilitacion&&conductora.seguro&&conductora.provincia&&conductora.telefono ? false : true}>Registrarse</button>
                 <div >
                     <Link className="btn btn-primary" to='/'>

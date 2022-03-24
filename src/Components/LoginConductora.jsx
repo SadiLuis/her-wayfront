@@ -44,7 +44,7 @@ export default function Login() {
 
         dispach(login(formlogin))
         console.log(formlogin)
-        navigate('/perfilConductora')
+        navigate('/homeconductora')
     }
 
     return (

@@ -6,8 +6,8 @@ import { login } from '../actions/Usuarios';
 import uno from '../image/1.jpg'
 import dos from '../image/2.jpg'
 import tres from '../image/3.jpg';
-import styles from "./Login.module.css"
-import PedirConductora from './PedirConductora';
+//import styles from "./Login.module.css"
+
 
 import { pedirConductora } from '../actions/conductora';
 
@@ -55,15 +55,15 @@ export default function Login() {
     navigate('/perfilPasajera')
   }
 
-  useEffect(()=>{
-    dispatch(pedirConductora())
-  }, [dispatch])
+  // useEffect(()=>{
+  //   dispatch(pedirConductora())
+  // }, [dispatch])
 
-   const handleClickEntrar=(e)=>{
-     e.preventDefault();
-     navigate("/pedirConductora")
+   //const handleClickEntrar=(e)=>{
+   //  e.preventDefault();
+   //  navigate("/pedirConductora")
 
-   }
+   //}
   
 return (
     <div className='row conteiner p-4' >
@@ -112,7 +112,8 @@ return (
               <input type="checkbox" className="form-check-input" id="exampleCheck1" />
               <label className="form-check-label" htmlFor="exampleCheck1">Comprendo</label>
             </div>
-            <button type="submit" className="btn btn-primary" onClick={handleClickEntrar}>Entrar</button>
+            
+              <button type="submit" className="btn btn-primary">Entrar</button>
             
 
             <div className='text-center '>
