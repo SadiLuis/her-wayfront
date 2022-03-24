@@ -2,6 +2,7 @@ import React, {useEffect, useState} from 'react';
 import {postConductoras, getAllConductoras} from '../../actions/conductora';
 import { useDispatch, useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
+//import { useStorage} from "reactfire"
 //import uno from '../../image/1.jpg'
 //import dos from '../../image/2.jpg'
 //import tres from '../../image/3.jpg'
@@ -70,8 +71,8 @@ export default function CreateConductora(){
         email:"",
         pais:"",
         provincia:"",
-        fotoPerfil:[],
-        fotoDni:[],
+        fotoPerfil:"",
+        fotoDni:"",
         direccion:"",
         telefono:"",
         localidad:"",
@@ -90,8 +91,9 @@ export default function CreateConductora(){
 
 
     function handleSubmit(e){
+        //console.log(conductora)
         e.preventDefault()
-        //let errors = Object.keys(validate(conductora))
+        let errors = Object(validate(conductora))
         if(!errors.length !==0){
             dispatch(postConductoras(conductora))
         setConductora({
@@ -112,21 +114,21 @@ export default function CreateConductora(){
         seguro:"",
         habilitacion:"",
         })
-    }
-        // alert('datos recibidos')
-        // }else{
-        //     alert('rellenar los comapos correctamente')
-        // }   
+    
+        alert('datos recibidos')
+        }else{
+            alert('rellenar los comapos correctamente')
+        }   
     };
     
-    // function handleSelect(e){
-    //     console.log(e.target.files[0])
-    //     setConductora({
-            
-    //         [e.target.files] : e.target.files
-    //     })
+    //  function handleSelect(e){
+    //      console.log(e.target.files[0].name)
+    //     setConductora(e.target.files[0].name)
+    //     //{    
+    // //         [e.target.files] : e.target.files
+    // //     })
         
-    // }
+    //  }
 
     // function handleSend(){
     //     if(!conductora){
@@ -281,6 +283,23 @@ export default function CreateConductora(){
                         </p>
                     )} 
                 </div>
+                 {/* <div className='form-group'>
+                <label htmlFor="exampleInputPassword1">Foto de Perfil *</label>
+                <input name='fotoPerfil' className="form-control"
+                    id='fotoPerfil'
+                    type='file'
+                    value={conductora.fotoPerfil}
+                    placeholder='...img url'
+                    onChange={(e)=>handleSelect(e)}
+                    required>
+                    </input>  
+                    {/* <button onClick={handleSend} type='button'>Upload</button> */}
+                    {/* {errors.fotoPerfil &&(
+                        <p className="error">
+                            {errors.fotoPerfil}
+                        </p>
+                    )}  */}
+                {/* </div>*/} 
                 <div className='form-group'>
                 <label htmlFor="exampleInputPassword1">Foto de Perfil *</label>
                 <input name='fotoPerfil' className="form-control"

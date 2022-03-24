@@ -51,11 +51,13 @@ export const filtrarConductora = (payload) => {
 export function postConductoras(payload){
     return async function (dispatch){
         try{
-            const create = await axios.post('http://localhost:3001/conductora/register' + payload);
+            const create = await axios.post('http://localhost:3001/conductora/register', payload);
             return dispatch({
-                type: POST_CONDUCTORAS,
-                create,
-            })
+                 create
+            //     type: POST_CONDUCTORAS,
+            //     payload: create,
+             })
+        //return create;
         }catch(error){
             console.log(error)
    
@@ -72,7 +74,7 @@ export function getAllConductoras(){
                 type: GET_ALL_CONDUCTORAS,
                 payload: conductoras.data
             })
-
+           
         }catch(err){
             console.log(err)
         }
