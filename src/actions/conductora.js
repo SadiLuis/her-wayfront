@@ -11,10 +11,11 @@ import {  FILTRAR_CONDUCTORA_SEGUN_AUTO,
 import tokenUser from '../Helpers/TokenUser'
 import tokenConductora from "../Helpers/TokenConductora";
 import axios from "axios";
+import Server from './VariableGlobal'
       
 
 
-const SERVER = 'http://localhost:3001';
+const SERVER = Server.SERVER;
 
 
 export const pedirConductora = () => async (dispatch) => {
@@ -53,7 +54,7 @@ export const filtrarConductora = (payload) => {
 export function postConductoras(payload){
     return async function (dispatch){
         try{
-            const create = await axios.post('http://localhost:3001/conductora/register', payload);
+            const create = await axios.post(`${SERVER}conductora/register`, payload);
             return dispatch({
                  create
             //     type: POST_CONDUCTORAS,
@@ -71,7 +72,7 @@ export function postConductoras(payload){
 export function getAllConductoras(){
     return async function(dispatch){
         try{
-            const conductoras = await axios.get('http://localhost:3001/conductora')
+            const conductoras = await axios.get(`${SERVER}/conductora`)
             return dispatch({
                 type: GET_ALL_CONDUCTORAS,
                 payload: conductoras.data
@@ -82,6 +83,7 @@ export function getAllConductoras(){
         }
     }
 };
+
 export function loginConductora({ email, contrasena }) {
     return async (dispach) => {
         console.log('action')
@@ -111,4 +113,30 @@ export function loginConductora({ email, contrasena }) {
         }
     }    
     
+
+
+export function conectaConductora(payload){
+    let {id, estado} = payload
+    
+    return async function (dispatch){
+        try{
+            if(estado === "conectar" ) {
+            const conectar = await axios.put(`${SERVER}/conductora/conectar/${id}`);
+            return dispatch({
+                type: "CONECTA_CONDUCTORA",
+                payload: "conectar"
+            })
+        } else if (estado === "desconectar") {
+            const desconectar = await axios.put(`${SERVER}/conductora/desconectar/${id}`);
+            return dispatch({
+                type: "DESCONECTA_CONDUCTORA",
+                payload: "desconectar"
+            })
+        }
+        }catch(error){
+            console.log(error)
+   
+        }
+    }  
+
 }

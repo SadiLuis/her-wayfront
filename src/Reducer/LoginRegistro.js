@@ -40,8 +40,8 @@ export default function LoginRegisReducer(state = initialState, action) {
                 detalleUsuario: action.payload.user
             }
             case LOGIN_USER_SUCCESS:
-                //localStorage.setItem("token", action.payload.idToken)
-                console.log(action.payload)
+                localStorage.setItem("token", action.payload.idToken)
+                
                 return {
                     ...state,
                     isAuth: true,
