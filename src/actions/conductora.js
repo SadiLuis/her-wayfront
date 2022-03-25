@@ -113,7 +113,7 @@ export function loginConductora({ email, contrasena }) {
         }
     }    
     
-
+}
 
 export function conectaConductora(payload){
     let {id, estado} = payload
