@@ -7,6 +7,7 @@ import LoginRegisReducer from "./LoginRegistro";
 
 
 
+
 const rootReducer= combineReducers({
      pedirConductoraReducer,
      recorridoReducer,

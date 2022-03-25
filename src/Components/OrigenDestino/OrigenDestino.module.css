@@ -1,28 +1,29 @@
-body{
-  color: #5bc0de ;
-  font-family: "Popins", sans-serif;
+  body{
+  /* color: #5bc0de ;  */
+  font-family: "Poppins", sans-serif;
 
-}
-.jumbotron{
-    background-color: transparent;
+} 
+.contenedor{
+    background-color:transparent;
     margin:0;
     padding: 10px;
 }
-.jumbotron h1{
+.contenedor h1{
     font-size: 2em;
     font-weight: bold;
-    color: #5bc0de ;
-  font-family: "Popins", sans-serif;
-    
-}
- .jumbotron h1,
- .jumbotron p{
     text-align: center;
-    color: #5bc0de ;
+
+    
+}
+ .contenedor h1,
+ .contenedor p{
+    
+/* color: #5bc0de ; */
   font-family: "Popins", sans-serif;
     
 }
- .jumbotron p{
+ .contenedor p{
+   text-align: left;
     font-size: 1em;
 }
 #googleMap{
@@ -50,7 +51,7 @@ body{
 }
 h1{
     text-align: center;
-    color: #5bc0de ;
+    /* color: #5bc0de ; */
   font-family: "Popins", sans-serif;
 }
 .inputText{

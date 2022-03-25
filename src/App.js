@@ -26,6 +26,7 @@ import LoginConductora from './Components/LoginConductora'
 
 
 
+
 function App() {
 
 
@@ -59,6 +60,7 @@ function App() {
             <Route path="/botonpago" element={<BotonPago />} />
 
 
+           
 
           </Routes>
 
