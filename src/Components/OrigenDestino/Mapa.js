@@ -1,21 +1,12 @@
+//setear las opciones del mapa 
 
-
-// ESTE COMPONENTE ES RADIOACTIVO - NO USAR HASTA PRÓXIMO AVISO!!!
-
-
-// import React from 'react'
-// //import Maps from "google-map-react"
-// import {GiRoad} from "react-icons/gi"
-
-
-//          //setear las opciones del mapa 
-
-// var mylatlng={lat:38.3460, lng:-0.4907};
+// var mylatlng={lat:-31.7667, lng:-61.3167};
+// //Santa Clara
 // var mapOptions={
 //     center:mylatlng,
 //     zoom:7,
-//     mapTypeId:google.maps.mapTypeId.ROADMAP
-// }
+//     mapTypeId:google.maps.MapTypeId.ROADMAP
+// };
 
 // //crear el mapa
 
@@ -23,39 +14,39 @@
 
 // //crea service Direction para usar el método route y conseguir un resultado
 
-// var direccionService= new google.maps.DirectionService();
+// var directionService= new google.maps.DirectionsService();
  
 // //crear renderizado de direcciones que vamos a usar para mostrar las rutas
-// var direccionesMostrar= new google.maps.DirectionsRenderer();
+// var directionsDisplay= new google.maps.DirectionsRenderer();
 
-// //bindea la direcciónMostrar
-// direccionesMostrar.setMap(map);
+// //bindea la directionRenderer
+// directionsDisplay.setMap(map);
 
 // //function
 //  function calcRuta(){
 //      //hace el pedido
 //      var request={
 //          origin:document.getElementById("desde").value,
-//          destino:document.getElementById("destino").value,
-//          viajeModo: google.maps.TravelMode.DRIVING,
-//          unidad:google.maps.UnitSystem.METRIC,
+//          destination:document.getElementById("hacia").value,
+//          travelMode: google.maps.TravelMode.DRIVING,
+//          unitSystem:google.maps.UnitSystem.METRIC,
 //      }
 //      //Pasar la request  a la ruta
-//      direccionService.route(request, (result, status)=>{
+//      directionService.route(request, (result, status)=>{
 //          if(status==google.maps.DirectionsStatus.OK){
 
 //             //distancia y tiempo
 //             const output= document.querySelector("#output");
-//             output.innerHTML="<div class="alerta-info"> Desde:" +document.getElementById("desde").value + ".<br/>"Hacia:" + document.getElementById("hacia").value + "<br/> Distancia de manejo" <GiRoad><GiRoad/>:" + result.routs[0].legs[0].distance.text + ".<br/>"Duration : " + result.routes[0].legs[0].duration.text + ". </div>"
+//             output.innerHTML="<div class='alert-info'> Desde:" + document.getElementById("desde").value + ".<br/> Hacia: " + document.getElementById("hacia").value + ".<br/> Distancia de manejo <i class='fas fa-road'></i> :" + result.routes[0].legs[0].distance.text + ".<br/>Duration <i class='fa-hourglass-start></i>: " + result.routes[0].legs[0].duration.text + ". </div>"
             
-//             direccionesMostrar.setDirections(result);
+//             directionsDisplay.setDirections(result);
 //          } else{
 //              //borrar las rutas del mapa
-//              direccionesMostrar.setDirections({routes:[]})
+//              directionsDisplay.setDirections({routes:[]})
 //              //
 //              map.setCenter(mylatlng);
 //              //mensaje error
-//              output.innerHTML="<div className="alert-danger"> No se puede devolver la distancia de viaje"</div>
+//              output.innerHTML="<div class='alert-danger'> No se puede devolver la distancia de viaje</div>"
 //          }
 //      });
 
@@ -72,11 +63,18 @@
 //  var autocomplete2= new google.maps.places.Autocomplete(input2, options)
 
 
-     
-
- 
-
-
-
-
-   
+ ////
+//  function iniciarMapa(){
+//      var coord={lat:-31.7667, lng:-61.3167};
+//      var mapOptions={
+//         center:mylatlng,
+//         zoom:7,
+//         mapTypeId:google.maps.MapTypeId.ROADMAP
+//     };
+//      var map= new google.maps.Map(document.getElementById("googleMap"),mapOptions
+//      )
+//      var marker= new google.maps.Marker({
+//          position:coord,
+//          map:map
+//      });
+//  }

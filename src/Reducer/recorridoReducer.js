@@ -2,6 +2,9 @@ import { DESTINO, ORIGEN, TIEMPO_DE_VIAJE } from "../actions/index";
 
 
 const initialState ={
+    origen:[],
+    destino:[],
+    tiempoDeViaje:null
 
 };
 
