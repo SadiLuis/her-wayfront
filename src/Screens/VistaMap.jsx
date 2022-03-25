@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import Map from '../Components/GoogleMap/Map';
 import { CssBaseline, Grid} from '@material-ui/core';
+import OrigenDestino from '../Components/OrigenDestino/OrigenDestino';
 
 
 function VistaMap() {
@@ -13,7 +14,11 @@ function VistaMap() {
       })
     }, [])
   return (
+    
       <>
+      <div>
+      <OrigenDestino/>
+    </div>
    <div className='row conteiner p-4' >
       <div className='col-md-8'>
 
