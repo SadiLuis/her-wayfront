@@ -1,19 +1,24 @@
-import React, {useEffect, useState} from 'react';
-import {postConductoras, getAllConductoras} from '../../actions/conductora';
+import React, {useEffect, useState , useRef} from 'react';
+import {registerConductora} from '../../actions/conductora';
 import { useDispatch, useSelector } from 'react-redux';
+
+import {saveImages } from '../../Helpers/saveImage'
+import { Link ,useNavigate} from 'react-router-dom';
+import uno from '../../image/1.jpg'
+import dos from '../../image/2.jpg'
+import tres from '../../image/3.jpg'
+
 import { Link } from 'react-router-dom';
-//import uno from '../../image/1.jpg'
-//import dos from '../../image/2.jpg'
-//import tres from '../../image/3.jpg'
+//import { useStorage} from "reactfire"
+
 
 export function validate(conductora){
+   
     let errors={};
     if(!conductora.nombre){
         errors.nombre = 'debe ingresar nombre completo'
     }
-    if(!conductora.apellido){
-        errors.apellido = 'debe ingresar apellido '
-    }
+   
     if(!conductora.usuario){
         errors.usuario = ' debe ingresar un usuario'
     }
@@ -32,11 +37,14 @@ export function validate(conductora){
     if(!conductora.fotoPerfil){
         errors.fotoPerfil='debe colocar una foto de perfil'
     }
+    if(!conductora.fotoDni){
+        errors.fotoDni = 'seleccione DNI, permiso de Conducir o Pasaporte'
+    }
     if(!conductora.direccion){
         errors.direccion='debe ingresar su direccion de residencia'
     }
     if(!conductora.telefono){
-        errors.telefono='numero telefonico con codigo de area ej ... 011 para Bs. As.'
+        errors.telefono='Ingrese numero telefonico con codigo de area ej ... 011 para Bs. As.'
     }
     if(!conductora.localidad){
         errors.localidad='debe ingresear la localidad donde reside'
@@ -48,7 +56,7 @@ export function validate(conductora){
         errors.patente='ingrese la patente del vehiculo'
     }
     if(!conductora.seguro){
-        errors.seguro='ingrese seguro y poliza'
+        errors.seguro='ingrese nombre del seguro y poliza'
     }
     if(!conductora.habilitacion){
         errors.habilitacion='ingrese la hbilitacion correspondiete del vehiculo'
@@ -57,17 +65,18 @@ export function validate(conductora){
 }
 
 export default function CreateConductora(){
+    const navigate= useNavigate()
     const dispatch = useDispatch();
-    const conductoras = useSelector((state)=>state.allConductoras);
+    const refFileInput = useRef();
     const [conductora, setConductora]=useState({   //este es mi input
         nombre:"",
-        apellido:"",
         usuario:"",
         contrasena:"",
         email:"",
         pais:"",
         provincia:"",
         fotoPerfil:"",
+        fotoDni:"",
         direccion:"",
         telefono:"",
         localidad:"",
@@ -79,26 +88,29 @@ export default function CreateConductora(){
 
     const [errors, setErrors]=useState({})
 
-
-    useEffect(()=>{
-        dispatch(getAllConductoras())
-    },[dispatch]);
-
-
-    function handleSubmit(e){
+   
+ async function handleSubmit(e){
         e.preventDefault()
-        let errors = Object.keys(validate(conductora))
-        if(!errors.length !==0){
-            dispatch(postConductoras(conductora))
+        let auxInput = conductora;
+
+    const urlImage = await saveImages(auxInput.fotoPerfil);
+    const urlImage2= await saveImages(auxInput.fotoDni)
+    auxInput.fotoPerfil = urlImage;
+    auxInput.fotoDni = urlImage2
+       
+    console.log('entro',auxInput)
+         let errors = Object.keys(validate(conductora))
+
+
         setConductora({
         nombre:"",
-        apellido:"",
         usuario:"",
         contrasena:"",
         email:"",
         pais:"",
         provincia:"",
-        fotoPerfil:[],
+        fotoPerfil:"",
+        fotoDni:"",
         direccion:"",
         telefono:"",
         localidad:"",
@@ -107,33 +119,26 @@ export default function CreateConductora(){
         seguro:"",
         habilitacion:"",
         })
+
         alert('usuario creado con exito')
         }else{
             alert('rellenar los comapos correctamente')
-        }   
-    };
+        }  
+        navigate('/perfilConductora') 
     
-    // function handleSelect(e){
-    //     //console.log(e.target.files[0])
-    //     setConductora(e.target.files[0])
-        
-    // }
 
-    // function handleSend(){
-    //     if(!conductora){
-    //         alert('debe seleccionar un archivo')
-    //         return
-    //     }
-    // }
-
-    function handleChange(e){
+    }
+   
+         
+    function handleChange(name ,value){
+        console.log(conductora)
         setConductora({
             ...conductora,
-            [e.target.name] : e.target.value,
+            [name] : value,
         })
         setErrors(validate({
             ...conductora,
-            [e.target.name] : e.target.value,
+            [name] : value,
         }))
     }
 
@@ -144,6 +149,7 @@ export default function CreateConductora(){
             <div>
                 <p> * campos obligatorios</p>
                 <h1 className='text-center'>REGISTRO CONDUCTORA</h1>
+               
             </div>
             <div>
                 <form onSubmit={(e)=> handleSubmit(e)}>
@@ -152,12 +158,14 @@ export default function CreateConductora(){
                 <input name='nombre' className="form-control"
                     type='text'
                     value={conductora.nombre}
+
                     placeholder='ingrese su/s nombre/s'
-                    onChange={handleChange}
+                    onChange={(e)=>handleChange(e.target.name,e.target.value)}
+
                     required>
                     </input> 
                     {errors.nombre &&(
-                        <p className="error">
+                        <p className="text-danger">
                             {errors.nombre}
                         </p>
                     )} 
@@ -168,11 +176,11 @@ export default function CreateConductora(){
                     type='text'
                     value={conductora.apellido}
                     placeholder='ingrese su/s apellido/s'
-                    onChange={handleChange}
+                    onChange={(e)=> handleChange(e.target.name , e.target.value)}
                     required>
                     </input> 
                     {errors.apellido &&(
-                        <p className="error">
+                        <p className="text-danger">
                             {errors.apellido}
                         </p>
                     )}  
@@ -183,11 +191,11 @@ export default function CreateConductora(){
                     type='text'
                     value={conductora.usuario}
                     placeholder='ingrese su usuario'
-                    onChange={handleChange}
+                    onChange={(e)=> handleChange(e.target.name,e.target.value)}
                     required>
                     </input> 
                     {errors.usuario &&(
-                        <p className="error">
+                        <p className="text-danger">
                             {errors.usuario}
                         </p>
                     )}  
@@ -199,7 +207,7 @@ export default function CreateConductora(){
                     type='password'
                     value={conductora.contrasena}
                     placeholder='ingrese su contraseña'
-                    onChange={handleChange}
+                    onChange={(e)=>handleChange(e.target.name ,e.target.value)}
                     required>
                     </input> 
                     {/* {errors.contrasena &&(
@@ -215,11 +223,11 @@ export default function CreateConductora(){
                     type='text'
                     value={conductora.email}
                     placeholder='ingrese su email'
-                    onChange={handleChange}
+                    onChange={(e)=>handleChange(e.target.name ,e.target.value)}
                     required>
                     </input> 
                     {errors.email &&(
-                        <p className="error">
+                        <p className="text-danger">
                             {errors.email}
                         </p>
                     )}  
@@ -231,11 +239,11 @@ export default function CreateConductora(){
                     type='text'
                     value={conductora.pais}
                     placeholder='ingrese el pais'
-                    onChange={handleChange}
+                    onChange={(e)=>handleChange(e.target.name,e.target.value)}
                     required>
                     </input>  
                     {errors.pais &&(
-                        <p className="error">
+                        <p className="text-danger">
                             {errors.pais}
                         </p>
                     )} 
@@ -247,11 +255,11 @@ export default function CreateConductora(){
                     type='text'
                     value={conductora.provincia}
                     placeholder='ingrese la provincia donde reside'
-                    onChange={handleChange}
+                    onChange={(e)=>handleChange(e.target.name,e.target.value)}
                     required>
                     </input> 
                     {errors.provincia &&(
-                        <p className="error">
+                        <p className="text-danger">
                             {errors.provincia}
                         </p>
                     )}  
@@ -263,23 +271,25 @@ export default function CreateConductora(){
                     type='text'
                     value={conductora.localidad}
                     placeholder='ingrese la localidad donde reside actulamente'
-                    onChange={handleChange}
+                    onChange={(e)=>handleChange(e.target.name,e.target.value)}
                     required>
                     </input>  
                     {errors.localidad &&(
-                        <p className="error">
+                        <p className="text-danger">
                             {errors.localidad}
                         </p>
                     )} 
                 </div>
+                
+                {/* </div>*/} 
                 <div className='form-group'>
                 <label htmlFor="exampleInputPassword1">Foto de Perfil *</label>
                 <input name='fotoPerfil' className="form-control"
                     id='fotoPerfil'
-                    type='text'
-                    value={conductora.fotoPerfil}
-                    placeholder='...img url'
-                    onChange={handleChange}
+                    type='file'
+                   placeholder='...img url'
+                    onChange={(e)=>handleChange(e.target.name, e.target.files[0])}
+                    ref={refFileInput}
                     required>
                     </input>  
                     {/* <button onClick={handleSend} type='button'>Upload</button> */}
@@ -290,17 +300,34 @@ export default function CreateConductora(){
                     )} 
                 </div>
                 <div className='form-group'>
+                <label htmlFor="exampleInputPassword1">Credencial de Identificacion *</label>
+                <input name='fotoDni' className="form-control"
+                    id='fotoDni'
+                    type='file'
+                    placeholder='...img url'
+                    onChange={(e)=>handleChange(e.target.name ,e.target.files[0])}
+                    ref={refFileInput}
+                    required>
+                    </input>  
+                    {/* <button onClick={handleSend} type='button'>Upload</button> */}
+                    {errors.fotoDni &&(
+                        <p className="error">
+                            {errors.fotoDni}
+                        </p>
+                    )} 
+                </div>
+                <div className='form-group'>
                 <label htmlFor="exampleInputPassword1" >Direccion *</label>
                 <input name='direccion' className="form-control"
                     id='direccion'
                     type='text'
                     value={conductora.direccion}
                     placeholder='domicilio real donde reside'
-                    onChange={handleChange}
+                    onChange={(e)=>handleChange(e.target.name,e.target.value)}
                     required>
                     </input>  
                     {errors.direccion &&(
-                        <p className="error">
+                        <p className="text-danger">
                             {errors.direccion}
                         </p>
                     )} 
@@ -312,11 +339,11 @@ export default function CreateConductora(){
                     type='text'
                     value={conductora.telefono}
                     placeholder='numero telefonico con codigo de area ej ... 011 para Bs. As.'
-                    onChange={handleChange}
+                    onChange={(e)=>handleChange(e.target.name,e.target.value)}
                     required>
                     </input> 
                     {errors.telefono &&(
-                        <p className="error">
+                        <p className="text-danger">
                             {errors.telefono}
                         </p>
                     )}  
@@ -329,11 +356,11 @@ export default function CreateConductora(){
                     type='text'
                     value={conductora.automovil}
                     placeholder='ingrese marca y modelo del vehiculo'
-                    onChange={handleChange}
+                    onChange={(e)=>handleChange(e.target.name,e.target.value)}
                     required>
                     </input> 
                     {errors.automovil &&(
-                        <p className="error">
+                        <p className="text-danger">
                             {errors.automovil}
                         </p>
                     )}  
@@ -345,11 +372,11 @@ export default function CreateConductora(){
                     type='text'
                     value={conductora.patente}
                     placeholder='ingrese la petente del vehiculo'
-                    onChange={handleChange}
+                    onChange={(e)=>handleChange(e.target.name,e.target.value)}
                     required>
                     </input> 
                     {errors.patente &&(
-                        <p className="error">
+                        <p className="text-danger">
                             {errors.patente}
                         </p>
                     )}  
@@ -361,11 +388,11 @@ export default function CreateConductora(){
                     type='text'
                     value={conductora.seguro}
                     placeholder='nombre/poliza del seguro del vehiculo'
-                    onChange={handleChange}
+                    onChange={(e)=>handleChange(e.target.name,e.target.value)}
                     required>
                     </input>  
                     {errors.seguro &&(
-                        <p className="error">
+                        <p className="text-danger">
                             {errors.seguro}
                         </p>
                     )} 
@@ -377,21 +404,21 @@ export default function CreateConductora(){
                     type='text'
                     value={conductora.habilitacion}
                     placeholder='habilitacion municipal'
-                    onChange={handleChange}
+                    onChange={(e)=>handleChange(e.target.name,e.target.value)}
                     required>
                     </input>  
                     {errors.habilitacion &&(
-                        <p className="error">
+                        <p className="text-danger">
                             {errors.habilitacion}
                         </p>
                     )} 
                 </div>
-                <button className="btn btn-primary" type='submit' disabled={conductora.nombre&&conductora.apellido&&conductora.usuario&&conductora.contrasena&&
+                <button className="btn btn-primary" type='submit' /* disabled={conductora.nombre&&conductora.apellido&&conductora.usuario&&conductora.contrasena&&
                 conductora.direccion&&conductora.email&&conductora.fotoPerfil&&conductora.localidad&&conductora.pais&&conductora.automovil&&
-                conductora.patente&&conductora.habilitacion&&conductora.seguro&&conductora.provincia&&conductora.telefono ? false : true}>Registrarse</button>
+                conductora.patente&&conductora.habilitacion&&conductora.seguro&&conductora.provincia&&conductora.telefono&&conductora.fotoDni ? false : true} */>Registrarse</button>
                 <div >
-                    <Link className="btn btn-primary" to='/'>
-                        <button>Volver</button>
+                    <Link  to='/'>
+                        <button className="btn btn-primary">Volver</button>
                     </Link>
                 </div>
                 </form>
