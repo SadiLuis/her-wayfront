@@ -2,7 +2,7 @@
     background-color:  rgb(211, 222, 220);
     border: solid 1.5px;
     border-radius: 2px;
-}
+} */
 
 h3{
     color: black
@@ -22,21 +22,40 @@ h3{
 }
 
 .boton {
-  width: 6rem;
+  
+  background: linear-gradient(to right, #f988ff, #7f00b2);
+      width: 8rem;
+      height: 2.8rem;
+      
+      border-radius: 0.5rem;
+      color: white;
+      border: none;
+      cursor: pointer;
+      box-shadow: 2px 2px 4px #646464;
+      text-decoration: none;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 15px;
 }
 
 .boton:hover {
-  background-color: #203562;
-  color: #ffffff;
-  border: none;
-  font-weight: bold;
+  
+    font-size: 1.2rem;
+    transition: .3s all;
 }
 .boton span {
     margin-right: 10px;
+    
     
     
    
 }
 input, textarea{
     box-shadow: 2px 2px 4px #000000 ;
-} */
+    font-family:Georgia, 'Times New Roman', Times, serif;
+}
+ form{
+  box-shadow: 2px 2px 4px #646464;  
+   border-radius: 0.5rem;
+} 

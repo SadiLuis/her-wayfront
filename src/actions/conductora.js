@@ -102,6 +102,9 @@ export function loginConductora({ email, contrasena }) {
 
 }
 
+
+}
+
 export function registerConductora ({
         nombre,
         usuario,
@@ -163,6 +166,7 @@ export function registerConductora ({
 
 
 
+
 export function conectaConductora(payload){
     let {id, estado} = payload
     
@@ -189,3 +193,7 @@ export function conectaConductora(payload){
 
 
 }
+
+
+}
+

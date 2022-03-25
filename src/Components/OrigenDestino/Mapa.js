@@ -63,7 +63,7 @@
 //  var autocomplete2= new google.maps.places.Autocomplete(input2, options)
 
 
- ////
+//  //
 //  function iniciarMapa(){
 //      var coord={lat:-31.7667, lng:-61.3167};
 //      var mapOptions={
