@@ -4,7 +4,9 @@ import {  FILTRAR_CONDUCTORA_SEGUN_AUTO,
     GET_ALL_CONDUCTORAS,
     GET_CONDUNCTORAS_NAME,
     CONDUCTORAS_DETAIL,
-    POST_CONDUCTORAS, 
+    POST_CONDUCTORAS,
+    LOGIN_COND_SUCCESS, 
+    LOGIN_COND_ERROR,
     GET_PERFILC } from "./index"
 import tokenUser from '../Helpers/TokenUser'
 import tokenConductora from "../Helpers/TokenConductora";
@@ -82,6 +84,37 @@ export function getAllConductoras(){
     }
 };
 
+export function loginConductora({ email, contrasena }) {
+    return async (dispach) => {
+        console.log('action')
+        try {
+
+            // const config = {
+            //     headers: {
+            //         "Content-Type": "application/json"
+            //     }
+            // }
+
+            const body = { email, contrasena }
+
+            const { data } = await axios.post(`http://localhost:3001/conductora/login`, body)
+
+            const conductoras = data.user
+            dispach({
+                type: LOGIN_COND_SUCCESS,
+                payload: conductoras
+            })
+            console.log(data)
+        } catch (error) {
+            console.log(error)
+            return dispach({
+                type: LOGIN_COND_ERROR,
+            })
+        }
+    }    
+    
+
+
 export function conectaConductora(payload){
     let {id, estado} = payload
     
@@ -105,4 +138,5 @@ export function conectaConductora(payload){
    
         }
     }  
+
 }

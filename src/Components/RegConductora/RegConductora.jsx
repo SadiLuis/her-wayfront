@@ -40,7 +40,7 @@ export function validate(conductora){
         errors.direccion='debe ingresar su direccion de residencia'
     }
     if(!conductora.telefono){
-        errors.telefono='numero telefonico con codigo de area ej ... 011 para Bs. As.'
+        errors.telefono='Ingrese numero telefonico con codigo de area ej ... 011 para Bs. As.'
     }
     if(!conductora.localidad){
         errors.localidad='debe ingresear la localidad donde reside'
@@ -52,7 +52,7 @@ export function validate(conductora){
         errors.patente='ingrese la patente del vehiculo'
     }
     if(!conductora.seguro){
-        errors.seguro='ingrese seguro y poliza'
+        errors.seguro='ingrese nombre del seguro y poliza'
     }
     if(!conductora.habilitacion){
         errors.habilitacion='ingrese la hbilitacion correspondiete del vehiculo'
@@ -163,12 +163,12 @@ export default function CreateConductora(){
                 <input name='nombre' className="form-control"
                     type='text'
                     value={conductora.nombre}
-                    placeholder='ingrese su/s nombre/s'
+                    placeholder='ingrese su nombre completo'
                     onChange={handleChange}
                     required>
                     </input> 
                     {errors.nombre &&(
-                        <p className="error">
+                        <p className="text-danger">
                             {errors.nombre}
                         </p>
                     )} 
@@ -183,7 +183,7 @@ export default function CreateConductora(){
                     required>
                     </input> 
                     {errors.apellido &&(
-                        <p className="error">
+                        <p className="text-danger">
                             {errors.apellido}
                         </p>
                     )}  
@@ -198,7 +198,7 @@ export default function CreateConductora(){
                     required>
                     </input> 
                     {errors.usuario &&(
-                        <p className="error">
+                        <p className="text-danger">
                             {errors.usuario}
                         </p>
                     )}  
@@ -230,7 +230,7 @@ export default function CreateConductora(){
                     required>
                     </input> 
                     {errors.email &&(
-                        <p className="error">
+                        <p className="text-danger">
                             {errors.email}
                         </p>
                     )}  
@@ -246,7 +246,7 @@ export default function CreateConductora(){
                     required>
                     </input>  
                     {errors.pais &&(
-                        <p className="error">
+                        <p className="text-danger">
                             {errors.pais}
                         </p>
                     )} 
@@ -262,7 +262,7 @@ export default function CreateConductora(){
                     required>
                     </input> 
                     {errors.provincia &&(
-                        <p className="error">
+                        <p className="text-danger">
                             {errors.provincia}
                         </p>
                     )}  
@@ -278,7 +278,7 @@ export default function CreateConductora(){
                     required>
                     </input>  
                     {errors.localidad &&(
-                        <p className="error">
+                        <p className="text-danger">
                             {errors.localidad}
                         </p>
                     )} 
@@ -345,7 +345,7 @@ export default function CreateConductora(){
                     required>
                     </input>  
                     {errors.direccion &&(
-                        <p className="error">
+                        <p className="text-danger">
                             {errors.direccion}
                         </p>
                     )} 
@@ -361,7 +361,7 @@ export default function CreateConductora(){
                     required>
                     </input> 
                     {errors.telefono &&(
-                        <p className="error">
+                        <p className="text-danger">
                             {errors.telefono}
                         </p>
                     )}  
@@ -378,7 +378,7 @@ export default function CreateConductora(){
                     required>
                     </input> 
                     {errors.automovil &&(
-                        <p className="error">
+                        <p className="text-danger">
                             {errors.automovil}
                         </p>
                     )}  
@@ -394,7 +394,7 @@ export default function CreateConductora(){
                     required>
                     </input> 
                     {errors.patente &&(
-                        <p className="error">
+                        <p className="text-danger">
                             {errors.patente}
                         </p>
                     )}  
@@ -410,7 +410,7 @@ export default function CreateConductora(){
                     required>
                     </input>  
                     {errors.seguro &&(
-                        <p className="error">
+                        <p className="text-danger">
                             {errors.seguro}
                         </p>
                     )} 
@@ -426,7 +426,7 @@ export default function CreateConductora(){
                     required>
                     </input>  
                     {errors.habilitacion &&(
-                        <p className="error">
+                        <p className="text-danger">
                             {errors.habilitacion}
                         </p>
                     )} 
@@ -435,8 +435,8 @@ export default function CreateConductora(){
                 conductora.direccion&&conductora.email&&conductora.localidad&&conductora.pais&&conductora.automovil&&
                 conductora.patente&&conductora.habilitacion&&conductora.seguro&&conductora.provincia&&conductora.telefono ? false : true}>Registrarse</button>
                 <div >
-                    <Link className="btn btn-primary" to='/'>
-                        <button>Volver</button>
+                    <Link  to='/'>
+                        <button className="btn btn-primary">Volver</button>
                     </Link>
                 </div>
                 </form>
