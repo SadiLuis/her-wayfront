@@ -9,10 +9,12 @@ import {
     UPDATE_USER,
     RESET_PASSWORD,
     RELOADING_PAG,
+    LOGIN_COND_SUCCESS, 
+    LOGIN_COND_ERROR,
     GET_ALL_CONDUCTORAS,
     //GET_CONDUNCTORAS_NAME,
     //CONDUCTORAS_DETAIL,
-    POST_CONDUCTORAS,
+    POST_CONDUCTORAS,    
     GET_USERS
 } from "../actions/index";
 
@@ -26,6 +28,7 @@ const initialState = {
     allconductoras: [],
     filters: [],
     detail: []
+    
 }
 
 export default function LoginRegisReducer(state = initialState, action) {
@@ -37,8 +40,8 @@ export default function LoginRegisReducer(state = initialState, action) {
                 detalleUsuario: action.payload.user
             }
             case LOGIN_USER_SUCCESS:
-                //localStorage.setItem("token", action.payload.idToken)
-                console.log(action.payload)
+                localStorage.setItem("token", action.payload.idToken)
+                
                 return {
                     ...state,
                     isAuth: true,
@@ -78,11 +81,26 @@ export default function LoginRegisReducer(state = initialState, action) {
                     ...state,
                     resetPass: action.payload
                 }
+                case LOGIN_COND_SUCCESS:
+                    //localStorage.setItem("token", action.payload.idToken)
+                    console.log(action.payload)
+                    return {
+                        ...state,
+                        isAuth: true,
+                        token: action.payload.stsTokenManager.accessToken,
+                        allConductoras: action.payload,
+                        conductoras: action.payload,
+                        //userInfo: action.payload,
+                        //filter: action.payload
+                    }
+                    case LOGIN_COND_ERROR:
+            
                 case GET_ALL_CONDUCTORAS:
                     return{
                         ...state,
                         allconductoras: action.payload,
-                        filters: action.payload
+                        //userInfo: action.payload,
+                        //filters: action.payload
                     }
                     // case GET_CONDUNCTORAS_NAME:
                     //     return {
@@ -100,6 +118,7 @@ export default function LoginRegisReducer(state = initialState, action) {
                          return{
                              ...state,
                          } 
+               
                 
             default: return state;
     }

@@ -4,15 +4,18 @@ import {  FILTRAR_CONDUCTORA_SEGUN_AUTO,
     GET_ALL_CONDUCTORAS,
     GET_CONDUNCTORAS_NAME,
     CONDUCTORAS_DETAIL,
-    POST_CONDUCTORAS, 
+    POST_CONDUCTORAS,
+    LOGIN_COND_SUCCESS, 
+    LOGIN_COND_ERROR,
     GET_PERFILC } from "./index"
 import tokenUser from '../Helpers/TokenUser'
 import tokenConductora from "../Helpers/TokenConductora";
 import axios from "axios";
+import Server from './VariableGlobal'
       
 
 
-const SERVER = 'http://localhost:3001';
+const SERVER = Server.SERVER;
 
 
 export const pedirConductora = () => async (dispatch) => {
@@ -51,11 +54,13 @@ export const filtrarConductora = (payload) => {
 export function postConductoras(payload){
     return async function (dispatch){
         try{
-            const create = await axios.post('http://localhost:3001/conductora/register' + payload);
+            const create = await axios.post(`${SERVER}conductora/register`, payload);
             return dispatch({
-                type: POST_CONDUCTORAS,
-                create,
-            })
+                 create
+            //     type: POST_CONDUCTORAS,
+            //     payload: create,
+             })
+        //return create;
         }catch(error){
             console.log(error)
    
@@ -67,14 +72,71 @@ export function postConductoras(payload){
 export function getAllConductoras(){
     return async function(dispatch){
         try{
-            const conductoras = await axios.get('http://localhost:3001/conductora')
+            const conductoras = await axios.get(`${SERVER}/conductora`)
             return dispatch({
                 type: GET_ALL_CONDUCTORAS,
                 payload: conductoras.data
             })
-
+           
         }catch(err){
             console.log(err)
         }
     }
 };
+
+export function loginConductora({ email, contrasena }) {
+    return async (dispach) => {
+        console.log('action')
+        try {
+
+            // const config = {
+            //     headers: {
+            //         "Content-Type": "application/json"
+            //     }
+            // }
+
+            const body = { email, contrasena }
+
+            const { data } = await axios.post(`http://localhost:3001/conductora/login`, body)
+
+            const conductoras = data.user
+            dispach({
+                type: LOGIN_COND_SUCCESS,
+                payload: conductoras
+            })
+            console.log(data)
+        } catch (error) {
+            console.log(error)
+            return dispach({
+                type: LOGIN_COND_ERROR,
+            })
+        }
+    }    
+    
+
+
+export function conectaConductora(payload){
+    let {id, estado} = payload
+    
+    return async function (dispatch){
+        try{
+            if(estado === "conectar" ) {
+            const conectar = await axios.put(`${SERVER}/conductora/conectar/${id}`);
+            return dispatch({
+                type: "CONECTA_CONDUCTORA",
+                payload: "conectar"
+            })
+        } else if (estado === "desconectar") {
+            const desconectar = await axios.put(`${SERVER}/conductora/desconectar/${id}`);
+            return dispatch({
+                type: "DESCONECTA_CONDUCTORA",
+                payload: "desconectar"
+            })
+        }
+        }catch(error){
+            console.log(error)
+   
+        }
+    }  
+
+}
