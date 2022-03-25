@@ -1,6 +1,6 @@
 # See https://help.github.com/articles/ignoring-files/ for more about ignoring files.
 
-src/Components/BotonPago/utilsPago.js
+#src/Components/BotonPago/utilsPago.js
 # dependencies
 /node_modules
 package-lock.json
@@ -20,7 +20,6 @@ package-lock.json
 .env.development.local
 .env.test.local
 .env.production.local
-
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
