@@ -101,7 +101,7 @@ export default function CreateConductora(){
     console.log('entro',auxInput)
          let errors = Object.keys(validate(conductora))
 
-
+        if(!errors){
         setConductora({
         nombre:"",
         usuario:"",
@@ -119,7 +119,7 @@ export default function CreateConductora(){
         seguro:"",
         habilitacion:"",
         })
-
+          dispatch(registerConductora(auxInput))
         alert('usuario creado con exito')
         }else{
             alert('rellenar los comapos correctamente')
