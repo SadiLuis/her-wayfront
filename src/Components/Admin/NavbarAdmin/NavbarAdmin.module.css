@@ -1,0 +1,30 @@
+.admin nav{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    height: auto;
+    background-color:#FFA8D9;
+    text-align: center;
+  }
+
+.admin nav ul{
+    list-style: none;
+    display: inline-block;
+ }
+
+ .admin nav ul li{
+     float: left;
+     margin-top: 20px;
+ }
+
+ .admin nav ul li a {
+     color: rgb(255, 255, 255);
+     font-weight: bold;
+     text-decoration: none;
+     font-size: 20px;
+     padding: 18px;
+ }
+
+ .admin nav ul li a:hover{
+   background-color: #e44f9c;
+ }
