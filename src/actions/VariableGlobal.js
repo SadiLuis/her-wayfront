@@ -1,3 +1,3 @@
-const SERVER = "https://herway-app.herokuapp.com/"
+export const SERVER = 'http://localhost:3001'
 
-export default SERVER;
+//"https://herway-app.herokuapp.com/"
