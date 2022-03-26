@@ -122,7 +122,7 @@ export default function CreateConductora(){
           dispatch(registerConductora(auxInput))
         alert('usuario creado con exito')
         }else{
-            alert('rellenar los comapos correctamente')
+            alert('rellenar los campos correctamente')
         }  
         navigate('/perfilConductora') 
     

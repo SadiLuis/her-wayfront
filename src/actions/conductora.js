@@ -72,7 +72,7 @@ export function getAllConductoras(){
 };
 
 export function loginConductora({ email, contrasena }) {
-    return async (dispach) => {
+    return async (dispatch) => {
         console.log('action')
         try {
 
@@ -83,7 +83,7 @@ export function loginConductora({ email, contrasena }) {
 
 
             const infoUser = data.user
-            dispach({
+            dispatch({
                 type: LOGIN_USER_SUCCESS,
                 payload: infoUser
 
@@ -91,7 +91,7 @@ export function loginConductora({ email, contrasena }) {
             console.log(data)
         } catch (error) {
             console.log(error)
-            return dispach({
+            return dispatch({
 
                 type: LOGIN_USER_ERROR,
 
@@ -123,7 +123,7 @@ export function registerConductora ({
         habilitacion,
 }) {
 
-    return async function (dispach) {
+    return async function (dispatch) {
         try {
 
             const config = {
@@ -152,13 +152,13 @@ export function registerConductora ({
             const { data } = await axios.post(`http://localhost:3001/conductora/register`, body, config)
 
             const infoUser = data.user
-            dispach({
+            dispatch({
                 type: REGISTER_USER_SUCCESS,
                 payload: infoUser
             })
         } catch (error) {
             console.log(error)
-            return dispach({
+            return dispatch({
                 type: REGISTER_USER_ERROR,
             })
         }
