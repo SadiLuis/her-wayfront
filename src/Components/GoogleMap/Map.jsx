@@ -127,7 +127,7 @@ function Mapa({setCoordinates, setBounds, coordinates}) {
 
           <ButtonGroup>
             <Button colorScheme='blue' type='submit' onClick={calculateRoute}>
-              Calculate Route
+              Trazar Ruta
             </Button>
             <IconButton
               aria-label='center back'
@@ -137,8 +137,8 @@ function Mapa({setCoordinates, setBounds, coordinates}) {
           </ButtonGroup>
         </HStack>
         <HStack spacing={4} mt={4} justifyContent='space-between'>
-          <Text>Distance: {distance} </Text>
-          <Text>Duration: {duration} </Text>
+          <Text>Distancia: {distance} </Text>
+          <Text>Duracion: {duration} </Text>
           <IconButton
             aria-label='center back'
             icon={<FaLocationArrow />}
