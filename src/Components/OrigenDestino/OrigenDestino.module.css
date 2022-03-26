@@ -1,0 +1,63 @@
+  body{
+  /* color: #5bc0de ;  */
+  font-family: "Poppins", sans-serif;
+
+} 
+.contenedor{
+    background-color:transparent;
+    margin:0;
+    padding: 10px;
+}
+.contenedor h1{
+    font-size: 2em;
+    font-weight: bold;
+    text-align: center;
+
+    
+}
+ .contenedor h1,
+ .contenedor p{
+    
+/* color: #5bc0de ; */
+  font-family: "Popins", sans-serif;
+    
+}
+ .contenedor p{
+   text-align: left;
+    font-size: 1em;
+}
+#googleMap{
+    width: 80%;
+    height: 400px;
+    margin:20px auto;
+}
+
+#output{
+    
+    text-align: center;
+    font-size: 2em;
+    margin:20px auto;
+}
+.botonDireccion{
+    cursor: pointer;
+    border-radius: .7rem;
+    width: 28%;
+    height: 10%;
+    border: 1px solid #00000080;
+    box-shadow: 2px 2px 5px #000000;
+    transition: .3s all;
+    margin-top: 5px;
+    
+}
+h1{
+    text-align: center;
+    /* color: #5bc0de ; */
+  font-family: "Popins", sans-serif;
+}
+/* .inputText{
+    width: 58%;
+    height: 10%;
+    border-radius: .7rem;
+    border: 1px solid #00000080;
+    outline-color: #7f00b2
+} */
