@@ -162,7 +162,7 @@ export function registerConductora ({
 }
 
 
-   export function conectaConductora(payload){
+export function conectaConductora(payload){
     let {id, estado} = payload
     
     return async function (dispatch){
@@ -185,34 +185,7 @@ export function registerConductora ({
    
         }
     }  
-
-export function loginConductora({ email, contrasena }) {
-    return async (dispach) => {
-        console.log(dispach)
-        try {
-
-            // const config = {
-            //     headers: {
-            //         "Content-Type": "application/json"
-            //     }
-            // }
-
-            const body = { email, contrasena }
-
-            const { data } = await axios.post(`${SERVER}/conductora/login`, body)
-
-            const infoUser = data.user
-            dispach({
-                type: LOGIN_USER_SUCCESS,
-                payload: infoUser
-            })
-            console.log(data)
-        } catch (error) {
-            console.log(error)
-            return dispach({
-                type: LOGIN_USER_ERROR,
-            })
-        }
-    }    
-    
 }
+
+
+
