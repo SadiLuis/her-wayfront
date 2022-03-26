@@ -12,7 +12,7 @@ const initialLogin = {
   email: ''
 }
 
-export default function Login() {
+export default function LoginConductora() {
 
     const [formlogin, setFormLogin] = useState(initialLogin)
     const [error, setError] = useState()

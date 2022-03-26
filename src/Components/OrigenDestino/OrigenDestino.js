@@ -1,69 +1,102 @@
-import React from 'react';
-//  import GoogleMapReact from 'google-map-react';
-//   import Directions from 'google-maps-direction'
+import React, { useState } from 'react';
+import GoogleMapReact from 'google-map-react';
+// import Directions from 'react-maps-direction'
 import {FaRegDotCircle,FaMapMarkerAlt, FaDirections} from 'react-icons/fa';
-import styles from './OrigenDestino.module.css'
- import Mapa from './Mapa'
+import styles from './OrigenDestino.module.css';
+
  import GooglePlacesAutocomplete from 'react-google-places-autocomplete';
+import { Details } from '@material-ui/icons';
+import { useDispatch, useSelector } from 'react-redux';
+
+import { Marker } from '@react-google-maps/api';
+import { origen, destino } from '../../actions/recorrido';
+// import PlacesAutocomplete from 'react-places-autocomplete';
+ 
+
 
 
 export default function OrigenDestino() {
-    //          //setear las opciones del mapa 
+    const dispatch=useDispatch()
+    const origen=useSelector((state)=>state.recorridoReducer.origen);
+    const destino=useSelector((state)=>state.recorridoReducer.destino)
+    const [value, setValue]=useState(null)
+    const [direccion, setDireccion]=useState("")
 
-// var mylatlng={lat:38.3460, lng:-0.4907};
-// var mapOptions={
-//     center:mylatlng,
-//     zoom:7,
-//     mapTypeId:google.maps.mapTypeId.ROADMAP
-// }
-
-// //crear el mapa
-
-// var map=new google.maps.Map(document.getElementById("googleMap"), mapOptions)
-
-// //crea service Direction para usar el método route y conseguir un resultado
-
-// var direccionService= new google.maps.DirectionService();
- 
-// //crear renderizado de direcciones que vamos a usar para mostrar las rutas
-// var direccionesMostrar= new google.maps.DirectionsRenderer();
-
-// //bindea la direcciónMostrar
-// direccionesMostrar.setMap(map);
+    const handleChange=(value)=>{
+        setDireccion(value);
+    }
+    const handleSelect=(value)=>{
+        setDireccion(value)
+    }
 
   return (
-    <div className='jumbotron'>
+    <div className={styles.contenedor}>
         
         <div className='container-fluid'>
             <h1>Calcula la distancia entre dos lugares</h1>
+            <p>Ingresá los datos del viaje</p>
             
             <form className='form-horizontal'>
                 <div className='form-group'>
-                    <label for="desde" className='col-x-2 control label'  > <FaRegDotCircle></FaRegDotCircle></label>
+                    <label for="desde" className='col-xs-2 control label'  > <FaRegDotCircle></FaRegDotCircle>Desde</label>
                     <div className='col-xs-4'>
-                        <input 
+                        {/* <input 
                         type="text" id="desde" placeholder='Origen' 
                         className='form-control'>
-                        </input>
+                        </input> */}
+                        <GooglePlacesAutocomplete
+                             nearbyPlacesApi="GooglePlacesSearch"
+                             
+                             debounce={400}
+                          minLengthAutocomplete={2}
+                              placeholder="Desde"
+                           style={{
+                                container:{ 
+                                      flex:0,
+                                },
+                                textInput:{
+                                  fontSize:18,
+                                }
+                                
+                               
+                                
 
-                    </div>
+                             }}
+                             onChange={(data, details=null)=>{ 
+                                  dispatch(origen({ 
+                                      location:details.geometry.location,
+                                     description:data.description
+                                 }))
+                                 dispatch(destino(null))
+
+                             }}
+                             Details={true}
+                             returnKeyType={"buscar"}
+                             ></GooglePlacesAutocomplete>
+                             </div>
 
                 </div>
 
                 <div className='form-group'>
-                    <label for="hacia" className='col-x-2 control label'  > <FaMapMarkerAlt></FaMapMarkerAlt></label>
+                    <label for="hacia" className='col-xs-2 control label'><FaMapMarkerAlt></FaMapMarkerAlt>Hacia</label>
                     <div className='col-xs-4'>
-                        <input 
+                        {/* <input 
                         type="text" id="hacia" placeholder='Destino' 
-                        className='form-control'>
-                        </input>
+                        className='form-control' >
+                        </input> */}
+                               <GooglePlacesAutocomplete
+                                selectProps={{
+                                    value,
+                                    onChange:setValue
+                                }}
+                               ></GooglePlacesAutocomplete>   
 
                     </div>
 
                 </div>
 
             </form>
-            <div className='col-xxs-offset-2 col-xs-10'>
+            <div className='col-xs-offset-2 col-xs-10'>
                 <button className={styles.botonDireccion} 
             
                 ><FaDirections></FaDirections></button>
@@ -72,13 +105,14 @@ export default function OrigenDestino() {
 
         </div>
         <div className='container-fluid'>
-            <div id="googleMap">
+            <div id="googleMap"> 
 
-            </div>
+             </div>
             <div id="output">
 
             </div>
     </div>
+    
     
     </div>
   )
