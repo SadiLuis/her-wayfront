@@ -116,8 +116,8 @@ export default function Registro (){
           <form onSubmit={handleSubmit} >
             <div className="form-group"> {/* CORREO */}
               <label htmlFor="exampleInputEmail1">Correo</label>
-              <input type="email" className="form-control" name='email' value={form.email} onChange={handleChange} id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email" />
-              <small id="emailHelp" className="form-text text-muted">El equipo de Her-Way jamás bajo ninguna circunstancia pedira su correo o contraseña. </small>
+              <input type="email" className="form-control" name='email' value={form.email} onChange={(e)=>handleChange(e.target.name,e.target.value)} id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email" />
+             
             </div>
             {/* Nombre */}
             <div className="form-group">
@@ -137,7 +137,7 @@ export default function Registro (){
             </div>
              {/* Foto */}
              <div className="form-group">
-              <label htmlFor="exampleInputPassword1">Nombre de usuario</label>
+              <label htmlFor="exampleInputPassword1">Foto de Perfil</label>
               <input type="file" className="form-control" id="exampleInputPassword1" placeholder="Nombre de usuario" name='fotoPerfil'  onChange={(e)=>handleChange(e.target.name,e.target.files[0])} />
             </div>
 
@@ -173,6 +173,7 @@ export default function Registro (){
             onChange={(e)=>handleChange(e.target.name,e.target.value)} value={form.telefono} placeholder="Telefono" name = 'telefono' />
           </div>
 
+            <small id="emailHelp" className="form-text text-muted">El equipo de Her-Way jamás bajo ninguna circunstancia pedira su correo o contraseña. </small>
           <div className="form-group form-check">
             <input type="checkbox" className="form-check-input" id="exampleCheck1" />
             <label className="form-check-label" htmlFor="exampleCheck1">Comprendo</label>

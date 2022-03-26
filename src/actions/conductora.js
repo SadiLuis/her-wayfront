@@ -4,18 +4,14 @@ import {  FILTRAR_CONDUCTORA_SEGUN_AUTO,
     GET_ALL_CONDUCTORAS,
     GET_CONDUNCTORAS_NAME,
     CONDUCTORAS_DETAIL,
-
     POST_CONDUCTORAS, 
     GET_PERFILC,LOGIN_USER_SUCCESS,LOGIN_USER_ERROR,REGISTER_USER_SUCCESS,REGISTER_USER_ERROR } from "./index"
 
 import tokenUser from '../Helpers/TokenUser'
 import tokenConductora from "../Helpers/TokenConductora";
 import axios from "axios";
-import Server from './VariableGlobal'
+import {SERVER} from './VariableGlobal'
       
-
-
-const SERVER = Server.SERVER;
 
 
 export const pedirConductora = () => async (dispatch) => {
@@ -166,8 +162,6 @@ export function registerConductora ({
 }
 
 
-
-
    export function conectaConductora(payload){
     let {id, estado} = payload
     
@@ -192,9 +186,33 @@ export function registerConductora ({
         }
     }  
 
+export function loginConductora({ email, contrasena }) {
+    return async (dispach) => {
+        console.log(dispach)
+        try {
 
+            // const config = {
+            //     headers: {
+            //         "Content-Type": "application/json"
+            //     }
+            // }
+
+            const body = { email, contrasena }
+
+            const { data } = await axios.post(`${SERVER}/conductora/login`, body)
+
+            const infoUser = data.user
+            dispach({
+                type: LOGIN_USER_SUCCESS,
+                payload: infoUser
+            })
+            console.log(data)
+        } catch (error) {
+            console.log(error)
+            return dispach({
+                type: LOGIN_USER_ERROR,
+            })
+        }
+    }    
+    
 }
-
-
-
-
