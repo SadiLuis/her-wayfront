@@ -4,11 +4,11 @@ import { useDispatch, useSelector } from 'react-redux';
 
 import {saveImages } from '../../Helpers/saveImage'
 import { Link ,useNavigate} from 'react-router-dom';
-import uno from '../../image/1.jpg'
-import dos from '../../image/2.jpg'
-import tres from '../../image/3.jpg'
+// import uno from '../../image/1.jpg'
+// import dos from '../../image/2.jpg'
+// import tres from '../../image/3.jpg'
 
-import { Link } from 'react-router-dom';
+//import { Link } from 'react-router-dom';
 //import { useStorage} from "reactfire"
 
 

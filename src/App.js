@@ -23,7 +23,7 @@ import OrigenDestino from './Components/OrigenDestino/OrigenDestino';
 import VistaMap from './Screens/VistaMap.jsx'
 import BotonPago from './Components/BotonPago/BotonPago';
 import LoginConductora from './Components/LoginConductora'
-import Reviews from './Components/Reviews/ReviewsConductora';
+//import Reviews from './Components/Reviews/ReviewsConductora';
 import HomeConductora from './Screens/HomeConductora';
 import ContactForm from './Components/ContactForm/ContactForm'
 
