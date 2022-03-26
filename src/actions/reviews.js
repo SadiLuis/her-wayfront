@@ -5,12 +5,12 @@ const SERVER = 'http://localhost:3001'
 
 
 //post de puntuacion y comentario 
-export const postReview = (idConductora, payload) => async(dispatch) => {
+export const postReview = (body) => async(dispatch) => {
     try {
-        const crearReview = await axios.post(`${SERVER}/conductora/${idConductora}/reviews`, payload)
+        const crearReview = await axios.post(`${SERVER}/reviews/create`, body)
         return dispatch ({
             type: CREAR_REVIEW,
-            payload: crearReview
+          
         })     
     } catch (error) {
         console.log('error', error)     
