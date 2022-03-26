@@ -112,14 +112,14 @@ function Mapa({setCoordinates, setBounds, coordinates}) {
         <HStack spacing={2} justifyContent='space-between'>
           <Box flexGrow={1}>
             <Autocomplete>
-              <Input type='text' placeholder='Origin' ref={originRef} />
+              <Input type='text' placeholder='Origen' ref={originRef} />
             </Autocomplete>
           </Box>
           <Box flexGrow={1}>
             <Autocomplete>
               <Input
                 type='text'
-                placeholder='Destination'
+                placeholder='Destino'
                 ref={destiantionRef}
               />
             </Autocomplete>
