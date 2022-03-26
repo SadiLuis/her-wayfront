@@ -1,5 +1,5 @@
-import React, { useState } from 'react';
-import { Routes, Route, BrowserRouter, Navigate } from "react-router-dom";
+import React from 'react';
+import { Routes, Route, BrowserRouter } from "react-router-dom";
 import './App.css';
 import Landing from './Components/Landing/Landing'
 import Home from './Screens/Home';
