@@ -8,7 +8,7 @@ import uno from '../../image/1.jpg'
 import dos from '../../image/2.jpg'
 import tres from '../../image/3.jpg'
 
-import { Link } from 'react-router-dom';
+// import { Link } from 'react-router-dom';
 //import { useStorage} from "reactfire"
 
 
