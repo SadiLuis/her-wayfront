@@ -11,11 +11,11 @@ import {  FILTRAR_CONDUCTORA_SEGUN_AUTO,
 import tokenUser from '../Helpers/TokenUser'
 import tokenConductora from "../Helpers/TokenConductora";
 import axios from "axios";
-import Server from './VariableGlobal'
+import {SERVER} from './VariableGlobal'
       
 
 
-const SERVER = Server.SERVER;
+
 
 
 export const pedirConductora = () => async (dispatch) => {
@@ -164,8 +164,6 @@ export function registerConductora ({
         }
     }
 }
-
-
 
 
    export function conectaConductora(payload){
