@@ -8,7 +8,7 @@ import dos from '../image/2.jpg'
 import tres from '../image/3.jpg'
 
 const initialLogin = {
-  contraseña : '',
+  contrasena : '',
   email: ''
 }
 

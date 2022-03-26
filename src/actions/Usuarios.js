@@ -16,9 +16,9 @@ import {
     RELOADING_PAG
 
 } from "../actions/index";
-import Server from './VariableGlobal'
+import {SERVER} from './VariableGlobal'
 
-const SERVER = Server.SERVER;
+
 
 
 export function updateUser(newUser) {
@@ -97,6 +97,7 @@ export function register ({
     usuario,
     contrasena,
     email,
+    fotoPerfil,
     pais,
     provincia,
     direccion,
@@ -104,19 +105,17 @@ export function register ({
     localidad
 }) {
 
-    return async function (dispach) {
+    return async function (dispatch) {
         try {
 
-            const config = {
-                headers: {
-                    "Content-Type": "application/json"
-                }
-            }
+            
+            
             const body = {
                 nombre,
                 usuario,
                 contrasena,
                 email,
+                fotoPerfil,
                 pais,
                 provincia,
                 direccion,
@@ -124,16 +123,16 @@ export function register ({
                 localidad
             }
 
-            const { data } = await axios.post(`${SERVER}/usuario/register`, body, config)
+            const { data } = await axios.post(`${SERVER}/usuario/register`, body)
 
             const infoUser = data.user
-            dispach({
+            dispatch({
                 type: REGISTER_USER_SUCCESS,
                 payload: infoUser
             })
         } catch (error) {
             console.log(error)
-            return dispach({
+            return dispatch({
                 type: REGISTER_USER_ERROR,
             })
         }

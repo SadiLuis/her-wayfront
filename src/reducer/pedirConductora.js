@@ -1,4 +1,6 @@
-import { PEDIR_CONDUCTORA, DETALLE_CONDUCTORA, GET_ALL_CONDUCTORAS } from "../actions";
+
+import { PEDIR_CONDUCTORA, DETALLE_CONDUCTORA } from "../actions/index";
+
 
 const initialState={
     conductoras:[],
