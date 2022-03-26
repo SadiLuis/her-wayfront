@@ -1,6 +1,7 @@
-.tarjetaTop{
+
+/* .tarjetaTop{
     display: flex;
-    width: 50;
+    width: 12rem;
     height: 2rem;
     border-bottom: solid 2px #646464;
     justify-content: center;
@@ -8,18 +9,17 @@
 }
 
 .tarjetaConductora{
-    /* display: flex; */
+    
     width: 15rem;
     height: 35rem;
     background-color: white;
     border: 2px solid #dfdede;
     border-radius: 0.2rem;
     box-shadow: 2px 2px 4px #646464;
-    color:#e44f9c;
+    color:#646464;
     font-size: medium;
     font-weight:bold;
     align-items: left;
-    /* flex-direction: row; */
     margin-right: auto;
     margin-left: auto;
     margin-top: 10px;
@@ -42,9 +42,9 @@
       justify-content: center;
       padding: 15px;
 
-}
+}*/
  
- .botonPedirConductora{
+  /* .botonPedirConductora{
     background-color: #e44f9c;
       width: 8rem;
       height: 2.8rem;
@@ -66,9 +66,10 @@
     color: white !important;
     border: none;
     font-weight: bold;
-}
+}  */
 
-.ubicacionBoton{
+
+/* .ubicacionBoton{
     display: flex;
     justify-content: center;
     padding: 10px;
@@ -76,7 +77,7 @@
 
 .icono{
     display: flex;
-    /* margin-top: 8rem; */
+    
     padding: 2px;
     color: black;
     border:#e44f9c solid 2px;
@@ -95,13 +96,117 @@ h5:hover{
     background-color: #ff69b4;
     color: white !important;
     border: none;
-    font-weight: bold;
-}
- /* a:hover{
-     background-color: #e44f9c; 
-    color: #ff97d9 !important;
-    border: none;
-    font-weight: bold;
-}  */
-
+    font-weight: bold; */
+ /*
 /* background: linear-gradient(to right, #f988ff, #7f00b2); */
+ 
+/*Tarjeta probando */
+
+ body{
+    margin:0px;
+    padding: 0px;
+    background: #f1f1f1;
+    font-family: arial;
+    box-sizing: border-box;
+}
+
+.tarjetaConductora{
+    width: 300px;
+    height: 500px;
+    background: #fff;
+    border-radius: 6px;
+    position: absolute;
+    top:50%;
+    left: 50%;
+    transform:translate(-50%,-50%);
+    box-shadow: 2px 2px 4px #646464;
+    overflow: hidden;
+    display:inline-block;
+
+
+}
+.tarjetaConductora, h4{
+    font-family: Arial, Helvetica, sans-serif;
+    margin-left: 3px;
+    box-sizing: border-box;;
+    line-height:normal;
+    font-weight: lighter;
+
+}
+.tarjetaConductora p{
+    font-family: Arial, Helvetica, sans-serif;
+    margin-left: 3px;
+    margin-top:2px;
+    padding: 0px;
+    
+}
+.tarjetaTop{
+    display: flex;
+    height: 40px;
+    background: linear-gradient(to right, #f988ff, #7f00b2);
+    justify-content:center;
+    padding-top: 10px;
+    padding-bottom: 5px;
+}
+
+
+.tarjetaConductora h3{
+    box-sizing: border-box;;
+    line-height: .6;
+    font-weight: lighter;
+}
+.tarjetaConductora p{
+    font-size: 16px;
+    color:gray;
+    margin-bottom: 30px;
+}
+.ubicacionBoton{
+    display: flex;
+    justify-content: center;
+    padding: 10px;
+ }
+ .botonSolicitarViaje {
+    display: flex;
+  
+    background: linear-gradient(to right, #f988ff, #7f00b2);
+        width: 8rem;
+        height: 2.8rem;
+        
+        border-radius: 0.5rem;
+        color: white;
+        border: none;
+        cursor: pointer;
+        box-shadow: 2px 2px 4px #646464;
+        text-decoration: none;
+        
+        align-items: center;
+        justify-content: center;
+        padding: 15px;
+  }
+  
+  .botonSolicitarViaje:hover {
+    
+      font-size: 1.2rem;
+      transition: .3s all;
+  }
+  .boton span {
+      margin-right: 10px;
+      
+      
+      
+     
+  }
+
+.icono{
+    display: flex;
+    
+    
+    justify-content: center;
+    align-items: center;
+    padding: 2px;
+    color: #7f00b2;
+    border: solid 2px;
+    border-radius: 9999px; 
+    justify-content:center ;
+    align-items: center;
+    }

@@ -4,23 +4,21 @@ import {  FILTRAR_CONDUCTORA_SEGUN_AUTO,
     GET_ALL_CONDUCTORAS,
     GET_CONDUNCTORAS_NAME,
     CONDUCTORAS_DETAIL,
-
     POST_CONDUCTORAS, 
     GET_PERFILC,LOGIN_USER_SUCCESS,LOGIN_USER_ERROR,REGISTER_USER_SUCCESS,REGISTER_USER_ERROR } from "./index"
 
 import tokenUser from '../Helpers/TokenUser'
 import tokenConductora from "../Helpers/TokenConductora";
 import axios from "axios";
-import Server from './VariableGlobal'
+import {SERVER} from './VariableGlobal'
       
-
-
-const SERVER = Server.SERVER;
 
 
 export const pedirConductora = () => async (dispatch) => {
     try {
-        const respuesta = await axios.get(`${SERVER}/conductora`)
+
+          const respuesta= await axios.get("http://localhost:3001/conductora")
+        //const respuesta = await axios.get(`${SERVER}/conductora`)
         return dispatch({
             type: PEDIR_CONDUCTORA,
             payload: respuesta.data
@@ -166,9 +164,7 @@ export function registerConductora ({
 }
 
 
-
-
-   export function conectaConductora(payload){
+export function conectaConductora(payload){
     let {id, estado} = payload
     
     return async function (dispatch){
@@ -191,10 +187,7 @@ export function registerConductora ({
    
         }
     }  
-
-
 }
-
 
 
 

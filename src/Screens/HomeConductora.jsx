@@ -5,6 +5,7 @@ import {getPerfilConductora, conectaConductora} from "../actions/conductora"
 import { useDispatch, useSelector } from 'react-redux';
 import {Loader} from '../Components/Loader/Loader';
 import Swal from "sweetalert2";
+import NavbarConductora from '../Components/NavbarConductora/NavbarConductora'
 
 
 const HomeConductora = () => {
@@ -60,7 +61,8 @@ const HomeConductora = () => {
     
     if (conductora.nombre) {
         return (
-            <>
+            < >
+            {/* <NavbarConductora idConductora={idConductora} /> */}
             <h1>Bienvenida Conductora {conductora.nombre} </h1>
             
           {conductora.conectada === false? <button className="btn btn-primary" type="button" onClick={(e)=> handleConnect(e)}>CONECTARME</button> :
