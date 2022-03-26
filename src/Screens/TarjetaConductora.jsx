@@ -20,7 +20,7 @@ export default function TarjetaConductoras({nombre,localidad, automovil, patente
 
     <Link to={'/conductoras' + id} style={{color:"#646464"}} >
     <div key={id}></div>
-    <h5>Nombre de la conductora: {nombre}</h5>
+    <h4> Nombre: {nombre}</h4>
     </Link>
     <p>Localidad: {localidad}</p>
     <p>Vehículo: {automovil}</p>
@@ -32,22 +32,23 @@ export default function TarjetaConductoras({nombre,localidad, automovil, patente
     <HiOutlineChatAlt2 style={{fontSize:25}} ></HiOutlineChatAlt2> 
     
     </div>
-   <div className={styles.ubicacionBoton}>
+  <div className={styles.ubicacionBoton}> 
    
      { conectada? 
-     <button  className={styles.botonPedirConductora}   
+     <button  className={styles.botonSolicitarViaje}
      >
-    <Link to="/solicitarViaje" style={{color:"#fff"}}> 
+     <Link to="/solicitarViaje" style={{color:"#fff"}}> 
     {/* quiero que cuando la pasajera haga click acá, vaya al componente recorrido.js que hizo Lore */}
       Solicitar viaje
-      </Link>
+      </Link> 
     </button>
      : <button className={styles.botonDisabled} disabled 
-      > Solicitar viaje
+     > Solicitar viaje
        </button> 
      }
+      </div> 
     
-    </div>
+    
 
     </div>
   )

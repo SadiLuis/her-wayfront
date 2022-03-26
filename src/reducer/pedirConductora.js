@@ -1,4 +1,4 @@
-import { PEDIR_CONDUCTORA, DETALLE_CONDUCTORA } from "../actions";
+import { PEDIR_CONDUCTORA, DETALLE_CONDUCTORA, GET_ALL_CONDUCTORAS } from "../actions";
 
 const initialState={
     conductoras:[],
@@ -16,7 +16,7 @@ export default function pedirConductoraReducer(state=initialState, action){
                 
                 conductoras:payload
             }
-            case DETALLE_CONDUCTORA:
+            case GET_ALL_CONDUCTORAS:
                 return{
                     ...state, 
                     detalle: action.payload
