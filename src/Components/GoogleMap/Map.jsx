@@ -72,21 +72,21 @@ function Mapa({setCoordinates, setBounds, coordinates}) {
       position='relative'
       flexDirection='column'
       alignItems='center'
-      marginTop='50px'
+      marginTop='20px'
       h='100vh'
       w='100vw'
     >
-      <Box position='absolute' left={0} top={0} h='100%' w='100%'>
+      <Box position='relative' left={0} top={0} h='100%' w='100%'>
         {/* Google Map Box */}
         <GoogleMap
           center={coordinates}
           zoom={15}
-          mapContainerStyle={{ width: '100%', height: '100%' }}
+          mapContainerStyle={{ width: '70%', height: '100%' }}
           options={{
-            zoomControl: false,
-            streetViewControl: false,
-            mapTypeControl: false,
-            fullscreenControl: false,
+            zoomControl: true,
+            streetViewControl: true,
+            mapTypeControl: true,
+            fullscreenControl: true,
           }}
           onChange={(e) => {
             setCoordinates({lat: e.center.lat, lng: e.center.lng });
@@ -126,7 +126,7 @@ function Mapa({setCoordinates, setBounds, coordinates}) {
           </Box>
 
           <ButtonGroup>
-            <Button colorScheme='pink' type='submit' onClick={calculateRoute}>
+            <Button colorScheme='blue' type='submit' onClick={calculateRoute}>
               Calculate Route
             </Button>
             <IconButton
