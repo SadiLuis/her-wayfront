@@ -1,5 +1,5 @@
-import React, { useState } from 'react';
-import { Routes, Route, BrowserRouter, Navigate } from "react-router-dom";
+import React from 'react';
+import { Routes, Route, BrowserRouter } from "react-router-dom";
 import './App.css';
 import Landing from './Components/Landing/Landing'
 import Home from './Screens/Home';
@@ -23,13 +23,12 @@ import OrigenDestino from './Components/OrigenDestino/OrigenDestino';
 import VistaMap from './Screens/VistaMap.jsx'
 import BotonPago from './Components/BotonPago/BotonPago';
 import LoginConductora from './Components/LoginConductora'
+import Reviews from './Components/Reviews/ReviewsConductora';
 import HomeConductora from './Screens/HomeConductora';
 import ContactForm from './Components/ContactForm/ContactForm'
 
 
 function App() {
-
-
 
   return (
     <div className="App">
@@ -40,7 +39,7 @@ function App() {
             <Route path="/login" element={<Login />} />
             <Route path="/registro" element={<Registro />} />
             <Route path="/home" element={<Home />} />
-            <Route exact path="/" element={<Landing />} />            
+            <Route exact path="/" element={<Landing />} /> 
             <Route path="/perfilConductora" element={<PerfilConductora />} />
             <Route path="/perfilPasajera" element={<PerfilPasajera />} />
             <Route path="/conductoras" element={<FiltrosConductoras />} />
@@ -49,6 +48,8 @@ function App() {
             <Route path='/conductora/register' element={<RegConductora />}/>
             <Route path="/pedirconductora" element={<PedirConductora/>} />
             <Route path="/tarjetaconductora" element={<TarjetaConductora/>} />
+            <Route path="/mapa" element={<VistaMap />} />
+            <Route path="/botonpago" element={<BotonPago />} />     
             <Route path="/admin" element={<LoginAdmin/>}/>
             <Route path="/admin/usuarios" element={<UsuariosAdmin/>}/>
             <Route path="/admin/pasajeras" element={<VerPasajerasAdmin/>}/>
@@ -57,15 +58,10 @@ function App() {
             <Route path='/admin/darBajaConductora/:id' element={<DarBajaConductora/>}/>
             <Route path='/admin/altaAdmins' element={<AltaAdmins/>}/>         
             <Route path="origendestino" element={<OrigenDestino/>}/>
-            <Route path="/mapa" element={<VistaMap />} />
-            <Route path="/botonpago" element={<BotonPago />} />
             <Route path="/homeConductora" element={<HomeConductora />} />
             <Route path="/contacto" element={<ContactForm/>} />
 
-
           </Routes>
-
-
         </BrowserRouter>
       </div>
     </div>
