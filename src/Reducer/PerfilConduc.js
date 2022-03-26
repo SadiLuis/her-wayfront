@@ -1,3 +1,4 @@
+
 import {GET_PERFILC } from "../actions/index"
 const initialState = {
     
@@ -12,8 +13,11 @@ export default function perfilConductoraReducer(state = initialState, action) {
         case GET_PERFILC:
             return {
                 ...state,
-                perfilConductora: action.payload
+                perfilConductora: action.payload,
+                //conductoras: action.payload,
+                    //filter: action.payload
             }
+
             case "CONECTA_CONDUCTORA":
                 return {
                     ...state,
@@ -27,6 +31,8 @@ export default function perfilConductoraReducer(state = initialState, action) {
             
             default:
                 return state;
+
     }
+
 }
 

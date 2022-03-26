@@ -1,48 +1,109 @@
-import axios from 'axios';
-import { BORRAR_REVIEW, CREAR_REVIEW, OBTENER_REVIEW } from '.';
+import React, { useEffect } from "react";
+import { useState } from "react";
+import { useDispatch } from "react-redux";
+import style from './Reviews.module.css';
+import ReactStars from "react-rating-stars-component";
+import { postReview } from "../../actions/reviews";
+import Swal from 'sweetalert2';
 
-const SERVER = 'http://localhost:3001'
+const CreateReviews = (props) => {
+    const dispatch = useDispatch();
 
+    const [values, setValues] = useState({
+        idConductora: props.idConductora,
+        idPasajera: props.idPasajera,
+        conductora: "",
+        pasajera: "",
+        puntaje: "",
+        comentario: ""
+    })
 
-//post de puntuacion y comentario 
-export const postReview = (body) => async(dispatch) => {
-    try {
-        const crearReview = await axios.post(`${SERVER}/reviews/create`, body)
-        return dispatch ({
-            type: CREAR_REVIEW,
-          
-        })     
-    } catch (error) {
-        console.log('error', error)     
-    }
-};
+           
 
-
-//obtengo todos mis comentarios por ID de producto
-export const getReview= (idConductora) => async (dispatch) => {
-    try {
-        const obtenerReview = await axios.get(`${SERVER}/consductora/${idConductora}/reviews`)
-        return dispatch ({
-            type: OBTENER_REVIEW,
-            payload: obtenerReview.data
+    // cambio de comentarios
+    const handleOnChange = e => {
+        setValues({
+            ...values,
+            [e.target.name]: e.target.value
         })
+        console.log('Values :>> ', values);
+    }
+
+    //cambio de rating o star o puntuacion
+    const ratingChanged = (newRating) => {
+        // console.log('newRating :>> ', newRating);
+        setValues({
+            ...values,
+            puntaje: newRating.toString()
+        })
+        console.log('Values :>> ', values);
+    };
+
+    const handleSubmit = (e) => {// funcion que enviara los datos de mi formulario 
+        e.preventDefault()
+        if (values.puntaje ==='' ||  values.comentario === '') {
+            Swal.fire({
+                icon: 'error',
+                title: 'Ups.. Falta Ingresar la puntuación de ★★★★★ o el Comentario ',
+                // text: 'o un comentario',
+                // footer: '<a href="">Why do I have this issue?</a>'
+            })
+        } else {
+            dispatch(postReview(props.idConductora, values))
+            setValues({
+                idConductora: props.idConductora,
+                idPasajera: props.idPasajera,
+                conductora: "",
+                pasajera: "",
+                puntaje: "",
+                comentario: ""
+            })
+            //window.location = `/conductora/:id`
+        }
         
-    } catch (error) {
-        console.log('error', error) 
     }
-};
 
 
-export const deleteReview = (idConductora, idReview) => async (dispatch) =>{
-    try {
-        const borrarReview = await axios.delete(`${SERVER}/consductora/${idConductora}/review/${idReview}`)
-        return dispatch ({
-            type: BORRAR_REVIEW,
-            payload: borrarReview
-        })     
-    } catch (error) {
-        console.log('error', error)
-    }
+    return (
+        <div>
+            <form className={style.form_review} onSubmit={handleSubmit}>
+                {/* ratings o stars */}
+                <div className={style.createStar}>
+                    <p>Puntua a tu Conductora</p>
+                    <ReactStars
+                    count={5}
+                    onChange={ratingChanged}
+                    size={28}
+                    // activeColor="#ffd700"
+                    activeColor="rgb(0, 72, 181)"
+                    />
+                </div>
+                {/* caja del comentario */}
+                <div className={style.caja}>
+                    <textarea
+                    className={style.description}
+                    title="maximo 120 caracteres"
+                    placeholder="Ingrese su Comentario"
+                    // rows="3"
+                    // cols="70"
+                    resize="none"
+                    value={values.comentario}
+                    onChange={handleOnChange}
+                    name="comentario"
+                    maxLength="120"                
+                    >
+                    </textarea>
+                    <button
+                    type="submit"
+                    className={style.boton}
+                    title="Click aqui para enviar comentario"
+                    >
+                    Enviar Comentario
+                    </button>
+                </div>
+                
+            </form>
+        </div>
+    )
 }
-
-
+export default CreateReviews;
