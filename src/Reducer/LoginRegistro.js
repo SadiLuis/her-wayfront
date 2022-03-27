@@ -90,17 +90,17 @@ export default function LoginRegisReducer(state = initialState, action) {
                     console.log(action.payload)
                     return {
                         ...state,
-                        // isAuth: true,
-                        // token: action.payload.stsTokenManager.accessToken,
-                         //allConductoras: action.payload,
+                        isAuth: true,
+                        token: action.payload.stsTokenManager.accessToken,
+                        //allConductoras: action.payload,
                         conductora: action.payload,
-                        //userInfo: action.payload,
+                        userInfo: action.payload,
                         //filter: action.payload
                     }
                     case LOGIN_CONDUCTORA_ERROR:
-                        return {
-                           error: action.payload
-                        }
+                        // return {
+                        //    error: action.payload
+                        // }
                 case GET_ALL_CONDUCTORAS:
                     return{
                         ...state,

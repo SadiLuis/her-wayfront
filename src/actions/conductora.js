@@ -170,11 +170,11 @@ export function postConductora(payload){
     try{
         return async function (dispatch){
             const create = await axios.post('http://localhost:3001/conductora/register', payload);
-            // return dispatch({
-            //     type: POST_CONDUCTORAS,
-            //     create,
-            // })
-            return create;
+            return dispatch({
+                type: POST_CONDUCTORAS,
+                create,
+            })
+           // return create;
         }
     }catch(err){
         console.log(err)
