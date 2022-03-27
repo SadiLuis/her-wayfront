@@ -1,5 +1,5 @@
 import axios from "axios";
-import SERVER from './VariableGlobal'
+import {SERVER} from './VariableGlobal'
       
 
 

@@ -31,14 +31,9 @@ import VerificarConductora from './Components/Admin/VerificarUsuario/VerificarUs
 import DarBajaConductora from './Components/Admin/DarBajaConductora/DarBajaConductora';
 import AltaAdmins from './Components/Admin/AltaAdmins/AltaAdmins';
 import OrigenDestino from './Components/OrigenDestino/OrigenDestino';
-import VistaMap from './Screens/VistaMap.jsx'
-import BotonPago from './Components/BotonPago/BotonPago';
-import LoginConductora from './Components/LoginConductora'
 //import Reviews from './Components/Reviews/ReviewsConductora';
-import HomeConductora from './Screens/HomeConductora';
 import ViajePasajera from './Components/viajes/ViajePasajera'
 import ViajeConductora from './Components/viajes/ViajeConductora'
-import ContactForm from './Components/ContactForm/ContactForm'
 
 
 
