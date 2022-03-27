@@ -30,13 +30,13 @@ import DetalleConductora from './Components/Admin/DetalleConductora/DetalleCondu
 import VerificarConductora from './Components/Admin/VerificarUsuario/VerificarUsuario';
 import DarBajaConductora from './Components/Admin/DarBajaConductora/DarBajaConductora';
 import AltaAdmins from './Components/Admin/AltaAdmins/AltaAdmins';
-import OrigenDestino from './Components/OrigenDestino/OrigenDestino';
-import VistaMap from './Screens/VistaMap.jsx'
-import BotonPago from './Components/BotonPago/BotonPago';
-import LoginConductora from './Components/LoginConductora'
+//import OrigenDestino from './Components/OrigenDestino/OrigenDestino';
+
+
+
 //import Reviews from './Components/Reviews/ReviewsConductora';
-import HomeConductora from './Screens/HomeConductora';
-import ContactForm from './Components/ContactForm/ContactForm'
+
+
 
 
 function App() {

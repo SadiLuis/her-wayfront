@@ -1,11 +1,12 @@
 import {  FILTRAR_CONDUCTORA_SEGUN_AUTO, 
     PEDIR_CONDUCTORA,
-    DETALLE_CONDUCTORA, 
     GET_ALL_CONDUCTORAS,
-    GET_CONDUNCTORAS_NAME,
-    CONDUCTORAS_DETAIL,
     POST_CONDUCTORAS, 
-    GET_PERFILC,LOGIN_USER_SUCCESS,LOGIN_USER_ERROR,REGISTER_USER_SUCCESS,REGISTER_USER_ERROR } from "./index"
+    GET_PERFILC,
+    LOGIN_CONDUCTORA_SUCCESS,
+    LOGIN_CONDUCTORA_ERROR,
+    REGISTER_CONDUCTORA_SUCCESS,
+    REGISTER_CONDUCTORA_ERROR } from "./index"
 
 import tokenUser from '../Helpers/TokenUser'
 import tokenConductora from "../Helpers/TokenConductora";
@@ -80,10 +81,10 @@ export function loginConductora({ email, contrasena }) {
             const { data } = await axios.post(`http://localhost:3001/conductora/login`, body)
 
 
-            const infoUser = data.user
+            const conductora = data.user
             dispatch({
-                type: LOGIN_USER_SUCCESS,
-                payload: infoUser
+                type: LOGIN_CONDUCTORA_SUCCESS,
+                payload: conductora
 
             })
             console.log(data)
@@ -91,7 +92,7 @@ export function loginConductora({ email, contrasena }) {
             console.log(error)
             return dispatch({
 
-                type: LOGIN_USER_ERROR,
+                type: LOGIN_CONDUCTORA_ERROR,
 
             })
         }
@@ -103,66 +104,82 @@ export function loginConductora({ email, contrasena }) {
 
 
 
-export function registerConductora ({
-        nombre,
-        usuario,
-        contrasena,
-        email,
-        pais,
-        provincia,
-        fotoPerfil,
-        fotoDni,
-        direccion,
-        telefono,
-        localidad,
-        automovil,
-        patente,
-        seguro,
-        habilitacion,
-}) {
+// export function postConductora ({
+//         nombre,
+//         apellido,
+//         usuario,
+//         contrasena,
+//         email,
+//         pais,
+//         provincia,
+//         fotoPerfil,
+//         fotoDni,
+//         direccion,
+//         telefono,
+//         localidad,
+//         automovil,
+//         patente,
+//         seguro,
+//         habilitacion,
+// }) {
 
-    return async function (dispatch) {
-        try {
+//     return async function (dispatch) {
+//         try {
 
-            const config = {
-                headers: {
-                    "Content-Type": "application/json"
-                }
-            }
-            const body = {
-                nombre,
-                usuario,
-                contrasena,
-                email,
-                pais,
-                provincia,
-                direccion,
-                telefono,
-                localidad,
-                fotoDni,
-                fotoPerfil,
-                automovil,
-                patente,
-                seguro,
-                habilitacion
-            }
+//             const config = {
+//                 headers: {
+//                     "Content-Type": "application/json"
+//                 }
+//             }
+//             const body = {
+//                 nombre,
+//                 apellido,
+//                 usuario,
+//                 contrasena,
+//                 email,
+//                 pais,
+//                 provincia,
+//                 direccion,
+//                 telefono,
+//                 localidad,
+//                 fotoDni,
+//                 fotoPerfil,
+//                 automovil,
+//                 patente,
+//                 seguro,
+//                 habilitacion
+//             }
 
-            const { data } = await axios.post(`http://localhost:3001/conductora/register`, body, config)
+//             const { data } = await axios.post('http://localhost:3001/conductora/register', body, config)
 
-            const infoUser = data.user
-            dispatch({
-                type: REGISTER_USER_SUCCESS,
-                payload: infoUser
-            })
-        } catch (error) {
-            console.log(error)
-            return dispatch({
-                type: REGISTER_USER_ERROR,
-            })
+//             const conductora = data.user
+//             dispatch({
+//                 type: REGISTER_CONDUCTORA_SUCCESS,
+//                 payload: conductora
+//             })
+//         } catch (error) {
+//             console.log(error)
+//             return dispatch({
+//                 type: REGISTER_CONDUCTORA_ERROR,
+//             })
+//         }
+//     }
+// }
+
+export function postConductora(payload){
+    try{
+        return async function (dispatch){
+            const create = await axios.post('http://localhost:3001/conductora/register', payload);
+            // return dispatch({
+            //     type: POST_CONDUCTORAS,
+            //     create,
+            // })
+            return create;
         }
-    }
+    }catch(err){
+        console.log(err)
+    }  
 }
-
 
 export function conectaConductora(payload){
     let {id, estado} = payload

@@ -1,5 +1,5 @@
 import React, {useEffect, useState , useRef} from 'react';
-import {registerConductora} from '../../actions/conductora';
+import {postConductora, getAllConductoras} from '../../actions/conductora';
 import { useDispatch, useSelector } from 'react-redux';
 
 import {saveImages } from '../../Helpers/saveImage'
@@ -69,6 +69,7 @@ export default function CreateConductora(){
     const refFileInput = useRef();
     const [conductora, setConductora]=useState({   //este es mi input
         nombre:"",
+        apellido:"",
         usuario:"",
         contrasena:"",
         email:"",
@@ -86,7 +87,9 @@ export default function CreateConductora(){
     });
 
     const [errors, setErrors]=useState({})
-
+    useEffect(()=>{
+        dispatch(getAllConductoras())
+    },[dispatch]);
    
  async function handleSubmit(e){
         e.preventDefault()
@@ -100,9 +103,11 @@ export default function CreateConductora(){
     console.log('entro',auxInput)
          let errors = Object.keys(validate(conductora))
 
-        if(!errors){
+        if(!errors.length !==0){
+            
         setConductora({
         nombre:"",
+        apellido:"",
         usuario:"",
         contrasena:"",
         email:"",
@@ -118,12 +123,12 @@ export default function CreateConductora(){
         seguro:"",
         habilitacion:"",
         })
-          dispatch(registerConductora(auxInput))
+        dispatch(postConductora(auxInput))
         alert('usuario creado con exito')
         }else{
             alert('rellenar los campos correctamente')
         }  
-        navigate('/perfilConductora') 
+       navigate('/perfilConductora') 
     
 
     }
@@ -333,7 +338,7 @@ export default function CreateConductora(){
                 </div>
                 <div className='form-group'>
                 <label htmlFor="exampleInputPassword1">Telefono *</label>
-                <input name='telefono'  className="form-contro"
+                <input name='telefono'  className="form-control"
                     id='telefono'
                     type='text'
                     value={conductora.telefono}
@@ -350,7 +355,7 @@ export default function CreateConductora(){
                 
                 <div className='form-group'>
                 <label htmlFor="exampleInputPassword1">Vehiculo *</label>
-                <input name='automovil' className="form-contro"
+                <input name='automovil' className="form-control"
                     id='automovil'
                     type='text'
                     value={conductora.automovil}
@@ -366,7 +371,7 @@ export default function CreateConductora(){
                 </div>
                 <div className='form-group'>
                 <label htmlFor="exampleInputPassword1">Patente *</label>
-                <input name= 'patente' className="form-contro"
+                <input name= 'patente' className="form-control"
                     id='patente'
                     type='text'
                     value={conductora.patente}
@@ -382,7 +387,7 @@ export default function CreateConductora(){
                 </div>
                 <div className='form-group'>
                 <label htmlFor="exampleInputPassword1">Seguro *</label>
-                <input name='seguro' className="form-contro"
+                <input name='seguro' className="form-control"
                     id='seguro'
                     type='text'
                     value={conductora.seguro}
@@ -398,7 +403,7 @@ export default function CreateConductora(){
                 </div>
                 <div className='form-group'>
                 <label htmlFor="exampleInputPassword1">Habilitacion *</label>
-                <input name='habilitacion' className="form-contro"
+                <input name='habilitacion' className="form-control"
                     id='habilitacion'
                     type='text'
                     value={conductora.habilitacion}
