@@ -26,6 +26,7 @@ function PerfilPasajera() {
     return (
         <div className='perfilCard'>
             <div className='upperContainer'>
+                <h1>Perfil Pasajera</h1>
                 <div className='imageContainer'>
                     <img src={Image}
                         alt='profile pic'
