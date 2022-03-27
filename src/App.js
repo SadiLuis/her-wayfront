@@ -24,6 +24,8 @@ import VistaMap from './Screens/VistaMap.jsx'
 import BotonPago from './Components/BotonPago/BotonPago';
 import LoginConductora from './Components/LoginConductora'
 import HomeConductora from './Screens/HomeConductora';
+import ViajePasajera from './Components/viajes/ViajePasajera'
+import ViajeConductora from './Components/viajes/ViajeConductora'
 
 function App() {
 
@@ -58,6 +60,9 @@ function App() {
             <Route path="/mapa" element={<VistaMap />} />
             <Route path="/botonpago" element={<BotonPago />} />
             <Route path="/homeConductora" element={<HomeConductora />} />
+
+            <Route path="/viajeconductora" element={<ViajeConductora />} />
+            <Route path="/viajepasajera" element={<ViajePasajera />} />
 
           </Routes>
 
