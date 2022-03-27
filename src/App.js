@@ -36,7 +36,10 @@ import BotonPago from './Components/BotonPago/BotonPago';
 import LoginConductora from './Components/LoginConductora'
 //import Reviews from './Components/Reviews/ReviewsConductora';
 import HomeConductora from './Screens/HomeConductora';
+import ViajePasajera from './Components/viajes/ViajePasajera'
+import ViajeConductora from './Components/viajes/ViajeConductora'
 import ContactForm from './Components/ContactForm/ContactForm'
+
 
 
 function App() {
@@ -70,6 +73,9 @@ function App() {
             <Route path='/admin/altaAdmins' element={<AltaAdmins/>}/>         
             <Route path="/homeConductora" element={<HomeConductora />} />
             <Route path="/contacto" element={<ContactForm/>} />
+
+            <Route path="/viajeconductora" element={<ViajeConductora />} />
+            <Route path="/viajepasajera" element={<ViajePasajera />} />
 
           </Routes>
         </BrowserRouter>
