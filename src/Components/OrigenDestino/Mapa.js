@@ -1,4 +1,4 @@
-//setear las opciones del mapa 
+/* //setear las opciones del mapa 
 
 // var mylatlng={lat:-31.7667, lng:-61.3167};
 // //Santa Clara
@@ -77,4 +77,4 @@
 //          position:coord,
 //          map:map
 //      });
-//  }
+//  } */

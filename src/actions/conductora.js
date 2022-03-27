@@ -107,6 +107,7 @@ export function loginConductora({ email, contrasena }) {
 
 export function registerConductora ({
         nombre,
+        apellido,
         usuario,
         contrasena,
         email,
@@ -133,6 +134,7 @@ export function registerConductora ({
             }
             const body = {
                 nombre,
+                apellido,
                 usuario,
                 contrasena,
                 email,

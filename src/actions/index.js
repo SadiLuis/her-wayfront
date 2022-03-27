@@ -7,7 +7,9 @@ export const INFO_PASAJERA_FAIL = "INFO_PASAJERA_FAIL"
 export const ORIGEN = "ORIGEN";
 export const DESTINO = "DESTINO";
 export const TIEMPO_DE_VIAJE = "TIEMPO_DE_VIAJE";
-
+export const VIAJE_CREADO = "VIAJE_CREADO";
+export const VIAJE_RECHAZADO= "VIAJE_RECHAZADO"
+export const DATOS_MAPA = "DATOS_MAPA"
 //////////////// Conductoras ////////////////////////
 
 
@@ -47,7 +49,7 @@ export const AUTHENTICATION_ERROR="AUTHENTICATION_ERROR"
 export const UPDATE_USER="UPDATE_USER"
 export const RESET_PASSWORD="RESET_PASSWORD"
 export const RELOADING_PAG="RELOADING_PAG"
-
+export const GET_PASAJERA="GET_PASAJERA"
 
 ////////////////////////////////////////////////////////////////////////
 

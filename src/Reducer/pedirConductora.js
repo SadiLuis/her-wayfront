@@ -9,17 +9,18 @@ const initialState={
 export default function pedirConductoraReducer(state=initialState, action){
     const {type, payload} = action;
     
-    switch(action.type){
+    switch(type){
         case PEDIR_CONDUCTORA:
+            const conductorasConectadas = payload?.filter(cond => cond.conectada ===true)
             return {
                 ...state,
                 
-                conductoras:payload
+                conductoras:conductorasConectadas
             }
             case DETALLE_CONDUCTORA:
                 return{
                     ...state, 
-                    detalle: action.payload
+                    detalle: payload
                 }
 
 

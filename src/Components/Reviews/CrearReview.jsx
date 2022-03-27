@@ -2,7 +2,7 @@ import React, { useEffect } from "react";
 import { useState } from "react";
 import { useDispatch } from "react-redux";
 import style from './Reviews.module.css';
-import ReactStars from "react-rating-stars-component";
+//import ReactStars from "react-rating-stars-component";
 import { postReview } from "../../actions/reviews";
 import Swal from 'sweetalert2';
 

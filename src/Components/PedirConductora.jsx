@@ -50,6 +50,7 @@ export default function PedirConductora() {
   
               <TarjetaConductora
                 key={elem.id}
+                id= {elem.id}
                 nombre={elem.nombre}
                 localidad={elem.localidad}
                 automovil={elem.automovil}

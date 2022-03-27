@@ -14,7 +14,8 @@ import {
     GET_ALL_CONDUCTORAS,
     //GET_CONDUNCTORAS_NAME,
     //CONDUCTORAS_DETAIL,
-    POST_CONDUCTORAS,    
+    POST_CONDUCTORAS,
+    GET_PASAJERA,    
     GET_USERS
 } from "../actions/index";
 
@@ -22,6 +23,7 @@ const initialState = {
     token: localStorage.getItem("token"),
     isAuth: null,
     detalleUsuario: null,
+    pasajera:[],
     resetPass: [],
     userInfo: [],
     conductoras: [],
@@ -104,23 +106,19 @@ export default function LoginRegisReducer(state = initialState, action) {
                         //userInfo: action.payload,
                         //filters: action.payload
                     }
-                    // case GET_CONDUNCTORAS_NAME:
-                    //     return {
-                    //         ...state,
-                    //         filters: action.payload,
-                    //         allconductoras: action.payload
-                    //     }
-                    //  case CONDUCTORAS_DETAIL:
-                    //      return{
-                    //          ...state,
-                    //          allconductoras: action.payload,
-                    //          detail: action.payload
-                    //      } 
+                   
                      case POST_CONDUCTORAS:
                          return{
                              ...state,
                          } 
-               
+                    case GET_PASAJERA: 
+                        const idPasajera = state.userInfo.uid
+                        const pasajera = action.payload.filter(p => p.authId === idPasajera)
+                    return {
+                        ...state,
+                        pasajera: pasajera
+
+                    }
                 
             default: return state;
     }

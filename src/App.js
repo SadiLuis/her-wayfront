@@ -18,7 +18,7 @@ import FiltrosConductoras from './Components/Pedidos/FiltrosConductoras'
 
 import PedirConductora from './Components/PedirConductora';
 import VistaMap from './Screens/VistaMap.jsx'
-import Reviews from './Components/Reviews/ReviewsConductora';
+//import Reviews from './Components/Reviews/ReviewsConductora';
 import BotonPago from './Components/BotonPago/BotonPago';
 
 import ContactForm from './Components/ContactForm/ContactForm'
@@ -52,12 +52,10 @@ function App() {
             <Route exact path="/" element={<Landing />} /> 
             <Route path="/perfilConductora" element={<PerfilConductora />} />
             <Route path="/perfilPasajera" element={<PerfilPasajera />} />
-            <Route path="/conductoras" element={<FiltrosConductoras />} />
             <Route path='/resetPassword' element={<ResetPassword />} />
             <Route path="/loginConductora" element={<LoginConductora />} />
             <Route path='/conductora/register' element={<RegConductora />}/>
             <Route path="/pedirconductora" element={<PedirConductora/>} />
-            <Route path="/tarjetaconductora" element={<TarjetaConductora/>} />
             <Route path="/mapa" element={<VistaMap />} />
             <Route path="/botonpago" element={<BotonPago />} />     
             <Route path="/admin" element={<LoginAdmin/>}/>

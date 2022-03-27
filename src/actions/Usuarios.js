@@ -9,7 +9,7 @@ import {
     LOGOUT_USER,
     AUTHENTICATION_ERROR,
     UPDATE_USER,
-
+    GET_PASAJERA,
     //REFORCE_PASSWORD
 
     RESET_PASSWORD,
@@ -167,4 +167,19 @@ export const reloadingPage = (payload)=> {
       type:RELOADING_PAG,
       payload
     }
+}
+
+export const getPasajeras = () => {
+    return async function (dispatch){
+        try{
+         const res = await axios.get(`${SERVER}/usuario`)
+            dispatch({
+                type: GET_PASAJERA,
+                payload: res.data
+            })
+        } catch (error) {
+          console.log(error)
+        }
+       }
+
 }
