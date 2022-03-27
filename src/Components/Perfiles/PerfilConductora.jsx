@@ -9,7 +9,7 @@ import './PerfilConductora.css'
 
 export default function PerfilConductora( ) {
 
-    const [loading, setLoading] = useState(true);
+    // const [loading, setLoading] = useState(true);
 
     const navigate = useNavigate()
     const dispatch = useDispatch()

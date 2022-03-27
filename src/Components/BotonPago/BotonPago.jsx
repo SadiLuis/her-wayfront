@@ -3,7 +3,7 @@ import "./BotonPago.css"
 import { useNavigate } from 'react-router-dom';
 import Swal from "sweetalert2";
 import axios from 'axios';
-import {ACCESS_TOKEN, urlMercadoPago, body}  from "./utilsPago"
+import {ACCESS_TOKEN, urlMercadoPago, body}  from "../../utilsPago"
 
 
 
