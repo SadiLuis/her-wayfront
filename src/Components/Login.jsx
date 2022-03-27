@@ -7,6 +7,7 @@ import uno from '../image/1.jpg'
 import dos from '../image/2.jpg'
 import tres from '../image/3.jpg';
 //import styles from "./Login.module.css"
+import LoginConGooglePasajera from './LoginConGooglePasajera';
 
 
 import { pedirConductora } from '../actions/conductora';
@@ -66,6 +67,7 @@ export default function Login() {
    //}
   
 return (
+  
     <div className='row conteiner p-4' >
       <div className='col-md-8'>
 
@@ -143,7 +145,7 @@ return (
               ¿ Olvidaste tu contraseña ?
             </Link>
             </div>       
-
+            <LoginConGooglePasajera/>
           
 
               
@@ -163,7 +165,8 @@ return (
 
       </div> */}
 
-    </div>  
+ 
+    </div> 
     
   )
 }
