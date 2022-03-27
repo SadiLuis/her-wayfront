@@ -51,8 +51,8 @@ function App() {
             <Route path="/registro" element={<Registro />} />
             <Route path="/home" element={<Home />} />
             <Route exact path="/" element={<Landing />} />            
-            <Route path="/perfilConductora/:id" element={<PerfilConductora />} />
-            <Route path="/perfilPasajera/:id" element={<PerfilPasajera />} />
+            <Route path="/perfilConductora" element={<PerfilConductora />} />
+            <Route path="/perfilPasajera" element={<PerfilPasajera />} />
             <Route path="/conductoras" element={<FiltrosConductoras />} />
             <Route path='/resetPassword' element={<ResetPassword />} />
             <Route path="/loginConductora" element={<LoginConductora />} />

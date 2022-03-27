@@ -9,15 +9,7 @@ import {
     UPDATE_USER,
     RESET_PASSWORD,
     RELOADING_PAG,
-    REGISTER_CONDUCTORA_SUCCESS,
-    REGISTER_CONDUCTORA_ERROR,
-    LOGIN_CONDUCTORA_SUCCESS, 
-    LOGIN_CONDUCTORA_ERROR,
-    GET_ALL_CONDUCTORAS,
-    //GET_CONDUNCTORAS_NAME,
-    //CONDUCTORAS_DETAIL,
-    POST_CONDUCTORAS,    
-    GET_USERS
+          
 } from "../actions/index";
 
 const initialState = {
@@ -85,47 +77,8 @@ export default function LoginRegisReducer(state = initialState, action) {
                     ...state,
                     resetPass: action.payload
                 }
-                case LOGIN_CONDUCTORA_SUCCESS:
-                    //localStorage.setItem("token", action.payload.idToken)
-                    console.log(action.payload)
-                    return {
-                        ...state,
-                        isAuth: true,
-                        token: action.payload.stsTokenManager.accessToken,
-                        //allConductoras: action.payload,
-                        conductora: action.payload,
-                        userInfo: action.payload,
-                        //filter: action.payload
-                    }
-                    case LOGIN_CONDUCTORA_ERROR:
-                        // return {
-                        //    error: action.payload
-                        // }
-                case GET_ALL_CONDUCTORAS:
-                    return{
-                        ...state,
-                        allconductoras: action.payload,
-                        //userInfo: action.payload,
-                        filters: action.payload
-                    }
-                    
-                    // case GET_CONDUNCTORAS_NAME:
-                    //     return {
-                    //         ...state,
-                    //         filters: action.payload,
-                    //         allconductoras: action.payload
-                    //     }
-                    //  case CONDUCTORAS_DETAIL:
-                    //      return{
-                    //          ...state,
-                    //          allconductoras: action.payload,
-                    //          detail: action.payload
-                    //      } 
-                     case POST_CONDUCTORAS:
-                         return{
-                             ...state,
-                         } 
-               case REGISTER_CONDUCTORA_ERROR:
+                
+                                        
                 
             default: return state;
     }
