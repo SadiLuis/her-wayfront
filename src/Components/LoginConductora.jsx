@@ -1,15 +1,16 @@
 //import { Button } from 'bootstrap'
-import React, { useState} from 'react'
+import React, { useState } from 'react'
 import { useDispatch } from 'react-redux';
 import { Link, useNavigate } from "react-router-dom";
-import { loginConductora } from '../actions/conductora';
+import { loginConductora } from '../actions/registroConductora';
+import { getPerfilConductora} from "../actions/conductora"
 import uno from '../image/1.jpg'
 import dos from '../image/2.jpg'
 import tres from '../image/3.jpg'
 
 const initialLogin = {
-  contraseña : '',
-  email: ''
+    contrasena: '',
+    email: ''
 }
 
 export default function LoginConductora() {
@@ -17,7 +18,7 @@ export default function LoginConductora() {
     const [formlogin, setFormLogin] = useState(initialLogin)
     const [error, setError] = useState()
     const navigate = useNavigate()
-    const dispach = useDispatch()
+    const dispatch = useDispatch()
 
     const handleChange = (e) => {
 
@@ -42,7 +43,8 @@ export default function LoginConductora() {
         }
         setError(errors)
 
-        dispach(loginConductora(formlogin))
+        dispatch(loginConductora(formlogin))
+        
         console.log(formlogin)
         navigate('/homeconductora')
     }
@@ -83,7 +85,6 @@ export default function LoginConductora() {
                         <div className="form-group"> {/* CORREO */}
                             <label htmlFor="exampleInputEmail1">Correo</label>
                             <input type="email" className="form-control" placeholder="Ingresar Correo" name='email' onChange={handleChange} value={formlogin.email} />
-                            <small >El equipo de Her-Way jamás bajo ninguna circunstancia pedira su correo o contraseña. </small>
                             {/* Contraseña  */}
                         </div>
                         <div className="form-group">
@@ -91,8 +92,10 @@ export default function LoginConductora() {
                             <input type="password" className="form-control" id="exampleInputPassword1" placeholder="Password" name='contrasena' onChange={handleChange} value={formlogin.contrasena} />
                         </div>
                         <div className="form-group form-check">
-                            <input type="checkbox" className="form-check-input" id="exampleCheck1" />
+                            <small >El equipo de Her-Way jamás bajo ninguna circunstancia pedira su correo o contraseña. </small>
+                            <br />
                             <label className="form-check-label" htmlFor="exampleCheck1">Comprendo</label>
+                            <input type="checkbox" className="form-check-input" id="exampleCheck1" />
                         </div>
                         <button type="submit" className="btn btn-primary">Entrar</button>
 

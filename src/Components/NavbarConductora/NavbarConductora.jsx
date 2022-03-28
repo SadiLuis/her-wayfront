@@ -1,10 +1,10 @@
 import React from 'react'
-import "./Navbar.css";
+import "./NavbarConductora.css";
 
 
-const Navbar = () => {
+const Navbar = ( idConductora ) => {
 
-    const navbarLinks = [{ url: "/home", title: "Home" }]
+    const navbarLinks = [ { url: `/PerfilConductora${idConductora}` , title: "Perfil" }]
 
     return (
         <nav className="navbar">

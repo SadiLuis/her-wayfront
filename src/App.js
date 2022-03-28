@@ -1,34 +1,42 @@
-import React, { useState } from 'react';
-import { Routes, Route, BrowserRouter, Navigate } from "react-router-dom";
+import React from 'react';
+import { Routes, Route, BrowserRouter } from "react-router-dom";
 import './App.css';
 import Landing from './Components/Landing/Landing'
 import Home from './Screens/Home';
 import Login from './Components/Login';
 import Registro from './Components/Registro';
-import PerfilConductora from './Components/Perfiles/PerfilConductora';
-import PerfilPasajera from './Components/Perfiles/PerfilPasajera';
-import RegConductora from './Components/RegConductora/RegConductora'
-import FiltrosConductoras from './Components/Pedidos/FiltrosConductoras';
 import ResetPassword from './Components/ResetPassword';
-import PedirConductora from './Components/PedirConductora';
+
+import PerfilPasajera from './Components/Perfiles/PerfilPasajera';
+
+import HomeConductora from './Screens/HomeConductora';
+import RegConductora from './Components/RegConductora/RegConductora'
+import LoginConductora from './Components/LoginConductora'
+import PerfilConductora from './Components/Perfiles/PerfilConductora';
 import TarjetaConductora from './Screens/TarjetaConductora';
+import FiltrosConductoras from './Components/Pedidos/FiltrosConductoras'
+
+import PedirConductora from './Components/PedirConductora';
+import VistaMap from './Screens/VistaMap.jsx'
+//import Reviews from './Components/Reviews/ReviewsConductora';
+import BotonPago from './Components/BotonPago/BotonPago';
+
+import ContactForm from './Components/ContactForm/ContactForm'
+
+import UsuariosAdmin from './Components/Admin/UsuariosAdmin/UsuariosAdmin';
 import LoginAdmin from './Components/Admin/LoginAdmin/LoginAdmin';
-import UsuariosAdmin from './Components/Admin/UsuariosAdmin/UsuariosAdmin'
-import DetalleConductora from './Components/Admin/DetalleConductora/DetalleConductora';
 import VerPasajerasAdmin from './Components/Admin/VerPasajerasAdmin/VerPasajerasAdmin';
+import DetalleConductora from './Components/Admin/DetalleConductora/DetalleConductora';
 import VerificarConductora from './Components/Admin/VerificarUsuario/VerificarUsuario';
 import DarBajaConductora from './Components/Admin/DarBajaConductora/DarBajaConductora';
 import AltaAdmins from './Components/Admin/AltaAdmins/AltaAdmins';
 import OrigenDestino from './Components/OrigenDestino/OrigenDestino';
-import VistaMap from './Screens/VistaMap.jsx'
-import BotonPago from './Components/BotonPago/BotonPago';
-import LoginConductora from './Components/LoginConductora'
-import HomeConductora from './Screens/HomeConductora';
-
+//import Reviews from './Components/Reviews/ReviewsConductora';
+import ViajePasajera from './Components/viajes/ViajePasajera'
+import ViajeConductora from './Components/viajes/ViajeConductora'
+import LoginConGooglePasajera from './Components/LoginConGooglePasajera';
 
 function App() {
-
-
 
   return (
     <div className="App">
@@ -45,25 +53,26 @@ function App() {
             <Route path="/conductoras" element={<FiltrosConductoras />} />
             <Route path='/resetPassword' element={<ResetPassword />} />
             <Route path="/loginConductora" element={<LoginConductora />} />
-            <Route path='/conductora/register' element={<RegConductora />}/>
-            <Route path="/pedirconductora" element={<PedirConductora/>} />
-            <Route path="/tarjetaconductora" element={<TarjetaConductora/>} />
-            <Route path="/admin" element={<LoginAdmin/>}/>
-            <Route path="/admin/usuarios" element={<UsuariosAdmin/>}/>
-            <Route path="/admin/pasajeras" element={<VerPasajerasAdmin/>}/>
-            <Route path='/admin/:id' element={<DetalleConductora/>}/>
-            <Route path='/admin/verificar/:id' element={<VerificarConductora/>}/>
-            <Route path='/admin/darBajaConductora/:id' element={<DarBajaConductora/>}/>
-            <Route path='/admin/altaAdmins' element={<AltaAdmins/>}/>         
-            <Route path="origendestino" element={<OrigenDestino/>}/>
+            <Route path='/conductora/register' element={<RegConductora />} />
+            <Route path="/pedirconductora" element={<PedirConductora />} />
+            <Route path="/tarjetaconductora" element={<TarjetaConductora />} />
             <Route path="/mapa" element={<VistaMap />} />
             <Route path="/botonpago" element={<BotonPago />} />
+            <Route path="/admin" element={<LoginAdmin />} />
+            <Route path="/admin/usuarios" element={<UsuariosAdmin />} />
+            <Route path="/admin/pasajeras" element={<VerPasajerasAdmin />} />
+            <Route path='/admin/:id' element={<DetalleConductora />} />
+            <Route path='/admin/verificar/:id' element={<VerificarConductora />} />
+            <Route path='/admin/darBajaConductora/:id' element={<DarBajaConductora />} />
+            <Route path='/admin/altaAdmins' element={<AltaAdmins />} />
             <Route path="/homeConductora" element={<HomeConductora />} />
+            <Route path="/contacto" element={<ContactForm />} />
 
+            <Route path="/viajeconductora" element={<ViajeConductora />} />
+            <Route path="/viajepasajera" element={<ViajePasajera />} />
+            <Route path="/loginPasajeraConGoogle" element={<LoginConGooglePasajera />} />
 
           </Routes>
-
-
         </BrowserRouter>
       </div>
     </div>

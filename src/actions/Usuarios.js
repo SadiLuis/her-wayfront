@@ -9,16 +9,13 @@ import {
     LOGOUT_USER,
     AUTHENTICATION_ERROR,
     UPDATE_USER,
-
-    //REFORCE_PASSWORD
-
     RESET_PASSWORD,
     RELOADING_PAG
 
 } from "../actions/index";
-import Server from './VariableGlobal'
+import {SERVER} from './VariableGlobal'
 
-const SERVER = Server.SERVER;
+
 
 
 export function updateUser(newUser) {
@@ -40,7 +37,7 @@ export function updateUser(newUser) {
 export function getuserDetails(id) {
     return async function (dispach) {
         try {
-            const res = await axios.get(`${SERVER}/usuario/${id}`, tokenUser())
+            const res = await axios.get(`${SERVER}usuario/${id}`, tokenUser())
 
             dispach({
                 type: GET_USER_DETAILS,
@@ -74,7 +71,7 @@ export function login({ email, contrasena }) {
 
             const body = { email, contrasena }
 
-            const { data } = await axios.post(`${SERVER}/usuario/login`, body)
+            const { data } = await axios.post(`${SERVER}usuario/login`, body)
 
             const infoUser = data.user
             dispach({
@@ -97,6 +94,7 @@ export function register ({
     usuario,
     contrasena,
     email,
+    fotoPerfil,
     pais,
     provincia,
     direccion,
@@ -104,19 +102,14 @@ export function register ({
     localidad
 }) {
 
-    return async function (dispach) {
-        try {
-
-            const config = {
-                headers: {
-                    "Content-Type": "application/json"
-                }
-            }
+    return async function (dispatch) {
+        try {           
             const body = {
                 nombre,
                 usuario,
                 contrasena,
                 email,
+                fotoPerfil,
                 pais,
                 provincia,
                 direccion,
@@ -124,16 +117,16 @@ export function register ({
                 localidad
             }
 
-            const { data } = await axios.post(`${SERVER}/usuario/register`, body, config)
+            const { data } = await axios.post(`${SERVER}usuario/register`, body)
 
             const infoUser = data.user
-            dispach({
+            dispatch({
                 type: REGISTER_USER_SUCCESS,
                 payload: infoUser
             })
         } catch (error) {
             console.log(error)
-            return dispach({
+            return dispatch({
                 type: REGISTER_USER_ERROR,
             })
         }
@@ -149,7 +142,7 @@ export function register ({
              }
          }
          const body = {email}
-         const res = await axios.post(`${SERVER}/reset`, body, config)
+         const res = await axios.post(`${SERVER}reset`, body, config)
          dispatch({
              type: RESET_PASSWORD,
              payload: res.data

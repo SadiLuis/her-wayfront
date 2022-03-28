@@ -9,16 +9,11 @@
   
 /*cierre de la clase tamaño*/
 
-/* .app{
-    background-color: plum;
+.app{
     background-size: cover;
-    background-repeat: no-repeat;
-    width: 100%;
+    width: 100vh;
     height: 100vh;
-    display: flex;
-    justify-content: center;
-    align-items: center; 
-  }*/
+  }
 
 
 /* .App-logo {
@@ -88,8 +83,8 @@
 
 }
 
-
+/* 
  .App {
   background-color: #FFA8D9 (255,168,217); 
- }
+ } */
 
