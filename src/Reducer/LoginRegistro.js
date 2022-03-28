@@ -69,6 +69,7 @@ export default function LoginRegisReducer(state = initialState, action) {
                     token: null,
                     isAuth: false,
                     detalleUsuario: null,
+                    userInfo:[]
                 }
             case UPDATE_USER:
                 return {
@@ -114,6 +115,7 @@ export default function LoginRegisReducer(state = initialState, action) {
                     case GET_PASAJERA: 
                         const idPasajera = state.userInfo.uid
                         const pasajera = action.payload.filter(p => p.authId === idPasajera)
+                        console.log(idPasajera)
                     return {
                         ...state,
                         pasajera: pasajera

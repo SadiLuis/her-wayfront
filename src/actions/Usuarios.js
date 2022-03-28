@@ -13,7 +13,8 @@ import {
     //REFORCE_PASSWORD
 
     RESET_PASSWORD,
-    RELOADING_PAG
+    RELOADING_PAG,
+   
 
 } from "../actions/index";
 import {SERVER} from './VariableGlobal'

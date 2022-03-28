@@ -26,23 +26,25 @@ const VerConductorasAdmin = ({ conductoras }) => {
             <td >{c.nombre}</td>
             <td >{c.usuario}</td>
             <td >{c.email}</td>
-            {c.verificar ? (
+            {c.cuentaActiva?c.verificar ? (
               <td><Link to={`../admin/verificar/${c.id}`}>
                 <button>Verificar</button> 
                 </Link></td>
             )
               : <td>{c.conectada ? 'Conectada' : 'No conectada'}</td>
+              : <td>Cuenta dada de baja</td>
             }
             <td>
               <Link to={`../admin/${c.id}`}>
                 <button>Ver Detalle</button>
               </Link>
             </td>
-            <td>
+            {c.cuentaActiva?<td>
               <Link to={`../admin/darBajaConductora/${c.id}`}>
                 <button>Dar Baja</button>
               </Link>
             </td>
+            :<td></td>}
           </tr>
 
         )

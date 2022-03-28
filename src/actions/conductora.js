@@ -32,6 +32,7 @@ export const pedirConductora = () => async (dispatch) => {
 
 
 export function getPerfilConductora(id) {
+    console.log(id)
     return async dispatch => {
         const request = await axios.get(`${SERVER}/conductora/${id}`)
         console.log(request)

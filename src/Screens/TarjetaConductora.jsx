@@ -5,6 +5,7 @@ import {HiOutlineChatAlt2} from "react-icons/hi";
 import {FaTaxi } from "react-icons/fa";
 import { useState , useEffect } from 'react';
 import {getPasajeras} from '../actions/Usuarios'
+import {getPerfilConductora} from '../actions/conductora'
 import {crearViaje} from '../actions/recorrido'
 import {useDispatch, useSelector} from 'react-redux'
 // import Swal from "sweetalert2"
@@ -20,27 +21,30 @@ export default function TarjetaConductoras({nombre,localidad, automovil, patente
     const navigate = useNavigate()
 
     useEffect(()=>{
+   
   dispatch(getPasajeras())
     },[dispatch])
-
+       console.log(pasajera)
      const data = {
-      direcOrigen: viaje.direcOrigen,
-      direcDestino: viaje.direcDestino,
-      coordDestino: viaje.coordDestino,
-      coordOrigen: viaje.coordOrigen,
-      descripDestino: viaje.results.routes[0].summary,
+      direcOrigen: viaje?.direcOrigen,
+      direcDestino: viaje?.direcDestino,
+      coordDestino: viaje?.coordDestino,
+      coordOrigen: viaje?.coordOrigen,
+      descripDestino: viaje?.results.routes[0].summary,
       descripOrigen: "",
       estadoViaje: "requerido",
       idChat:"023545",
       idConductora: id,
       nombreConductora: nombre,
-      idPasajera: pasajera.id,
-      nombrePasajera: pasajera.nombre,
-      precio: viaje.results.routes[0].legs[0].distance.value * 0.04
+      idPasajera: pasajera[0]?.id,
+      nombrePasajera: pasajera[0]?.nombre,
+      precio: viaje?.results.routes[0].legs[0].distance.value * 0.04
     } 
 
     const handleButton =(payload)=>{
-        dispatch(crearViaje(payload))
+      dispatch(getPerfilConductora(payload.idConductora))
+        //dispatch(crearViaje(payload))
+        navigate('/viajeAceptado')
     } 
 
   return (

@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { pedirConductora,detalleConductora } from '../actions/conductora';
 import TarjetaConductora from '../Screens/TarjetaConductora';
 import styles from "./PedirConductora.module.css"
+import {getPasajeras} from '../actions/Usuarios'
 import { Link } from 'react-router-dom';
 // import "bootstrap/dist/css/bootstrap.min.css";
 // import {Container, Row, Col} from "react-bootstrap"
@@ -21,6 +22,7 @@ export default function PedirConductora() {
       
   useEffect(()=>{
     dispatch(pedirConductora())
+    dispatch(getPasajeras())
   }, [dispatch])
   
   // useEffect(()=>{

@@ -6,23 +6,11 @@ import Home from './Screens/Home';
 import Login from './Components/Login';
 import Registro from './Components/Registro';
 import ResetPassword from './Components/ResetPassword';
-
 import PerfilPasajera from './Components/Perfiles/PerfilPasajera';
-
-import HomeConductora from './Screens/HomeConductora';
 import RegConductora from './Components/RegConductora/RegConductora'
-import LoginConductora from './Components/LoginConductora'
 import PerfilConductora from './Components/Perfiles/PerfilConductora';
-import TarjetaConductora from './Screens/TarjetaConductora';
-import FiltrosConductoras from './Components/Pedidos/FiltrosConductoras'
-
 import PedirConductora from './Components/PedirConductora';
-import VistaMap from './Screens/VistaMap.jsx'
 //import Reviews from './Components/Reviews/ReviewsConductora';
-import BotonPago from './Components/BotonPago/BotonPago';
-
-import ContactForm from './Components/ContactForm/ContactForm'
-
 import UsuariosAdmin from './Components/Admin/UsuariosAdmin/UsuariosAdmin';
 import LoginAdmin from './Components/Admin/LoginAdmin/LoginAdmin';
 import VerPasajerasAdmin from './Components/Admin/VerPasajerasAdmin/VerPasajerasAdmin';
@@ -30,10 +18,12 @@ import DetalleConductora from './Components/Admin/DetalleConductora/DetalleCondu
 import VerificarConductora from './Components/Admin/VerificarUsuario/VerificarUsuario';
 import DarBajaConductora from './Components/Admin/DarBajaConductora/DarBajaConductora';
 import AltaAdmins from './Components/Admin/AltaAdmins/AltaAdmins';
-
-
-
-
+import LoginConductora from './Components/LoginConductora'
+import VistaMap from './Screens/VistaMap';
+import BotonPago from './Components/BotonPago/BotonPago.jsx'
+import HomeConductora from './Screens/HomeConductora';
+import ContactForm from './Components/ContactForm/ContactForm'
+import ViajePasajera from './Components/ViajePasajera/ViajePasajera.jsx'
 //import FiltrosConductoras from './Components/Pedidos/FiltrosConductoras';
 
 
@@ -67,6 +57,7 @@ function App() {
             <Route path='/admin/altaAdmins' element={<AltaAdmins/>}/>         
             <Route path="/homeConductora" element={<HomeConductora />} />
             <Route path="/contacto" element={<ContactForm/>} />
+            <Route path="/viajeAceptado" element={<ViajePasajera/>} />
 
           </Routes>
         </BrowserRouter>

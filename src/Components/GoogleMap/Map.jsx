@@ -65,6 +65,7 @@ function Mapa({setCoordinates, setBounds, coordinates}) {
       coordOrigen:results.routes[0].legs[0].start_location,
       results
     }
+    console.log(data)
     dispatch(datosMapa(data))
   }
 
@@ -146,7 +147,7 @@ function Mapa({setCoordinates, setBounds, coordinates}) {
             />
           </ButtonGroup>
         </HStack>
-        <HStack spacing={4} mt={4} justifyContent='space-between'>
+       {distance && <HStack spacing={4} mt={4} justifyContent='space-between'>
           <Text>Distancia: {distance} </Text>
           <Text>Duracion: {duration} </Text>
           <IconButton
@@ -158,8 +159,10 @@ function Mapa({setCoordinates, setBounds, coordinates}) {
               map.setZoom(15)
             }}
           />
+       
         </HStack>
-        <button onClick={()=> navigate('/pedirconductora')}>Confirmar viaje</button>
+      }
+      {distance && <button onClick={()=> navigate('/pedirconductora')}>Confirmar viaje</button> }
       </Box>
     </Flex>
   )
