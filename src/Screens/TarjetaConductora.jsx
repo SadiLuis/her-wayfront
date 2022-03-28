@@ -43,7 +43,7 @@ export default function TarjetaConductoras({nombre,localidad, automovil, patente
 
     const handleButton =(payload)=>{
       dispatch(getPerfilConductora(payload.idConductora))
-        //dispatch(crearViaje(payload))
+        dispatch(crearViaje(payload))
         navigate('/viajeAceptado')
     } 
 
