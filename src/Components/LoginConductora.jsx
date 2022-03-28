@@ -97,7 +97,9 @@ export default function LoginConductora() {
                             <label className="form-check-label" htmlFor="exampleCheck1">Comprendo</label>
                             <input type="checkbox" className="form-check-input" id="exampleCheck1" />
                         </div>
-                        <button type="submit" className="btn btn-primary">Entrar</button>
+                        <button type="submit" className="btn btn-primary"
+                        disabled={!formlogin.email || !formlogin.contrasena}
+                        >Entrar</button>
 
                         <div className='text-center '>
                             <span>¿No tienes cuenta?</span>
