@@ -1,0 +1,40 @@
+.botonPedirConductora{
+    background-color: #e44f9c;
+      width: 8rem;
+      height: 2.8rem;
+      
+      border-radius: 0.5rem;
+      color: white;
+      border: none;
+      cursor: pointer;
+      box-shadow: 2px 2px 4px #646464;
+      text-decoration: none;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 15px;
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      margin-top: 500px;
+      margin-left: auto;
+      margin-right: auto;
+     
+      
+}
+.botonPedirConductora:hover{
+    background-color: #ff69b4;
+    color: white ;
+    border: none;
+    font-weight: bold;
+}
+
+.title{
+    color: white;
+    font-family: "MonteCarlo", cursive;
+    background-color:#646464;
+    opacity: 0.75;
+    border-radius: 5px;
+}

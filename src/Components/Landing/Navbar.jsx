@@ -6,7 +6,7 @@ const Navbar = () => {
 
 
 
-    const loginLink = [{ url: "/login", title: "Login" }]
+   
 
     const contactLink = [{url: "/contacto", title: "Contacto"}]
     const navbarLinks = [{ url: "/home", title: "Home" }]
@@ -38,17 +38,7 @@ const Navbar = () => {
                 })}
             </ul>
 
-            <ul className='navbarList'>
-                {loginLink.map((item) => {
-                    return (
-                        <li className='navbarItem' key={item.title}>
-                            <a className='navbarLink' href={item.url}>
-                                {item.title}
-                            </a>
-                        </li>
-                    )
-                })}
-            </ul>
+           
 
         </nav >
     );
