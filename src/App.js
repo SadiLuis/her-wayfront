@@ -31,12 +31,7 @@ import VerificarConductora from './Components/Admin/VerificarUsuario/VerificarUs
 import DarBajaConductora from './Components/Admin/DarBajaConductora/DarBajaConductora';
 import AltaAdmins from './Components/Admin/AltaAdmins/AltaAdmins';
 import OrigenDestino from './Components/OrigenDestino/OrigenDestino';
-import VistaMap from './Screens/VistaMap.jsx'
-import BotonPago from './Components/BotonPago/BotonPago';
-import LoginConductora from './Components/LoginConductora'
 //import Reviews from './Components/Reviews/ReviewsConductora';
-import HomeConductora from './Screens/HomeConductora';
-import ContactForm from './Components/ContactForm/ContactForm'
 
 
 function App() {
@@ -50,26 +45,26 @@ function App() {
             <Route path="/login" element={<Login />} />
             <Route path="/registro" element={<Registro />} />
             <Route path="/home" element={<Home />} />
-            <Route exact path="/" element={<Landing />} />            
+            <Route exact path="/" element={<Landing />} />
             <Route path="/perfilConductora/:id" element={<PerfilConductora />} />
             <Route path="/perfilPasajera/:id" element={<PerfilPasajera />} />
             <Route path="/conductoras" element={<FiltrosConductoras />} />
             <Route path='/resetPassword' element={<ResetPassword />} />
             <Route path="/loginConductora" element={<LoginConductora />} />
-            <Route path='/conductora/register' element={<RegConductora />}/>
-            <Route path="/pedirconductora" element={<PedirConductora/>} />
-            <Route path="/tarjetaconductora" element={<TarjetaConductora/>} />
+            <Route path='/conductora/register' element={<RegConductora />} />
+            <Route path="/pedirconductora" element={<PedirConductora />} />
+            <Route path="/tarjetaconductora" element={<TarjetaConductora />} />
             <Route path="/mapa" element={<VistaMap />} />
-            <Route path="/botonpago" element={<BotonPago />} />     
-            <Route path="/admin" element={<LoginAdmin/>}/>
-            <Route path="/admin/usuarios" element={<UsuariosAdmin/>}/>
-            <Route path="/admin/pasajeras" element={<VerPasajerasAdmin/>}/>
-            <Route path='/admin/:id' element={<DetalleConductora/>}/>
-            <Route path='/admin/verificar/:id' element={<VerificarConductora/>}/>
-            <Route path='/admin/darBajaConductora/:id' element={<DarBajaConductora/>}/>
-            <Route path='/admin/altaAdmins' element={<AltaAdmins/>}/>         
+            <Route path="/botonpago" element={<BotonPago />} />
+            <Route path="/admin" element={<LoginAdmin />} />
+            <Route path="/admin/usuarios" element={<UsuariosAdmin />} />
+            <Route path="/admin/pasajeras" element={<VerPasajerasAdmin />} />
+            <Route path='/admin/:id' element={<DetalleConductora />} />
+            <Route path='/admin/verificar/:id' element={<VerificarConductora />} />
+            <Route path='/admin/darBajaConductora/:id' element={<DarBajaConductora />} />
+            <Route path='/admin/altaAdmins' element={<AltaAdmins />} />
             <Route path="/homeConductora" element={<HomeConductora />} />
-            <Route path="/contacto" element={<ContactForm/>} />
+            <Route path="/contacto" element={<ContactForm />} />
 
           </Routes>
         </BrowserRouter>

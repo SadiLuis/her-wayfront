@@ -4,7 +4,7 @@ import "./Navbar.css";
 
 const Navbar = () => {
 
-    const navbarLinks = [{ url: "/home", title: "Login" }]
+    const navbarLinks = [{ url: "/home", title: "Home" }]
 
     return (
         <nav className="navbar">

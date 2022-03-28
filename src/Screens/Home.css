@@ -1,0 +1,32 @@
+.title{
+    color: white;
+    font-family: "MonteCarlo", cursive;
+    background-color:#646464;
+    opacity: 0.75;
+}
+
+.words{
+    font-family: 'Montserrat', sans-serif;
+}
+
+.home{
+    background-image: url("../Media/carWoman.jpg");
+height: 100vh;
+/* width: max-content; */
+position: relative;
+background-position: center;
+background-repeat: no-repeat;
+background-size: cover;
+}
+
+.box{
+    background-color:#ffffff57;
+}
+
+.lema{
+    font-family: 'Montserrat', sans-serif;
+}
+
+.btn{
+    background:#f988ff;
+}
