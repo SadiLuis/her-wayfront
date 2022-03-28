@@ -4,7 +4,11 @@ import "./Navbar.css";
 
 const Navbar = () => {
 
+
+    const navbarLinks = [{ url: "/home", title: "Login" }]
+    const contactLink = [{url: "/contacto", title: "Contacto"}]
     const navbarLinks = [{ url: "/home", title: "Home" }]
+
 
     return (
         <nav className="navbar">
@@ -20,6 +24,18 @@ const Navbar = () => {
                     )
                 })}
             </ul>
+            <ul className='navbarList'>
+                {contactLink.map((item) => {
+                    return (
+                        <li className='navbarItem' key={item.title}>
+                            <a className='navbarLink' href={item.url}>
+                                {item.title}
+                            </a>
+                        </li>
+                    )
+                })}
+            </ul>
+
         </nav >
     );
 };
