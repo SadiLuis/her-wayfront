@@ -36,8 +36,6 @@ import ViajePasajera from './Components/viajes/ViajePasajera'
 import ViajeConductora from './Components/viajes/ViajeConductora'
 import LoginConGooglePasajera from './Components/LoginConGooglePasajera';
 
-
-
 function App() {
 
   return (
@@ -55,20 +53,20 @@ function App() {
             <Route path="/conductoras" element={<FiltrosConductoras />} />
             <Route path='/resetPassword' element={<ResetPassword />} />
             <Route path="/loginConductora" element={<LoginConductora />} />
-            <Route path='/conductora/register' element={<RegConductora />}/>
-            <Route path="/pedirconductora" element={<PedirConductora/>} />
-            <Route path="/tarjetaconductora" element={<TarjetaConductora/>} />
+            <Route path='/conductora/register' element={<RegConductora />} />
+            <Route path="/pedirconductora" element={<PedirConductora />} />
+            <Route path="/tarjetaconductora" element={<TarjetaConductora />} />
             <Route path="/mapa" element={<VistaMap />} />
-            <Route path="/botonpago" element={<BotonPago />} />     
-            <Route path="/admin" element={<LoginAdmin/>}/>
-            <Route path="/admin/usuarios" element={<UsuariosAdmin/>}/>
-            <Route path="/admin/pasajeras" element={<VerPasajerasAdmin/>}/>
-            <Route path='/admin/:id' element={<DetalleConductora/>}/>
-            <Route path='/admin/verificar/:id' element={<VerificarConductora/>}/>
-            <Route path='/admin/darBajaConductora/:id' element={<DarBajaConductora/>}/>
-            <Route path='/admin/altaAdmins' element={<AltaAdmins/>}/>         
+            <Route path="/botonpago" element={<BotonPago />} />
+            <Route path="/admin" element={<LoginAdmin />} />
+            <Route path="/admin/usuarios" element={<UsuariosAdmin />} />
+            <Route path="/admin/pasajeras" element={<VerPasajerasAdmin />} />
+            <Route path='/admin/:id' element={<DetalleConductora />} />
+            <Route path='/admin/verificar/:id' element={<VerificarConductora />} />
+            <Route path='/admin/darBajaConductora/:id' element={<DarBajaConductora />} />
+            <Route path='/admin/altaAdmins' element={<AltaAdmins />} />
             <Route path="/homeConductora" element={<HomeConductora />} />
-            <Route path="/contacto" element={<ContactForm/>} />
+            <Route path="/contacto" element={<ContactForm />} />
 
             <Route path="/viajeconductora" element={<ViajeConductora />} />
             <Route path="/viajepasajera" element={<ViajePasajera />} />

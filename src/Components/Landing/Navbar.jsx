@@ -4,8 +4,11 @@ import "./Navbar.css";
 
 const Navbar = () => {
 
+
     const navbarLinks = [{ url: "/home", title: "Login" }]
     const contactLink = [{url: "/contacto", title: "Contacto"}]
+    const navbarLinks = [{ url: "/home", title: "Home" }]
+
 
     return (
         <nav className="navbar">

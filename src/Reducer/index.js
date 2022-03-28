@@ -3,9 +3,10 @@ import pedirConductoraReducer  from "./pedirConductora";
 import recorridoReducer from "./recorridoReducer";
 import LoginRegisReducer from "./LoginRegistro";
 import adminReducer from "./adminReducer";
-import perfilConductoraReducer from "./PerfilConduc"
-import viajesReducer from "./viajes";
+import perfilConductoraReducer from "./PerfilConduc";
+import registroConductoraReducer from "./registroConductoraReducer"
 
+import viajesReducer from "./viajes";
 
 
 
@@ -17,8 +18,8 @@ const rootReducer= combineReducers({
     LoginRegisReducer,
     adminReducer,
     perfilConductoraReducer,
+    registroConductoraReducer,
     viajesReducer
-
 })
 
 
