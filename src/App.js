@@ -32,7 +32,9 @@ import DarBajaConductora from './Components/Admin/DarBajaConductora/DarBajaCondu
 import AltaAdmins from './Components/Admin/AltaAdmins/AltaAdmins';
 import OrigenDestino from './Components/OrigenDestino/OrigenDestino';
 //import Reviews from './Components/Reviews/ReviewsConductora';
-
+import ViajePasajera from './Components/viajes/ViajePasajera'
+import ViajeConductora from './Components/viajes/ViajeConductora'
+import LoginConGooglePasajera from './Components/LoginConGooglePasajera';
 
 function App() {
 
@@ -45,9 +47,9 @@ function App() {
             <Route path="/login" element={<Login />} />
             <Route path="/registro" element={<Registro />} />
             <Route path="/home" element={<Home />} />
-            <Route exact path="/" element={<Landing />} />
-            <Route path="/perfilConductora/:id" element={<PerfilConductora />} />
-            <Route path="/perfilPasajera/:id" element={<PerfilPasajera />} />
+            <Route exact path="/" element={<Landing />} />            
+            <Route path="/perfilConductora" element={<PerfilConductora />} />
+            <Route path="/perfilPasajera" element={<PerfilPasajera />} />
             <Route path="/conductoras" element={<FiltrosConductoras />} />
             <Route path='/resetPassword' element={<ResetPassword />} />
             <Route path="/loginConductora" element={<LoginConductora />} />
@@ -65,6 +67,10 @@ function App() {
             <Route path='/admin/altaAdmins' element={<AltaAdmins />} />
             <Route path="/homeConductora" element={<HomeConductora />} />
             <Route path="/contacto" element={<ContactForm />} />
+
+            <Route path="/viajeconductora" element={<ViajeConductora />} />
+            <Route path="/viajepasajera" element={<ViajePasajera />} />
+            <Route path="/loginPasajeraConGoogle" element={<LoginConGooglePasajera />} />
 
           </Routes>
         </BrowserRouter>

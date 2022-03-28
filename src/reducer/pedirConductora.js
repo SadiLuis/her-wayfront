@@ -18,11 +18,11 @@ export default function pedirConductoraReducer(state=initialState, action){
                 
                 conductoras:payload
             }
-            case GET_ALL_CONDUCTORAS:
-                return{
-                    ...state, 
-                    detalle: action.payload
-                }
+            // case GET_ALL_CONDUCTORAS:
+            //     return{
+            //         ...state, 
+            //         detalle: action.payload
+            //     }
 
 
             default:
@@ -31,4 +31,4 @@ export default function pedirConductoraReducer(state=initialState, action){
                 }
 
     }
-}
+};
