@@ -53,7 +53,7 @@ export default function Login() {
     dispatch (login(formlogin))
 
     console.log(formlogin)
-    navigate('/perfilPasajera')
+    navigate('/mapa')
   }
 
   // useEffect(()=>{
