@@ -30,14 +30,11 @@ import DetalleConductora from './Components/Admin/DetalleConductora/DetalleCondu
 import VerificarConductora from './Components/Admin/VerificarUsuario/VerificarUsuario';
 import DarBajaConductora from './Components/Admin/DarBajaConductora/DarBajaConductora';
 import AltaAdmins from './Components/Admin/AltaAdmins/AltaAdmins';
-//import OrigenDestino from './Components/OrigenDestino/OrigenDestino';
-
-
-
+import OrigenDestino from './Components/OrigenDestino/OrigenDestino';
 //import Reviews from './Components/Reviews/ReviewsConductora';
-
-
-
+import ViajePasajera from './Components/viajes/ViajePasajera'
+import ViajeConductora from './Components/viajes/ViajeConductora'
+import LoginConGooglePasajera from './Components/LoginConGooglePasajera';
 
 function App() {
 
@@ -70,6 +67,10 @@ function App() {
             <Route path='/admin/altaAdmins' element={<AltaAdmins/>}/>         
             <Route path="/homeConductora" element={<HomeConductora />} />
             <Route path="/contacto" element={<ContactForm/>} />
+
+            <Route path="/viajeconductora" element={<ViajeConductora />} />
+            <Route path="/viajepasajera" element={<ViajePasajera />} />
+            <Route path="/loginPasajeraConGoogle" element={<LoginConGooglePasajera />} />
 
           </Routes>
         </BrowserRouter>
