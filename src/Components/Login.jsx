@@ -115,7 +115,9 @@ return (
               <label className="form-check-label" htmlFor="exampleCheck1">Comprendo</label>
             </div>
             
-              <button type="submit" className="btn btn-primary">Entrar</button>
+              <button type="submit" className="btn btn-primary"
+              disabled={!formlogin.email || !formlogin.contrasena}
+              >Entrar</button>
             
 
             <div className='text-center '>
