@@ -46,7 +46,6 @@ export default function LoginConductora() {
         setError(errors)
 
         dispatch(loginConductora(formlogin))
-
         console.log(formlogin)
         navigate('/homeconductora')
     }
@@ -115,6 +114,7 @@ export default function LoginConductora() {
                             disabled={!formlogin.email || !formlogin.contrasena}
                         >Entrar</button>
                         <br />
+
 
                         <div className='text-center '>
                             <span>¿No tienes cuenta?</span>

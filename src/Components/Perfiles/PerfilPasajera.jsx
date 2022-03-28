@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import { connect } from 'react-redux'
-import { getPerfilPasajera } from '../../actions/conductora'
+import { getuserDetails } from '../../actions/Usuarios'
 import Image from '../../Media/placeholder.png'
 import { useParams } from 'react-router';
 import Navbar from '../Landing/Navbar'
@@ -26,6 +26,7 @@ function PerfilPasajera() {
     return (
         <div className='perfilCard'>
             <div className='upperContainer'>
+                <h1>Perfil Pasajera</h1>
                 <div className='imageContainer'>
                     <img src={Image}
                         alt='profile pic'
