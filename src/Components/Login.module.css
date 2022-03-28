@@ -30,3 +30,11 @@
     border: none;
     font-weight: bold;
 }
+
+.title{
+    color: white;
+    font-family: "MonteCarlo", cursive;
+    background-color:#646464;
+    opacity: 0.75;
+    border-radius: 5px;
+}

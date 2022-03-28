@@ -3,10 +3,12 @@ import React, { useState } from 'react'
 import { useDispatch } from 'react-redux';
 import { Link, useNavigate } from "react-router-dom";
 import { loginConductora } from '../actions/registroConductora';
-import { getPerfilConductora} from "../actions/conductora"
+import { getPerfilConductora } from "../actions/conductora"
 import uno from '../image/1.jpg'
 import dos from '../image/2.jpg'
 import tres from '../image/3.jpg'
+import './LoginConductora.css'
+
 
 const initialLogin = {
     contrasena: '',
@@ -44,19 +46,20 @@ export default function LoginConductora() {
         setError(errors)
 
         dispatch(loginConductora(formlogin))
-        
         console.log(formlogin)
         navigate('/homeconductora')
     }
 
     return (
-        <div className='row conteiner p-4' >
-            <div className='col-md-8'>
 
+
+        <div class="row g-0 pt-3">
+            <div class="col-lg-1"></div>
+            <div class="col-lg-5">
                 <div id="carouselExampleControls" className="carousel slide" data-bs-ride="carousel">
                     <div className="carousel-inner">
                         <div className="carousel-item active">
-                            <img className="tamaño" src={uno} alt="First slide" />
+                            <img class="tamaño" src={uno} alt="First slide" />
                         </div>
                         <div className="carousel-item">
                             <img className="tamaño" src={dos} alt="Second slide" />
@@ -74,32 +77,44 @@ export default function LoginConductora() {
                         <span className="visually-hidden">Next</span>
                     </button>
                 </div>
-
             </div>
-
-            {/* FORM LOGIN */}
-            <div className='col-md-4'>
-                <div className='mt-5 ms-5'>
-                    <h1 className='text-center'>Login</h1>
+            <div class="col-lg-5">
+                <div class="title px-lg-5 pt-lg-4 pb-lg-3 p-4">
+                    <h1> Her-Way </h1>
+                </div>
+                <div class='px-lg-5r py-lg-4 p-4'>
+                    <h2>Login</h2>
+                    {/* FORM LOGIN */}
                     <form onSubmit={handleSubmit} >
-                        <div className="form-group"> {/* CORREO */}
+                        <div class="mb-3">
+                            {/* CORREO */}
                             <label htmlFor="exampleInputEmail1">Correo</label>
-                            <input type="email" className="form-control" placeholder="Ingresar Correo" name='email' onChange={handleChange} value={formlogin.email} />
+                            <input type="email" class="form-control font-weight-bold" placeholder="Ingresa tu Correo" name='email' onChange={handleChange} value={formlogin.email} />
                             {/* Contraseña  */}
                         </div>
                         <div className="form-group">
                             <label htmlFor="exampleInputPassword1">Contraseña</label>
-                            <input type="password" className="form-control" id="exampleInputPassword1" placeholder="Password" name='contrasena' onChange={handleChange} value={formlogin.contrasena} />
+                            <input type="password" className="form-control" id="exampleInputPassword1" placeholder="Ingresa tu contraseña" name='contrasena' onChange={handleChange} value={formlogin.contrasena} />
+                            <div>
+
+                                <Link to='/resetPassword' style={{
+                                    color: '#0066ff',
+                                    textDecoration: 'none',
+                                    margin: '5px',
+                                    fontWeight: 'bold'
+
+                                }} >
+                                    ¿ Olvidaste tu contraseña ?
+                                </Link>
+                            </div>
                         </div>
-                        <div className="form-group form-check">
-                            <small >El equipo de Her-Way jamás bajo ninguna circunstancia pedira su correo o contraseña. </small>
-                            <br />
-                            <label className="form-check-label" htmlFor="exampleCheck1">Comprendo</label>
-                            <input type="checkbox" className="form-check-input" id="exampleCheck1" />
-                        </div>
-                        <button type="submit" className="btn btn-primary"
-                        disabled={!formlogin.email || !formlogin.contrasena}
+                        <br />
+
+                        <button type="submit" class="btn btn-primary w-100"
+                            disabled={!formlogin.email || !formlogin.contrasena}
                         >Entrar</button>
+                        <br />
+
 
                         <div className='text-center '>
                             <span>¿No tienes cuenta?</span>
@@ -113,27 +128,24 @@ export default function LoginConductora() {
                                 Registrarse
                             </Link>
                         </div>
-
+                        <div className="form-group form-check p-2 text-center">
+                            <small >El equipo de Her-Way nunca te pedira tu correo o contraseña. </small>
+                            {/* <br />
+                            <label className="form-check-label" htmlFor="exampleCheck1">Comprendo</label>
+                            <input type="checkbox" className="form-check-input" id="exampleCheck1" /> */}
+                        </div>
                     </form>
-
-                    <div className='text-center '>
-
-                        <Link to='/resetPassword' style={{
-                            color: '#0066ff',
-                            textDecoration: 'none',
-                            margin: '5px',
-                            fontWeight: 'bold'
-
-                        }} >
-                            ¿ Olvidaste tu contraseña ?
-                        </Link>
-                    </div>
-
-
-
-
                 </div>
+
             </div>
+            <div class="col-lg-1"></div>
         </div>
+
+
+
+
+
+
+
     )
 }
