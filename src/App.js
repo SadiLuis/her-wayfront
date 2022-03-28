@@ -36,8 +36,6 @@ import ViajePasajera from './Components/viajes/ViajePasajera'
 import ViajeConductora from './Components/viajes/ViajeConductora'
 import LoginConGooglePasajera from './Components/LoginConGooglePasajera';
 
-
-
 function App() {
 
   return (

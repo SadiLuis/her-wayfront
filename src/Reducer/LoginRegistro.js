@@ -18,11 +18,11 @@ const initialState = {
     detalleUsuario: null,
     resetPass: [],
     userInfo: [],
-    conductoras: [],
+    conductora: [],
     allconductoras: [],
     filters: [],
-    detail: []
-    
+    detail: [],
+    error: '', 
 }
 
 export default function LoginRegisReducer(state = initialState, action) {

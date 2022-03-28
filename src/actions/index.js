@@ -21,12 +21,14 @@ export const DAR_BAJA_CONDUCTORA = 'DAR_BAJA_CONDUCTORA';
 export const DAR_ALTA = 'DAR_ALTA';
 
 
-// export const GET_CONDUNCTORAS_NAME= 'GET_CONDUNCTORAS_NAME';
-// export const CONDUCTORAS_DETAIL= 'CONDUCTORAS_DETAIL';
-export const POST_CONDUCTORAS='POST_CONDUCTORAS'
+
 export const GET_PERFILC = 'GET_PERFILC'
-export const LOGIN_COND_SUCCESS = 'LOGIN_COND_SUCCESS'
-export const LOGIN_COND_ERROR = 'LOGIN_COND_ERROR'
+///------registro conductora --------
+export const LOGIN_CONDUCTORA = 'LOGIN_CONDUCTORA'
+export const DETALLE = "DETALLE"
+export const REGISTRO_CONDUCTORA = "REGISTRO_CONDUCTORA"
+//----------------------------------------------------
+
 
 export const CREAR_REVIEW='CREAR_REVIEW';
 export const OBTENER_REVIEW = 'OBTENER_REVIEW';
