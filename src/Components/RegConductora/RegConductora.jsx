@@ -443,13 +443,23 @@ export default function CreateConductora(){
                         </p>
                     )} 
                 </div>
-                <button className="btn btn-primary" type='submit' /* disabled={conductora.nombre&&conductora.apellido&&conductora.usuario&&conductora.contrasena&&
-                conductora.direccion&&conductora.email&&conductora.fotoPerfil&&conductora.localidad&&conductora.pais&&conductora.automovil&&
-                conductora.patente&&conductora.habilitacion&&conductora.seguro&&conductora.provincia&&conductora.telefono&&conductora.fotoDni ? false : true} */>Registrarse</button>
-                
+                    
+                    <button className="btn btn-primary" type='submit' 
+                    style={{
+                        margin: '10px'
+                    }}
+                     /* disabled={conductora.nombre&&conductora.apellido&&conductora.usuario&&conductora.contrasena&&
+                        conductora.direccion&&conductora.email&&conductora.fotoPerfil&&conductora.localidad&&conductora.pais&&conductora.automovil&&
+                        conductora.patente&&conductora.habilitacion&&conductora.seguro&&conductora.provincia&&conductora.telefono&&conductora.fotoDni ? false : true} */>Registrarse</button>
+                   
+                    
+
                     <Link  to='/'>
-                        <button className="btn btn-primary">Volver</button>
+                        <button className="btn btn-primary" style={{
+                        margin: '10px'
+                    }}>Volver</button>
                     </Link>
+                    
                
                 </form>
             </div>
