@@ -2,7 +2,8 @@
 import React, { useState} from 'react'
 import { useDispatch } from 'react-redux';
 import { Link, useNavigate } from "react-router-dom";
-import { loginConductora } from '../actions/conductora';
+import { loginConductora } from '../actions/registroConductora';
+import { getPerfilConductora} from "../actions/conductora"
 import uno from '../image/1.jpg'
 import dos from '../image/2.jpg'
 import tres from '../image/3.jpg'
@@ -17,7 +18,7 @@ export default function LoginConductora() {
     const [formlogin, setFormLogin] = useState(initialLogin)
     const [error, setError] = useState()
     const navigate = useNavigate()
-    const dispach = useDispatch()
+    const dispatch = useDispatch()
 
     const handleChange = (e) => {
 
@@ -42,7 +43,8 @@ export default function LoginConductora() {
         }
         setError(errors)
 
-        dispach(loginConductora(formlogin))
+        dispatch(loginConductora(formlogin))
+        
         console.log(formlogin)
         navigate('/homeconductora')
     }

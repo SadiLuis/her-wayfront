@@ -1,12 +1,13 @@
 import React, {useEffect, useState , useRef} from 'react';
-import {postConductora, getAllConductoras} from '../../actions/conductora';
+import {registroConductora } from '../../actions/registroConductora';
+//import {getPerfilConductora} from '../../actions/conductora';
 import { useDispatch, useSelector } from 'react-redux';
 
 import {saveImages } from '../../Helpers/saveImage'
 import { Link ,useNavigate} from 'react-router-dom';
-// import uno from '../../image/1.jpg'
-// import dos from '../../image/2.jpg'
-// import tres from '../../image/3.jpg'
+import uno from '../../image/1.jpg'
+import dos from '../../image/2.jpg'
+import tres from '../../image/3.jpg'
 
 //import { useStorage} from "reactfire"
 
@@ -87,9 +88,9 @@ export default function CreateConductora(){
     });
 
     const [errors, setErrors]=useState({})
-    useEffect(()=>{
-        dispatch(getAllConductoras())
-    },[dispatch]);
+    // useEffect(()=>{
+    //     dispatch(getPerfilConductora())
+    // },[dispatch]);
    
  async function handleSubmit(e){
         e.preventDefault()
@@ -123,7 +124,7 @@ export default function CreateConductora(){
         seguro:"",
         habilitacion:"",
         })
-        dispatch(postConductora(auxInput))
+        dispatch(registroConductora(auxInput))
         alert('usuario creado con exito')
         }else{
             alert('rellenar los campos correctamente')
@@ -147,12 +148,37 @@ export default function CreateConductora(){
     }
 
     return(
-
+        <div className='row conteiner p-5'>
+        <div className='col-md-8'>
+  
+          <div id="carouselExampleControls" className="carousel slide" data-bs-ride="carousel">
+            <div className="carousel-inner">
+              <div className="carousel-item active">
+                <img className="tamaño" src={uno} alt="First slide" />
+              </div>
+              <div className="carousel-item">
+                <img className="tamaño" src={dos} alt="Second slide" />
+              </div>
+              <div className="carousel-item">
+                <img className="tamaño" src={tres} alt="Third slide" />
+              </div>
+            </div>
+            <button className="carousel-control-prev" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="prev">
+              <span className="carousel-control-prev-icon" aria-hidden="true"></span>
+              <span className="visually-hidden">Previous</span>
+            </button>
+            <button className="carousel-control-next" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="next">
+              <span className="carousel-control-next-icon" aria-hidden="true"></span>
+              <span className="visually-hidden">Next</span>
+            </button>
+          </div>
+        
+        </div>
         <div className='col-md-4'>
-        <div className='mt-5 ms-5'>
+        <div className='mt-2 ms-3'>
             <div>
+                <h2 className='text-center'>REGISTRO CONDUCTORA</h2>
                 <p> * campos obligatorios</p>
-                <h1 className='text-center'>REGISTRO CONDUCTORA</h1>
                
             </div>
             <div>
@@ -420,13 +446,14 @@ export default function CreateConductora(){
                 <button className="btn btn-primary" type='submit' /* disabled={conductora.nombre&&conductora.apellido&&conductora.usuario&&conductora.contrasena&&
                 conductora.direccion&&conductora.email&&conductora.fotoPerfil&&conductora.localidad&&conductora.pais&&conductora.automovil&&
                 conductora.patente&&conductora.habilitacion&&conductora.seguro&&conductora.provincia&&conductora.telefono&&conductora.fotoDni ? false : true} */>Registrarse</button>
-                <div >
+                
                     <Link  to='/'>
                         <button className="btn btn-primary">Volver</button>
                     </Link>
-                </div>
+               
                 </form>
             </div>
+        </div>
         </div>
         </div>
 

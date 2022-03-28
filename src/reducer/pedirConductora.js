@@ -1,34 +1,34 @@
 
-// import { PEDIR_CONDUCTORA, DETALLE_CONDUCTORA } from "../actions/index";
+import { PEDIR_CONDUCTORA, DETALLE_CONDUCTORA } from "../actions/index";
 
 
-// const initialState={
-//     conductoras:[],
-//     todasLasConductoras:[],
-//     detalle:{}
-// }
+const initialState={
+    conductoras:[],
+    todasLasConductoras:[],
+    detalle:{}
+}
 
-// export default function pedirConductoraReducer(state=initialState, action){
-//     const {type, payload} = action;
+export default function pedirConductoraReducer(state=initialState, action){
+    const {type, payload} = action;
     
-//     switch(action.type){
-//         case PEDIR_CONDUCTORA:
-//             return {
-//                 ...state,
+    switch(action.type){
+        case PEDIR_CONDUCTORA:
+            return {
+                ...state,
                 
-//                 conductoras:payload
-//             }
-//             // case GET_ALL_CONDUCTORAS:
-//             //     return{
-//             //         ...state, 
-//             //         detalle: action.payload
-//             //     }
+                conductoras:payload
+            }
+            // case GET_ALL_CONDUCTORAS:
+            //     return{
+            //         ...state, 
+            //         detalle: action.payload
+            //     }
 
 
-//             default:
-//                 return {
-//                     ...state
-//                 }
+            default:
+                return {
+                    ...state
+                }
 
-//     }
-// };
+    }
+};

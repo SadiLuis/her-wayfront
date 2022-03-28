@@ -1,9 +1,10 @@
 import { combineReducers } from "redux";
-//import pedirConductoraReducer  from "./pedirConductora";
+import pedirConductoraReducer  from "./pedirConductora";
 import recorridoReducer from "./recorridoReducer";
 import LoginRegisReducer from "./LoginRegistro";
 import adminReducer from "./adminReducer";
-import perfilConductoraReducer from "./PerfilConduc"
+import perfilConductoraReducer from "./PerfilConduc";
+import registroConductoraReducer from "./registroConductoraReducer"
 
 
 
@@ -12,11 +13,12 @@ import perfilConductoraReducer from "./PerfilConduc"
 
 
 const rootReducer= combineReducers({
-    //pedirConductoraReducer,
+    pedirConductoraReducer,
     recorridoReducer,
     LoginRegisReducer,
     adminReducer,
-    perfilConductoraReducer
+    perfilConductoraReducer,
+    registroConductoraReducer
 
 })
 

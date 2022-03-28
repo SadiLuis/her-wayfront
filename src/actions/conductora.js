@@ -31,13 +31,19 @@ export const pedirConductora = () => async (dispatch) => {
 
 
 export function getPerfilConductora(id) {
-    return async dispatch => {
-        const request = await axios.get(`${SERVER}/conductora/${id}`)
-        console.log(request)
-        dispatch({ 
-            type: GET_PERFILC, 
-            payload: request.data 
-        })
+    try{
+        return async function (dispatch) {
+            //const request = await axios.get(`http://localhost:3001/conductora/${id}`);
+            const request = await axios.get(`${SERVER}conductora/${id}`)
+            console.log(request)
+            dispatch({ 
+                type: GET_PERFILC, 
+                payload: request.data
+            })
+        }
+
+    }catch(err){
+        console.log(err)
     }
 }
 
@@ -58,10 +64,10 @@ export const filtrarConductora = (payload) => {
 export function getAllConductoras(){
     return async function(dispatch){
         try{
-            const conductoras = await axios.get(`${SERVER}/conductora`)
+            const conductoras = await axios.get(`${SERVER}conductora`)
             return dispatch({
                 type: GET_ALL_CONDUCTORAS,
-                payload: conductoras.data
+                payload: conductoras
             })
            
         }catch(err){
@@ -69,117 +75,6 @@ export function getAllConductoras(){
         }
     }
 };
-
-export function loginConductora({ email, contrasena }) {
-    return async (dispatch) => {
-        console.log('action')
-        try {
-
-
-            const body = { email, contrasena }
-
-            const { data } = await axios.post(`http://localhost:3001/conductora/login`, body)
-
-
-            const conductora = data.user
-            dispatch({
-                type: LOGIN_CONDUCTORA_SUCCESS,
-                payload: conductora
-
-            })
-            console.log(data)
-        } catch (error) {
-            console.log(error)
-            return dispatch({
-
-                type: LOGIN_CONDUCTORA_ERROR,
-
-            })
-        }
-    }    
-    
-
-}
-
-
-
-
-// export function postConductora ({
-//         nombre,
-//         apellido,
-//         usuario,
-//         contrasena,
-//         email,
-//         pais,
-//         provincia,
-//         fotoPerfil,
-//         fotoDni,
-//         direccion,
-//         telefono,
-//         localidad,
-//         automovil,
-//         patente,
-//         seguro,
-//         habilitacion,
-// }) {
-
-//     return async function (dispatch) {
-//         try {
-
-//             const config = {
-//                 headers: {
-//                     "Content-Type": "application/json"
-//                 }
-//             }
-//             const body = {
-//                 nombre,
-//                 apellido,
-//                 usuario,
-//                 contrasena,
-//                 email,
-//                 pais,
-//                 provincia,
-//                 direccion,
-//                 telefono,
-//                 localidad,
-//                 fotoDni,
-//                 fotoPerfil,
-//                 automovil,
-//                 patente,
-//                 seguro,
-//                 habilitacion
-//             }
-
-//             const { data } = await axios.post('http://localhost:3001/conductora/register', body, config)
-
-//             const conductora = data.user
-//             dispatch({
-//                 type: REGISTER_CONDUCTORA_SUCCESS,
-//                 payload: conductora
-//             })
-//         } catch (error) {
-//             console.log(error)
-//             return dispatch({
-//                 type: REGISTER_CONDUCTORA_ERROR,
-//             })
-//         }
-//     }
-// }
-
-export function postConductora(payload){
-    try{
-        return async function (dispatch){
-            const create = await axios.post('http://localhost:3001/conductora/register', payload);
-            return dispatch({
-                type: POST_CONDUCTORAS,
-                create,
-            })
-           // return create;
-        }
-    }catch(err){
-        console.log(err)
-    }  
-}
 
 export function conectaConductora(payload){
     let {id, estado} = payload
