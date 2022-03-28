@@ -5,7 +5,7 @@ import "./Navbar.css";
 const Navbar = () => {
 
     const navbarLinks = [{ url: "/home", title: "Login" }]
-    const contactLink = [{url: "/contcto", title: "Contacto"}]
+    const contactLink = [{url: "/contacto", title: "Contacto"}]
 
     return (
         <nav className="navbar">
