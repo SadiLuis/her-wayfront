@@ -38,7 +38,7 @@
     text-decoration: none;
     border-style: groove;
     border-width: 1px 1px 1px 1px;    
-    border-color: rgba(245, 245, 245, 0.671);
+    border-color: rgba(245, 245, 245, 0.671); 
     transition: 250ms;
     position: relative;
 top: 7px;

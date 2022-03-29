@@ -17,6 +17,7 @@ export default function TarjetaConductoras({nombre,localidad, automovil, patente
   return (
     <div className={styles.tarjetaConductora}>
     <div className={styles.tarjetaTop}><FaTaxi></FaTaxi></div>
+    <div className={styles.tarjetaConductoraBody}>
 
     <Link to={'/conductoras' + id} style={{color:"#646464"}} >
     <div key={id}></div>
@@ -32,21 +33,23 @@ export default function TarjetaConductoras({nombre,localidad, automovil, patente
     <HiOutlineChatAlt2 style={{fontSize:25}} ></HiOutlineChatAlt2> 
     
     </div>
-  <div className={styles.ubicacionBoton}> 
+    </div>
+   <div className={styles.ubicacionBoton}>  
    
      { conectada? 
      <button  className={styles.botonSolicitarViaje}
      >
-     <Link to="/solicitarViaje" style={{color:"#fff"}}> 
-    {/* quiero que cuando la pasajera haga click acá, vaya al componente recorrido.js que hizo Lore */}
+      <Link to="/viajeAceptado" style={{color:"#fff"}}>  
+    {/* quiero que cuando la pasajera haga click acá, vaya al componente recorrido.js que hizo Lore o Emi -no lo se!! */}
       Solicitar viaje
-      </Link> 
+      </Link>  
     </button>
      : <button className={styles.botonDisabled} disabled 
      > Solicitar viaje
        </button> 
      }
-      </div> 
+     
+     </div>  
     
     
 
