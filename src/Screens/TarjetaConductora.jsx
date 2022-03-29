@@ -50,6 +50,7 @@ export default function TarjetaConductoras({nombre,localidad, automovil, patente
   return (
     <div className={styles.tarjetaConductora}>
     <div className={styles.tarjetaTop}><FaTaxi></FaTaxi></div>
+        <div className={styles.tarjetaConductoraBody}>
     <div key={id}></div>
     <h5>Nombre de la conductora: {nombre}</h5>
     <p>Localidad: {localidad}</p>
@@ -62,10 +63,11 @@ export default function TarjetaConductoras({nombre,localidad, automovil, patente
     <HiOutlineChatAlt2 style={{fontSize:25}} ></HiOutlineChatAlt2> 
     
     </div>
+    </div>
    <div className={styles.ubicacionBoton}>
    
      
-     <button  className={styles.botonPedirConductora}   
+     <button  className={styles.botonSolicitarViaje}   
      >
     
     {/* quiero que cuando la pasajera haga click acá, vaya al componente recorrido.js que hizo Lore */}
