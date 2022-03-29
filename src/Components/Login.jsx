@@ -65,11 +65,7 @@ export default function Login() {
   //const handleClickEntrar=(e)=>{
   //  e.preventDefault();
   //  navigate("/pedirConductora")
-
-  //}
-
   return (
-
     <div class="row g-0 pt-3">
       <div class="col-lg-1"></div>
       <div class="col-lg-5">
@@ -127,13 +123,13 @@ export default function Login() {
                 </Link>
               </div>
             </div>
+
             <br />
 
             <button type="submit" class="btn btn-primary w-100"
               disabled={!formlogin.email || !formlogin.contrasena}
             >Entrar</button>
             <br />
-
 
             <div className='text-center '>
               <span>¿No tienes cuenta?</span>
@@ -151,7 +147,6 @@ export default function Login() {
 
             <LoginConGooglePasajera />
             <br />
-
             <div className="form-group form-check p-2 text-center">
               <small >El equipo de Her-Way nunca te pedira tu correo o contraseña. </small>
               {/* <br />

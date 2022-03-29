@@ -116,6 +116,7 @@ export default function LoginConductora() {
                         >Entrar</button>
                         <br />
 
+
                         <div className='text-center '>
                             <span>¿No tienes cuenta?</span>
                             <Link to='/conductora/register' style={{
