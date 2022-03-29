@@ -24,7 +24,7 @@ const HomeConductora = () => {
 
     useEffect(() => {
         dispatch(getPerfilConductora(idConductora))
-    }, [idConductora, dispatch])
+    }, [idConductora, dispatch, aux])
     
     useEffect(() => {
       navigator.geolocation.getCurrentPosition(({coords: {latitude, longitude}}) => {

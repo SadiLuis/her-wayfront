@@ -8,6 +8,8 @@ import dos from '../image/2.jpg'
 import tres from '../image/3.jpg';
 //import styles from "./Login.module.css"
 import LoginConGooglePasajera from './LoginConGooglePasajera';
+import './Login.css'
+
 
 
 import { pedirConductora } from '../actions/conductora';
@@ -53,7 +55,7 @@ export default function Login() {
     dispatch(login(formlogin))
 
     console.log(formlogin)
-    navigate('/perfilPasajera')
+    navigate('/mapa')
   }
 
   // useEffect(()=>{
@@ -63,12 +65,7 @@ export default function Login() {
   //const handleClickEntrar=(e)=>{
   //  e.preventDefault();
   //  navigate("/pedirConductora")
-
-  //}
-
-
   return (
-
     <div class="row g-0 pt-3">
       <div class="col-lg-1"></div>
       <div class="col-lg-5">
@@ -134,8 +131,6 @@ export default function Login() {
             >Entrar</button>
             <br />
 
-
-
             <div className='text-center '>
               <span>¿No tienes cuenta?</span>
               <Link to='/registro' style={{
@@ -178,7 +173,6 @@ export default function Login() {
 
 
     </div>
-
 
   )
 }
