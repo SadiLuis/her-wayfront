@@ -3,7 +3,9 @@ import React,{useEffect} from 'react'
 import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate, useParams } from 'react-router-dom'
 import { limpiarDetalle, obtenerConductora, verificarConductora } from '../../../actions/administrador';
-
+import NavbarAdmin from '../NavbarAdmin/NavbarAdmin';
+import styles from './VerificarUsuario.module.css'
+//import imgDni from '../../../assets/nuevo-dni-ejemplo.jpg';
 
 
 const VerificarConductora = () => {
@@ -31,37 +33,46 @@ const VerificarConductora = () => {
 
 
 
-    return (
+    return (<>
+        <NavbarAdmin />
+        <div className={styles.cards__container}>
+            <div className={styles.card}>
+                <header className={styles.card__header}>
+                    <img src={detalle.fotoPerfil} alt={'fotoPerfil'} className={styles.card__headerProfile} />
+                </header>
+                <section className={styles.card__body}>
+                    <h3>{detalle.nombre}</h3>
 
-        <>
-            {
-               <div>
-               <h3>{detalle.nombre}</h3>
-               <ul>
-                   <li><img src={detalle.fotoPerfil} alt={'fotoPerfil'}/></li>
-                   <li>{detalle.usuario}</li>
-                   <li>{detalle.email}</li>
-                   <li>{detalle.pais}</li>
-                   <li>{detalle.provincia}</li>
-                   <li>{detalle.localidad}</li>
-                   <li>{detalle.direccion}</li>
-                   <li>{detalle.telefono}</li>
-               </ul>
-               <button>Ver DNI</button>
-               <h3>
-                   Detalle Automovil
-               </h3>
-               <ul>
-                   <li>{detalle.automovil}</li>
-                   <li>{detalle.patente}</li>
-                   <li>{detalle.seguro}</li>
-                   <li>{detalle.habilitacion}</li>
-               </ul>
+                    <p className={styles.card__text}>Usuario: 
+                        <span>{detalle.usuario}</span>
+                    </p>
+                    <p className={styles.card__text}>Email: 
+                        <span>{detalle.email}</span></p>
+                    <p className={styles.card__text}>Pais: 
+                        <span>{detalle.pais}</span></p>
+                    <p className={styles.card__text}>Provincia:
+                    <span>{detalle.provincia}</span></p>
+                    <p className={styles.card__text}>Localidad: 
+                    <span>{detalle.localidad}</span></p>
+                    <p className={styles.card__text}>Direccion: 
+                    <span>{detalle.direccion}</span></p>
+                    <p className={styles.card__text}>Telefono: 
+                    <span>{detalle.telefono}</span></p>
+
+                </section>
+            </div>
+           
+           {/* <img src={detalle.fotoDni}/> */}
+               
                <button onClick={confirmarVerificacion}>Verificar</button>
-               </div> 
+        </div>
+    </>
 
-            }
-        </>
+        
+               
+               
+
+         
     )
 }
 

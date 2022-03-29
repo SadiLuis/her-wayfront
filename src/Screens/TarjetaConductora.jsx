@@ -1,9 +1,13 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import styles from "./TarjetaConductora.module.css";
 import {HiOutlineChatAlt2} from "react-icons/hi";
 import {FaTaxi } from "react-icons/fa";
-import { useState } from 'react';
+import { useState , useEffect } from 'react';
+import {getPasajeras} from '../actions/Usuarios'
+import {getPerfilConductora} from '../actions/conductora'
+import {crearViaje} from '../actions/recorrido'
+import {useDispatch, useSelector} from 'react-redux'
 // import Swal from "sweetalert2"
 
 
@@ -11,41 +15,67 @@ import { useState } from 'react';
 
 export default function TarjetaConductoras({nombre,localidad, automovil, patente, habilitacion, conectada, id}) {
     console.log(nombre)
+    const viaje = useSelector(state => state.recorridoReducer.datosMapa)
+    const pasajera = useSelector(state => state.LoginRegisReducer.pasajera)
+    const dispatch = useDispatch()
+    const navigate = useNavigate()
 
-    
-    
+    useEffect(()=>{
+   
+  dispatch(getPasajeras())
+    },[dispatch])
+       console.log(pasajera)
+     const data = {
+      direcOrigen: viaje?.direcOrigen,
+      direcDestino: viaje?.direcDestino,
+      coordDestino: viaje?.coordDestino,
+      coordOrigen: viaje?.coordOrigen,
+      descripDestino: viaje?.results.routes[0].summary,
+      descripOrigen: "",
+      estadoViaje: "requerido",
+      idChat:"023545",
+      idConductora: id,
+      nombreConductora: nombre,
+      idPasajera: pasajera[0]?.id,
+      nombrePasajera: pasajera[0]?.nombre,
+      precio: viaje?.results.routes[0].legs[0].distance.value * 0.04
+    } 
+
+    const handleButton =(payload)=>{
+      dispatch(getPerfilConductora(payload.idConductora))
+        dispatch(crearViaje(payload))
+        navigate('/viajeAceptado')
+    } 
+
   return (
     <div className={styles.tarjetaConductora}>
     <div className={styles.tarjetaTop}><FaTaxi></FaTaxi></div>
-
-    <Link to={'/conductoras' + id} style={{color:"#646464"}} >
+        <div className={styles.tarjetaConductoraBody}>
     <div key={id}></div>
-    <h5>Nombre de la conductora: {nombre}</h5>
-    </Link>
+    <h4>Nombre de la conductora: {nombre}</h4>
     <p>Localidad: {localidad}</p>
     <p>Vehículo: {automovil}</p>
     <p> Patente: {patente}</p>
     <p>Habilitación: {habilitacion}</p>
-    <p>Conectada: {conectada? <p>Sí</p> : <p>No </p> } </p>
+   
     <div className={styles.icono}>
      
     <HiOutlineChatAlt2 style={{fontSize:25}} ></HiOutlineChatAlt2> 
     
     </div>
+    </div>
    <div className={styles.ubicacionBoton}>
    
-     { conectada? 
-     <button  className={styles.botonPedirConductora}   
+     
+     <button  className={styles.botonSolicitarViaje}   
      >
-    <Link to="/solicitarViaje" style={{color:"#fff"}}> 
+    
     {/* quiero que cuando la pasajera haga click acá, vaya al componente recorrido.js que hizo Lore */}
-      Solicitar viaje
-      </Link>
+     <button onClick={()=>handleButton(data)}>Solicitar viaje</button> 
+     
     </button>
-     : <button className={styles.botonDisabled} disabled 
-      > Solicitar viaje
-       </button> 
-     }
+    
+     
     
     </div>
 

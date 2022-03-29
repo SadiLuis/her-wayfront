@@ -17,7 +17,7 @@ const VerPasajerasAdmin = () => {
   const pasajeras = useSelector(state => state.adminReducer.pasajeras)
   console.log(pasajeras)
   return (
-    <div>
+    <div className={styles.container__main}>
       <NavbarAdmin />
       <table className={styles}>
         <tr>

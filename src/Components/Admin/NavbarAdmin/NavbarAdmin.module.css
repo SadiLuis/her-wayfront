@@ -1,30 +1,43 @@
 .admin nav{
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    height: auto;
-    background-color:#FFA8D9;
-    text-align: center;
+ 
+  background-color: #FFA8D9;
+  height: 100vh;
+  width: 200px;
+  font-weight: 400;
+  font-size: 1.2em;
+  overflow: auto;
+  padding-bottom: 6em;
+  z-index: 9;
+  overflow: hidden;
+  
   }
 
 .admin nav ul{
-    list-style: none;
-    display: inline-block;
+  list-style: none;
+  display: block;
+  padding: 0;
+  margin: 0;
  }
 
  .admin nav ul li{
-     float: left;
-     margin-top: 20px;
+  margin-left: 0;
+  padding-left: 0;
+  display: inline-block;
+  width: 100%;
  }
 
- .admin nav ul li a {
-     color: rgb(255, 255, 255);
-     font-weight: bold;
-     text-decoration: none;
-     font-size: 20px;
-     padding: 18px;
+ .admin nav ul li span {
+  color: rgba(255, 255, 255, 0.9);
+  font-size: 1em;
+  padding: 1.05em 1em;
+  position: relative;
+  display: block;
  }
 
- .admin nav ul li a:hover{
+ .admin nav ul li span:hover{
    background-color: #e44f9c;
+ }
+
+ .admin a{
+  text-decoration: none;
  }

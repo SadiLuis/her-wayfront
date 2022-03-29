@@ -10,7 +10,10 @@ import { GET_ALL_CONDUCTORAS,
     DAR_ALTA} from "./index";
 
 import axios from 'axios';
+import Server from './VariableGlobal'
 
+
+// const SERVER = Server.SERVER;
 const SERVER = 'http://localhost:3001/';
 export function login({ email, contrasena }) {
     return async (dispatch) => {
@@ -24,7 +27,7 @@ export function login({ email, contrasena }) {
             // }
 
             const body = { email, contrasena }
-           
+            console.log(email)
             const { data } = await axios.post(`${SERVER}admin/login`, body)
 
             const infoUser = data.user
@@ -98,7 +101,8 @@ export const darBajaPasajeras = (id) => {
 export const darBajaConductoras = (id) => {
     return async (dispatch) => {
         try {
-            const res = await axios.get(`${SERVER}admin/darBaja/${id}`);
+            console.log('first')
+            const res = await axios.get(`${SERVER}admin/darBajaConductora/${id}`);
             dispatch ({type: DAR_BAJA_CONDUCTORA, payload:res.data})
         } catch (error) {
             console.log(error)
@@ -109,7 +113,7 @@ export const darBajaConductoras = (id) => {
 export const verificarConductora = (id) => {
     return async (dispatch) => {
         try {
-            const res = await axios.get(`${SERVER}admin/verificar/${id}`);
+            const res = await axios.get(`${SERVER}admin/verificarConductora/${id}`);
             dispatch ({type: VERIFICAR_CONDUCTORA, payload: res.data})
         } catch (error) {
             console.log(error);
@@ -124,11 +128,10 @@ export const limpiarDetalle = () => {
 }
 
 export const darAltaAdmin = (admin) => {
-    console.log(admin)
     return async (dispatch) => {
         
         try {
-            const res = await axios.post((`${SERVER}admin/darAlta`, admin));
+            const res = await axios.post(`${SERVER}admin/darAlta`, admin);
             dispatch({type: DAR_ALTA, payload: res.data})
         } catch (error) {
             console.log(error)

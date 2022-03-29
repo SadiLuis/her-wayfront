@@ -7,6 +7,11 @@ export const INFO_PASAJERA_FAIL = "INFO_PASAJERA_FAIL"
 export const ORIGEN = "ORIGEN";
 export const DESTINO = "DESTINO";
 export const TIEMPO_DE_VIAJE = "TIEMPO_DE_VIAJE";
+export const GET_PASAJERA = "GET_PASAJERA"
+export const DATOS_MAPA = "DATOS_MAPA"
+export const VIAJE_CREADO ="VIAJE_CREADO"
+export const VIAJE_RECHAZADO= "VIAJE_RECHAZADO"
+//////////////// Conductoras ////////////////////////
 
 
 export const GET_ALL_CONDUCTORAS = 'GET_ALL_CONDUCTORAS';
@@ -18,10 +23,19 @@ export const VERIFICAR_CONDUCTORA = 'VERIFICAR_CONDUCTORA';
 export const DAR_BAJA_CONDUCTORA = 'DAR_BAJA_CONDUCTORA';
 export const DAR_ALTA = 'DAR_ALTA';
 
-// export const GET_CONDUNCTORAS_NAME= 'GET_CONDUNCTORAS_NAME';
-// export const CONDUCTORAS_DETAIL= 'CONDUCTORAS_DETAIL';
-export const POST_CONDUCTORAS='POST_CONDUCTORAS'
+
+
 export const GET_PERFILC = 'GET_PERFILC'
+///------registro conductora --------
+export const LOGIN_CONDUCTORA = 'LOGIN_CONDUCTORA'
+export const DETALLE = "DETALLE"
+export const REGISTRO_CONDUCTORA = "REGISTRO_CONDUCTORA"
+//----------------------------------------------------
+
+
+export const CREAR_REVIEW='CREAR_REVIEW';
+export const OBTENER_REVIEW = 'OBTENER_REVIEW';
+export const BORRAR_REVIEW = 'BORRAR_REVIEW';
 
 
 

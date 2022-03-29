@@ -2,7 +2,7 @@ import React, {useEffect} from 'react'
 import { useDispatch, useSelector } from 'react-redux';
 import { obtenerConductoras } from '../../../actions/administrador';
 import VerConductorasAdmin from '../VerConductorasAdmin/VerConductorasAdmin';
-//import styles from "../PedirConductora.module.css"
+import styles from "./UsuariosAdmin.module.css"
 import { Link } from 'react-router-dom';
 import NavbarAdmin from '../NavbarAdmin/NavbarAdmin';
 // import "bootstrap/dist/css/bootstrap.min.css";
@@ -33,11 +33,11 @@ export default function UsuariosAdmin() {
   // }
   
     return (
-    <>
+    <div className={styles.container__main}>
       <NavbarAdmin/>
       <VerConductorasAdmin conductoras={conductoras}/>
      
-    </>
+    </div>
     )
        
          

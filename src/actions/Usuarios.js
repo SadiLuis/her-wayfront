@@ -9,19 +9,23 @@ import {
     LOGOUT_USER,
     AUTHENTICATION_ERROR,
     UPDATE_USER,
-
+    GET_PASAJERA,
     //REFORCE_PASSWORD
 
     RESET_PASSWORD,
-    RELOADING_PAG
+    RELOADING_PAG,
+   
 
 } from "../actions/index";
+import {SERVER} from './VariableGlobal'
+
+
 
 
 export function updateUser(newUser) {
     return async function (dispach) {
         try {
-            await axios.put(`http://localhost:3001/usuario/${newUser.id}`, newUser, tokenUser())
+            await axios.put(`${SERVER}${newUser.id}`, newUser, tokenUser())
             dispach(getuserDetails())
             return {
 
@@ -37,7 +41,7 @@ export function updateUser(newUser) {
 export function getuserDetails(id) {
     return async function (dispach) {
         try {
-            const res = await axios.get(`http://localhost:3001/usuario/${id}`, tokenUser())
+            const res = await axios.get(`${SERVER}/usuario/${id}`, tokenUser())
 
             dispach({
                 type: GET_USER_DETAILS,
@@ -71,7 +75,7 @@ export function login({ email, contrasena }) {
 
             const body = { email, contrasena }
 
-            const { data } = await axios.post(`http://localhost:3001/usuario/login`, body)
+            const { data } = await axios.post(`${SERVER}/usuario/login`, body)
 
             const infoUser = data.user
             dispach({
@@ -94,6 +98,7 @@ export function register ({
     usuario,
     contrasena,
     email,
+    fotoPerfil,
     pais,
     provincia,
     direccion,
@@ -101,19 +106,17 @@ export function register ({
     localidad
 }) {
 
-    return async function (dispach) {
+    return async function (dispatch) {
         try {
 
-            const config = {
-                headers: {
-                    "Content-Type": "application/json"
-                }
-            }
+            
+            
             const body = {
                 nombre,
                 usuario,
                 contrasena,
                 email,
+                fotoPerfil,
                 pais,
                 provincia,
                 direccion,
@@ -121,16 +124,16 @@ export function register ({
                 localidad
             }
 
-            const { data } = await axios.post(`http://localhost:3001/usuario/register`, body, config)
+            const { data } = await axios.post(`${SERVER}/usuario/register`, body)
 
             const infoUser = data.user
-            dispach({
+            dispatch({
                 type: REGISTER_USER_SUCCESS,
                 payload: infoUser
             })
         } catch (error) {
             console.log(error)
-            return dispach({
+            return dispatch({
                 type: REGISTER_USER_ERROR,
             })
         }
@@ -146,7 +149,7 @@ export function register ({
              }
          }
          const body = {email}
-         const res = await axios.post(`http://localhost:3001/reset`, body, config)
+         const res = await axios.post(`${SERVER}/reset`, body, config)
          dispatch({
              type: RESET_PASSWORD,
              payload: res.data
@@ -165,4 +168,19 @@ export const reloadingPage = (payload)=> {
       type:RELOADING_PAG,
       payload
     }
+}
+
+export const getPasajeras = () => {
+    return async function (dispatch){
+        try{
+         const res = await axios.get(`${SERVER}/usuario`)
+            dispatch({
+                type: GET_PASAJERA,
+                payload: res.data
+            })
+        } catch (error) {
+          console.log(error)
+        }
+       }
+
 }

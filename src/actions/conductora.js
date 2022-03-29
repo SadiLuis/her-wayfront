@@ -1,23 +1,25 @@
 import {  FILTRAR_CONDUCTORA_SEGUN_AUTO, 
     PEDIR_CONDUCTORA,
-    DETALLE_CONDUCTORA, 
     GET_ALL_CONDUCTORAS,
-    GET_CONDUNCTORAS_NAME,
-    CONDUCTORAS_DETAIL,
     POST_CONDUCTORAS, 
-    GET_PERFILC } from "./index"
+    GET_PERFILC,
+    LOGIN_CONDUCTORA_SUCCESS,
+    LOGIN_CONDUCTORA_ERROR,
+    REGISTER_CONDUCTORA_SUCCESS,
+    REGISTER_CONDUCTORA_ERROR } from "./index"
+
 import tokenUser from '../Helpers/TokenUser'
 import tokenConductora from "../Helpers/TokenConductora";
 import axios from "axios";
+import {SERVER} from './VariableGlobal'
       
-
-
-const SERVER = 'http://localhost:3001';
 
 
 export const pedirConductora = () => async (dispatch) => {
     try {
-        const respuesta = await axios.get(`${SERVER}/conductora`)
+
+          const respuesta= await axios.get("http://localhost:3001/conductora")
+        //const respuesta = await axios.get(`${SERVER}/conductora`)
         return dispatch({
             type: PEDIR_CONDUCTORA,
             payload: respuesta.data
@@ -29,13 +31,19 @@ export const pedirConductora = () => async (dispatch) => {
 
 
 export function getPerfilConductora(id) {
-    return async dispatch => {
-        const request = await axios.get(`${SERVER}/conductora/${id}`)
-        console.log(request)
-        dispatch({ 
-            type: GET_PERFILC, 
-            payload: request.data 
-        })
+    try{
+        return async function (dispatch) {
+            //const request = await axios.get(`http://localhost:3001/conductora/${id}`);
+            const request = await axios.get(`${SERVER}/conductora/${id}`)
+            console.log(request)
+            dispatch({ 
+                type: GET_PERFILC, 
+                payload: request.data
+            })
+        }
+
+    }catch(err){
+        console.log(err)
     }
 }
 
@@ -48,31 +56,18 @@ export const filtrarConductora = (payload) => {
 };
 
 
-export function postConductoras(payload){
-    return async function (dispatch){
-        try{
-            const create = await axios.post('http://localhost:3001/conductora/register', payload);
-            return dispatch({
-                 create
-            //     type: POST_CONDUCTORAS,
-            //     payload: create,
-             })
-        //return create;
-        }catch(error){
-            console.log(error)
-   
-        }
-    }  
-}
+
+
+
 
 
 export function getAllConductoras(){
     return async function(dispatch){
         try{
-            const conductoras = await axios.get('http://localhost:3001/conductora')
+            const conductoras = await axios.get(`${SERVER}conductora`)
             return dispatch({
                 type: GET_ALL_CONDUCTORAS,
-                payload: conductoras.data
+                payload: conductoras
             })
            
         }catch(err){
@@ -105,3 +100,6 @@ export function conectaConductora(payload){
         }
     }  
 }
+
+
+

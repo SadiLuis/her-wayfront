@@ -4,6 +4,7 @@ import { register, updateUser } from '../actions/Usuarios'
 import {useDispatch} from 'react-redux'
 import { Button } from 'bootstrap'
 import { auth, provider } from '../Firebase-config'
+import {saveImages} from '../Helpers/saveImage'
 import uno from '../image/1.jpg'
 import dos from '../image/2.jpg'
 import tres from '../image/3.jpg'
@@ -19,7 +20,8 @@ const formulario = {
   provincia: '',
   direccion: '',
   telefono: '',
-  localidad: ''
+  localidad: '',
+  fotoPerfil:""
 }
 
 
@@ -34,8 +36,8 @@ export default function Registro (){
   const dispatch = useDispatch()
 
 
-  const handleChange = (e) => {
-    const { name, value } = e.target
+  const handleChange = (name,value) => {
+    
 
     const newform = {
       ...form,
@@ -49,51 +51,32 @@ export default function Registro (){
     setError(errors)
   }
 
-  const handleSubmit = (e) => {
+  const handleSubmit =async (e) => {
     e.preventDefault()
-    const errors = {
-      ...error,
+    let auxInput = form;
+
+    const urlImage = await saveImages(auxInput.fotoPerfil);
+     auxInput.fotoPerfil = urlImage;
+   
+    console.log('entro',auxInput)
+    setForm({
       nombre: '',
       usuario: '',
       contrasena: '',
+      fotoPerfil:'',
       email: '',
       pais: '',
       provincia: '',
       direccion: '',
       telefono: '',
       localidad: ''
-    } 
-    setError(errors)
-    dispatch(register(form))
+    } )
+    
+    dispatch(register(auxInput))
     navigate('/')
 }
 
-  // eslint-disable-next-line react-hooks/rules-of-hooks
-  // useEffect(() => {
-  //   if(isAuth && user && edit){
-  //     setForm(formulario)
-  //     const {nombre,rol}= user
-  //     console.log(nombre)
-  //     setForm({
-  //       ...form,
-  //       nombre,
-  //       rol
-  //     })
-  //   }
-  //   async function db (){
-  //     await auth.onAuthStateChanged(user => {
-  //       if(user){
-  //         updateUser({
-  //           uid: user.uid,
-  //           email: user.email,
-  //           nombre: user.displayName
-  //         })
-  //       }
-  //     })
 
-  //   }
-  //   isAuth && db()
-  // }, [isAuth, user, edit])
 
 
 
@@ -133,58 +116,64 @@ export default function Registro (){
           <form onSubmit={handleSubmit} >
             <div className="form-group"> {/* CORREO */}
               <label htmlFor="exampleInputEmail1">Correo</label>
-              <input type="email" className="form-control" name='email' value={form.email} onChange={handleChange} id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email" />
-              <small id="emailHelp" className="form-text text-muted">El equipo de Her-Way jamás bajo ninguna circunstancia pedira su correo o contraseña. </small>
+              <input type="email" className="form-control" name='email' value={form.email} onChange={(e)=>handleChange(e.target.name,e.target.value)} id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email" />
+             
             </div>
-            {/* Contraseña  */}
-            <div className="form-group">
-              <label htmlFor="exampleInputPassword1">Contraseña</label>
-              <input type="password" className="form-control" id="exampleInputPassword1" name='contrasena' placeholder="Password" value={form.contrasena} onChange={handleChange} />
-            </div>
-            {/* USUARIO */}
-            <div className="form-group">
-              <label htmlFor="exampleInputPassword1">Nombre de usuario</label>
-              <input type="text" className="form-control" id="exampleInputPassword1" placeholder="Nombre de usuario" name='usuario' value={form.usuario} onChange={handleChange} />
-            </div>
-
             {/* Nombre */}
             <div className="form-group">
               <label htmlFor="exampleInputPassword1">Nombre</label>
               <input type="text" className="form-control" id="exampleInputPassword1"
-                onChange={handleChange} value={form.nombre} name='nombre' placeholder="Nombre" />
+                onChange={(e)=>handleChange(e.target.name,e.target.value)} value={form.nombre} name='nombre' placeholder="Nombre" />
             </div>
+            {/* USUARIO */}
+            <div className="form-group">
+              <label htmlFor="exampleInputPassword1">Nombre de usuario</label>
+              <input type="text" className="form-control" id="exampleInputPassword1" placeholder="Nombre de usuario" name='usuario' value={form.usuario} onChange={(e)=>handleChange(e.target.name,e.target.value)} />
+            </div>
+            {/* Contraseña  */}
+            <div className="form-group">
+              <label htmlFor="exampleInputPassword1">Contraseña</label>
+              <input type="password" className="form-control" id="exampleInputPassword1" name='contrasena' placeholder="Password" value={form.contrasena} onChange={(e)=>handleChange(e.target.name,e.target.value)} />
+            </div>
+             {/* Foto */}
+             <div className="form-group">
+              <label htmlFor="exampleInputPassword1">Foto de Perfil</label>
+              <input type="file" className="form-control" id="exampleInputPassword1" placeholder="Nombre de usuario" name='fotoPerfil'  onChange={(e)=>handleChange(e.target.name,e.target.files[0])} />
+            </div>
+
             {/* PAIS */}
             <div className="form-group">
               <label htmlFor="exampleInputPassword1">Pais</label>
               <input type="text" className="form-control" id="exampleInputPassword1"
-                onChange={handleChange} value={form.pais} placeholder="Pais" name='pais' />
+                onChange={(e)=>handleChange(e.target.name,e.target.value)} value={form.pais} placeholder="Pais" name='pais' />
             </div>
 
             {/* Provincia */}
             <div className="form-group">
               <label htmlFor="exampleInputPassword1">Provincia</label>
               <input type="text" className="form-control" id="exampleInputPassword1"
-                onChange={handleChange} value={form.provincia} placeholder="Provincia" name='provincia' />
+                onChange={(e)=>handleChange(e.target.name,e.target.value)} value={form.provincia} placeholder="Provincia" name='provincia' />
             </div>
             {/* Ciudad */}
             <div className="form-group">
               <label htmlFor="exampleInputPassword1">Ciudad</label>
               <input type="text" className="form-control" id="exampleInputPassword1"
-                onChange={handleChange} value={form.localidad} placeholder="Ciudad" name='localidad' />
+                onChange={(e)=>handleChange(e.target.name,e.target.value)} value={form.localidad} placeholder="Ciudad" name='localidad' />
             </div>
             {/* DIRECCIONS */}
             <div className="form-group">
               <label htmlFor="exampleInputPassword1">Direccion</label>
               <input type="text" className="form-control" id="exampleInputPassword1"
-                onChange={handleChange} value={form.direccion} placeholder="Direccion" name='direccion' />
+                onChange={(e)=>handleChange(e.target.name,e.target.value)} value={form.direccion} placeholder="Direccion" name='direccion' />
             </div>
           {/* Telefono */}
           <div className="form-group">
             <label htmlFor="exampleInputPassword1">Telefono</label>
             <input type="text" className="form-control" id="exampleInputPassword1"
-            onChange={handleChange} value={form.telefono} placeholder="Telefono" name = 'telefono' />
+            onChange={(e)=>handleChange(e.target.name,e.target.value)} value={form.telefono} placeholder="Telefono" name = 'telefono' />
           </div>
 
+            <small id="emailHelp" className="form-text text-muted">El equipo de Her-Way jamás bajo ninguna circunstancia pedira su correo o contraseña. </small>
           <div className="form-group form-check">
             <input type="checkbox" className="form-check-input" id="exampleCheck1" />
             <label className="form-check-label" htmlFor="exampleCheck1">Comprendo</label>
