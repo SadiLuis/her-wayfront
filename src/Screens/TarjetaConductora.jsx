@@ -52,7 +52,7 @@ export default function TarjetaConductoras({nombre,localidad, automovil, patente
     <div className={styles.tarjetaTop}><FaTaxi></FaTaxi></div>
         <div className={styles.tarjetaConductoraBody}>
     <div key={id}></div>
-    <h5>Nombre de la conductora: {nombre}</h5>
+    <h4>Nombre de la conductora: {nombre}</h4>
     <p>Localidad: {localidad}</p>
     <p>Vehículo: {automovil}</p>
     <p> Patente: {patente}</p>
