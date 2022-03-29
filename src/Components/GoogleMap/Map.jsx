@@ -19,11 +19,12 @@ import {
   DirectionsRenderer,
 } from '@react-google-maps/api'
 import { useRef, useState } from 'react'
-
-
+import {useNavigate} from 'react-router-dom'
+import {useDispatch} from 'react-redux'
+import {datosMapa} from '../../actions/recorrido'
 function Mapa({setCoordinates, setBounds, coordinates}) {
   const { isLoaded } = useJsApiLoader({
-    googleMapsApiKey:'AIzaSyB6A5sRCY60lwXdp5txFqBNx-_mBOWcAu0',
+    googleMapsApiKey: 'AIzaSyB6A5sRCY60lwXdp5txFqBNx-_mBOWcAu0',
     libraries: ['places'],
   })
 
@@ -31,8 +32,8 @@ function Mapa({setCoordinates, setBounds, coordinates}) {
   const [directionsResponse, setDirectionsResponse] = useState(null)
   const [distance, setDistance] = useState('')
   const [duration, setDuration] = useState('')
-
-
+  const dispatch = useDispatch()
+  const navigate = useNavigate()
   const originRef = useRef()
  
   const destiantionRef = useRef()
@@ -56,6 +57,16 @@ function Mapa({setCoordinates, setBounds, coordinates}) {
     setDirectionsResponse(results)
     setDistance(results.routes[0].legs[0].distance.text)
     setDuration(results.routes[0].legs[0].duration.text)
+    const data ={
+     
+      direcOrigen:results.routes[0].legs[0].start_address,
+      direcDestino:results.routes[0].legs[0].end_address,
+      coordDestino:results.routes[0].legs[0].end_location,
+      coordOrigen:results.routes[0].legs[0].start_location,
+      results
+    }
+    console.log(data)
+    dispatch(datosMapa(data))
   }
 
   function clearRoute() {
@@ -65,6 +76,7 @@ function Mapa({setCoordinates, setBounds, coordinates}) {
     originRef.current.value = ''
     destiantionRef.current.value = ''
   }
+
 
   return (
     <Flex
@@ -135,7 +147,7 @@ function Mapa({setCoordinates, setBounds, coordinates}) {
             />
           </ButtonGroup>
         </HStack>
-        <HStack spacing={4} mt={4} justifyContent='space-between'>
+       {distance && <HStack spacing={4} mt={4} justifyContent='space-between'>
           <Text>Distancia: {distance} </Text>
           <Text>Duracion: {duration} </Text>
           <IconButton
@@ -147,7 +159,10 @@ function Mapa({setCoordinates, setBounds, coordinates}) {
               map.setZoom(15)
             }}
           />
+       
         </HStack>
+      }
+      {distance && <button onClick={()=> navigate('/pedirconductora')}>Confirmar viaje</button> }
       </Box>
     </Flex>
   )

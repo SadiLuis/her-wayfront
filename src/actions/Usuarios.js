@@ -9,8 +9,12 @@ import {
     LOGOUT_USER,
     AUTHENTICATION_ERROR,
     UPDATE_USER,
+    GET_PASAJERA,
+    //REFORCE_PASSWORD
+
     RESET_PASSWORD,
-    RELOADING_PAG
+    RELOADING_PAG,
+   
 
 } from "../actions/index";
 import {SERVER} from './VariableGlobal'
@@ -37,7 +41,7 @@ export function updateUser(newUser) {
 export function getuserDetails(id) {
     return async function (dispach) {
         try {
-            const res = await axios.get(`${SERVER}usuario/${id}`, tokenUser())
+            const res = await axios.get(`${SERVER}/usuario/${id}`, tokenUser())
 
             dispach({
                 type: GET_USER_DETAILS,
@@ -71,7 +75,7 @@ export function login({ email, contrasena }) {
 
             const body = { email, contrasena }
 
-            const { data } = await axios.post(`${SERVER}usuario/login`, body)
+            const { data } = await axios.post(`${SERVER}/usuario/login`, body)
 
             const infoUser = data.user
             dispach({
@@ -103,7 +107,10 @@ export function register ({
 }) {
 
     return async function (dispatch) {
-        try {           
+        try {
+
+            
+            
             const body = {
                 nombre,
                 usuario,
@@ -117,7 +124,7 @@ export function register ({
                 localidad
             }
 
-            const { data } = await axios.post(`${SERVER}usuario/register`, body)
+            const { data } = await axios.post(`${SERVER}/usuario/register`, body)
 
             const infoUser = data.user
             dispatch({
@@ -142,7 +149,7 @@ export function register ({
              }
          }
          const body = {email}
-         const res = await axios.post(`${SERVER}reset`, body, config)
+         const res = await axios.post(`${SERVER}/reset`, body, config)
          dispatch({
              type: RESET_PASSWORD,
              payload: res.data
@@ -161,4 +168,19 @@ export const reloadingPage = (payload)=> {
       type:RELOADING_PAG,
       payload
     }
+}
+
+export const getPasajeras = () => {
+    return async function (dispatch){
+        try{
+         const res = await axios.get(`${SERVER}/usuario`)
+            dispatch({
+                type: GET_PASAJERA,
+                payload: res.data
+            })
+        } catch (error) {
+          console.log(error)
+        }
+       }
+
 }

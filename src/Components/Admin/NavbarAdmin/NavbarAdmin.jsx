@@ -7,9 +7,16 @@ const NavbarAdmin = () => {
     <div className={styles.admin}>
     <nav>
         <ul>
-            <li><Link to={`../admin/usuarios`}>Ver Conductoras</Link> </li>
-            <li><Link to={`../admin/pasajeras`}>Ver Pasajeras</Link></li>
-            <li><Link to={`../admin/altaAdmins`}>Dar Alta Admins</Link></li>
+            <li><Link to={`../admin/usuarios`}>
+              <span>Ver Conductoras</span></Link> 
+              </li>
+            <li><Link to={`../admin/pasajeras`}>
+              <span>Ver Pasajeras</span></Link>
+              </li>
+            <li><Link to={`../admin/altaAdmins`}>
+              <span>Dar Alta Admins</span></Link>
+              </li>
+             <li><span>Cerrar Sesion</span></li> 
         </ul>
     </nav>
     </div>

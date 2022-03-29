@@ -2,8 +2,9 @@ import React,{useEffect} from 'react'
 
 import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate, useParams } from 'react-router-dom'
+import NavbarAdmin from '../NavbarAdmin/NavbarAdmin';
 import { darBajaConductoras, limpiarDetalle, obtenerConductora } from '../../../actions/administrador';
-
+import styles from './DarBajaConductora.module.css';
 
 
 const DarBajaConductora = () => {
@@ -31,36 +32,61 @@ const DarBajaConductora = () => {
 
 
 
-    return (
+    return (<>
+        <NavbarAdmin />
+        <div className={styles.cards__container}>
+            <div className={styles.card}>
+                <header className={styles.card__header}>
+                    <img src={detalle.fotoPerfil} alt={'fotoPerfil'} className={styles.card__headerProfile} />
+                </header>
+                <section className={styles.card__body}>
+                    <h3>{detalle.nombre}</h3>
 
-        <>
-            {
-               <div>
-               <h3>{detalle.nombre}</h3>
-               <ul>
-                   <li><img src={detalle.fotoPerfil} alt={'fotoPerfil'}/></li>
-                   <li>{detalle.usuario}</li>
-                   <li>{detalle.email}</li>
-                   <li>{detalle.pais}</li>
-                   <li>{detalle.provincia}</li>
-                   <li>{detalle.localidad}</li>
-                   <li>{detalle.direccion}</li>
-                   <li>{detalle.telefono}</li>
-               </ul>
-               <h3>
-                   Detalle Automovil
-               </h3>
-               <ul>
-                   <li>{detalle.automovil}</li>
-                   <li>{detalle.patente}</li>
-                   <li>{detalle.seguro}</li>
-                   <li>{detalle.habilitacion}</li>
-               </ul>
-               <button onClick={darBajaConductora}>Dar baja</button>
-               </div> 
+                    <p className={styles.card__text}>Usuario: 
+                        <span>{detalle.usuario}</span>
+                    </p>
+                    <p className={styles.card__text}>Email: 
+                        <span>{detalle.email}</span></p>
+                    <p className={styles.card__text}>Pais: 
+                        <span>{detalle.pais}</span></p>
+                    <p className={styles.card__text}>Provincia:
+                    <span>{detalle.provincia}</span></p>
+                    <p className={styles.card__text}>Localidad: 
+                    <span>{detalle.localidad}</span></p>
+                    <p className={styles.card__text}>Direccion: 
+                    <span>{detalle.direccion}</span></p>
+                    <p className={styles.card__text}>Telefono: 
+                    <span>{detalle.telefono}</span></p>
 
-            }
-        </>
+                </section>
+            </div>
+            <div className={styles.card}>
+                <section className={styles.card__body}>
+                    <h3>
+                        Detalle Automovil
+                    </h3>
+
+                    <p className={styles.card__text}>Modelo: 
+                    <span>{detalle.automovil}</span>
+                    </p>
+                    <p className={styles.card__text}>Patente: 
+                    <span>{detalle.patente}</span>
+                    </p>
+                    <p className={styles.card__text}>Seguro: 
+                    <span>{detalle.seguro}</span>
+                    </p>
+                    <p className={styles.card__text}>Habilitecion: 
+                    <span>{detalle.habilitacion}</span>
+                    </p>
+                </section>
+            </div>
+            <button onClick={darBajaConductora}>Dar baja</button>
+        </div>
+    </>
+
+       
+            
+        
     )
 }
 
