@@ -9,11 +9,6 @@ import { Link } from 'react-router-dom';
 // import "bootstrap/dist/css/bootstrap.min.css";
 // import {Container, Row, Col} from "react-bootstrap"
  
-
-
-
-
-
 export default function PedirConductora() {
     const dispatch= useDispatch();
     const conductoras= useSelector((state) =>state.pedirConductoraReducer.conductoras);
@@ -50,7 +45,8 @@ export default function PedirConductora() {
                 automovil={elem.automovil}
                 patente={elem.patente}
                 habilitacion={elem.habilitacion}
-                conectada={elem.conectada} />
+               //conectada={elem.conectada}
+                 />
   
             );
           })}

@@ -4,8 +4,8 @@ import styles from "./TarjetaConductora.module.css";
 import {HiOutlineChatAlt2} from "react-icons/hi";
 import {FaTaxi } from "react-icons/fa";
 import { useState , useEffect } from 'react';
-
-import {getPerfilConductora} from '../actions/conductora'
+import {getPasajeras} from '../actions/Usuarios'
+import {getPerfilConductora,pedirConductora} from '../actions/conductora'
 import {crearViaje} from '../actions/recorrido'
 import {useDispatch, useSelector} from 'react-redux'
 // import Swal from "sweetalert2"
@@ -14,20 +14,29 @@ import {useDispatch, useSelector} from 'react-redux'
 
 
 export default function TarjetaConductoras({nombre,localidad, automovil, patente, habilitacion, conectada, id}) {
-    console.log(nombre)
-    const viaje = useSelector(state => state.recorridoReducer.datosMapa)
-    const pasajera = useSelector(state => state.LoginRegisReducer.pasajera)
-    const dispatch = useDispatch()
-    const navigate = useNavigate()
+  const viaje = useSelector(state => state.recorridoReducer.datosMapa)
+  const pasajera = useSelector(state => state.LoginRegisReducer.pasajera)
+  const dispatch = useDispatch()
+  const navigate = useNavigate()
+  console.log(nombre,localidad)
+
+    //console.log(id,'id')
+    useEffect(()=>{
+   
+  dispatch(getPasajeras())
+    },[dispatch])
+       //console.log(pasajera)
+
 
     
        console.log(pasajera)
+
      const data = {
       direcOrigen: viaje?.direcOrigen,
       direcDestino: viaje?.direcDestino,
       coordDestino: viaje?.coordDestino,
       coordOrigen: viaje?.coordOrigen,
-      descripDestino: viaje?.results.routes[0].summary,
+       descripDestino: viaje?.results.routes[0].summary,
       descripOrigen: "",
       estadoViaje: "requerido",
       idChat:"023545",
@@ -35,12 +44,20 @@ export default function TarjetaConductoras({nombre,localidad, automovil, patente
       nombreConductora: nombre,
       idPasajera: pasajera[0]?.id,
       nombrePasajera: pasajera[0]?.nombre,
-      precio: viaje?.results.routes[0].legs[0].distance.value * 0.04
+       precio: viaje?.results.routes[0].legs[0].distance.value * 0.04
     } 
+    
+   
 
     const handleButton =(payload)=>{
+
+      //dispatch(getPerfilConductora(payload.idConductora))
+        dispatch(crearViaje(payload))
+        dispatch(pedirConductora(payload.idConductora))
+
       dispatch(getPerfilConductora(payload.idConductora))
         //dispatch(crearViaje(payload))
+
         navigate('/viajeAceptado')
     } 
 
@@ -54,6 +71,7 @@ export default function TarjetaConductoras({nombre,localidad, automovil, patente
     <p>Vehículo: {automovil}</p>
     <p> Patente: {patente}</p>
     <p>Habilitación: {habilitacion}</p>
+    <p>Conectada:{conectada ? <p>Si</p> : <p>No disponible</p>}</p>
    
     <div className={styles.icono}>
      

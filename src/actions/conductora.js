@@ -13,7 +13,7 @@ import tokenConductora from "../Helpers/TokenConductora";
 import axios from "axios";
 import {SERVER} from './VariableGlobal'
       
-
+ //const SERVER = Server.SERVER;
 
 export const pedirConductora = () => async (dispatch) => {
     try {

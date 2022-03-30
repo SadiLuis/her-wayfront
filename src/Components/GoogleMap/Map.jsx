@@ -22,9 +22,10 @@ import { useRef, useState } from 'react'
 import {useNavigate} from 'react-router-dom'
 import {useDispatch} from 'react-redux'
 import {datosMapa} from '../../actions/recorrido'
+import Swal from "sweetalert2"
 function Mapa({setCoordinates, setBounds, coordinates}) {
   const { isLoaded } = useJsApiLoader({
-    googleMapsApiKey: 'AIzaSyB6A5sRCY60lwXdp5txFqBNx-_mBOWcAu0',
+    googleMapsApiKey: 'AIzaSyDo2MYthjrW4eDTScPNK8BYGBNa8DF0zBc',
     libraries: ['places'],
   })
 
@@ -76,6 +77,21 @@ function Mapa({setCoordinates, setBounds, coordinates}) {
     originRef.current.value = ''
     destiantionRef.current.value = ''
   }
+    function handleSweetConfirmarViaje(e){
+     Swal.fire({
+       icon:"success",
+       title:"Has solicitado el viaje correctamente",
+       text:"A continuación podrás elegir la conductora que realizará el viaje"
+     })
+   }
+   function handleClickNavegar(){
+     navigate('/pedirconductora')
+   }
+   function ambos(){
+     handleClickNavegar()
+     handleSweetConfirmarViaje()
+   }
+   
 
 
   return (
@@ -89,29 +105,7 @@ function Mapa({setCoordinates, setBounds, coordinates}) {
     >
       <Box position='relative' left={0} top={0} h='100%' w='100%'>
         {/* Google Map Box */}
-        <GoogleMap
-          center={coordinates}
-          zoom={15}
-          mapContainerStyle={{ width: '70%', height: '100%' }}
-          options={{
-            zoomControl: true,
-            streetViewControl: true,
-            mapTypeControl: true,
-            fullscreenControl: true,
-          }}
-          onChange={(e) => {
-            setCoordinates({lat: e.center.lat, lng: e.center.lng });
-            setBounds({ ne: e.marginBounds.ne, sw: e.marginBounds.sw})
-          }}
-          onLoad={map => setMap(map)}
-        >
-          <Marker position={coordinates} />
-          {directionsResponse && (
-            <DirectionsRenderer directions={directionsResponse} />
-          )}
-        </GoogleMap>
-      </Box>
-      <Box
+        <Box
         p={4}
         borderRadius='lg'
         m={4}
@@ -162,8 +156,40 @@ function Mapa({setCoordinates, setBounds, coordinates}) {
        
         </HStack>
       }
-      {distance && <button onClick={()=> navigate('/pedirconductora')}>Confirmar viaje</button> }
+      {distance && 
+      <button onClick={()=>{
+        handleClickNavegar();
+        handleSweetConfirmarViaje()
+      }
+
+      }
+         >Confirmar viaje</button>
+} 
+     
       </Box>
+        <GoogleMap
+          center={coordinates}
+          zoom={15}
+          mapContainerStyle={{ width: '70%', height: '100%' }}
+          options={{
+            zoomControl: true,
+            streetViewControl: true,
+            mapTypeControl: true,
+            fullscreenControl: true,
+          }}
+          onChange={(e) => {
+            setCoordinates({lat: e.center.lat, lng: e.center.lng });
+            setBounds({ ne: e.marginBounds.ne, sw: e.marginBounds.sw})
+          }}
+          onLoad={map => setMap(map)}
+        >
+          <Marker position={coordinates} />
+          {directionsResponse && (
+            <DirectionsRenderer directions={directionsResponse} />
+          )}
+        </GoogleMap>
+      </Box>
+      
     </Flex>
   )
 }
