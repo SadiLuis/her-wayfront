@@ -6,6 +6,10 @@ import {FaTaxi } from "react-icons/fa";
 import { useState , useEffect } from 'react';
 import {getPasajeras} from '../actions/Usuarios'
 import {getPerfilConductora,obtenerConductora} from '../actions/conductora'
+
+
+import {getPerfilConductora} from '../actions/conductora'
+
 import {crearViaje} from '../actions/recorrido'
 import {useDispatch, useSelector} from 'react-redux'
 // import Swal from "sweetalert2"
@@ -19,12 +23,18 @@ export default function TarjetaConductoras({nombre,localidad, automovil, patente
     const pasajera = useSelector(state => state.LoginRegisReducer.pasajera)
     const dispatch = useDispatch()
     const navigate = useNavigate()
+
     //console.log(id,'id')
     useEffect(()=>{
    
   dispatch(getPasajeras())
     },[dispatch])
        //console.log(pasajera)
+
+
+    
+       console.log(pasajera)
+
      const data = {
       direcOrigen: viaje?.direcOrigen,
       direcDestino: viaje?.direcDestino,
@@ -42,9 +52,14 @@ export default function TarjetaConductoras({nombre,localidad, automovil, patente
     } 
 
     const handleButton =(payload)=>{
+
       //dispatch(getPerfilConductora(payload.idConductora))
         dispatch(crearViaje(payload))
         dispatch(obtenerConductora(payload.idConductora))
+
+      dispatch(getPerfilConductora(payload.idConductora))
+        //dispatch(crearViaje(payload))
+
         navigate('/viajeAceptado')
     } 
 
@@ -53,7 +68,7 @@ export default function TarjetaConductoras({nombre,localidad, automovil, patente
     <div className={styles.tarjetaTop}><FaTaxi></FaTaxi></div>
         <div className={styles.tarjetaConductoraBody}>
     <div key={id}></div>
-    <h4>Nombre de la conductora: {nombre}</h4>
+    <h4> {nombre}</h4>
     <p>Localidad: {localidad}</p>
     <p>Vehículo: {automovil}</p>
     <p> Patente: {patente}</p>

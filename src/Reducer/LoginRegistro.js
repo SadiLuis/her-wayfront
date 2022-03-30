@@ -83,7 +83,7 @@ export default function LoginRegisReducer(state = initialState, action) {
                 case GET_PASAJERA: 
                 const idPasajera = state.userInfo.uid
                 const pasajera = action.payload.filter(p => p.authId === idPasajera)
-                console.log(idPasajera)
+                console.log(pasajera)
             return {
                 ...state,
                 pasajera: pasajera
