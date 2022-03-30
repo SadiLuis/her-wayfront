@@ -4,7 +4,7 @@ import styles from "./TarjetaConductora.module.css";
 import {HiOutlineChatAlt2} from "react-icons/hi";
 import {FaTaxi } from "react-icons/fa";
 import { useState , useEffect } from 'react';
-import {getPasajeras} from '../actions/Usuarios'
+
 import {getPerfilConductora} from '../actions/conductora'
 import {crearViaje} from '../actions/recorrido'
 import {useDispatch, useSelector} from 'react-redux'
@@ -20,10 +20,7 @@ export default function TarjetaConductoras({nombre,localidad, automovil, patente
     const dispatch = useDispatch()
     const navigate = useNavigate()
 
-    useEffect(()=>{
-   
-  dispatch(getPasajeras())
-    },[dispatch])
+    
        console.log(pasajera)
      const data = {
       direcOrigen: viaje?.direcOrigen,
@@ -43,7 +40,7 @@ export default function TarjetaConductoras({nombre,localidad, automovil, patente
 
     const handleButton =(payload)=>{
       dispatch(getPerfilConductora(payload.idConductora))
-        dispatch(crearViaje(payload))
+        //dispatch(crearViaje(payload))
         navigate('/viajeAceptado')
     } 
 
@@ -52,7 +49,7 @@ export default function TarjetaConductoras({nombre,localidad, automovil, patente
     <div className={styles.tarjetaTop}><FaTaxi></FaTaxi></div>
         <div className={styles.tarjetaConductoraBody}>
     <div key={id}></div>
-    <h4>Nombre de la conductora: {nombre}</h4>
+    <h4> {nombre}</h4>
     <p>Localidad: {localidad}</p>
     <p>Vehículo: {automovil}</p>
     <p> Patente: {patente}</p>

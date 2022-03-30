@@ -2,6 +2,8 @@ import React, {useEffect} from 'react'
 import { useDispatch, useSelector } from 'react-redux';
 import { pedirConductora,detalleConductora } from '../actions/conductora';
 import TarjetaConductora from '../Screens/TarjetaConductora';
+import {Loader} from './Loader/Loader'
+import {getPasajeras} from '../actions/Usuarios'
 import styles from "./PedirConductora.module.css"
 import { Link } from 'react-router-dom';
 // import "bootstrap/dist/css/bootstrap.min.css";
@@ -16,40 +18,33 @@ export default function PedirConductora() {
     const dispatch= useDispatch();
     const conductoras= useSelector((state) =>state.pedirConductoraReducer.conductoras);
     // const detalle= useSelector((state)=>state.pedirConductoraReducer.detalle);
+    const pasajera = useSelector(state => state.LoginRegisReducer.pasajera)
     console.log(conductoras)
-  
-      
+    console.log(pasajera)
+   const conductorasFilter = conductoras?.filter(cond => cond.localidad === pasajera[0].localidad)
+      console.log(conductorasFilter)
   useEffect(()=>{
     dispatch(pedirConductora())
+    dispatch(getPasajeras())
   }, [dispatch])
   
-  // useEffect(()=>{
-  //   dispatch(detalleConductora())
-  // }, [id, dispatch])
   
-  function handleClickPedirConductora(e){
-    e.preventDefault();
-  dispatch(pedirConductora())
-  
- }
-  // function handleClickDetalleConductora(e){
-  //   e.preventDefault();
-  //   dispatch(detalleConductora(e))
-  // }
   
     return (
        
-          <><h2 style={{justifyContent:"center"}}>Elija su conductora</h2>
-          <div className={styles.contenedor}>
+          <>
+          <h2 style={{justifyContent:"center"}}>Elija su conductora</h2>
+          { conductorasFilter.length ? (<div className={styles.contenedor}>
         {/* <button className={styles.botonPedirConductora}
       onClick={(e)=>{handleClickPedirConductora(e)}}
       >Pedir Conductora</button> */}
         
-          {conductoras?.map(elem => {
+          {conductorasFilter?.map(elem => {
             return (
   
               <TarjetaConductora
                 key={elem.id}
+                id= {elem.id}
                 nombre={elem.nombre}
                 localidad={elem.localidad}
                 automovil={elem.automovil}
@@ -59,8 +54,11 @@ export default function PedirConductora() {
   
             );
           })}
-  
-       </div></>
+        
+       </div>)
+          : <Loader />
+      }
+       </>
   
   
   

@@ -18,7 +18,7 @@ import {
 
 } from "../actions/index";
 import {SERVER} from './VariableGlobal'
-
+import Swal from "sweetalert2";
 
 
 
@@ -84,6 +84,12 @@ export function login({ email, contrasena }) {
             })
             console.log(data)
         } catch (error) {
+            Swal.fire({
+                icon: 'error',
+                title: 'Datos incorrectos',
+                text: 'La contraseña o el correo son incorrectos!',
+               
+              })
             console.log(error)
             return dispach({
                 type: LOGIN_USER_ERROR,
