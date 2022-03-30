@@ -21,10 +21,11 @@ import {
 import { useRef, useState } from 'react'
 
 
+
 function Mapa({setCoordinates, setBounds, coordinates}) {
   const { isLoaded } = useJsApiLoader({
-    googleMapsApiKey:'AIzaSyDo2MYthjrW4eDTScPNK8BYGBNa8DF0zBc',
-    libraries: ['places'],
+    googleMapsApiKey: 'AIzaSyDo2MYthjrW4eDTScPNK8BYGBNa8DF0zBc',
+    libraries:['places'],
   })
 
   const [map, setMap] = useState((null))

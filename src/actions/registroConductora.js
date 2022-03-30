@@ -9,13 +9,13 @@ import { SERVER } from './VariableGlobal';
 
 
 
-export function registroConductora(body){
+export function registroConductora(payload){
     try{
         return async function (dispatch){
-            const create = await axios.post(`${SERVER}/conductora/register`, body);
+            const create = await axios.post(`${SERVER}/conductora/register`, payload);
             return dispatch({
                 type: REGISTRO_CONDUCTORA,
-                payload: create,
+                create,
             })
            // return create;
         }

@@ -1,14 +1,9 @@
 import {  FILTRAR_CONDUCTORA_SEGUN_AUTO, 
     PEDIR_CONDUCTORA,
-    GET_ALL_CONDUCTORAS,
-    POST_CONDUCTORAS, 
+    GET_ALL_CONDUCTORAS, 
     GET_PERFILC,
-    LOGIN_CONDUCTORA_SUCCESS,
-    LOGIN_CONDUCTORA_ERROR,
-    REGISTER_CONDUCTORA_SUCCESS,
-    REGISTER_CONDUCTORA_ERROR } from "./index"
+     } from "./index"
 
-import tokenUser from '../Helpers/TokenUser'
 import tokenConductora from "../Helpers/TokenConductora";
 import axios from "axios";
 import {SERVER} from './VariableGlobal'
@@ -34,7 +29,7 @@ export function getPerfilConductora(id) {
     return async function (dispatch) {
     try{
             //const request = await axios.get(`http://localhost:3001/conductora/${id}`);
-            const request = await axios.get(`${SERVER}/conductora/${id}`)
+            const request = await axios.get(`${SERVER}/conductora/${id}`, tokenConductora())
             console.log(request)
             return dispatch({ 
                 type: GET_PERFILC, 

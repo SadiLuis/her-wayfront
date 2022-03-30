@@ -12,7 +12,7 @@ import { useNavigate } from 'react-router-dom';
 const HomeConductora = () => {
   
     //Harcode, esto hay que reemplazarlo por el id de la conductora logueada cuando funcion login
-    const idConductora = "cjnatKro0hNiresnL2d2" //el id de su doc de la coleccion conductorar en firebase
+    const idConductora = "OOSg1YJ93xwIXqmviPg5" //el id de su doc de la coleccion conductorar en firebase
     const dispatch = useDispatch()
     const navigate = useNavigate()
 
