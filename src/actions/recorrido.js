@@ -1,4 +1,4 @@
-import {DESTINO, ORIGEN, TIEMPO_DE_VIAJE ,VIAJE_CREADO,VIAJE_RECHAZADO ,DATOS_MAPA} from "./index"
+import {DESTINO, ORIGEN, TIEMPO_DE_VIAJE ,VIAJE_CREADO,VIAJE_RECHAZADO ,DATOS_MAPA, CANCELAR_VIAJE} from "./index"
 import axios from 'axios'
 import {SERVER} from './VariableGlobal'
 export const origen= (payload) => {
@@ -70,3 +70,17 @@ export function crearViaje({
         }
    } 
 }  
+
+export const cancelarViaje = (id) => {
+    return async (dispatch) => {
+        try {
+            const res = await axios.put(`${SERVER}/viajes/cancelar/${id}`)
+            dispatch({
+                type: CANCELAR_VIAJE,
+                payload: res.data
+            })
+        } catch (error) {
+            console.log(error)
+        }
+    }
+}
