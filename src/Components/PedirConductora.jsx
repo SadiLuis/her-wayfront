@@ -18,11 +18,11 @@ export default function PedirConductora() {
     const dispatch= useDispatch();
     const conductoras= useSelector((state) =>state.pedirConductoraReducer.conductoras);
     // const detalle= useSelector((state)=>state.pedirConductoraReducer.detalle);
-    const pasajera = useSelector(state => state.LoginRegisReducer.pasajera)
+   // const pasajera = useSelector(state => state.LoginRegisReducer.pasajera)
     console.log(conductoras)
-    console.log(pasajera)
-   const conductorasFilter = conductoras?.filter(cond => cond.localidad === pasajera[0].localidad)
-      console.log(conductorasFilter)
+    //console.log(pasajera)
+  //const conductorasFilter = conductoras?.filter(cond => cond.localidad === pasajera[0].localidad)
+    // console.log(conductorasFilter)
   useEffect(()=>{
     dispatch(pedirConductora())
     dispatch(getPasajeras())
@@ -34,12 +34,12 @@ export default function PedirConductora() {
        
           <>
           <h2 style={{justifyContent:"center"}}>Elija su conductora</h2>
-          { conductorasFilter.length ? (<div className={styles.contenedor}>
+          { conductoras.length ? (<div className={styles.contenedor}>
         {/* <button className={styles.botonPedirConductora}
       onClick={(e)=>{handleClickPedirConductora(e)}}
       >Pedir Conductora</button> */}
         
-          {conductorasFilter?.map(elem => {
+          {conductoras?.map(elem => {
             return (
   
               <TarjetaConductora
