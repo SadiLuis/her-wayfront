@@ -5,7 +5,7 @@ import {HiOutlineChatAlt2} from "react-icons/hi";
 import {FaTaxi } from "react-icons/fa";
 import { useState , useEffect } from 'react';
 import {getPasajeras} from '../actions/Usuarios'
-import {getPerfilConductora} from '../actions/conductora'
+import {getPerfilConductora,obtenerConductora} from '../actions/conductora'
 import {crearViaje} from '../actions/recorrido'
 import {useDispatch, useSelector} from 'react-redux'
 // import Swal from "sweetalert2"
@@ -14,17 +14,17 @@ import {useDispatch, useSelector} from 'react-redux'
 
 
 export default function TarjetaConductoras({nombre,localidad, automovil, patente, habilitacion, conectada, id}) {
-    console.log(nombre)
+    //console.log(nombre)
     const viaje = useSelector(state => state.recorridoReducer.datosMapa)
     const pasajera = useSelector(state => state.LoginRegisReducer.pasajera)
     const dispatch = useDispatch()
     const navigate = useNavigate()
-
+    //console.log(id,'id')
     useEffect(()=>{
    
   dispatch(getPasajeras())
     },[dispatch])
-       console.log(pasajera)
+       //console.log(pasajera)
      const data = {
       direcOrigen: viaje?.direcOrigen,
       direcDestino: viaje?.direcDestino,
@@ -42,8 +42,9 @@ export default function TarjetaConductoras({nombre,localidad, automovil, patente
     } 
 
     const handleButton =(payload)=>{
-      dispatch(getPerfilConductora(payload.idConductora))
+      //dispatch(getPerfilConductora(payload.idConductora))
         dispatch(crearViaje(payload))
+        dispatch(obtenerConductora(payload.idConductora))
         navigate('/viajeAceptado')
     } 
 

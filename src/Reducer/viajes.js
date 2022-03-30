@@ -1,3 +1,5 @@
+import { PEDIR_CONDUCTORA } from "../actions";
+
 const initialState = {
     
     viajesConductora: {},
@@ -14,7 +16,12 @@ export default function viajesReducer(state = initialState, action) {
                 return {
                     ...state,
                     viajeRequeridoConductora: action.payload
-                }    
+                } 
+            case PEDIR_CONDUCTORA:
+                return{
+                ...state,
+                viajeRequeridoConductoraDetalle: action.payload
+                }  
             default:
                 return state;
     }

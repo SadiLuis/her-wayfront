@@ -11,6 +11,7 @@ export const GET_PASAJERA = "GET_PASAJERA"
 export const DATOS_MAPA = "DATOS_MAPA"
 export const VIAJE_CREADO ="VIAJE_CREADO"
 export const VIAJE_RECHAZADO= "VIAJE_RECHAZADO"
+export const CANCELAR_VIAJE = "CANCELAR_VIAJE"
 //////////////// Conductoras ////////////////////////
 
 
