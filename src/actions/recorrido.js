@@ -15,13 +15,13 @@ export const datosMapa =(payload) =>{
     })
 }
 
-export const tiempoDeViaje= (payload) => {
-    return({
-        type: TIEMPO_DE_VIAJE,
-        payload,
+// export const tiempoDeViaje= (payload) => {
+//     return({
+//         type: TIEMPO_DE_VIAJE,
+//         payload,
 
-    })
-}
+//     })
+// }
 
 export function crearViaje({
     direcOrigen,

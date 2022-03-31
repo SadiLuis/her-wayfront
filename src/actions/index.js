@@ -34,10 +34,11 @@ export const REGISTRO_CONDUCTORA = "REGISTRO_CONDUCTORA"
 //----------------------------------------------------
 
 
-export const CREAR_REVIEW='CREAR_REVIEW';
-export const OBTENER_REVIEW = 'OBTENER_REVIEW';
+export const CREAR_REVIEW = 'CREAR_REVIEW';
+export const OBTENER_REVIEWS = 'OBTENER_REVIEWS';
+export const OBTENER_REVIEWS_POR_CONDUCTORA = 'OBTENER_REVIEWS_POR_CONDUCTORA';
+export const EDITAR_REVIEW = 'EDITAR_REVIEW'
 export const BORRAR_REVIEW = 'BORRAR_REVIEW';
-
 
 
 

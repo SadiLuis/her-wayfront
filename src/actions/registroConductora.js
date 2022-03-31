@@ -2,6 +2,7 @@ import axios from 'axios';
 import {
     REGISTRO_CONDUCTORA,
     LOGIN_CONDUCTORA,
+    //DETALLE
 } from './index'
 import { SERVER } from './VariableGlobal';
 
@@ -35,10 +36,20 @@ export function loginConductora({ email, contrasena }) {
                 type: LOGIN_CONDUCTORA,
                 payload: registroCond
             })
-            console.log(data)
+
         } catch (error) {
             console.log(error)
         }
     }    
 }
-
+// export function detalleConductora(id) {
+//     return async function (dispatch) {
+//         const request = await axios.get(`${SERVER}/conductora/${id}`);
+//         //onst request = await axios.get(`${SERVER}conductora/${id}`)
+//         console.log(request)
+//         dispatch({ 
+//             type: DETALLE, 
+//             payload: request.data
+//         })
+//     }
+// }

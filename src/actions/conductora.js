@@ -1,13 +1,12 @@
 import {  FILTRAR_CONDUCTORA_SEGUN_AUTO, 
     PEDIR_CONDUCTORA,
-    GET_ALL_CONDUCTORAS,
     GET_PERFILC,
     DETALLE_CONDUCTORA } from "./index"
 
 import tokenConductora from "../Helpers/TokenConductora";
 import axios from "axios";
 import {SERVER} from './VariableGlobal'
-      
+
 
 
 export const pedirConductora = () => async (dispatch) => {
@@ -41,10 +40,10 @@ export function getPerfilConductora(id) {
 }
 }
 
-export const obtenerConductora = (id) => {
+export const obtenerConductora = (idConductora) => {
     return async (dispatch) => {
         try {
-                const res = await axios.get(`${SERVER}/idLoginCond/${id}`);
+                const res = await axios.get(`${SERVER}/idLoginCond/${idConductora}`);
                 return dispatch({
                     type: DETALLE_CONDUCTORA,
                     payload: res.data
@@ -64,25 +63,6 @@ export const filtrarConductora = (payload) => {
 };
 
 
-
-
-
-
-
-export function getAllConductoras(){
-    return async function(dispatch){
-        try{
-            const conductoras = await axios.get(`${SERVER}/conductora`)
-            return dispatch({
-                type: GET_ALL_CONDUCTORAS,
-                payload: conductoras
-            })
-           
-        }catch(err){
-            console.log(err)
-        }
-    }
-};
 
 export function conectaConductora(payload){
     let {id, estado} = payload
