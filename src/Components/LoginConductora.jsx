@@ -48,7 +48,7 @@ export default function LoginConductora() {
         dispatch(loginConductora(formlogin))
 
         console.log(formlogin)
-        navigate('/homeconductora')
+        navigate('/perfilConductora')
     }
 
     return (

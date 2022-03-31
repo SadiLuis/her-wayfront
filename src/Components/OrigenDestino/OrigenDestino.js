@@ -1,15 +1,10 @@
 import React, { useState } from 'react';
-import GoogleMapReact from 'google-map-react';
 // import Directions from 'react-maps-direction'
 import {FaRegDotCircle,FaMapMarkerAlt, FaDirections} from 'react-icons/fa';
 import styles from './OrigenDestino.module.css';
-
- import GooglePlacesAutocomplete from 'react-google-places-autocomplete';
-import { Details } from '@material-ui/icons';
+import GooglePlacesAutocomplete from 'react-google-places-autocomplete';
 import { useDispatch, useSelector } from 'react-redux';
 
-import { Marker } from '@react-google-maps/api';
-import { origen, destino } from '../../actions/recorrido';
 // import PlacesAutocomplete from 'react-places-autocomplete';
  
 

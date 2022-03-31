@@ -1,13 +1,13 @@
 import React, { useState, useEffect } from 'react'
 import { connect, useDispatch, useSelector  } from 'react-redux'
 import { getPerfilConductora } from '../../actions/conductora'
-import { useParams } from 'react-router';
+import { useParams } from 'react-router-dom';
 import Image from '../../Media/placeholder.png'
 import Navbar from '../Landing/Navbar'
 import { useNavigate } from "react-router-dom";
 import './PerfilConductora.css'
 
-export default function PerfilConductora( ) {
+ function PerfilConductora( ) {
 
     // const [loading, setLoading] = useState(true);
 
@@ -16,14 +16,14 @@ export default function PerfilConductora( ) {
     let conductora = useSelector((state) => state.perfilConductoraReducer.perfilConductora)
     console.log("perfil conductora", conductora)
 
-    const { id } = useParams()
+    const { idConductora } = useParams()
 
     // let idConductora = "OOSg1YJ93xwIXqmviPg5"
 
     useEffect(() => {
-       dispatch(getPerfilConductora(id))
+       dispatch(getPerfilConductora(idConductora))
 
-    }, [])
+    }, [dispatch, idConductora])
 
 
 
@@ -64,11 +64,11 @@ export default function PerfilConductora( ) {
     )
 }
 
-// export default connect(
-//     state => ({
-//         conductora: state.perfilConductoraReducer.perfilConductora
-//     }),
-//     dispatch => ({
-//         getConductora: (idConductora) => dispatch(getPerfilConductora(idConductora))
-//     })
-// )(PerfilConductora)
+export default connect(
+    state => ({
+        conductora: state.perfilConductoraReducer.perfilConductora,
+    }),
+    dispatch => ({
+        getConductora: (idConductora) => dispatch(getPerfilConductora(idConductora))
+    })
+)(PerfilConductora)
