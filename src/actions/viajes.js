@@ -29,13 +29,13 @@ export function aceptaRechazaViaje(payload){
             const aceptar = await axios.put(`${SERVER}/viajes/acepta/${id}`);
             return dispatch({
                 type: "ACEPTA_VIAJE",
-                payload: "acepta viaje"
+                payload: "acepta"
             })
         } else if (decision === "rechazar") {
             const rechazar = await axios.put(`${SERVER}/viajes/rechaza/${id}`);
             return dispatch({
                 type: "RECHAZA_VIAJE",
-                payload: "rechaza viaje"
+                payload: "rechaza"
             })
         }
         }catch(error){

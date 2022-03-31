@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 //import { useParams } from 'react-router-dom';
 import VistaMap from '../Screens/VistaMap';
-import {getPerfilConductora, conectaConductora} from "../actions/conductora"
+import {getPerfilConductora, cambiaEstadoConductora} from "../actions/conductora"
 import { useDispatch, useSelector } from 'react-redux';
 import {Loader} from '../Components/Loader/Loader';
 import Swal from "sweetalert2";
@@ -19,18 +19,18 @@ const HomeConductora = () => {
     let conductora = useSelector((state) => state.perfilConductoraReducer.perfilConductora)
     let aux = useSelector((state) => state.perfilConductoraReducer.aux)
 
-    console.log("perfil conductora", conductora)
    const [coordinate, setCoordinates]=useState({lat: 0, lng:0});
 
     useEffect(() => {
+      console.log("se dispara el useEffect de getPerfilConductora")
         dispatch(getPerfilConductora(idConductora))
-    }, [idConductora, dispatch, aux])
+    }, [idConductora, aux])
     
     useEffect(() => {
       navigator.geolocation.getCurrentPosition(({coords: {latitude, longitude}}) => {
          setCoordinates({ lat: latitude, lng: longitude}) 
       })
-    }, [aux])
+    }, [] )
 
     function handleConnect(e){  
         e.preventDefault()
@@ -38,7 +38,7 @@ const HomeConductora = () => {
             id: idConductora,
             estado: "conectar"
         }
-        dispatch(conectaConductora(payload))
+        dispatch(cambiaEstadoConductora(payload))
         
         setTimeout(function () {
             navigate("/viajeconductora");
@@ -57,7 +57,7 @@ const HomeConductora = () => {
             id: idConductora,
             estado: "desconectar"
         }
-        dispatch(conectaConductora(payload))
+        dispatch(cambiaEstadoConductora(payload))
         Swal.fire({
             title:"Te has desconectado correctamente!",
             icon: 'success',
