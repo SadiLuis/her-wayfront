@@ -8,7 +8,6 @@ import {getPasajeras} from '../actions/Usuarios'
 import {getPerfilConductora,obtenerConductora} from '../actions/conductora'
 
 
-import {getPerfilConductora} from '../actions/conductora'
 
 import {crearViaje} from '../actions/recorrido'
 import {useDispatch, useSelector} from 'react-redux'
