@@ -24,7 +24,7 @@ import {useDispatch} from 'react-redux'
 import {datosMapa} from '../../actions/recorrido'
 function Mapa({setCoordinates, setBounds, coordinates}) {
   const { isLoaded } = useJsApiLoader({
-    googleMapsApiKey: 'AIzaSyB6A5sRCY60lwXdp5txFqBNx-_mBOWcAu0',
+    googleMapsApiKey: 'AIzaSyDo2MYthjrW4eDTScPNK8BYGBNa8DF0zBc',
     libraries: ['places'],
   })
 

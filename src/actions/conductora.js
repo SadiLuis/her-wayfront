@@ -92,7 +92,7 @@ export function getAllConductoras(){
     }
 };
 
-export function conectaConductora(payload){
+export function cambiaEstadoConductora(payload){
     let {id, estado} = payload
     
     return async function (dispatch){
