@@ -1,3 +1,8 @@
+.container__main{
+  display:grid;
+  grid-template-columns: 1fr 4fr;
+}
+
 table {
     font-family: arial, sans-serif;
     border-collapse: collapse;

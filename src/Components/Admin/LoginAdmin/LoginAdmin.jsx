@@ -29,7 +29,6 @@ export default function Login() {
         }
         setError(errors)
 
-        console.log(e.target.value)
     }
     const handleSubmit = (e) => {
         e.preventDefault()
@@ -43,7 +42,6 @@ export default function Login() {
 
         dispatch (login(formlogin))
 
-        console.log(formlogin)
         navigate('/admin/usuarios')
     }
 
@@ -51,11 +49,7 @@ export default function Login() {
     //     dispatch(pedirConductora())
     //   }, [dispatch])
 
-    const handleClickEntrar = (e) => {
-        e.preventDefault();
-        navigate("/conductoras")
-
-    }
+    
     return(
     <div className='col-md-4'>
         <div className='mt-5 ms-5'>
@@ -77,7 +71,7 @@ export default function Login() {
                 
             </form>
 
-            <div className='text-center '>
+            {/* <div className='text-center '>
 
                 <Link to='/resetPassword' style={{
                     color: '#0066ff',
@@ -88,7 +82,7 @@ export default function Login() {
                 }} >
                     ¿ Olvidaste tu contraseña ?
                 </Link>
-            </div>
+            </div> */}
 
 
 

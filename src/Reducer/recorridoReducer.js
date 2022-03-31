@@ -1,11 +1,11 @@
-import { DESTINO, ORIGEN, TIEMPO_DE_VIAJE } from "../actions/index";
+import { DATOS_MAPA, ORIGEN, TIEMPO_DE_VIAJE ,VIAJE_CREADO,VIAJE_RECHAZADO} from "../actions/index";
 
 
 const initialState ={
-    origen:[],
-    destino:[],
-    tiempoDeViaje:null
-
+    datosMapa:[],
+    distancia:0,
+    tiempoDeViaje:null,
+    viaje:[]
 };
 
 const recorridoReducer = (state=initialState, action) => {
@@ -15,20 +15,30 @@ const recorridoReducer = (state=initialState, action) => {
                 ...state,
                 origen: action.payload,
             }
-        case DESTINO:
+        case DATOS_MAPA:
         
             return {
                 ...state,
-                destino: action.payload,
+                datosMapa: action.payload,
             }
         case TIEMPO_DE_VIAJE:
         return {
             ...state,
             tiempoDeViaje: action.payload,
         }
+        case VIAJE_CREADO: return{
+            ...state,
+             viaje: action.payload,
+
+        }
+        case VIAJE_RECHAZADO: return{
+            ...state,
+            viaje: action.payload,
+        }
         default:
             return state;
     }
+
 };
 
 export default recorridoReducer;
