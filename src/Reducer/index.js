@@ -5,8 +5,8 @@ import LoginRegisReducer from "./LoginRegistro";
 import adminReducer from "./adminReducer";
 import perfilConductoraReducer from "./PerfilConduc";
 import registroConductoraReducer from "./registroConductoraReducer"
-
 import viajesReducer from "./viajes";
+import reviewsReducer from "./reviewsReducer";
 
 
 
@@ -19,7 +19,8 @@ const rootReducer= combineReducers({
     adminReducer,
     perfilConductoraReducer,
     registroConductoraReducer,
-    viajesReducer
+    viajesReducer,
+    reviewsReducer
 })
 
 

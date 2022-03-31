@@ -3,15 +3,16 @@ import {
     OBTENER_REVIEWS,
     BORRAR_REVIEW,
     OBTENER_REVIEWS_POR_CONDUCTORA
-} from '../actions/reviews.js';
+} from '../actions/index';
 
 const initialState = {
-    reviews:[],
+    todasLasreviews:[],
     reviewsConductora: []
 }
 
-export default function usersReducer(state = initialState, action){
+export default function reviewsReducer(state = initialState, action){
     switch (action.type) {
+        
         case CREAR_REVIEW:
             return {
                 ...state,
@@ -23,11 +24,13 @@ export default function usersReducer(state = initialState, action){
                 ...state,
                 reviews: action.payload
             }
+
         case BORRAR_REVIEW:
             return {
                 ...state,
-                reviews: state.reviews.filter((e) => e.idReviews !== action.payload.idReviews)
+                reviews: state.reviews.filter((r) => r.idReviews !== action.payload.id)
             }
+
         case OBTENER_REVIEWS_POR_CONDUCTORA:
             return {
                 ...state,

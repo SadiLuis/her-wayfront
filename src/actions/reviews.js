@@ -1,13 +1,18 @@
 import axios from 'axios';
-import { CREAR_REVIEW, EDITAR_REVIEW, OBTENER_REVIEW, OBTENER_REVIEWS_POR_CONDUCTORA } from '.';
+import {BORRAR_REVIEW, 
+        CREAR_REVIEW, 
+        EDITAR_REVIEW,  
+        OBTENER_REVIEWS, 
+        OBTENER_REVIEWS_POR_CONDUCTORA } from '.';
+import { body } from '../utilsPago';
 import { SERVER } from './VariableGlobal';
 
 
 
-export function postReviews(payload) {
+export function postReviews(body) {
     return async function (dispatch) {
         try {
-            const crearReview = await axios.post(`${SERVER}/reviews/create`, payload);
+            const crearReview = await axios.post(`${SERVER}/reviews/create`, body);
                 return dispatch({
                     type: CREAR_REVIEW,
                     payload: crearReview.data,
@@ -26,7 +31,7 @@ export function getReviews() {
             const obtenerReview = await axios.get(`${SERVER}/reviews/`)
             //console.log('obtenerReview', obtenerReview)
             return dispatch ({
-                type: OBTENER_REVIEW,
+                type: OBTENER_REVIEWS,
                 payload: obtenerReview.data
             })       
         } catch (error) {
@@ -70,7 +75,7 @@ export function deleteReview(id){
         try {
             const eliminarReview = await axios.delete(`${SERVER}/reviews/delete`, id);
             return dispatch({
-                type: EDITAR_REVIEW,
+                type: BORRAR_REVIEW,
                 payload: eliminarReview.data,
             });
         } catch (error) {
