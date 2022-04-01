@@ -4,11 +4,13 @@ import Image from '../../Media/placeholder.png'
 import Navbar from '../Landing/Navbar'
 import './PerfilPasajera.css'
 import { useDropzone } from "react-dropzone";
-import { useNavigate } from "react-router-dom";
+import { Link,useNavigate } from "react-router-dom";
 import {useSelector , useDispatch} from 'react-redux'
 import {getPasajeras , logout} from '../../actions/Usuarios'
 import {Loader} from '../Loader/Loader'
 import {saveImages} from '../../Helpers/saveImage'
+import {updateFoto} from '../../actions/Usuarios'
+
 export default function PerfilPasajera() {
     const pasajera = useSelector(state => state.LoginRegisReducer.pasajera)
     const [imagen , setImagen] = useState('')
@@ -29,7 +31,7 @@ export default function PerfilPasajera() {
      const urlImage = await saveImages(oFile[0]);
       console.log(urlImage)
       setImagen(urlImage)
-    
+      await updateFoto(urlImage , pasajera[0].id)
 }, []);
 
 const { getRootProps, getInputProps} = useDropzone({
@@ -45,7 +47,7 @@ const { getRootProps, getInputProps} = useDropzone({
         <div className='perfilCard'>
          {pasajera.length  ?
          ( <div className='upperContainer'>
-                {/* <span className='editIcon'>Editar Perfíl</span> */}
+            
                 <div className='imageContainer'>
                     <img src={pasajera[0].fotoPerfil ? pasajera[0].fotoPerfil : imagen ? imagen : Image}
                         alt='profile pic'
@@ -69,13 +71,17 @@ const { getRootProps, getInputProps} = useDropzone({
                         <h4> Teléfono: {pasajera[0].telefono} </h4>
                         <h4> Provincia: {pasajera[0].provincia} </h4>
                         <h4> Ciudad: {pasajera[0].localidad} </h4> 
+                        <h4>Dirección: {pasajera[0].direccion}</h4>
                     </span>
                     </div>
                 </div>
-                <button className='logoutP' onClick={handleButton}> Log out </button>
+                
+                    <Link to='/editPasajera'>
+                    Editar
+                    </Link>
                 <button {...getRootProps()} primary>Actualizar foto </button>
                 <input {...getInputProps()}/>
-                
+                <button className='logoutP' onClick={handleButton}> Salir </button>
             </div>
         ) : <Loader/>
           }

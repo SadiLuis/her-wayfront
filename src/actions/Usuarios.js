@@ -25,7 +25,7 @@ import Swal from "sweetalert2";
 export function updateUser(newUser) {
     return async function (dispach) {
         try {
-            await axios.put(`${SERVER}${newUser.id}`, newUser, tokenUser())
+            await axios.put(`${SERVER}/${newUser.id}`, newUser, tokenUser())
             dispach(getuserDetails())
             return {
 
@@ -189,4 +189,38 @@ export const getPasajeras = () => {
         }
        }
 
+}
+
+export const updateFoto = async(foto , id)=> {
+    const body = {fotoPerfil: foto}
+        try{
+         const res = await axios.put(`${SERVER}/usuario/updateFoto/${id}`,body)
+            console.log(res)
+            
+        } catch (error) {
+          console.log(error)
+        }
+      
+}
+
+export const updatePasajera = async(form , id)=> {
+   
+        try{
+         const res = await axios.put(`${SERVER}/usuario/update/${id}`,form)
+         Swal.fire({
+            icon: 'success',
+            title: 'Perfil actualizado',
+        
+           
+          })
+            
+        } catch (error) {
+            Swal.fire({
+                icon: 'error',
+                title: 'Error al actualizar el perfil ',
+                
+               
+              })
+        }
+      
 }

@@ -3,7 +3,7 @@ import React, { useState } from 'react'
 import { useDispatch } from 'react-redux';
 import { Link, useNavigate } from "react-router-dom";
 import { loginConductora } from '../actions/registroConductora';
-import { getPerfilConductora } from "../actions/conductora"
+import { getPerfilConductora, pedirConductora } from "../actions/conductora"
 import uno from '../image/1.jpg'
 import dos from '../image/2.jpg'
 import tres from '../image/3.jpg'
@@ -16,14 +16,13 @@ const initialLogin = {
 }
 
 export default function LoginConductora() {
-
     const [formlogin, setFormLogin] = useState(initialLogin)
     const [error, setError] = useState()
     const navigate = useNavigate()
     const dispatch = useDispatch()
 
-    const handleChange = (e) => {
 
+    const handleChange = (e) => {
         setFormLogin({
             ...formlogin,
             [e.target.name]: e.target.value
@@ -36,6 +35,8 @@ export default function LoginConductora() {
 
         console.log(e.target.value)
     }
+
+
     const handleSubmit = (e) => {
         e.preventDefault()
         const errors = {
@@ -44,16 +45,13 @@ export default function LoginConductora() {
             email: ''
         }
         setError(errors)
-
         dispatch(loginConductora(formlogin))
-
         console.log(formlogin)
-        navigate('/homeconductora')
+        navigate('/perfilConductora')
     }
 
+
     return (
-
-
         <div class="row g-0 pt-3">
             <div class="col-lg-1"></div>
             <div class="col-lg-5">

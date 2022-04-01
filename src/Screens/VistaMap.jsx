@@ -1,9 +1,14 @@
 import React, { useEffect, useState } from 'react';
 import {Grid} from '@material-ui/core';
 import Mapa from '../Components/GoogleMap/Map';
+import Swal from "sweetalert2"
+
+function ingresaDatos(){
+Swal.fire("Ingresá origen y destino de tu viaje")
+}
 
 
-function VistaMap() {
+function VistaMap({}) {
     const [coordinates, setCoordinates] = useState({lat: 0, lng:0});
     const [bounds, setBounds] = useState(null);
   
@@ -14,6 +19,7 @@ function VistaMap() {
     }, [])
   return (
       <>
+      {ingresaDatos()}
    <div className='row conteiner p-4' >
       <div className='col-md-8'>
           <Grid item xs={12} md={8}>
