@@ -41,6 +41,7 @@ import CrearReview from './Components/Reviews/CrearReview';
 import RecorridoPasajera from './Components/RecorridoPasajera/RecorridoPasajera';
 
 import ViajePasajera from './Components/ViajePasajera/ViajePasajera.jsx'
+import MisViajesPasajera from './Components/MisViajesPasajera/MisViajesPasajera';
 
 
 function App() {
@@ -79,8 +80,9 @@ function App() {
             <Route path="/viajeAceptado" element={<RecorridoPasajera />} />
             <Route path="/loginPasajeraConGoogle" element={<LoginConGooglePasajera />} />
             <Route path="/viajeAceptado" element={<ViajePasajera/>} />
+            <Route path="/reviews" element={<CrearReview />} />
+            <Route path="/misViajesPasajera" element={<MisViajesPasajera />} />
 
-             <Route path="/reviews" element={<CrearReview />} />
 
 
 
