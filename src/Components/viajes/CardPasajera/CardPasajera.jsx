@@ -5,14 +5,14 @@ import {HiOutlineChatAlt2} from "react-icons/hi";
 import {FaTaxi } from "react-icons/fa";
  import Swal from "sweetalert2"
 import { useDispatch } from 'react-redux';
-import { aceptaRechazaViaje } from '../../../actions/viajes';
+import { cambiaEstadoViaje } from '../../../actions/viajes';
 
 
 
 //Esta card se muestra en la pantalla viaje CONDUCTORA al momento que le requieren un viaje
 export default function CardPasajera({nombrePasajera, precio,  distancia, origen, destino, idViaje}) {
 
-  
+  console.log("id viaje es", idViaje)  
   const dispatch = useDispatch()
   const navigate = useNavigate()
 
@@ -23,14 +23,15 @@ export default function CardPasajera({nombrePasajera, precio,  distancia, origen
       decision: e.target.name
     }
     if(e.target.name === "aceptar") {
-      dispatch(aceptaRechazaViaje(payload))
+      dispatch(cambiaEstadoViaje(payload))
       Swal.fire({
         title:"Has aceptado el viaje",
         icon: 'success',
       })
+      navigate("/viajeconductora/" + idViaje)
       
     }else {
-      dispatch(aceptaRechazaViaje(payload))
+      dispatch(cambiaEstadoViaje(payload))
       Swal.fire({
         title:"Has denegado el viaje",
         icon: 'success',
