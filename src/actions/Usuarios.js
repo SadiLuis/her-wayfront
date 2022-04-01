@@ -25,7 +25,7 @@ import Swal from "sweetalert2";
 export function updateUser(newUser) {
     return async function (dispach) {
         try {
-            await axios.put(`${SERVER}${newUser.id}`, newUser, tokenUser())
+            await axios.put(`${SERVER}/${newUser.id}`, newUser, tokenUser())
             dispach(getuserDetails())
             return {
 

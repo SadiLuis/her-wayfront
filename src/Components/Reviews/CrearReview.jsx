@@ -3,10 +3,11 @@ import { useState } from "react";
 import { useDispatch } from "react-redux";
 import style from './Reviews.module.css';
 import ReactStars from "react-rating-stars-component";
-import { postReview } from "../../actions/reviews";
+import { postReviews } from '../../actions/reviews';
 import Swal from 'sweetalert2';
 
-const CreateReviews = (props) => {
+
+const CrearReview = (props) => {
     const dispatch = useDispatch();
 
     const [values, setValues] = useState({
@@ -26,7 +27,7 @@ const CreateReviews = (props) => {
             ...values,
             [e.target.name]: e.target.value
         })
-        console.log('Values :>> ', values);
+        console.log('Values', values);
     }
 
     //cambio de rating o star o puntuacion
@@ -36,20 +37,18 @@ const CreateReviews = (props) => {
             ...values,
             puntaje: newRating.toString()
         })
-        console.log('Values :>> ', values);
+        console.log('Values', values);
     };
 
-    const handleSubmit = (e) => {// funcion que enviara los datos de mi formulario 
+    const handleSubmit = (e) => {           // funcion que enviara los datos de mi formulario 
         e.preventDefault()
-        if (values.puntaje ==='' ||  values.comentario === '') {
+        if (values.puntaje === '' ||  values.comentario === '') {
             Swal.fire({
                 icon: 'error',
-                title: 'Ups.. Falta Ingresar la puntuación de ★★★★★ o el Comentario ',
-                // text: 'o un comentario',
-                // footer: '<a href="">Why do I have this issue?</a>'
+                title: 'Ups.. Falta Ingresar la puntuación de ★★★★★ o su Comentario ',
             })
         } else {
-            dispatch(postReview(props.idConductora, values))
+            dispatch(postReviews(props.idConductora, values))
             setValues({
                 idConductora: props.idConductora,
                 idPasajera: props.idPasajera,
@@ -58,7 +57,7 @@ const CreateReviews = (props) => {
                 puntaje: "",
                 comentario: ""
             })
-            //window.location = `/conductora/:id`
+            window.location = `/perfilConductora`
         }
         
     }
@@ -69,34 +68,34 @@ const CreateReviews = (props) => {
             <form className={style.form_review} onSubmit={handleSubmit}>
                 {/* ratings o stars */}
                 <div className={style.createStar}>
-                    <p>Puntua a tu Conductora</p>
+                    <p>QUE TE PARECIÓ EL VIAJE?</p>
                     <ReactStars
-                    count={5}
-                    onChange={ratingChanged}
-                    size={28}
-                    // activeColor="#ffd700"
-                    activeColor="rgb(0, 72, 181)"
-                    />
+                        count={5}
+                        onChange={ratingChanged}
+                        size={28}
+                        // activeColor="#ffd700"
+                        activeColor="rgb(236, 214, 13)"
+                        />
                 </div>
                 {/* caja del comentario */}
                 <div className={style.caja}>
                     <textarea
-                    className={style.description}
-                    title="maximo 120 caracteres"
-                    placeholder="Ingrese su Comentario"
-                    // rows="3"
-                    // cols="70"
-                    resize="none"
-                    value={values.comentario}
-                    onChange={handleOnChange}
-                    name="comentario"
-                    maxLength="120"                
+                        className={style.description}
+                        title="maximo 120 caracteres"
+                        placeholder="Ingrese su Comentario"
+                        // rows="3"
+                        // cols="70"
+                        resize="none"
+                        value={values.comentario}
+                        onChange={handleOnChange}
+                        name="comentario"
+                        maxLength="120"                
                     >
                     </textarea>
                     <button
-                    type="submit"
-                    className={style.boton}
-                    title="Click aqui para enviar comentario"
+                        type="submit"
+                        className={style.boton}
+                        title="Click aqui para enviar comentario"
                     >
                     Enviar Comentario
                     </button>
@@ -106,4 +105,4 @@ const CreateReviews = (props) => {
         </div>
     )
 }
-export default CreateReviews;
+export default CrearReview;

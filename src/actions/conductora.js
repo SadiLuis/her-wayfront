@@ -1,24 +1,14 @@
-import {  FILTRAR_CONDUCTORA_SEGUN_AUTO, 
-    PEDIR_CONDUCTORA,
-    GET_ALL_CONDUCTORAS,
-    POST_CONDUCTORAS, 
-    GET_PERFILC,
-    LOGIN_CONDUCTORA_SUCCESS,
-    LOGIN_CONDUCTORA_ERROR,
-    REGISTER_CONDUCTORA_SUCCESS,
-    REGISTER_CONDUCTORA_ERROR,
-DETALLE_CONDUCTORA } from "./index"
-
-import tokenUser from '../Helpers/TokenUser'
+import {FILTRAR_CONDUCTORA_SEGUN_AUTO, 
+        PEDIR_CONDUCTORA,
+        GET_PERFILC,
+        DETALLE_CONDUCTORA } from "./index"
 import tokenConductora from "../Helpers/TokenConductora";
 import axios from "axios";
 import {SERVER} from './VariableGlobal'
-      
- //const SERVER = Server.SERVER;
+
 
 export const pedirConductora = () => async (dispatch) => {
     try {
-
          // const respuesta= await axios.get("http://localhost:3001/conductora")
         const respuesta = await axios.get(`${SERVER}/conductora`)
         return dispatch({
@@ -32,36 +22,35 @@ export const pedirConductora = () => async (dispatch) => {
 
 
 export function getPerfilConductora(id) {
+    return async function (dispatch) {
     try{
-        return async function (dispatch) {
             //const request = await axios.get(`http://localhost:3001/conductora/${id}`);
-            const request = await axios.get(`${SERVER}/conductora/${id}`)
-            console.log(request)
+            const request = await axios.get(`${SERVER}/conductora/${id}`, tokenConductora())
+            console.log(request.data)
             dispatch({ 
                 type: GET_PERFILC, 
                 payload: request.data
             })
-        }
-
     }catch(err){
         console.log(err)
     }
 }
+}
 
-export const obtenerConductora = (id) => {
-    try {
-        return async (dispatch) => {
-            const res = await axios.get(`${SERVER}/idLoginCond/${id}`);
-            dispatch({
-                type: DETALLE_CONDUCTORA,
-                payload: res.data
-            })
+export const obtenerConductora = (idConductora) => {
+    return async (dispatch) => {
+        try {
+                const res = await axios.get(`${SERVER}/idLoginCond/${idConductora}`);
+                return dispatch({
+                    type: DETALLE_CONDUCTORA,
+                    payload: res.data
+                }) 
+        } catch (error) {
+            console.log(error)
         }
-       
-    } catch (error) {
-        console.log(error)
     }
 }
+
 
 
 export const filtrarConductora = (payload) => {
@@ -73,26 +62,12 @@ export const filtrarConductora = (payload) => {
 
 
 
+//export function conectaConductora(payload){
 
 
-
-
-export function getAllConductoras(){
-    return async function(dispatch){
-        try{
-            const conductoras = await axios.get(`${SERVER}conductora`)
-            return dispatch({
-                type: GET_ALL_CONDUCTORAS,
-                payload: conductoras
-            })
-           
-        }catch(err){
-            console.log(err)
-        }
-    }
-};
 
 export function cambiaEstadoConductora(payload){
+
     let {id, estado} = payload
     
     return async function (dispatch){
