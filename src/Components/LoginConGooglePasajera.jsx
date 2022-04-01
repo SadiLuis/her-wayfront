@@ -9,37 +9,34 @@ import {
     signInWithRedirect,
     GoogleAuthProvider,
   } from "firebase/auth";
+  import Swal from "sweetalert2"
+  import { useSelector } from 'react-redux';
+
   const auth = getAuth(app);
   const googleProvider = new GoogleAuthProvider();
+  
   
   const LoginConGooglePasajera = () => {
 
     const navigate=useNavigate()
+    
 
     const handleSubmit = (e) => {
       e.preventDefault()
-      if(auth ==true){
-  
-      // dispatch (login(formlogin))
-  
-      
-      navigate('/perfilPasajera')
+      if(!auth ){
+       navigate('/login')
     }else{
-      navigate('/login')
+      navigate('/mapa')
     }
   }
   
-    // useEffect(() => {
-    //   // Si ya está logueado que lo redireccione al dashboard
-    //   if (auth==true) {
-    //     navigate('/perfilPasajera')
-    //   }
-    // }, [auth]);
+ 
     
     return (
       <Container>
         <Stack gap={3}
-        onClick={handleSubmit}>
+         onClick={handleSubmit}
+        >
              <button
             type="submit"
             className='btn btn-primary'
