@@ -32,10 +32,15 @@ import DarBajaConductora from './Components/Admin/DarBajaConductora/DarBajaCondu
 import AltaAdmins from './Components/Admin/AltaAdmins/AltaAdmins';
 import OrigenDestino from './Components/OrigenDestino/OrigenDestino';
 //import Reviews from './Components/Reviews/ReviewsConductora';
-import ViajePasajera from './Components/viajes/ViajePasajera'
+
 import ViajeConductora from './Components/viajes/ViajeConductora'
 import LoginConGooglePasajera from './Components/LoginConGooglePasajera';
 import CrearReview from './Components/Reviews/CrearReview';
+
+
+import RecorridoPasajera from './Components/RecorridoPasajera/RecorridoPasajera';
+
+import ViajePasajera from './Components/ViajePasajera/ViajePasajera.jsx'
 
 
 function App() {
@@ -69,10 +74,11 @@ function App() {
             <Route path='/admin/altaAdmins' element={<AltaAdmins />} />
             <Route path="/homeConductora" element={<HomeConductora />} />
             <Route path="/contacto" element={<ContactForm />} />
-
             <Route path="/viajeconductora" element={<ViajeConductora />} />
             <Route path="/viajepasajera" element={<ViajePasajera />} />
+            <Route path="/viajeAceptado" element={<RecorridoPasajera />} />
             <Route path="/loginPasajeraConGoogle" element={<LoginConGooglePasajera />} />
+            <Route path="/viajeAceptado" element={<ViajePasajera/>} />
 
              <Route path="/reviews" element={<CrearReview />} />
 

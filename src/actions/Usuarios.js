@@ -9,12 +9,16 @@ import {
     LOGOUT_USER,
     AUTHENTICATION_ERROR,
     UPDATE_USER,
+    GET_PASAJERA,
+    //REFORCE_PASSWORD
+
     RESET_PASSWORD,
-    RELOADING_PAG
+    RELOADING_PAG,
+   
 
 } from "../actions/index";
 import {SERVER} from './VariableGlobal'
-
+import Swal from "sweetalert2";
 
 
 
@@ -80,6 +84,12 @@ export function login({ email, contrasena }) {
             })
             console.log(data)
         } catch (error) {
+            Swal.fire({
+                icon: 'error',
+                title: 'Datos incorrectos',
+                text: 'La contraseña o el correo son incorrectos!',
+               
+              })
             console.log(error)
             return dispach({
                 type: LOGIN_USER_ERROR,
@@ -103,7 +113,10 @@ export function register ({
 }) {
 
     return async function (dispatch) {
-        try {           
+        try {
+
+            
+            
             const body = {
                 nombre,
                 usuario,
@@ -161,4 +174,19 @@ export const reloadingPage = (payload)=> {
       type:RELOADING_PAG,
       payload
     }
+}
+
+export const getPasajeras = () => {
+    return async function (dispatch){
+        try{
+         const res = await axios.get(`${SERVER}/usuario`)
+            dispatch({
+                type: GET_PASAJERA,
+                payload: res.data
+            })
+        } catch (error) {
+          console.log(error)
+        }
+       }
+
 }

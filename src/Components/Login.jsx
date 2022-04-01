@@ -1,61 +1,112 @@
 //import { Button } from 'bootstrap'
 import React, { useEffect, useState } from 'react'
-import { useDispatch } from 'react-redux';
+import { useDispatch ,useSelector} from 'react-redux';
 import { Link, useNavigate } from "react-router-dom";
 import { login } from '../actions/Usuarios';
 import uno from '../image/1.jpg'
 import dos from '../image/2.jpg'
 import tres from '../image/3.jpg';
+import Swal from "sweetalert2";
 //import styles from "./Login.module.css"
 import LoginConGooglePasajera from './LoginConGooglePasajera';
 import './Login.css'
 
-
-
-import { pedirConductora } from '../actions/conductora';
-
-
 const initialLogin = {
-  contraseña: '',
+  contrasena: '',
   email: ''
 }
+function validateEmail(value) {
+  let validRegex = /^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/;
 
+  return validRegex.test(value);
+}
+
+const validateForm = (form) => {
+  const { email, contrasena } = form;
+  const errors = {};
+
+  if (!email.trim()) {
+    errors.email = "El email es requerido";
+  } else if (!validateEmail(email)) {
+    errors.email = "Email no válido";
+  }
+
+  if (!contrasena.trim()) {
+    errors.contrasena = "La contraseña es requerida";
+  }
+
+  return errors;
+};
 export default function Login() {
 
   const [formlogin, setFormLogin] = useState(initialLogin)
-  const [error, setError] = useState()
+  const [error, setError] = useState({})
+  const[display,setDisplay] = useState(false)
+  const isAuth = useSelector(state => state.LoginRegisReducer.isAuth)
+  const user = useSelector(state => state.LoginRegisReducer.userInfo)
   const navigate = useNavigate()
-
+  
   const dispatch = useDispatch()
+
+  
+  useEffect(() => {
+    // Si ya está logueado que lo redireccione al dashboard
+    if( isAuth && user) {
+     console.log('entre')
+      setFormLogin(initialLogin);
+     navigate("/mapa")
+     let timerInterval
+Swal.fire({
+  icon:'success',
+  title: 'Bienvenido ' + user.displayName,
+  timer: 5500,
+  timerProgressBar: true,
+  didOpen: () => {
+    Swal.showLoading()
+    const b = Swal.getHtmlContainer().querySelector('b')
+    timerInterval = setInterval(() => {
+      b.textContent = Swal.getTimerLeft()
+    }, 100)
+  },
+  willClose: () => {
+    clearInterval(timerInterval)
+  }
+}).then((result) => {
+  /* Read more about handling dismissals below */
+  if (result.dismiss === Swal.DismissReason.timer) {
+    console.log('I was closed by the timer')
+  }
+})
+    }
+  }, [isAuth, navigate, user]);
 
   const handleChange = (e) => {
 
-    setFormLogin({
-      ...formlogin,
-      [e.target.name]: e.target.value
-    })
-    const errors = {
-      ...error,
-      [e.target.name]: ''
-    }
-    setError(errors)
+    const { name, value } = e.target;
 
-    console.log(e.target.value)
+    const newForm = { ...formlogin, [name]: value };
+
+    setFormLogin(newForm);
+    setError(validateForm(newForm));
   }
-  const handleSubmit = (e) => {
-    e.preventDefault()
-    const errors = {
-      ...error,
-      contrasena: '',
-      email: ''
-    }
-    setError(errors)
 
+  const handleSubmit = async (e) => {
+    e.preventDefault()
+    const errors = validateForm(formlogin);
+    setError(errors);
+   
+    if (Object.keys(errors).length) {
+       Swal.fire({
+        icon: 'error',
+        title: 'El formulario contiene errores',
+        
+       })
+    }else {
 
     dispatch(login(formlogin))
-
+     setDisplay(true)
     console.log(formlogin)
-    navigate('/mapa')
+    }
   }
 
   // useEffect(()=>{
@@ -65,11 +116,7 @@ export default function Login() {
   //const handleClickEntrar=(e)=>{
   //  e.preventDefault();
   //  navigate("/pedirConductora")
-
-  //}
-
   return (
-
     <div class="row g-0 pt-3">
       <div class="col-lg-1"></div>
       <div class="col-lg-5">
@@ -109,11 +156,17 @@ export default function Login() {
               {/* CORREO */}
               <label htmlFor="exampleInputEmail1">Correo</label>
               <input type="email" className="form-control" placeholder="Ingresa tu correo" name='email' onChange={handleChange} value={formlogin.email} />
+              { error && error.email && (
+              <span >{error.email}</span>
+            )}
               {/* Contraseña  */}
             </div>
             <div className="form-group">
               <label htmlFor="exampleInputPassword1">Contraseña</label>
               <input type="password" className="form-control" id="exampleInputPassword1" placeholder="Ingresa tu contraseña" name='contrasena' onChange={handleChange} value={formlogin.contrasena} />
+              {error && error.contrasena && (
+              <span >{error.contrasena}</span>
+            )}
               <div>
 
                 <Link to='/resetPassword' style={{
@@ -127,13 +180,13 @@ export default function Login() {
                 </Link>
               </div>
             </div>
+
             <br />
 
             <button type="submit" class="btn btn-primary w-100"
               disabled={!formlogin.email || !formlogin.contrasena}
             >Entrar</button>
             <br />
-
 
             <div className='text-center '>
               <span>¿No tienes cuenta?</span>
@@ -151,7 +204,6 @@ export default function Login() {
 
             <LoginConGooglePasajera />
             <br />
-
             <div className="form-group form-check p-2 text-center">
               <small >El equipo de Her-Way nunca te pedira tu correo o contraseña. </small>
               {/* <br />

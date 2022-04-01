@@ -1,0 +1,9 @@
+.container__main{
+    display: grid;
+    grid-template-columns: 1fr 4fr;
+}
+
+.container__form{
+    display: flex;
+    flex-direction: column;
+}

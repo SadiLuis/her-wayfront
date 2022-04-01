@@ -7,7 +7,11 @@ export const INFO_PASAJERA_FAIL = "INFO_PASAJERA_FAIL"
 export const ORIGEN = "ORIGEN";
 export const DESTINO = "DESTINO";
 export const TIEMPO_DE_VIAJE = "TIEMPO_DE_VIAJE";
-
+export const GET_PASAJERA = "GET_PASAJERA"
+export const DATOS_MAPA = "DATOS_MAPA"
+export const VIAJE_CREADO ="VIAJE_CREADO"
+export const VIAJE_RECHAZADO= "VIAJE_RECHAZADO"
+export const CANCELAR_VIAJE = "CANCELAR_VIAJE"
 //////////////// Conductoras ////////////////////////
 
 
