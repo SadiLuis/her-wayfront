@@ -20,7 +20,7 @@ export default function PerfilConductora( ) {
     
     useEffect(() => {
         dispatch(pedirConductora())
-        dispatch(getPerfilConductora(conductora.id))
+        dispatch(getPerfilConductora(conductora))
     }, [dispatch, conductora])
 
 
