@@ -81,18 +81,9 @@ export default function TarjetaConductoras({nombre,localidad, automovil, patente
     </div>
    <div className={styles.ubicacionBoton}>
    
-     
-     <button  className={styles.botonSolicitarViaje}   
-     >
-    
     {/* quiero que cuando la pasajera haga click acá, vaya al componente recorrido.js que hizo Lore */}
-     <button onClick={()=>handleButton(data)}>Solicitar viaje</button> 
-     
-    </button>
-    
-     
-    
-    </div>
+     <button className={styles.botonSolicitarViaje}onClick={()=>handleButton(data)}>Solicitar viaje</button> 
+      </div>
 
     </div>
   )

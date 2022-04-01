@@ -109,13 +109,7 @@ Swal.fire({
     }
   }
 
-  // useEffect(()=>{
-  //   dispatch(pedirConductora())
-  // }, [dispatch])
 
-  //const handleClickEntrar=(e)=>{
-  //  e.preventDefault();
-  //  navigate("/pedirConductora")
   return (
     <div class="row g-0 pt-3">
       <div class="col-lg-1"></div>

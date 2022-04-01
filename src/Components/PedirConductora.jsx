@@ -8,6 +8,7 @@ import styles from "./PedirConductora.module.css"
 import { Link } from 'react-router-dom';
 // import "bootstrap/dist/css/bootstrap.min.css";
 // import {Container, Row, Col} from "react-bootstrap"
+import Swal from "sweetalert2"
  
 export default function PedirConductora() {
     const dispatch= useDispatch();
@@ -23,12 +24,19 @@ export default function PedirConductora() {
     dispatch(getPasajeras())
   }, [dispatch])
   
-  
-  
+   function handleSubmitPedirConductora(e){
+     e.preventDefault();
+     Swal.fire({
+       Title: "Ahora puedes elegir la conductora",
+       text: "Cuando la hayas elegido, haz click en Solicitar Conductora",
+       icon: "success"
+
+     })
+   }
     return (
        
-          <>
-          <h2 style={{justifyContent:"center"}}>Elija su conductora</h2>
+          <><span>{handleSubmitPedirConductora}</span>
+          
           { conductoras.length ? (<div className={styles.contenedor}>
         {/* <button className={styles.botonPedirConductora}
       onClick={(e)=>{handleClickPedirConductora(e)}}

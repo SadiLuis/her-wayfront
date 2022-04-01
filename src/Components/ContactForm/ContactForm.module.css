@@ -1,12 +1,21 @@
-/* .container {
-    background-color:  rgb(211, 222, 220);
+ .topForm {
+    background-color:  #646464;
     border: solid 1.5px;
     border-radius: 2px;
-} */
+    height: 70px;
+} 
 
-h3{
-    color: black
-}
+.topForm h3{
+    color: white;
+    font-family: "Montserrat", sans-serif;
+    font-size: 2.5rem;
+    position: relative;
+    bottom: 10px;
+    top: 15px;
+    display: flex;
+    align-items: center;
+    left: 8px
+} 
 /* .boton {
   background-color: rgb(76, 93, 105);
   width: 6rem;
@@ -23,12 +32,12 @@ h3{
 
 .boton {
   
-  background: linear-gradient(to right, #f988ff, #7f00b2);
+  background: rgba(245, 245, 245, 0.671);
       width: 8rem;
       height: 2.8rem;
-      
-      border-radius: 0.5rem;
-      color: white;
+      font-family: "Montserrat", sans-serif;
+       border-radius: 0.2rem; 
+      color: #646464;
       border: none;
       cursor: pointer;
       box-shadow: 2px 2px 4px #646464;
@@ -37,12 +46,18 @@ h3{
       align-items: center;
       justify-content: center;
       padding: 15px;
+      border-style: groove;
+    border-width: 1px 1px 1px 1px;    
+    border-color: rgba(245, 245, 245, 0.671);
+    transition: 250ms;
 }
 
 .boton:hover {
   
     font-size: 1.2rem;
     transition: .3s all;
+    color: indigo;
+    font-weight: bolder;
 }
 .boton span {
     margin-right: 10px;
@@ -51,11 +66,3 @@ h3{
     
    
 }
-/* input, textarea{
-    box-shadow: 2px 2px 4px #000000 ;
-    font-family:Georgia, 'Times New Roman', Times, serif;
-}
- form{
-  box-shadow: 2px 2px 4px #646464;  
-   border-radius: 0.5rem;
-}  */
