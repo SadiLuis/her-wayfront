@@ -6,7 +6,8 @@ import {  FILTRAR_CONDUCTORA_SEGUN_AUTO,
     LOGIN_CONDUCTORA_SUCCESS,
     LOGIN_CONDUCTORA_ERROR,
     REGISTER_CONDUCTORA_SUCCESS,
-    REGISTER_CONDUCTORA_ERROR } from "./index"
+    REGISTER_CONDUCTORA_ERROR,
+DETALLE_CONDUCTORA } from "./index"
 
 import tokenUser from '../Helpers/TokenUser'
 import tokenConductora from "../Helpers/TokenConductora";
@@ -47,6 +48,21 @@ export function getPerfilConductora(id) {
     }
 }
 
+export const obtenerConductora = (id) => {
+    try {
+        return async (dispatch) => {
+            const res = await axios.get(`${SERVER}/idLoginCond/${id}`);
+            dispatch({
+                type: DETALLE_CONDUCTORA,
+                payload: res.data
+            })
+        }
+       
+    } catch (error) {
+        console.log(error)
+    }
+}
+
 
 export const filtrarConductora = (payload) => {
     return ({
@@ -76,7 +92,7 @@ export function getAllConductoras(){
     }
 };
 
-export function conectaConductora(payload){
+export function cambiaEstadoConductora(payload){
     let {id, estado} = payload
     
     return async function (dispatch){

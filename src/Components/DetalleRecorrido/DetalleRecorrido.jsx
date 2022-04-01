@@ -28,4 +28,5 @@ const DetalleRecorrido = ({idConductora}) => {
   )
 }
 
+
 export default DetalleRecorrido

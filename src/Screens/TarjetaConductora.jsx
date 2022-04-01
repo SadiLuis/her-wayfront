@@ -5,6 +5,7 @@ import {HiOutlineChatAlt2} from "react-icons/hi";
 import {FaTaxi } from "react-icons/fa";
 import { useState , useEffect } from 'react';
 import {getPasajeras} from '../actions/Usuarios'
+
 import {getPerfilConductora,pedirConductora} from '../actions/conductora'
 import {crearViaje} from '../actions/recorrido'
 import {useDispatch, useSelector} from 'react-redux'
@@ -14,11 +15,14 @@ import {useDispatch, useSelector} from 'react-redux'
 
 
 export default function TarjetaConductoras({nombre,localidad, automovil, patente, habilitacion, conectada, id}) {
+
   const viaje = useSelector(state => state.recorridoReducer.datosMapa)
   const pasajera = useSelector(state => state.LoginRegisReducer.pasajera)
   const dispatch = useDispatch()
   const navigate = useNavigate()
   console.log(nombre,localidad)
+
+  
 
     //console.log(id,'id')
     useEffect(()=>{
@@ -50,11 +54,6 @@ export default function TarjetaConductoras({nombre,localidad, automovil, patente
    
 
     const handleButton =(payload)=>{
-
-      //dispatch(getPerfilConductora(payload.idConductora))
-        dispatch(crearViaje(payload))
-        dispatch(pedirConductora(payload.idConductora))
-
       dispatch(getPerfilConductora(payload.idConductora))
         //dispatch(crearViaje(payload))
 
@@ -87,36 +86,7 @@ export default function TarjetaConductoras({nombre,localidad, automovil, patente
 
     </div>
   )
-//  <div className='container '>
-//   <div className='row my-5 align-items-center justify-content-center'>
-//     <div className='col-8 col-lg-4 col-xl-3 '>
-//       <div className={styles.tarjetaConductoras}>
-//     <div className={styles.tarjetaTop}><FaTaxi></FaTaxi></div>
 
-//     <Link to={'/conductoras' + id} style={{color:"#646464"}} >
-//     <div key={id}></div>
-//     <h5>Nombre de la conductora: {nombre}</h5>
-//     </Link>
-//     <p>Localidad: {localidad}</p>
-//     <p>Vehículo: {automovil}</p>
-//     <p> Patente: {patente}</p>
-//     <p>Habilitación: {habilitacion}</p>
-//     <p>Conectada: {conectada? <p>Sí</p>: <p>No se encontraron datos</p> } </p>
-//     <div className={styles.icono}>
-     
-//     <HiOutlineChatAlt2 style={{fontSize:25}} ></HiOutlineChatAlt2> 
-    
-//     </div>
-//    <div className={styles.ubicacionBoton}>
-//    <button className={styles.botonPedirConductora}>
-//     <Link to="/pedirconductora" style={{color:"#fff"}}>Solicitar viaje</Link>
-//     </button>
-//     </div>
-//     </div>
-//     </div>
-//     </div>
-//     </div> 
-//   )
     
   
     
