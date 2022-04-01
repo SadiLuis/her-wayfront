@@ -1,19 +1,19 @@
 import {REGISTRO_CONDUCTORA,
         LOGIN_CONDUCTORA,
-         DETALLE} from '../actions/index'
+} from '../actions/index'
 
 
 const initialState = {
     tokenCnductora: localStorage.getItem("token"),
     isAuthConductora: null,
     registroCond:[],
-    detalle:[]  
+    conducLogueada:[]
 }
 
 export default function registroConductoraReducer (state = initialState, action){
     switch (action.type) {
         case REGISTRO_CONDUCTORA:
-            //localStorage.setItem("token", action.payload.stsTokenManager.accessToken);
+            localStorage.setItem("token", action.payload.stsTokenManager.accessToken);
             return {
                 ...state,
                 tokenCnductora: action.payload.stsTokenManager.accessToken,
@@ -27,15 +27,11 @@ export default function registroConductoraReducer (state = initialState, action)
                 return {
                     ...state,
                     isAuthConductora: true,
-                        tokenCnductora: action.payload.stsTokenManager.accessToken,
-                        registroCond: action.payload
+                    tokenCnductora: action.payload.stsTokenManager.accessToken,
+                    registroCond: action.payload,
+                    conducLogueada: action.conducLogueada
                 }
-                case DETALLE:
-                    return{
-                        ...state,
-                        detalle:action.payload
-                    }
-
+                
                 default:
                     return state;
     }

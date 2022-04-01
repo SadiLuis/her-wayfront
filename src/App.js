@@ -35,6 +35,8 @@ import OrigenDestino from './Components/OrigenDestino/OrigenDestino';
 
 import ViajeConductora from './Components/viajes/ViajeConductora'
 import LoginConGooglePasajera from './Components/LoginConGooglePasajera';
+import CrearReview from './Components/Reviews/CrearReview';
+
 
 import RecorridoPasajera from './Components/RecorridoPasajera/RecorridoPasajera';
 
@@ -77,6 +79,11 @@ function App() {
             <Route path="/loginPasajeraConGoogle" element={<LoginConGooglePasajera />} />
             <Route path="/viajeAceptado" element={<ViajePasajera/>} />
             <Route path="/editPasajera" element={<EditarPerfilPas />} />
+
+             <Route path="/reviews" element={<CrearReview />} />
+
+
+
           </Routes>
         </BrowserRouter>
       </div>
