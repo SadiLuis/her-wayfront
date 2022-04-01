@@ -50,8 +50,11 @@ function ContactForm() {
   }
   return (
     <>
+    <div className={styles.topForm}>
+    <h3>Contactanos</h3> 
+    </div>
       <div className="container mt-5">
-        <h3>Comunicate con nosotras!</h3>
+        
       </div>
       <div className="container mt-5">
         {status && renderAlert()}
@@ -131,6 +134,7 @@ function ContactForm() {
           </div>
         </form>
       </div>
+      
     </>
   );
 }

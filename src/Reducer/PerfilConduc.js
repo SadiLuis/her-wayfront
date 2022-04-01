@@ -15,7 +15,7 @@ export default function perfilConductoraReducer(state = initialState, action) {
                 ...state,
                 perfilConductora: action.payload,
                 //conductoras: action.payload,
-                    aux: action.payload
+                    
             }
 
             case "CONECTA_CONDUCTORA":

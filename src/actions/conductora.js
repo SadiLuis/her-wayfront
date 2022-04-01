@@ -7,7 +7,6 @@ import axios from "axios";
 import {SERVER} from './VariableGlobal'
 
 
-
 export const pedirConductora = () => async (dispatch) => {
     try {
          // const respuesta= await axios.get("http://localhost:3001/conductora")
@@ -63,7 +62,12 @@ export const filtrarConductora = (payload) => {
 
 
 
-export function conectaConductora(payload){
+//export function conectaConductora(payload){
+
+
+
+export function cambiaEstadoConductora(payload){
+
     let {id, estado} = payload
     
     return async function (dispatch){

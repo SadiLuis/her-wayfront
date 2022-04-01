@@ -18,6 +18,13 @@
 import {DESTINO, ORIGEN, TIEMPO_DE_VIAJE ,VIAJE_CREADO,VIAJE_RECHAZADO ,DATOS_MAPA, CANCELAR_VIAJE} from "./index"
 import axios from 'axios'
 import {SERVER} from './VariableGlobal'
+
+// export const destino=(payload)=>{
+//     return ({
+//         type:DESTINO,
+//         payload,
+//     })
+//}
 export const origen= (payload) => {
     return({
         type: ORIGEN,
