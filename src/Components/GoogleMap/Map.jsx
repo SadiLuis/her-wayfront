@@ -22,25 +22,7 @@ import { useRef, useState } from 'react'
 import {useNavigate} from 'react-router-dom'
 import {useDispatch} from 'react-redux'
 import {datosMapa} from '../../actions/recorrido'
-
-
-
-<<<<<<< HEAD
-=======
-
-function Mapa({setCoordinates, setBounds, coordinates}) {
-  const { isLoaded } = useJsApiLoader({
-    googleMapsApiKey: 'AIzaSyDo2MYthjrW4eDTScPNK8BYGBNa8DF0zBc',
-    libraries:['places'],
-=======
 import Swal from "sweetalert2"
-function Mapa({setCoordinates, setBounds, coordinates}) {
-  const { isLoaded } = useJsApiLoader({
-    googleMapsApiKey: 'AIzaSyDo2MYthjrW4eDTScPNK8BYGBNa8DF0zBc',
-    libraries: ['places'],
->>>>>>> rating-reviews-conductoras
-  })
->>>>>>> rating-reviews-conductoras
 
 
 
