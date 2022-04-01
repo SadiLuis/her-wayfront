@@ -39,6 +39,11 @@ import LoginConGooglePasajera from './Components/LoginConGooglePasajera';
 import RecorridoPasajera from './Components/RecorridoPasajera/RecorridoPasajera';
 
 import ViajePasajera from './Components/ViajePasajera/ViajePasajera.jsx'
+import EstadoViajeConductora from './Components/viajes/EstadoViajeConductora';
+
+import PantallaViajePasajera from './Components/viajes/PantallaViajePasajera'
+import EstadoViajePasajera from './Components/viajes/EstadoViajePasajera';
+
 
 
 function App() {
@@ -77,6 +82,11 @@ function App() {
             <Route path="/viajeAceptado" element={<RecorridoPasajera />} />
             <Route path="/loginPasajeraConGoogle" element={<LoginConGooglePasajera />} />
             <Route path="/viajeAceptado" element={<ViajePasajera/>} />
+            <Route path="/viajeconductora/:idViaje" element={<EstadoViajeConductora />} />
+            <Route path="/pantallaviajepasajera" element={<PantallaViajePasajera />} />
+            <Route path="/viajepasajera/:idViaje" element={<EstadoViajePasajera />} />
+
+
 
           </Routes>
         </BrowserRouter>
