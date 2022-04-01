@@ -31,17 +31,25 @@ export function loginConductora({ email, contrasena }) {
         try {
             const body = { email, contrasena }
             const { data } = await axios.post(`${SERVER}/conductora/login`, body)
+            const conductoras = await axios.get(`${SERVER}/conductora`)
             const registroCond = data.user
+            const filterConductor = conductoras.data.filter((c)=>data.user.email === c.email)
+            console.log(filterConductor)
+            console.log(data)
             dispatch({
                 type: LOGIN_CONDUCTORA,
-                payload: registroCond
+                payload: registroCond,
+                conducLogueada: filterConductor
             })
-
+            
         } catch (error) {
             console.log(error)
         }
-    }    
+    }
 }
+
+
+
 // export function detalleConductora(id) {
 //     return async function (dispatch) {
 //         const request = await axios.get(`${SERVER}/conductora/${id}`);

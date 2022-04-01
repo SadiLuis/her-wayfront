@@ -1,56 +1,55 @@
-import React, { useState, useEffect } from 'react'
-import { connect, useDispatch, useSelector  } from 'react-redux'
-import { getPerfilConductora } from '../../actions/conductora'
-import { useParams } from 'react-router-dom';
-import Image from '../../Media/placeholder.png'
-import Navbar from '../Landing/Navbar'
+import React, { useEffect } from 'react'
+import { useDispatch, useSelector  } from 'react-redux'
+import { getPerfilConductora, pedirConductora } from '../../actions/conductora'
+//import Image from '../../Media/placeholder.png'
+//import Navbar from '../Landing/Navbar'
 import { useNavigate } from "react-router-dom";
 import './PerfilConductora.css'
 
- function PerfilConductora( ) {
 
+
+
+export default function PerfilConductora( ) {
     // const [loading, setLoading] = useState(true);
 
     const navigate = useNavigate()
     const dispatch = useDispatch()
-    let conductora = useSelector((state) => state.perfilConductoraReducer.perfilConductora)
-    console.log("perfil conductora", conductora)
-
-    const { idConductora } = useParams()
-
+    const conductora = useSelector((state) => state.perfilConductoraReducer.perfilConductora)
+    const idConductoraLogueada = useSelector((state) => state.registroConductoraReducer.conducLogueada)
     // let idConductora = "OOSg1YJ93xwIXqmviPg5"
-
+    
     useEffect(() => {
-       dispatch(getPerfilConductora(idConductora))
-
-    }, [dispatch, idConductora])
-
+        dispatch(pedirConductora())
+        dispatch(getPerfilConductora(conductora))
+    }, [dispatch, conductora])
 
 
     return (
         <div>
             <div className='perfilCard'>
-                <div className='upperContainer'>
+                <div  className='upperContainer'>
                     <div className='imageContainer'>
-                        <img src={conductora?.fotoPerfil}
+                        <div key={idConductoraLogueada[0].id}></div>
+                        <img src={idConductoraLogueada[0].fotoPerfil}
                             alt='profile pic'
                             height='100%'
                             width='100px' />
-                        <h1 className='usuario' > Usuario: {conductora?.usuario} </h1>
+                        <h1 className='usuario' > Conductora: {idConductoraLogueada[0].usuario} </h1>
                         {/* <div style={{ cursor: 'pointer' }}>
                     {/* </div> */}
                         <span className='lowerContainer'>
-                            <h2> Nombre: {conductora?.nombre} </h2>
-                        <h4> E-mail: {conductora?.email} </h4>
-                        <h4> País: {conductora?.pais} </h4>
-                        <h4> Teléfono: {conductora?.telefono} </h4>
-                        <h4> Provincia: {conductora?.provincia} </h4>
-                        <h4> Localidad: {conductora?.localidad} </h4>
+                        <h2> Nombre: {idConductoraLogueada[0].nombre} </h2>
+                        <h2> Apellido: {idConductoraLogueada[0].apellido} </h2>
+                        <h4> E-mail: {idConductoraLogueada[0].email} </h4>
+                        <h4> País: {idConductoraLogueada[0].pais} </h4>
+                        <h4> Teléfono: {idConductoraLogueada[0].telefono} </h4>
+                        <h4> Provincia: {idConductoraLogueada[0].provincia} </h4>
+                        <h4> Localidad: {idConductoraLogueada[0].localidad} </h4>
                         <br />
                         <h2>Info Vehicular</h2>
-                        <h4> Automovil: {conductora?.automovil} </h4>
-                        <h4> Patente: {conductora?.patente} </h4>
-                        <h4> Habilitación: {conductora?.habilitacion} </h4>
+                        <h4> Automovil: {idConductoraLogueada[0].automovil} </h4>
+                        <h4> Patente: {idConductoraLogueada[0].patente} </h4>
+                        <h4> Habilitación: {idConductoraLogueada[0].habilitacion} </h4>
                         {/* <h4> cambiar contraseña </h4> */}
                         </span>
                         <br />
@@ -60,15 +59,5 @@ import './PerfilConductora.css'
             </div >
             <button className='logoutC' onClick={() => navigate('/home')}> Log out </button>
         </div >
-
     )
-}
-
-export default connect(
-    state => ({
-        conductora: state.perfilConductoraReducer.perfilConductora,
-    }),
-    dispatch => ({
-        getConductora: (idConductora) => dispatch(getPerfilConductora(idConductora))
-    })
-)(PerfilConductora)
+};

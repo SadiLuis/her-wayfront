@@ -1,17 +1,14 @@
-import {  FILTRAR_CONDUCTORA_SEGUN_AUTO, 
-    PEDIR_CONDUCTORA,
-    GET_PERFILC,
-    DETALLE_CONDUCTORA } from "./index"
-
+import {FILTRAR_CONDUCTORA_SEGUN_AUTO, 
+        PEDIR_CONDUCTORA,
+        GET_PERFILC,
+        DETALLE_CONDUCTORA } from "./index"
 import tokenConductora from "../Helpers/TokenConductora";
 import axios from "axios";
 import {SERVER} from './VariableGlobal'
 
 
-
 export const pedirConductora = () => async (dispatch) => {
     try {
-
          // const respuesta= await axios.get("http://localhost:3001/conductora")
         const respuesta = await axios.get(`${SERVER}/conductora`)
         return dispatch({
@@ -55,6 +52,7 @@ export const obtenerConductora = (idConductora) => {
 }
 
 
+
 export const filtrarConductora = (payload) => {
     return ({
         type: FILTRAR_CONDUCTORA_SEGUN_AUTO,
@@ -64,7 +62,12 @@ export const filtrarConductora = (payload) => {
 
 
 
-export function conectaConductora(payload){
+//export function conectaConductora(payload){
+
+
+
+export function cambiaEstadoConductora(payload){
+
     let {id, estado} = payload
     
     return async function (dispatch){
