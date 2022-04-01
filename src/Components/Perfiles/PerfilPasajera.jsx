@@ -15,7 +15,7 @@ function PerfilPasajera() {
     // const dispatch = useDispatch()
     // let conductora = useSelector((state) => state.perfilConductoraReducer.perfilConductora)
 
-    const { id } = useParams()
+    //const { id } = useParams()
 
     useEffect(() => {
         // dispatch(getPerfilPasajera(id))
