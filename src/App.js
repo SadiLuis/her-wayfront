@@ -39,8 +39,7 @@ import LoginConGooglePasajera from './Components/LoginConGooglePasajera';
 import RecorridoPasajera from './Components/RecorridoPasajera/RecorridoPasajera';
 
 import ViajePasajera from './Components/ViajePasajera/ViajePasajera.jsx'
-
-
+import EditarPerfilPas from './Components/Perfiles/EditarPerfilPas'
 function App() {
 
   return (
@@ -77,7 +76,7 @@ function App() {
             <Route path="/viajeAceptado" element={<RecorridoPasajera />} />
             <Route path="/loginPasajeraConGoogle" element={<LoginConGooglePasajera />} />
             <Route path="/viajeAceptado" element={<ViajePasajera/>} />
-
+            <Route path="/editPasajera" element={<EditarPerfilPas />} />
           </Routes>
         </BrowserRouter>
       </div>
