@@ -40,7 +40,7 @@ export default function TarjetaConductoras({nombre,localidad, automovil, patente
       direcDestino: viaje?.direcDestino,
       coordDestino: viaje?.coordDestino,
       coordOrigen: viaje?.coordOrigen,
-       descripDestino: viaje?.results.routes[0].summary,
+      descripDestino: viaje?.results.routes[0].summary,
       descripOrigen: "",
       estadoViaje: "requerido",
       idChat:"023545",
@@ -52,7 +52,6 @@ export default function TarjetaConductoras({nombre,localidad, automovil, patente
     } 
     
    
-
     const handleButton =(payload)=>{
       dispatch(getPerfilConductora(payload.idConductora))
         //dispatch(crearViaje(payload))
@@ -87,8 +86,4 @@ export default function TarjetaConductoras({nombre,localidad, automovil, patente
     </div>
   )
 
-    
-  
-    
-  
 }

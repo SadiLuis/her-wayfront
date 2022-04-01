@@ -4,7 +4,6 @@ import {BORRAR_REVIEW,
         EDITAR_REVIEW,  
         OBTENER_REVIEWS, 
         OBTENER_REVIEWS_POR_CONDUCTORA } from '.';
-import { body } from '../utilsPago';
 import { SERVER } from './VariableGlobal';
 
 
@@ -79,7 +78,7 @@ export function deleteReview(id){
                 payload: eliminarReview.data,
             });
         } catch (error) {
-            
+            console.log('error', error)
         }
     }
 }
