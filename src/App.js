@@ -41,6 +41,7 @@ import CrearReview from './Components/Reviews/CrearReview';
 import RecorridoPasajera from './Components/RecorridoPasajera/RecorridoPasajera';
 
 import ViajePasajera from './Components/ViajePasajera/ViajePasajera.jsx'
+import MisViajesPasajera from './Components/MisViajesPasajera/MisViajesPasajera';
 
 import EstadoViajeConductora from './Components/viajes/EstadoViajeConductora';
 
@@ -85,12 +86,14 @@ function App() {
             //<Route path="/viajeAceptado" element={<RecorridoPasajera />} />
             <Route path="/loginPasajeraConGoogle" element={<LoginConGooglePasajera />} />
             <Route path="/viajeAceptado" element={<ViajePasajera/>} />
-            <Route path="/viajeconductora/:idViaje" element={<EstadoViajeConductora />} />
+             //<Route path="/reviews" element={<CrearReview />} />
+            <Route path="/misViajesPasajera" element={<MisViajesPasajera />} />
+             <Route path="/viajeconductora/:idViaje" element={<EstadoViajeConductora />} />
             <Route path="/pantallaviajepasajera" element={<PantallaViajePasajera />} />
             <Route path="/viajepasajera/:idViaje" element={<EstadoViajePasajera />} />
             <Route path="/editPasajera" element={<EditarPerfilPas />} />
 
-             <Route path="/reviews" element={<CrearReview />} />
+
 
 
 

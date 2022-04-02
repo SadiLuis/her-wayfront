@@ -20,7 +20,7 @@ export default function PerfilConductora( ) {
     
     useEffect(() => {
         dispatch(pedirConductora())
-        dispatch(getPerfilConductora(conductora.id))
+        dispatch(getPerfilConductora(conductora))
     }, [dispatch, conductora])
 
 
@@ -29,7 +29,7 @@ export default function PerfilConductora( ) {
             <div className='perfilCard'>
                 <div  className='upperContainer'>
                     <div className='imageContainer'>
-                        <div key={idConductoraLogueada[0].id}></div>
+                        {/* <div key={idConductoraLogueada[0].id}></div> */}
                         <img src={idConductoraLogueada[0].fotoPerfil}
                             alt='profile pic'
                             height='100%'
