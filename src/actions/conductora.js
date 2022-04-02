@@ -29,7 +29,7 @@ export function getPerfilConductora(id) {
             console.log(request.data)
             dispatch({ 
                 type: GET_PERFILC, 
-                payload: request.data
+                payload: request.data,
             })
     }catch(err){
         console.log(err)

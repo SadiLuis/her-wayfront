@@ -1,18 +1,24 @@
 import React, { useEffect } from "react";
 import { useState } from "react";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import style from './Reviews.module.css';
 import ReactStars from "react-rating-stars-component";
-import { postReviews } from '../../actions/reviews';
+import {putReview , postReview , getReviews, deleteReview} from '../../actions/reviews';
 import Swal from 'sweetalert2';
 
 
-const CrearReview = (props) => {
+const CrearReview = () => {
     const dispatch = useDispatch();
+    const conductora = useSelector((state) => state.registroConductoraReducer.conducLogueada)
+    const reviews = useSelector((state) => state.reviewsReducer.todasLasreviews);
+    console.log('reviews :>> ', reviews);
+    const usuaria = useSelector((state) => state.loginRegistReducer.usuariaLogueada)
+   
+    console.log('user', usuaria);
 
-    const [values, setValues] = useState({
-        idConductora: props.idConductora,
-        idPasajera: props.idPasajera,
+    const [input, setInput] = useState({
+        idConductora: '',
+        idPasajera: '',
         conductora: "",
         pasajera: "",
         puntaje: "",
@@ -23,44 +29,49 @@ const CrearReview = (props) => {
 
     // cambio de comentarios
     const handleOnChange = e => {
-        setValues({
-            ...values,
+        dispatch(putReview(conductora && conductora.id, usuaria.id, input))
+        setInput({
+            ...input,
             [e.target.name]: e.target.value
         })
-        console.log('Values', values);
+        console.log('input', input);
     }
 
     //cambio de rating o star o puntuacion
-    const ratingChanged = (newRating) => {
+    const ratingChanged = (nuevoRating) => {
         // console.log('newRating :>> ', newRating);
-        setValues({
-            ...values,
-            puntaje: newRating.toString()
+        setInput({
+            ...input,
+            puntaje: nuevoRating.toString()
         })
-        console.log('Values', values);
+        console.log('input', input);
     };
 
     const handleSubmit = (e) => {           // funcion que enviara los datos de mi formulario 
         e.preventDefault()
-        if (values.puntaje === '' ||  values.comentario === '') {
+        if (input.puntaje === '' ||  input.comentario === '') {
             Swal.fire({
                 icon: 'error',
                 title: 'Ups.. Falta Ingresar la puntuación de ★★★★★ o su Comentario ',
             })
         } else {
-            dispatch(postReviews(props.idConductora, values))
-            setValues({
-                idConductora: props.idConductora,
-                idPasajera: props.idPasajera,
+            dispatch(postReview(reviews.idConductora, input))
+            setInput({
+                idConductora:'' ,
+                idPasajera:'' ,
                 conductora: "",
                 pasajera: "",
                 puntaje: "",
                 comentario: ""
             })
             window.location = `/perfilConductora`
-        }
-        
+        }     
     }
+
+
+    useEffect(() => {
+        dispatch(getReviews(conductora))
+    }, [dispatch, conductora])
 
 
     return (
@@ -86,7 +97,7 @@ const CrearReview = (props) => {
                         // rows="3"
                         // cols="70"
                         resize="none"
-                        value={values.comentario}
+                        value={input.comentario}
                         onChange={handleOnChange}
                         name="comentario"
                         maxLength="120"                

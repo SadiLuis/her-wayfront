@@ -41,7 +41,7 @@ export default function Login() {
 
   const [formlogin, setFormLogin] = useState(initialLogin)
   const [error, setError] = useState({})
-  const[display,setDisplay] = useState(false)
+  const[display, setDisplay] = useState(false)
   const isAuth = useSelector(state => state.LoginRegisReducer.isAuth)
   const user = useSelector(state => state.LoginRegisReducer.userInfo)
   const navigate = useNavigate()

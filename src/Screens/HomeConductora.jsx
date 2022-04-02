@@ -12,19 +12,20 @@ import { useNavigate } from 'react-router-dom';
 const HomeConductora = () => {
   
     //Harcode, esto hay que reemplazarlo por el id de la conductora logueada cuando funcion login
-    const idConductora = "OOSg1YJ93xwIXqmviPg5" //el id de su doc de la coleccion conductorar en firebase
+    //const idConductora = "OOSg1YJ93xwIXqmviPg5" //el id de su doc de la coleccion conductorar en firebase
     const dispatch = useDispatch()
     const navigate = useNavigate()
 
     let conductora = useSelector((state) => state.perfilConductoraReducer.perfilConductora)
+    const conductoraLogueada = useSelector((state) => state.registroConductoraReducer.conducLogueada)
     let aux = useSelector((state) => state.perfilConductoraReducer.aux)
 
    const [coordinate, setCoordinates]=useState({lat: 0, lng:0});
 
     useEffect(() => {
       console.log("se dispara el useEffect de getPerfilConductora")
-        dispatch(getPerfilConductora(idConductora))
-    }, [idConductora, aux])
+        dispatch(getPerfilConductora(conductora))
+    }, [dispatch, conductora, aux])
     
     useEffect(() => {
       navigator.geolocation.getCurrentPosition(({coords: {latitude, longitude}}) => {
@@ -35,7 +36,7 @@ const HomeConductora = () => {
     function handleConnect(e){  
         e.preventDefault()
         let payload = {
-            id: idConductora,
+            id: conductoraLogueada[0].id,
             estado: "conectar"
         }
         dispatch(cambiaEstadoConductora(payload))
@@ -54,7 +55,7 @@ const HomeConductora = () => {
     function handleDisconnect(e){  
         e.preventDefault()
         let payload = {
-            id: idConductora,
+            id: conductoraLogueada[0].id,
             estado: "desconectar"
         }
         dispatch(cambiaEstadoConductora(payload))
@@ -64,29 +65,26 @@ const HomeConductora = () => {
           })
         
     }
-
-    
-    if (conductora.nombre) {
-        return (
-            < >
-            <NavbarConductora idConductora={idConductora} /> 
-            <br />
-            <br />
-            <br />
-            <h1>Bienvenida Conductora {conductora.nombre} </h1>
-            
-          {conductora.conectada === false? <button className="btn btn-primary" type="button" onClick={(e)=> handleConnect(e)}>CONECTARME</button> :
-          <button className="btn btn-primary" type="button" onClick={(e)=> handleDisconnect(e)}>DESCONECTARME</button>}
-            <VistaMap/>
-          </>
-        )
-    }else {
-        return (
-            <Loader />
-        )
+    return (
+      <>
+      {conductoraLogueada[0].nombre?(
+        < >
+        <NavbarConductora idConductora={conductoraLogueada[0].id} /> 
+        <br />
+        <br />
+        <br />
+        <h1>Bienvenida Conductora {conductoraLogueada[0].nombre} </h1>
+        
+      {conductoraLogueada[0].conectada === false? <button className="btn btn-primary" type="button" onClick={(e)=> handleConnect(e)}>CONECTARME</button> :
+      <button className="btn btn-primary" type="button" onClick={(e)=> handleDisconnect(e)}>DESCONECTARME</button>}
+        <VistaMap/>
+      </>
+      
+      ):( <Loader />)
+      
     }
-  
-  
+      </>
+    )
 }
 
 export default HomeConductora
