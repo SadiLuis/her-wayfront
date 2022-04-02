@@ -88,7 +88,8 @@ export default function LoginRegisReducer(state = initialState, action) {
                 ...state,
                 pasajera: pasajera
 
-            }                       
+            }   
+                      
                 
             default: return state;
     }
