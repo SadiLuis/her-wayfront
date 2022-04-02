@@ -1,8 +1,8 @@
 import React, { useEffect } from 'react'
 import { useDispatch, useSelector  } from 'react-redux'
 import { getPerfilConductora, pedirConductora } from '../../actions/conductora'
-//import Image from '../../Media/placeholder.png'
-//import Navbar from '../Landing/Navbar'
+import Image from '../../Media/placeholder.png'
+import Navbar from '../Landing/Navbar'
 import { useNavigate } from "react-router-dom";
 import './PerfilConductora.css'
 
@@ -17,11 +17,11 @@ export default function PerfilConductora( ) {
 
     const idConductoraLogueada = useSelector((state) => state.registroConductoraReducer.conducLogueada)
     // let idConductora = "OOSg1YJ93xwIXqmviPg5"
-    
+    console.log('idConductoraLogueada', idConductoraLogueada)
     useEffect(() => {
         dispatch(pedirConductora())
-        dispatch(getPerfilConductora(idConductoraLogueada))
-    }, [ idConductoraLogueada])
+        dispatch(getPerfilConductora())
+    }, [])
 
 
     return (

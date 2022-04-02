@@ -4,7 +4,7 @@ import Mapa from '../Components/GoogleMap/Map';
 import Swal from "sweetalert2"
 
 
-function VistaMapConductora({}) {
+function VistaMapConductora() {
     const [coordinates, setCoordinates] = useState({lat: 0, lng:0});
     const [bounds, setBounds] = useState(null);
   

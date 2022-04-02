@@ -24,15 +24,15 @@ const HomeConductora = () => {
    const [coordinate, setCoordinates]=useState({lat: 0, lng:0});
 
     useEffect(() => {
-      dispatch(getPerfilConductora(conductora))
-    }, [ conductora, aux])
+      dispatch(getPerfilConductora(conductoraLogueada[0].id))
+    }, [])
     
     console.log("se dispara el useEffect de getPerfilConductora",conductora)
     useEffect(() => {
       navigator.geolocation.getCurrentPosition(({coords: {latitude, longitude}}) => {
          setCoordinates({ lat: latitude, lng: longitude}) 
       })
-    }, [navigator] )
+    }, [] )
 
     function handleConnect(e){  
         e.preventDefault()
@@ -64,11 +64,11 @@ const HomeConductora = () => {
             title:"Te has desconectado correctamente!",
             icon: 'success',
           })
-        
+
     }
     return (
       <>
-      {conductoraLogueada ?(
+      {conductoraLogueada[0].nombre ?(
         < >
         <NavbarConductora idConductora={conductoraLogueada[0].id} /> 
         <br />
