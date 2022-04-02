@@ -39,17 +39,17 @@ export function updateUser(newUser) {
 
 
 export function getuserDetails(id) {
-    return async function (dispach) {
+    return async function (dispatch) {
         try {
-            const res = await axios.get(`${SERVER}/usuario/${id}`, tokenUser())
+            const res = await axios.get(`${SERVER}/usuario/${id}`)
 
-            dispach({
+            dispatch({
                 type: GET_USER_DETAILS,
                 payload: res.data
             })
         } catch (error) {
             console.log(error)
-            dispach({
+            dispatch({
                 type: AUTHENTICATION_ERROR,
             })
 
