@@ -6,26 +6,26 @@ import {SERVER} from './VariableGlobal'
 
 export const misViajesPasajera = () => async (dispatch) => {
     try {
-         // const respuesta= await axios.get("http://localhost:3001/conductora")
+         // const respuesta= await axios.get("http://localhost:3001/viajes")
         const respuesta = await axios.get(`${SERVER}/viajes`)
         return dispatch({
             type: MIS_VIAJES_PASAJERA,
             payload: respuesta.data
         })
     } catch (error) {
-        console.log("No hay viajes registrados")
+        return console.log("No hay viajes registrados")
     }
 }
 
-export const viajesPorPasajera=(idPasajera) =>async dispatch=>{
+export const viajesPorPasajera=(idPasajera) =>async (dispatch)=>{
     try{
-        const {data} = await axios.get(`${SERVER}/usuario/${idPasajera}`);
+        const respuesta2 = await axios.get(`${SERVER}/viajes/${idPasajera}`);
         return dispatch({
             type: VIAJES_POR_PASAJERA,
-            payload: data
+            payload: respuesta2.data
         })
     } catch(error){
-        console.log(error)
+        return console.log("No se encontraron registros de viajes para esa pasajera")
     }
 }
 

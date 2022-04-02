@@ -13,10 +13,14 @@ const NavbarAdmin = () => {
             <li><Link to={`../admin/pasajeras`}>
               <span>Ver Pasajeras</span></Link>
               </li>
+              <li><Link to={`../../misViajesPasajera`}>
+              <span>Todos los Viajes</span></Link> 
+              </li> 
             <li><Link to={`../admin/altaAdmins`}>
               <span>Dar Alta Admins</span></Link>
               </li>
-             <li><span>Cerrar Sesion</span></li> 
+             <li><span>Cerrar Sesion</span></li>
+             
         </ul>
     </nav>
     </div>

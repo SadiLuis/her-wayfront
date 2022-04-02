@@ -1,19 +1,33 @@
 import React, {useEffect} from 'react';
 import {useDispatch, useSelector} from "react-redux";
 import {misViajesPasajera, viajesPorPasajera} from '../../actions/misViajesPasajera';
-
+import {useNavigate} from 'react-router-dom';
+//import {getPasajeras} from '../../actions/Usuarios'
 
 function MisViajesPasajera() {
  const dispatch =useDispatch();
- const viajes= useSelector(state => state.misViajesPasajeraReducer.misViajesPasajera)
+ const navigate = useNavigate()
+ const viajes= useSelector(state => state.misViajesPasajeraReducer.misViajesPasajera);
+ const pasajera = useSelector(state => state.LoginRegisReducer.pasajera);
+    console.log(pasajera)
+    console.log(viajes)
+
+    
 
   useEffect(()=>{
-      dispatch(misViajesPasajera())
-    }, [dispatch])
+       if(viajes){
+      dispatch(misViajesPasajera(viajes.idPasajera))
+      } else{
+           navigate("/home")
+    }
+    }, [ viajes.idPasajera, dispatch])
+
   
-    useEffect(()=>{
-        dispatch(viajesPorPasajera())
-    }, [dispatch])
+//     useEffect(()=>{
+//         if(pasajera){
+//        dispatch(viajesPorPasajera(pasajera.id));
+//        }
+//    }, [ dispatch, pasajera ]);
   
   return (
       <div className="container-center">
@@ -27,6 +41,7 @@ function MisViajesPasajera() {
                           <thead>
                               <tr>
                               {/* <td className='h4'>Fecha</td> */}
+                              <td className='h4'>Pasajera</td>
                               <td className='h4'>Conductora</td>
                               <td className='h4'>Origen</td>
                               <td className='h4'>Destino</td>
@@ -38,6 +53,7 @@ function MisViajesPasajera() {
                                   viajes.map((viaje)=>(
                                       <tr key={viaje.id}>
                                          {/* <td>{viaje.fecha}</td>  */}
+                                         <td>{viaje.nombrePasajera}</td>
                                          <td>{viaje.nombreConductora}</td>
                                          <td>{viaje.origen}</td>
                                          <td>{viaje.destino}</td>
@@ -46,7 +62,7 @@ function MisViajesPasajera() {
                                   ))
                               ): (
                                   <tr>
-                              <td colSpan={"4"}>"No hay registro de viajes aún"</td>
+                              <td colSpan={"5"}>"No hay registro de viajes aún"</td>
                               </tr>
                               )}
                             </tbody>
