@@ -43,6 +43,12 @@ import RecorridoPasajera from './Components/RecorridoPasajera/RecorridoPasajera'
 import ViajePasajera from './Components/ViajePasajera/ViajePasajera.jsx'
 import MisViajesPasajera from './Components/MisViajesPasajera/MisViajesPasajera';
 
+import EstadoViajeConductora from './Components/viajes/EstadoViajeConductora';
+
+import PantallaViajePasajera from './Components/viajes/PantallaViajePasajera'
+import EstadoViajePasajera from './Components/viajes/EstadoViajePasajera';
+
+import EditarPerfilPas from './Components/Perfiles/EditarPerfilPas'
 
 function App() {
 
@@ -77,11 +83,17 @@ function App() {
             <Route path="/contacto" element={<ContactForm />} />
             <Route path="/viajeconductora" element={<ViajeConductora />} />
             <Route path="/viajepasajera" element={<ViajePasajera />} />
-            <Route path="/viajeAceptado" element={<RecorridoPasajera />} />
+            //<Route path="/viajeAceptado" element={<RecorridoPasajera />} />
             <Route path="/loginPasajeraConGoogle" element={<LoginConGooglePasajera />} />
             <Route path="/viajeAceptado" element={<ViajePasajera/>} />
-            <Route path="/reviews" element={<CrearReview />} />
+             //<Route path="/reviews" element={<CrearReview />} />
             <Route path="/misViajesPasajera" element={<MisViajesPasajera />} />
+             <Route path="/viajeconductora/:idViaje" element={<EstadoViajeConductora />} />
+            <Route path="/pantallaviajepasajera" element={<PantallaViajePasajera />} />
+            <Route path="/viajepasajera/:idViaje" element={<EstadoViajePasajera />} />
+            <Route path="/editPasajera" element={<EditarPerfilPas />} />
+
+
 
 
 
