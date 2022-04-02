@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 //import { useParams } from 'react-router-dom';
-import VistaMap from '../Screens/VistaMap';
+import VistaMapConductora from '../Screens/VistaMapConductora';
 import {getPerfilConductora, cambiaEstadoConductora} from "../actions/conductora"
 import { useDispatch, useSelector } from 'react-redux';
 import {Loader} from '../Components/Loader/Loader';
@@ -18,20 +18,21 @@ const HomeConductora = () => {
 
     let conductora = useSelector((state) => state.perfilConductoraReducer.perfilConductora)
     const conductoraLogueada = useSelector((state) => state.registroConductoraReducer.conducLogueada)
+    console.log('conductoraLogueada', conductoraLogueada)
     let aux = useSelector((state) => state.perfilConductoraReducer.aux)
 
    const [coordinate, setCoordinates]=useState({lat: 0, lng:0});
 
     useEffect(() => {
-      console.log("se dispara el useEffect de getPerfilConductora")
-        dispatch(getPerfilConductora(conductora))
-    }, [dispatch, conductora, aux])
+      dispatch(getPerfilConductora(conductora))
+    }, [ conductora, aux])
     
+    console.log("se dispara el useEffect de getPerfilConductora",conductora)
     useEffect(() => {
       navigator.geolocation.getCurrentPosition(({coords: {latitude, longitude}}) => {
          setCoordinates({ lat: latitude, lng: longitude}) 
       })
-    }, [] )
+    }, [navigator] )
 
     function handleConnect(e){  
         e.preventDefault()
@@ -67,7 +68,7 @@ const HomeConductora = () => {
     }
     return (
       <>
-      {conductoraLogueada[0].nombre?(
+      {conductoraLogueada ?(
         < >
         <NavbarConductora idConductora={conductoraLogueada[0].id} /> 
         <br />
@@ -77,9 +78,8 @@ const HomeConductora = () => {
         
       {conductoraLogueada[0].conectada === false? <button className="btn btn-primary" type="button" onClick={(e)=> handleConnect(e)}>CONECTARME</button> :
       <button className="btn btn-primary" type="button" onClick={(e)=> handleDisconnect(e)}>DESCONECTARME</button>}
-        <VistaMap/>
+        <VistaMapConductora/>
       </>
-      
       ):( <Loader />)
       
     }

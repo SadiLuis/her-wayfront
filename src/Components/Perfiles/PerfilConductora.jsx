@@ -14,14 +14,14 @@ export default function PerfilConductora( ) {
 
     const navigate = useNavigate()
     const dispatch = useDispatch()
-    const conductora = useSelector((state) => state.perfilConductoraReducer.perfilConductora)
+
     const idConductoraLogueada = useSelector((state) => state.registroConductoraReducer.conducLogueada)
     // let idConductora = "OOSg1YJ93xwIXqmviPg5"
     
     useEffect(() => {
         dispatch(pedirConductora())
-        dispatch(getPerfilConductora(conductora))
-    }, [dispatch, conductora])
+        dispatch(getPerfilConductora(idConductoraLogueada))
+    }, [ idConductoraLogueada])
 
 
     return (
