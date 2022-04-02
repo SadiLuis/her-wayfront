@@ -33,7 +33,7 @@ function MisViajesPasajera() {
       <div className="container-center">
           <div className='container-fluid'>
               <div className='misViajes'>
-          <h2>Mis Viajes</h2>
+          <h2>Todos los viajes</h2>
           {
               viajes.length ?(
                   <div> 
