@@ -39,17 +39,17 @@ export function updateUser(newUser) {
 
 
 export function getuserDetails(id) {
-    return async function (dispach) {
+    return async function (dispatch) {
         try {
-            const res = await axios.get(`${SERVER}/usuario/${id}`, tokenUser())
+            const res = await axios.get(`${SERVER}/usuario/${id}`)
 
-            dispach({
+            dispatch({
                 type: GET_USER_DETAILS,
                 payload: res.data
             })
         } catch (error) {
             console.log(error)
-            dispach({
+            dispatch({
                 type: AUTHENTICATION_ERROR,
             })
 
@@ -178,17 +178,53 @@ export const reloadingPage = (payload)=> {
     }
 }
 
-// export const getPasajeras = () => {
-//     return async function (dispatch){
-//         try{
-//          const res = await axios.get(`${SERVER}/usuario`)
-//             dispatch({
-//                 type: GET_PASAJERA,
-//                 payload: res.data
-//             })
-//         } catch (error) {
-//           console.log(error)
-//         }
-//        }
 
-// }
+export const getPasajeras = () => {
+    return async function (dispatch){
+        try{
+         const res = await axios.get(`${SERVER}/usuario`)
+            dispatch({
+                type: GET_PASAJERA,
+                payload: res.data
+            })
+        } catch (error) {
+          console.log(error)
+        }
+       }
+
+}
+
+export const updateFoto = async(foto , id)=> {
+    const body = {fotoPerfil: foto}
+        try{
+         const res = await axios.put(`${SERVER}/usuario/updateFoto/${id}`,body)
+            console.log(res)
+            
+        } catch (error) {
+          console.log(error)
+        }
+      
+}
+
+export const updatePasajera = async(form , id)=> {
+   
+        try{
+         const res = await axios.put(`${SERVER}/usuario/update/${id}`,form)
+         Swal.fire({
+            icon: 'success',
+            title: 'Perfil actualizado',
+        
+           
+          })
+            
+        } catch (error) {
+            Swal.fire({
+                icon: 'error',
+                title: 'Error al actualizar el perfil ',
+                
+               
+              })
+        }
+      
+}
+

@@ -25,6 +25,7 @@ export default function PerfilConductora( ) {
     }, [])
 
 
+
     return (
         <div>
             <div className='perfilCard'>
