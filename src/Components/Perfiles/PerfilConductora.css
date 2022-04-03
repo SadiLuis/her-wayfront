@@ -42,4 +42,11 @@ border-radius: 50%;
     position: absolute;
     top: 675px;
     left: 20px;
+    background-color: darkturquoise;
+}
+.volver{
+    position: absolute;
+    top: 675px;
+    left: 100px;
+    background-color: darkturquoise;
 }

@@ -74,13 +74,15 @@ export function login({ email, contrasena }) {
             // }
 
             const body = { email, contrasena }
-
             const { data } = await axios.post(`${SERVER}/usuario/login`, body)
-
+            const usuarias = await axios.get(`${SERVER}/usuario`)
             const infoUser = data.user
+            const filtroUsuarias = usuarias.data.filter((u) => data.user.email === u.email)
+            console.log('data', data)
             dispach({
                 type: LOGIN_USER_SUCCESS,
-                payload: infoUser
+                payload: infoUser,
+                usuariaLogueada: filtroUsuarias
             })
             console.log(data)
         } catch (error) {
@@ -92,8 +94,8 @@ export function login({ email, contrasena }) {
               })
             console.log(error)
             return dispach({
-                type: LOGIN_USER_ERROR,
-            })
+            type: LOGIN_USER_ERROR,
+        })
         }
     }    
     
@@ -176,20 +178,20 @@ export const reloadingPage = (payload)=> {
     }
 }
 
-export const getPasajeras = () => {
-    return async function (dispatch){
-        try{
-         const res = await axios.get(`${SERVER}/usuario`)
-            dispatch({
-                type: GET_PASAJERA,
-                payload: res.data
-            })
-        } catch (error) {
-          console.log(error)
-        }
-       }
+// export const getPasajeras = () => {
+//     return async function (dispatch){
+//         try{
+//          const res = await axios.get(`${SERVER}/usuario`)
+//             dispatch({
+//                 type: GET_PASAJERA,
+//                 payload: res.data
+//             })
+//         } catch (error) {
+//           console.log(error)
+//         }
+//        }
 
-}
+// }
 
 export const updateFoto = async(foto , id)=> {
     const body = {fotoPerfil: foto}

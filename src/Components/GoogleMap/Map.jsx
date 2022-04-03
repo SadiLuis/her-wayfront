@@ -25,11 +25,12 @@ import {datosMapa} from '../../actions/recorrido'
 import Swal from "sweetalert2"
 
 
+const libraries = ['places'];
 
 function Mapa({setCoordinates, setBounds, coordinates}) {
     const { isLoaded } = useJsApiLoader({
-      googleMapsApiKey: 'AIzaSyB6A5sRCY60lwXdp5txFqBNx-_mBOWcAu0',
-      libraries: ['places'],
+      googleMapsApiKey: 'AIzaSyDo2MYthjrW4eDTScPNK8BYGBNa8DF0zBc',
+      libraries,
     })
 
     const [map, setMap] = useState((null))
@@ -90,10 +91,10 @@ function Mapa({setCoordinates, setBounds, coordinates}) {
       function handleClickNavegar(){
         navigate('/pedirconductora')
       }
-      function ambos(){
-        handleClickNavegar()
-        handleSweetConfirmarViaje()
-      }
+      //function ambos(){
+      //  handleClickNavegar()
+      //  handleSweetConfirmarViaje()
+      //}
 
 
   return (
