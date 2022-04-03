@@ -75,28 +75,26 @@ const HomeConductora = () => {
     }
     return (
       <>
-      {conductoraLogueada.length >0 ?(
-        < >
-        <NavbarConductora idConductora={conductoraLogueada[0].id} /> 
-        <br />
-        <br />
-        <br />
-        <h1>Bienvenida Conductora {conductoraLogueada[0].nombre} </h1>
-        
-      {conductoraLogueada[0].conectada === false? <button className="btn btn-primary" type="button" onClick={(e)=> handleConnect(e)}>CONECTARME</button> :
-      <button className="btn btn-primary" type="button" onClick={(e)=> handleDisconnect(e)}>DESCONECTARME</button>}
-  
-      <Button type="button" className="btn btn-block" onClick={(e)=> navigate('/perfilConductora')}> PERFIL </Button>
-      <Button type="button" className="btn btn-block" onClick={(e)=> navigate('/home')}> HOME </Button>
+        {conductoraLogueada.length >0 ?(
+          < >
+          <NavbarConductora idConductora={conductoraLogueada[0].id} /> 
+          <br />
+          <br />
+          <br />
+          <h1>Bienvenida Conductora {conductoraLogueada[0].nombre} </h1>
+          
+        {conductoraLogueada[0].conectada === false? <button className="btn btn-primary" type="button" onClick={(e)=> handleConnect(e)}>CONECTARME</button> :
+        <button className="btn btn-primary" type="button" onClick={(e)=> handleDisconnect(e)}>DESCONECTARME</button>}
     
-        <VistaMapConductora/>
-      </>
-      ):( <Loader />)
+        <Button type="button" className="btn btn-block" onClick={(e)=> navigate('/perfilConductora')}> PERFIL </Button>
+        <Button type="button" className="btn btn-block" onClick={(e)=> navigate('/home')}> HOME </Button>
       
-    }
-
+          <VistaMapConductora/>
       </>
-    )
+        ):( <Loader />) 
+    }
+      </>
+  )
 }
 
 export default HomeConductora
