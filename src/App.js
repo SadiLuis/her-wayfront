@@ -35,6 +35,8 @@ import OrigenDestino from './Components/OrigenDestino/OrigenDestino';
 import ViajePasajera from './Components/viajes/ViajePasajera'
 import ViajeConductora from './Components/viajes/ViajeConductora'
 import LoginConGooglePasajera from './Components/LoginConGooglePasajera';
+import Chat from './Components/Chat/Chat';
+
 
 function App() {
 
@@ -67,7 +69,7 @@ function App() {
             <Route path='/admin/altaAdmins' element={<AltaAdmins />} />
             <Route path="/homeConductora" element={<HomeConductora />} />
             <Route path="/contacto" element={<ContactForm />} />
-
+            <Route path ="/chat" element={<Chat/>}/>
             <Route path="/viajeconductora" element={<ViajeConductora />} />
             <Route path="/viajepasajera" element={<ViajePasajera />} />
             <Route path="/loginPasajeraConGoogle" element={<LoginConGooglePasajera />} />

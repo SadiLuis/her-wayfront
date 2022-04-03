@@ -1,11 +1,12 @@
 # See https://help.github.com/articles/ignoring-files/ for more about ignoring files.
 
-#src/Components/BotonPago/utilsPago.js
+src/Components/BotonPago/utilsPago.js
 # dependencies
 /node_modules
 package-lock.json
 /.pnp
 .pnp.js
+src/Config/Firebase-config.js
 
 
 # testing

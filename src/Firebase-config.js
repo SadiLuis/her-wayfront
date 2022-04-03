@@ -1,14 +1,10 @@
 import { initializeApp } from 'firebase/app';
 import { getAuth } from 'firebase/auth';
 
+
+
 const firebaseConfig = {
-	// apiKey: '',
-	// authDomain: '',
-	// projectId: 'hosting-73b2e',
-	// storageBucket: ,
-	// messagingSenderId: ,
-	// appId: ,
-	// measurementId: 'G-6XQF3Y59RT',
+	
     apiKey: "AIzaSyDORHM4e7WvAzd0qpTLhQxKT5jEzQNQlWk",
     authDomain: "her-way-rn.firebaseapp.com",
     databaseURL: "https://her-way-rn-default-rtdb.firebaseio.com",
@@ -21,3 +17,6 @@ const firebaseConfig = {
 // Initialize Firebase
 export const app = initializeApp(firebaseConfig);
 export const auth = getAuth();
+
+
+
