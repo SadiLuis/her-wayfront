@@ -39,7 +39,7 @@ const HomeConductora = () => {
       navigator.geolocation.getCurrentPosition(({coords: {latitude, longitude}}) => {
          setCoordinates({ lat: latitude, lng: longitude}) 
       })
-    }, [] )
+    }, [aux] )
 
     function handleConnect(e){  
         e.preventDefault()

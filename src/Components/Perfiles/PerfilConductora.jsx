@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react'
 import { useDispatch, useSelector  } from 'react-redux'
-import { getPerfilConductora, obtenerConductora, pedirConductora } from '../../actions/conductora'
+import { getPerfilConductora, obtenerConductora } from '../../actions/conductora'
 import Image from '../../Media/placeholder.png'
 import Navbar from '../Landing/Navbar'
 import { useNavigate, useParams } from "react-router-dom";
@@ -54,12 +54,12 @@ export default function PerfilConductora( ) {
                         {/* <h4> cambiar contraseña </h4> */}
                         </span>
                         <br />
+                            <button className='logoutC' onClick={() => navigate('/home')}> Log out </button>
+                            <button className='volver' onClick={() => navigate('/homeConductora')}> Volver </button>
                         {/* <p className='editIcon'>Editar Perfíl</p> */}
                     </div>
                 </div>
             </div >
-            <button className='logoutC' onClick={() => navigate('/home')}> Log out </button>
-            <button className='volver' onClick={() => navigate('/homeConductora')}> Volver </button>
         </div >
     )
 };
