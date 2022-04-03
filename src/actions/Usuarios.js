@@ -178,17 +178,17 @@ export const reloadingPage = (payload)=> {
     }
 }
 
-export const getPasajeras = () => {
-    return async function (dispatch){
-        try{
-         const res = await axios.get(`${SERVER}/usuario`)
-            dispatch({
-                type: GET_PASAJERA,
-                payload: res.data
-            })
-        } catch (error) {
-          console.log(error)
-        }
-       }
+// export const getPasajeras = () => {
+//     return async function (dispatch){
+//         try{
+//          const res = await axios.get(`${SERVER}/usuario`)
+//             dispatch({
+//                 type: GET_PASAJERA,
+//                 payload: res.data
+//             })
+//         } catch (error) {
+//           console.log(error)
+//         }
+//        }
 
-}
+// }

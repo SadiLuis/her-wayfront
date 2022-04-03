@@ -21,8 +21,8 @@ export default function PedirConductora() {
     // console.log(conductorasFilter)
   useEffect(()=>{
     dispatch(pedirConductora())
-    dispatch(getPasajeras())
-  }, [dispatch])
+    
+  }, [])
   
    function handleSubmitPedirConductora(e){
      e.preventDefault();

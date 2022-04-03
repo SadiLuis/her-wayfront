@@ -1,9 +1,9 @@
 import React, { useEffect } from 'react'
 import { useDispatch, useSelector  } from 'react-redux'
-import { getPerfilConductora, pedirConductora } from '../../actions/conductora'
+import { getPerfilConductora, obtenerConductora, pedirConductora } from '../../actions/conductora'
 import Image from '../../Media/placeholder.png'
 import Navbar from '../Landing/Navbar'
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import './PerfilConductora.css'
 
 
@@ -14,13 +14,14 @@ export default function PerfilConductora( ) {
 
     const navigate = useNavigate()
     const dispatch = useDispatch()
-
+    const {idConductora} = useParams()
+    const conductora = useSelector((state) => state.perfilConductoraReducer.perfilConductora)
     const idConductoraLogueada = useSelector((state) => state.registroConductoraReducer.conducLogueada)
     // let idConductora = "OOSg1YJ93xwIXqmviPg5"
-    console.log('idConductoraLogueada', idConductoraLogueada)
+    
     useEffect(() => {
-        dispatch(pedirConductora())
-        dispatch(getPerfilConductora())
+        dispatch(obtenerConductora(idConductora))
+        dispatch(getPerfilConductora(idConductoraLogueada[0].id))
     }, [])
 
 
@@ -29,7 +30,7 @@ export default function PerfilConductora( ) {
             <div className='perfilCard'>
                 <div  className='upperContainer'>
                     <div className='imageContainer'>
-                        <div key={idConductoraLogueada[0].id}></div>
+                        {/* <div key={idConductoraLogueada[0].id}></div> */}
                         <img src={idConductoraLogueada[0].fotoPerfil}
                             alt='profile pic'
                             height='100%'
@@ -58,6 +59,7 @@ export default function PerfilConductora( ) {
                 </div>
             </div >
             <button className='logoutC' onClick={() => navigate('/home')}> Log out </button>
+            <button className='volver' onClick={() => navigate('/homeConductora')}> Volver </button>
         </div >
     )
 };

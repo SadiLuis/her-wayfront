@@ -29,7 +29,7 @@ import Swal from "sweetalert2"
 function Mapa({setCoordinates, setBounds, coordinates}) {
     const { isLoaded } = useJsApiLoader({
       googleMapsApiKey: 'AIzaSyDo2MYthjrW4eDTScPNK8BYGBNa8DF0zBc',
-      libraries: ['places'],
+      libraries: ["places"],
     })
 
     const [map, setMap] = useState((null))

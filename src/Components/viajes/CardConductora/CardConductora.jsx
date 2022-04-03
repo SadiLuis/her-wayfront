@@ -10,7 +10,7 @@ import { useState } from 'react';
 
 
 export default function TarjetaConductoras({nombre,localidad, automovil, patente, habilitacion, conectada, id}) {
-    console.log(nombre)
+   // console.log(nombre)
 
     
     
