@@ -6,7 +6,7 @@ import './PerfilPasajera.css'
 import { useDropzone } from "react-dropzone";
 import { Link,useNavigate } from "react-router-dom";
 import {useSelector , useDispatch} from 'react-redux'
-import {getPasajeras , logout} from '../../actions/Usuarios'
+import {login , logout} from '../../actions/Usuarios'
 import {Loader} from '../Loader/Loader'
 import {saveImages} from '../../Helpers/saveImage'
 import {updateFoto} from '../../actions/Usuarios'
@@ -18,15 +18,9 @@ export default function PerfilPasajera() {
     const dispatch = useDispatch()
     console.log(pasajera)
     useEffect(()=>{
-       dispatch(getPasajeras())
+       dispatch(login())
     },[dispatch], imagen)
-
-  const handleButton = () => {
-      dispatch(logout())
-      navigate('/home')
-  }
-  const onDrop = useCallback(async(oFile) => {
-    
+ 
       console.log(oFile)
      const urlImage = await saveImages(oFile[0]);
       console.log(urlImage)
@@ -34,16 +28,15 @@ export default function PerfilPasajera() {
       await updateFoto(urlImage , pasajera[0].id)
 }, []);
 
-const { getRootProps, getInputProps} = useDropzone({
-    accept: "image/jpeg",
-    noKeyboard: true,
-    multiple: false,
-    onDrop
-});
+
+// const { getRootProps, getInputProps} = useDropzone({
+//     accept: "image/jpeg",
+//     noKeyboard: true,
+//     multiple: false,
+//     onDrop
+// });
   
-    return (
-         
-        
+     return (
         <><div className='perfilCard'>
             {pasajera.length ?
                 (<div className='upperContainer'>
@@ -77,7 +70,6 @@ const { getRootProps, getInputProps} = useDropzone({
                         </div>
                     </div>
                        
-
                     <Link to='/editPasajera'>
                         Editar
                     </Link>
@@ -87,9 +79,9 @@ const { getRootProps, getInputProps} = useDropzone({
                     
                     </div>
                 
-
                 ) : <Loader />}
         </div>
                 </>
     )
 }
+

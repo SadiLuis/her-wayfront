@@ -6,16 +6,13 @@ import Home from './Screens/Home';
 import Login from './Components/Login';
 import Registro from './Components/Registro';
 import ResetPassword from './Components/ResetPassword';
-
 import PerfilPasajera from './Components/Perfiles/PerfilPasajera';
-
 import HomeConductora from './Screens/HomeConductora';
 import RegConductora from './Components/RegConductora/RegConductora'
 import LoginConductora from './Components/LoginConductora'
 import PerfilConductora from './Components/Perfiles/PerfilConductora';
 import TarjetaConductora from './Screens/TarjetaConductora';
 import FiltrosConductoras from './Components/Pedidos/FiltrosConductoras'
-
 import PedirConductora from './Components/PedirConductora';
 import VistaMap from './Screens/VistaMap.jsx'
 //import Reviews from './Components/Reviews/ReviewsConductora';

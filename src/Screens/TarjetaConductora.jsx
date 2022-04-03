@@ -4,7 +4,7 @@ import styles from "./TarjetaConductora.module.css";
 import {HiOutlineChatAlt2} from "react-icons/hi";
 import {FaTaxi } from "react-icons/fa";
 import { useState , useEffect } from 'react';
-import {getPasajeras} from '../actions/Usuarios'
+//import {getPasajeras} from '../actions/Usuarios'
 
 import {getPerfilConductora,pedirConductora} from '../actions/conductora'
 import {crearViaje} from '../actions/recorrido'
@@ -25,11 +25,11 @@ export default function TarjetaConductoras({nombre,localidad, automovil, patente
   
 
     //console.log(id,'id')
-    useEffect(()=>{
+  //   useEffect(()=>{
    
-  dispatch(getPasajeras())
-    },[dispatch])
-       //console.log(pasajera)
+  // dispatch(getPasajeras())
+  //   },[dispatch])
+  //      //console.log(pasajera)
 
 
     
@@ -40,7 +40,7 @@ export default function TarjetaConductoras({nombre,localidad, automovil, patente
       direcDestino: viaje?.direcDestino,
       coordDestino: viaje?.coordDestino,
       coordOrigen: viaje?.coordOrigen,
-       descripDestino: viaje?.results.routes[0].summary,
+      descripDestino: viaje?.results.routes[0].summary,
       descripOrigen: "",
       estadoViaje: "requerido",
       idChat:"023545",
@@ -52,7 +52,6 @@ export default function TarjetaConductoras({nombre,localidad, automovil, patente
     } 
     
    
-
     const handleButton =(payload)=>{
       dispatch(getPerfilConductora(payload.idConductora))
         //dispatch(crearViaje(payload))
@@ -87,8 +86,4 @@ export default function TarjetaConductoras({nombre,localidad, automovil, patente
     </div>
   )
 
-    
-  
-    
-  
 }

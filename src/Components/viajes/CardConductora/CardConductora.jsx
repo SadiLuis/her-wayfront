@@ -11,12 +11,17 @@ import { useDispatch } from 'react-redux';
 
 
 
+
+//export default function TarjetaConductoras({nombre,localidad, automovil, patente, habilitacion, conectada, id}) {
+   // console.log(nombre)
+
 export default function CardConductora({nombre, automovil, patente, fotoPerfil, precio, origen, destino, idPasajera, idConductora, idViaje}) {
     
 
   console.log("id viaje es", idViaje)  
   const dispatch = useDispatch()
   const navigate = useNavigate()
+
 
   function handleClick(e){
     e.preventDefault()

@@ -1,9 +1,9 @@
 import React, { useEffect } from 'react'
 import { useDispatch, useSelector  } from 'react-redux'
-import { getPerfilConductora, pedirConductora } from '../../actions/conductora'
-//import Image from '../../Media/placeholder.png'
-//import Navbar from '../Landing/Navbar'
-import { useNavigate } from "react-router-dom";
+import { getPerfilConductora, obtenerConductora, pedirConductora } from '../../actions/conductora'
+import Image from '../../Media/placeholder.png'
+import Navbar from '../Landing/Navbar'
+import { useNavigate, useParams } from "react-router-dom";
 import './PerfilConductora.css'
 
 
@@ -14,14 +14,16 @@ export default function PerfilConductora( ) {
 
     const navigate = useNavigate()
     const dispatch = useDispatch()
+    const {idConductora} = useParams()
     const conductora = useSelector((state) => state.perfilConductoraReducer.perfilConductora)
     const idConductoraLogueada = useSelector((state) => state.registroConductoraReducer.conducLogueada)
     // let idConductora = "OOSg1YJ93xwIXqmviPg5"
     
     useEffect(() => {
-        dispatch(pedirConductora())
-        dispatch(getPerfilConductora(conductora))
-    }, [dispatch, conductora])
+        dispatch(obtenerConductora(idConductora))
+        dispatch(getPerfilConductora(idConductoraLogueada[0].id))
+    }, [])
+
 
 
     return (
@@ -58,6 +60,7 @@ export default function PerfilConductora( ) {
                 </div>
             </div >
             <button className='logoutC' onClick={() => navigate('/home')}> Log out </button>
+            <button className='volver' onClick={() => navigate('/homeConductora')}> Volver </button>
         </div >
     )
 };

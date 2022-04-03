@@ -41,20 +41,35 @@ export default function Login() {
 
   const [formlogin, setFormLogin] = useState(initialLogin)
   const [error, setError] = useState({})
-  const[display,setDisplay] = useState(false)
+  const[display, setDisplay] = useState(false)
   const isAuth = useSelector(state => state.LoginRegisReducer.isAuth)
   const user = useSelector(state => state.LoginRegisReducer.userInfo)
   const navigate = useNavigate()
-  
+
   const dispatch = useDispatch()
 
-  
+
   useEffect(() => {
     // Si ya está logueado que lo redireccione al dashboard
     if( isAuth && user) {
      console.log('entre')
       setFormLogin(initialLogin);
      navigate("/mapa")
+
+    
+Swal.fire({
+  icon:'success',
+  title: 'Bienvenido ' + user.displayName,
+  timer: 5500,
+  timerProgressBar: true,
+  
+}).then((result) => {
+  /* Read more about handling dismissals below */
+  if (result.dismiss === Swal.DismissReason.timer) {
+    console.log('I was closed by the timer')
+  }
+})
+
      let timerInterval
 // Swal.fire({
 //   icon:'success',
@@ -77,9 +92,12 @@ export default function Login() {
 //     console.log('I was closed by the timer')
 //   }
 // })
+
     }
   }, [isAuth, navigate, user]);
 
+
+  
   const handleChange = (e) => {
 
     const { name, value } = e.target;
@@ -94,12 +112,12 @@ export default function Login() {
     e.preventDefault()
     const errors = validateForm(formlogin);
     setError(errors);
-   
+
     if (Object.keys(errors).length) {
        Swal.fire({
         icon: 'error',
         title: 'El formulario contiene errores',
-        
+
        })
     }else {
 
@@ -212,10 +230,10 @@ export default function Login() {
       <div class="col-lg-1"></div>
 
       {/* <div >
-      <button  className={styles.botonPedirConductora}   
+      <button  className={styles.botonPedirConductora}
      >
-    <Link to="/pedirconductora" style={{color:"#fff"}}> 
-   
+    <Link to="/pedirconductora" style={{color:"#fff"}}>
+
       Pedir Conductora
       </Link>
     </button>

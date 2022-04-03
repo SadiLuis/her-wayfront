@@ -13,7 +13,7 @@ const initialState = {
 export default function registroConductoraReducer (state = initialState, action){
     switch (action.type) {
         case REGISTRO_CONDUCTORA:
-            localStorage.setItem("token", action.payload.stsTokenManager.accessToken);
+            localStorage.setItem("tokenConductora", action.payload.stsTokenManager.accessToken);
             return {
                 ...state,
                 tokenCnductora: action.payload.stsTokenManager.accessToken,
@@ -22,12 +22,12 @@ export default function registroConductoraReducer (state = initialState, action)
             }
 
             case LOGIN_CONDUCTORA:
-                localStorage.setItem("token", action.payload.stsTokenManager.accessToken)
+                localStorage.getItem("tokenConductora", action.payload.stsTokenManager.accessToken)
                 console.log(action.payload)
                 return {
                     ...state,
                     isAuthConductora: true,
-                    tokenCnductora: action.payload.stsTokenManager.accessToken,
+                    tokenConductora: action.payload.stsTokenManager.accessToken,
                     registroCond: action.payload,
                     conducLogueada: action.conducLogueada
                 }
