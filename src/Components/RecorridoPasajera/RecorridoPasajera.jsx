@@ -36,6 +36,7 @@ const RecorridoPasajera = () => {
     googleMapsApiKey: 'AIzaSyDo2MYthjrW4eDTScPNK8BYGBNa8DF0zBc',
     libraries,
   })
+  
     const [map, setMap] = useState((null))
   const [directionsResponse, setDirectionsResponse] = useState(null)
   const [distance, setDistance] = useState('')
