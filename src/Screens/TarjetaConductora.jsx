@@ -27,13 +27,13 @@ export default function TarjetaConductoras({nombre,localidad, automovil, patente
     //console.log(id,'id')
     useEffect(()=>{
    
-  dispatch(getPasajeras())
-    },[dispatch])
+     dispatch(getPasajeras())
+    },[])
        //console.log(pasajera)
 
 
     
-       console.log(pasajera)
+       //console.log(pasajera)
 
      const data = {
       direcOrigen: viaje?.direcOrigen,
@@ -50,7 +50,7 @@ export default function TarjetaConductoras({nombre,localidad, automovil, patente
       nombrePasajera: pasajera[0]?.nombre,
        precio: viaje?.results.routes[0].legs[0].distance.value * 0.04
     } 
-    
+    console.log(data.idConductora)
    
 
     const handleButton =(payload)=>{
@@ -59,6 +59,10 @@ export default function TarjetaConductoras({nombre,localidad, automovil, patente
 
         navigate('/viajeAceptado')
     } 
+    const handleClick =()=>{
+      //dispatch()
+        navigate('/reviews')
+    }
 
   return (
     <div className={styles.tarjetaConductora}>
@@ -83,7 +87,7 @@ export default function TarjetaConductoras({nombre,localidad, automovil, patente
     {/* quiero que cuando la pasajera haga click acá, vaya al componente recorrido.js que hizo Lore */}
      <button className={styles.botonSolicitarViaje}onClick={()=>handleButton(data)}>Solicitar viaje</button> 
       </div>
-
+    <button disabled='' onClick={()=>handleClick()}>Calificar Conductora</button>
     </div>
   )
 

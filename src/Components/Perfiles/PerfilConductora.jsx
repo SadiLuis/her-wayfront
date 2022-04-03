@@ -3,7 +3,7 @@ import { useDispatch, useSelector  } from 'react-redux'
 import { getPerfilConductora, pedirConductora } from '../../actions/conductora'
 //import Image from '../../Media/placeholder.png'
 //import Navbar from '../Landing/Navbar'
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useParams, Link } from "react-router-dom";
 import './PerfilConductora.css'
 
 
@@ -14,14 +14,14 @@ export default function PerfilConductora( ) {
 
     const navigate = useNavigate()
     const dispatch = useDispatch()
-    const conductora = useSelector((state) => state.perfilConductoraReducer.perfilConductora)
+    const conductora = useSelector((state) => state.perfilConductoraReducer.detailConduc)
     const idConductoraLogueada = useSelector((state) => state.registroConductoraReducer.conducLogueada)
-    // let idConductora = "OOSg1YJ93xwIXqmviPg5"
+    const {id} = useParams()
     
     useEffect(() => {
         dispatch(pedirConductora())
-        dispatch(getPerfilConductora(conductora.id))
-    }, [dispatch, conductora])
+        dispatch(getPerfilConductora(id))
+    }, [id ])
 
 
     return (
@@ -56,8 +56,13 @@ export default function PerfilConductora( ) {
                         {/* <p className='editIcon'>Editar Perfíl</p> */}
                     </div>
                 </div>
-            </div >
+            </div>
             <button className='logoutC' onClick={() => navigate('/home')}> Log out </button>
-        </div >
+            <div>
+            <button className='logoutD' onClick={() => navigate('/homeConductora')}> Volver </button>                       
+        
+        </div>
+        </div>
+        
     )
 };

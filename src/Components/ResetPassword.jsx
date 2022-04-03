@@ -20,7 +20,7 @@ function ResetPassword() {
          dispatch(reloadingPage(''))
      }
     }
-     },[recoverPass ,dispatch,reloadingPage])
+     },[recoverPass ,reloadingPage])
 
      const handleChange = (e)=>{
          setState({

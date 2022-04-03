@@ -23,7 +23,7 @@ export default function registroConductoraReducer (state = initialState, action)
 
             case LOGIN_CONDUCTORA:
                 localStorage.setItem("token", action.payload.stsTokenManager.accessToken)
-                console.log(action.payload)
+                console.log(action)
                 return {
                     ...state,
                     isAuthConductora: true,

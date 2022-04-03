@@ -12,7 +12,7 @@ const VerPasajerasAdmin = () => {
 
   useEffect(() => {
     dispatch(obtenerPasajeras())
-  }, [dispatch])
+  }, [])
 
   const pasajeras = useSelector(state => state.adminReducer.pasajeras)
   console.log(pasajeras)

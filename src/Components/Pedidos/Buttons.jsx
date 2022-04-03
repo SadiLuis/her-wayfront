@@ -104,7 +104,7 @@ console.log('filtros :>> ', filtros);
 useEffect(() => {
   dispatch(pedirConductora())
   
-}, [dispatch]);
+}, []);
 
   const handleClick = (e, tipo_auto) => {   
     e.preventDefault();

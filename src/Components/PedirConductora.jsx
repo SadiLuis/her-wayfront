@@ -22,7 +22,7 @@ export default function PedirConductora() {
   useEffect(()=>{
     dispatch(pedirConductora())
     dispatch(getPasajeras())
-  }, [dispatch])
+  }, [])
   
    function handleSubmitPedirConductora(e){
      e.preventDefault();

@@ -17,7 +17,7 @@ export default function PerfilPasajera() {
     console.log(pasajera)
     useEffect(()=>{
        dispatch(getPasajeras())
-    },[dispatch], imagen)
+    },[imagen] )
 
   const handleButton = () => {
       dispatch(logout())

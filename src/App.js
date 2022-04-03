@@ -17,8 +17,7 @@ import TarjetaConductora from './Screens/TarjetaConductora';
 import FiltrosConductoras from './Components/Pedidos/FiltrosConductoras'
 
 import PedirConductora from './Components/PedirConductora';
-import VistaMap from './Screens/VistaMap.jsx'
-//import Reviews from './Components/Reviews/ReviewsConductora';
+import VistaMap from './Screens/VistaMap.jsx';
 import BotonPago from './Components/BotonPago/BotonPago';
 
 import ContactForm from './Components/ContactForm/ContactForm'
@@ -31,11 +30,11 @@ import VerificarConductora from './Components/Admin/VerificarUsuario/VerificarUs
 import DarBajaConductora from './Components/Admin/DarBajaConductora/DarBajaConductora';
 import AltaAdmins from './Components/Admin/AltaAdmins/AltaAdmins';
 import OrigenDestino from './Components/OrigenDestino/OrigenDestino';
-//import Reviews from './Components/Reviews/ReviewsConductora';
+
 
 import ViajeConductora from './Components/viajes/ViajeConductora'
 import LoginConGooglePasajera from './Components/LoginConGooglePasajera';
-import CrearReview from './Components/Reviews/CrearReview';
+//import CrearReview from './Components/Reviews/CrearReview';
 
 
 import RecorridoPasajera from './Components/RecorridoPasajera/RecorridoPasajera';
@@ -80,7 +79,7 @@ function App() {
             <Route path="/loginPasajeraConGoogle" element={<LoginConGooglePasajera />} />
             <Route path="/viajeAceptado" element={<ViajePasajera/>} />
 
-             <Route path="/reviews" element={<CrearReview />} />
+             {/* <Route path="/reviews" element={<CrearReview />} /> */}
 
 
 

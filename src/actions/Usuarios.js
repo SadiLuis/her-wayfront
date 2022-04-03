@@ -41,7 +41,7 @@ export function updateUser(newUser) {
 export function getuserDetails(id) {
     return async function (dispach) {
         try {
-            const res = await axios.get(`${SERVER}/usuario/${id}`, tokenUser())
+            const res = await axios.get(`${SERVER}/usuario/${id}`)
 
             dispach({
                 type: GET_USER_DETAILS,
@@ -62,6 +62,7 @@ export function logout() {
     return { type: LOGOUT_USER }
 }
 
+
 export function login({ email, contrasena }) {
     return async (dispach) => {
         console.log('action')
@@ -74,13 +75,15 @@ export function login({ email, contrasena }) {
             // }
 
             const body = { email, contrasena }
-
             const { data } = await axios.post(`${SERVER}/usuario/login`, body)
-
+            const usuarias = await axios.get(`${SERVER}/usuario`)
             const infoUser = data.user
+            const filtroUsuarias = usuarias.data.filter((u) => data.user.email === u.email)
+            console.log('data', data)
             dispach({
                 type: LOGIN_USER_SUCCESS,
-                payload: infoUser
+                payload: infoUser,
+                usuariaLogueada: filtroUsuarias
             })
             console.log(data)
         } catch (error) {
@@ -92,8 +95,8 @@ export function login({ email, contrasena }) {
               })
             console.log(error)
             return dispach({
-                type: LOGIN_USER_ERROR,
-            })
+            type: LOGIN_USER_ERROR,
+        })
         }
     }    
     
@@ -180,6 +183,7 @@ export const getPasajeras = () => {
     return async function (dispatch){
         try{
          const res = await axios.get(`${SERVER}/usuario`)
+         console.log(res.data)
             dispatch({
                 type: GET_PASAJERA,
                 payload: res.data

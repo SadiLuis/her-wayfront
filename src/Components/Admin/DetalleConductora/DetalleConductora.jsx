@@ -19,7 +19,7 @@ const DetalleConductora = () => {
         return () => {
             dispatch(limpiarDetalle())
         }
-    }, [dispatch, id]);
+    }, [id]);
 
 
 

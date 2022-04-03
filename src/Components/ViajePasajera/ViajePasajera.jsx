@@ -26,13 +26,13 @@ import {
 import DetalleRecorrido from '../DetalleRecorrido/DetalleRecorrido';
 import styles from './ViajePasajera.module.css'
 
-  
+const libraries = ['places'];  
 
 const ViajePasajera = () => {
 
     const { isLoaded } = useJsApiLoader({
         googleMapsApiKey: 'AIzaSyDo2MYthjrW4eDTScPNK8BYGBNa8DF0zBc',
-        libraries: ['places'],
+        libraries,
       })
 
     const [map, setMap] = useState((null))

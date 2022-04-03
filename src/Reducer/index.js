@@ -18,6 +18,7 @@ const rootReducer= combineReducers({
     adminReducer,
     perfilConductoraReducer,
     registroConductoraReducer,
+    pedirConductoraReducer,
     viajesReducer,
 })
 

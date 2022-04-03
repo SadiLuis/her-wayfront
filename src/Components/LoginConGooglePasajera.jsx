@@ -26,7 +26,7 @@ import {
       if(!auth ){
        navigate('/login')
     }else{
-      navigate('/mapa')
+     // navigate('/mapa')
     }
   }
   
