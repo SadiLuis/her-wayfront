@@ -1,6 +1,6 @@
 import React, {useEffect} from 'react'
 import { useDispatch, useSelector } from 'react-redux';
-import { pedirConductora,detalleConductora } from '../actions/conductora';
+import { pedirConductora,detalleConductora, conductorasConectadas  } from '../actions/conductora';
 import TarjetaConductora from '../Screens/TarjetaConductora';
 import {Loader} from './Loader/Loader'
 import {getPasajeras} from '../actions/Usuarios'
@@ -13,16 +13,20 @@ import Swal from "sweetalert2"
 export default function PedirConductora() {
     const dispatch= useDispatch();
     const conductoras= useSelector((state) =>state.pedirConductoraReducer.conductoras);
+    const conectadas=useSelector((state)=>state.pedirConductoraReducer.conductorasConectadas)
     // const detalle= useSelector((state)=>state.pedirConductoraReducer.detalle);
    // const pasajera = useSelector(state => state.LoginRegisReducer.pasajera)
-    console.log(conductoras)
-    //console.log(pasajera)
+    
+    console.log(conectadas)
   //const conductorasFilter = conductoras?.filter(cond => cond.localidad === pasajera[0].localidad)
     // console.log(conductorasFilter)
-  useEffect(()=>{
-    dispatch(pedirConductora())
+
     
-  }, [])
+
+  useEffect(()=>{
+    dispatch(conductorasConectadas())
+    
+  }, [dispatch])
   
    function handleSubmitPedirConductora(e){
      e.preventDefault();
@@ -38,12 +42,12 @@ export default function PedirConductora() {
           <>
           <span>{handleSubmitPedirConductora}</span> 
           
-          { conductoras.length ? (<div className={styles.contenedor}>
+          { conectadas.length ? (<div className={styles.contenedor}>
         {/* <button className={styles.botonPedirConductora}
       onClick={(e)=>{handleClickPedirConductora(e)}}
       >Pedir Conductora</button> */}
         
-          {conductoras?.map(elem => {
+          { conectadas?.map(elem => {
             return (
   
               <TarjetaConductora
@@ -55,7 +59,7 @@ export default function PedirConductora() {
                 patente={elem.patente}
                 habilitacion={elem.habilitacion}
 
-               //conectada={elem.conectada}
+                 //conectada={elem.conectada}
                  />
 
   

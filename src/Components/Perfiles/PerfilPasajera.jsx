@@ -32,6 +32,7 @@ export default function PerfilPasajera() {
     
 }, []);
 
+
 const { getRootProps, getInputProps} = useDropzone({
     accept: "image/jpeg",
     noKeyboard: true,
@@ -39,6 +40,7 @@ const { getRootProps, getInputProps} = useDropzone({
     onDrop
 });
   
+
     return (
          
         
@@ -82,3 +84,4 @@ const { getRootProps, getInputProps} = useDropzone({
          </div>
     )
 }
+
