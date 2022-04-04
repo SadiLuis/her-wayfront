@@ -1,9 +1,10 @@
-import { PEDIR_CONDUCTORA, DETALLE_CONDUCTORA } from "../actions";
+import { PEDIR_CONDUCTORA, DETALLE_CONDUCTORA, CONDUCTORAS_CONECTADAS } from "../actions";
 
 const initialState={
     conductoras:[],
     todasLasConductoras:[],
-    detalle:{}
+    detalle:{},
+    conductorasConectadas:[]
 }
 
 export default function pedirConductoraReducer(state=initialState, action){
@@ -14,19 +15,26 @@ export default function pedirConductoraReducer(state=initialState, action){
             return {
                 ...state,
                 
-                conductoras:payload
+                conductoras:payload,
+                todasLasConductoras:payload
             }
             case DETALLE_CONDUCTORA:
                 return{
                     ...state, 
                     detalle: payload
                 }
+                 case CONDUCTORAS_CONECTADAS:
+                    //  const conectadas=state.todasLasConductoras.filter(elem=>elem.conectada==true)
+                     return {
+                         ...state,
+                         conductorasConectadas:payload
+                     };
 
 
             default:
                 return {
                     ...state
                 }
+            }
 
-    }
-}
+            }

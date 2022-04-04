@@ -1,7 +1,8 @@
 import {FILTRAR_CONDUCTORA_SEGUN_AUTO, 
         PEDIR_CONDUCTORA,
         GET_PERFILC,
-        DETALLE_CONDUCTORA } from "./index"
+        DETALLE_CONDUCTORA,
+    CONDUCTORAS_CONECTADAS } from "./index"
 import tokenConductora from "../Helpers/TokenConductora";
 import axios from "axios";
 import {SERVER} from './VariableGlobal'
@@ -90,6 +91,26 @@ export function cambiaEstadoConductora(payload){
    
         }
     }  
+}
+
+//////
+export const conductorasConectadas = () => async (dispatch) => {
+    try {
+        
+         // const respuesta= await axios.get("http://localhost:3001/conductora")
+        let conectadas = await axios.get(`${SERVER}/conductora`)
+         let conductorasfiltradas=  conectadas.data.filter(elem=>elem.conectada==true)
+        console.log(conductorasfiltradas)
+        return dispatch({
+            type: CONDUCTORAS_CONECTADAS,
+            payload: conductorasfiltradas
+        })
+        
+    } catch (error) {
+        console.log("No se encontraron conductoras conectadas")
+    }
+    
+   
 }
 
 

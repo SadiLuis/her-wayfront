@@ -69,7 +69,8 @@ export default function TarjetaConductoras({nombre,localidad, automovil, patente
     <p>Vehículo: {automovil}</p>
     <p> Patente: {patente}</p>
     <p>Habilitación: {habilitacion}</p>
-    <p>Conectada:{conectada ? <p>Si</p> : <p>No disponible</p>}</p>
+     {/* <p>Conectada:{conectada? <p>Si</p> : <p>No disponible</p>}</p>  */}
+
    
     <div className={styles.icono}>
      
