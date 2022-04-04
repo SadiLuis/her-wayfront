@@ -27,15 +27,16 @@ import DetalleRecorrido from '../DetalleRecorrido/DetalleRecorrido';
 import styles from './RecorridoPasajera.module.css'
 import { datosMapa } from '../../actions/recorrido';
 
-const libraries = ['places']; 
+  
+const libraries = ['places'];
 
 const RecorridoPasajera = () => {
 
-    const { isLoaded } = useJsApiLoader({
-        googleMapsApiKey: 'AIzaSyDo2MYthjrW4eDTScPNK8BYGBNa8DF0zBc',
-        libraries,
-      })
-
+  const { isLoaded } = useJsApiLoader({
+    googleMapsApiKey: 'AIzaSyDo2MYthjrW4eDTScPNK8BYGBNa8DF0zBc',
+    libraries,
+  })
+  
     const [map, setMap] = useState((null))
   const [directionsResponse, setDirectionsResponse] = useState(null)
   const [distance, setDistance] = useState('')

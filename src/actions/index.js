@@ -58,3 +58,5 @@ export const RELOADING_PAG="RELOADING_PAG"
 
 ////////////////////////////////////////////////////////////////////////
 
+export const MIS_VIAJES_PASAJERA="MIS_VIAJES_PASAJERA"
+export const VIAJES_POR_PASAJERA= "VIAJES_POR_PASAJERA"

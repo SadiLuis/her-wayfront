@@ -6,16 +6,13 @@ import Home from './Screens/Home';
 import Login from './Components/Login';
 import Registro from './Components/Registro';
 import ResetPassword from './Components/ResetPassword';
-
 import PerfilPasajera from './Components/Perfiles/PerfilPasajera';
-
 import HomeConductora from './Screens/HomeConductora';
 import RegConductora from './Components/RegConductora/RegConductora'
 import LoginConductora from './Components/LoginConductora'
 import PerfilConductora from './Components/Perfiles/PerfilConductora';
 import TarjetaConductora from './Screens/TarjetaConductora';
 import FiltrosConductoras from './Components/Pedidos/FiltrosConductoras'
-
 import PedirConductora from './Components/PedirConductora';
 import VistaMap from './Screens/VistaMap.jsx';
 import BotonPago from './Components/BotonPago/BotonPago';
@@ -40,7 +37,14 @@ import CrearReview from './Components/Reviews/CrearReview';
 import RecorridoPasajera from './Components/RecorridoPasajera/RecorridoPasajera';
 
 import ViajePasajera from './Components/ViajePasajera/ViajePasajera.jsx'
+import MisViajesPasajera from './Components/MisViajesPasajera/MisViajesPasajera';
 
+import EstadoViajeConductora from './Components/viajes/EstadoViajeConductora';
+
+import PantallaViajePasajera from './Components/viajes/PantallaViajePasajera'
+import EstadoViajePasajera from './Components/viajes/EstadoViajePasajera';
+
+import EditarPerfilPas from './Components/Perfiles/EditarPerfilPas'
 
 function App() {
 
@@ -75,11 +79,18 @@ function App() {
             <Route path="/contacto" element={<ContactForm />} />
             <Route path="/viajeconductora" element={<ViajeConductora />} />
             <Route path="/viajepasajera" element={<ViajePasajera />} />
-            <Route path="/viajeAceptado" element={<RecorridoPasajera />} />
+            //<Route path="/viajeAceptado" element={<RecorridoPasajera />} />
             <Route path="/loginPasajeraConGoogle" element={<LoginConGooglePasajera />} />
             <Route path="/viajeAceptado" element={<ViajePasajera/>} />
+             //<Route path="/reviews" element={<CrearReview />} />
+            <Route path="/misViajesPasajera" element={<MisViajesPasajera />} />
+             <Route path="/viajeconductora/:idViaje" element={<EstadoViajeConductora />} />
+            <Route path="/pantallaviajepasajera" element={<PantallaViajePasajera />} />
+            <Route path="/viajepasajera/:idViaje" element={<EstadoViajePasajera />} />
+            <Route path="/editPasajera" element={<EditarPerfilPas />} />
 
-             <Route path="/reviews" element={<CrearReview />} />
+
+
 
 
 

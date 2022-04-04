@@ -1,9 +1,16 @@
 import React, { useEffect } from 'react'
 import { useDispatch, useSelector  } from 'react-redux'
+<<<<<<< HEAD
 import { getPerfilConductora, pedirConductora } from '../../actions/conductora'
 //import Image from '../../Media/placeholder.png'
 //import Navbar from '../Landing/Navbar'
 import { useNavigate, useParams, Link } from "react-router-dom";
+=======
+import { getPerfilConductora, obtenerConductora, pedirConductora } from '../../actions/conductora'
+import Image from '../../Media/placeholder.png'
+import Navbar from '../Landing/Navbar'
+import { useNavigate, useParams } from "react-router-dom";
+>>>>>>> 108afeb582674cc3d6a2ea5a5a2027759c5a68aa
 import './PerfilConductora.css'
 
 
@@ -14,14 +21,26 @@ export default function PerfilConductora( ) {
 
     const navigate = useNavigate()
     const dispatch = useDispatch()
+<<<<<<< HEAD
     const conductora = useSelector((state) => state.perfilConductoraReducer.detailConduc)
+=======
+    const {idConductora} = useParams()
+    const conductora = useSelector((state) => state.perfilConductoraReducer.perfilConductora)
+>>>>>>> 108afeb582674cc3d6a2ea5a5a2027759c5a68aa
     const idConductoraLogueada = useSelector((state) => state.registroConductoraReducer.conducLogueada)
     const {id} = useParams()
     
     useEffect(() => {
+<<<<<<< HEAD
         dispatch(pedirConductora())
         dispatch(getPerfilConductora(id))
     }, [id ])
+=======
+        dispatch(obtenerConductora(idConductora))
+        dispatch(getPerfilConductora(idConductoraLogueada[0].id))
+    }, [])
+
+>>>>>>> 108afeb582674cc3d6a2ea5a5a2027759c5a68aa
 
 
     return (
@@ -29,7 +48,7 @@ export default function PerfilConductora( ) {
             <div className='perfilCard'>
                 <div  className='upperContainer'>
                     <div className='imageContainer'>
-                        <div key={idConductoraLogueada[0].id}></div>
+                        {/* <div key={idConductoraLogueada[0].id}></div> */}
                         <img src={idConductoraLogueada[0].fotoPerfil}
                             alt='profile pic'
                             height='100%'
@@ -58,11 +77,16 @@ export default function PerfilConductora( ) {
                 </div>
             </div>
             <button className='logoutC' onClick={() => navigate('/home')}> Log out </button>
+<<<<<<< HEAD
             <div>
             <button className='logoutD' onClick={() => navigate('/homeConductora')}> Volver </button>                       
         
         </div>
         </div>
         
+=======
+            <button className='volver' onClick={() => navigate('/homeConductora')}> Volver </button>
+        </div >
+>>>>>>> 108afeb582674cc3d6a2ea5a5a2027759c5a68aa
     )
 };

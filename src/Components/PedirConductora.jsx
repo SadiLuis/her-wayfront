@@ -21,7 +21,7 @@ export default function PedirConductora() {
     // console.log(conductorasFilter)
   useEffect(()=>{
     dispatch(pedirConductora())
-    dispatch(getPasajeras())
+    
   }, [])
   
    function handleSubmitPedirConductora(e){
@@ -35,7 +35,8 @@ export default function PedirConductora() {
    }
     return (
        
-          <><span>{handleSubmitPedirConductora}</span>
+          <>
+          <span>{handleSubmitPedirConductora}</span> 
           
           { conductoras.length ? (<div className={styles.contenedor}>
         {/* <button className={styles.botonPedirConductora}

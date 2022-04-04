@@ -41,7 +41,7 @@ export default function Login() {
 
   const [formlogin, setFormLogin] = useState(initialLogin)
   const [error, setError] = useState({})
-  const[display,setDisplay] = useState(false)
+  const[display, setDisplay] = useState(false)
   const isAuth = useSelector(state => state.LoginRegisReducer.isAuth)
   const user = useSelector(state => state.LoginRegisReducer.userInfo)
   const navigate = useNavigate()
@@ -68,6 +68,30 @@ Swal.fire({
     console.log('I was closed by the timer')
   }
 })
+
+     let timerInterval
+// Swal.fire({
+//   icon:'success',
+//   title: 'Bienvenido ' + user.displayName,
+//   timer: 5500,
+//   timerProgressBar: true,
+//   didOpen: () => {
+//     Swal.showLoading()
+//     const b = Swal.getHtmlContainer().querySelector('b')
+//     timerInterval = setInterval(() => {
+//       b.textContent = Swal.getTimerLeft()
+//     }, 100)
+//   },
+//   willClose: () => {
+//     clearInterval(timerInterval)
+//   }
+// }).then((result) => {
+//   /* Read more about handling dismissals below */
+//   if (result.dismiss === Swal.DismissReason.timer) {
+//     console.log('I was closed by the timer')
+//   }
+// })
+
     }
   }, [isAuth, navigate, user]);
 

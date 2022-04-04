@@ -42,6 +42,7 @@ border-radius: 50%;
     position: absolute;
     top: 675px;
     left: 20px;
+<<<<<<< HEAD
     background: rgb(63, 191, 241);
 }
 .logoutD{
@@ -49,4 +50,13 @@ border-radius: 50%;
     top: 675px;
     left: 100px;
     background: rgb(63, 191, 241);
+=======
+    background-color: darkturquoise;
+}
+.volver{
+    position: absolute;
+    top: 675px;
+    left: 100px;
+    background-color: darkturquoise;
+>>>>>>> 108afeb582674cc3d6a2ea5a5a2027759c5a68aa
 }

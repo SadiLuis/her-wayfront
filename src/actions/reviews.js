@@ -4,12 +4,11 @@ import {BORRAR_REVIEW,
         EDITAR_REVIEW,  
         OBTENER_REVIEWS, 
         OBTENER_REVIEWS_POR_CONDUCTORA } from '.';
-import { body } from '../utilsPago';
 import { SERVER } from './VariableGlobal';
 
 
 
-export function postReviews(body) {
+export function postReview(body) {
     return async function (dispatch) {
         try {
             const crearReview = await axios.post(`${SERVER}/reviews/create`, body);
@@ -56,7 +55,7 @@ export function getReviewsDeConductora(idConductora) {
 
   
 
-export function putReviews(payload) {
+export function putReview(payload) {
     return async function (dispatch) {
         try {
             const editarReview = await axios.put(`${SERVER}/reviews/update`, payload);
@@ -79,7 +78,7 @@ export function deleteReview(id){
                 payload: eliminarReview.data,
             });
         } catch (error) {
-            
+            console.log('error', error)
         }
     }
 }

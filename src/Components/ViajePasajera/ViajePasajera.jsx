@@ -26,15 +26,14 @@ import {
 import DetalleRecorrido from '../DetalleRecorrido/DetalleRecorrido';
 import styles from './ViajePasajera.module.css'
 
-const libraries = ['places'];  
+  
+const libraries = ['places'];
 
 const ViajePasajera = () => {
-
-    const { isLoaded } = useJsApiLoader({
-        googleMapsApiKey: 'AIzaSyDo2MYthjrW4eDTScPNK8BYGBNa8DF0zBc',
-        libraries,
-      })
-
+  const { isLoaded } = useJsApiLoader({
+    googleMapsApiKey: 'AIzaSyDo2MYthjrW4eDTScPNK8BYGBNa8DF0zBc',
+    libraries,
+  })
     const [map, setMap] = useState((null))
   const [directionsResponse, setDirectionsResponse] = useState(null)
   const [distance, setDistance] = useState('')
