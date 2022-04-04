@@ -4,7 +4,8 @@ const initialState = {
     
     viajesConductora: {},
     viajeRequeridoConductora: false,
-    viajeRequeridoConductoraDetalle: []
+    viajeRequeridoConductoraDetalle: [],
+    viajePorId: []
 
 
 }
@@ -21,9 +22,13 @@ export default function viajesReducer(state = initialState, action) {
                 return{
                 ...state,
                 viajeRequeridoConductoraDetalle: action.payload
-                }  
+                }
+                case "VIAJE_POR_IDVIAJE":
+                    return {
+                        ...state,
+                        viajePorId: action.payload
+                    }              
             default:
                 return state;
     }
 }
-

@@ -6,7 +6,7 @@ import {
 } from '../actions/index';
 
 const initialState = {
-    todasLasreviews:[],
+    reviews:{},
     reviewsConductora: []
 }
 
