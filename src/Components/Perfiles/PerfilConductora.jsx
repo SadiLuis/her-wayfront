@@ -9,6 +9,7 @@ import './PerfilConductora.css'
 
 
 
+
 export default function PerfilConductora( ) {
     // const [loading, setLoading] = useState(true);
 
@@ -30,7 +31,7 @@ export default function PerfilConductora( ) {
             <div className='perfilCard'>
                 <div  className='upperContainer'>
                     <div className='imageContainer'>
-                        {/* <div key={idConductoraLogueada[0].id}></div> */}
+                         <div key={idConductoraLogueada[0].id}></div> 
                         <img src={idConductoraLogueada[0].fotoPerfil}
                             alt='profile pic'
                             height='100%'

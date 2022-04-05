@@ -58,6 +58,7 @@ export default function CardConductora({nombre, automovil, patente, fotoPerfil, 
     
     
     
+    
 
 <div className={styles.ubicacionBoton}>
 <button className="btn btn-primary" type="button" name = "pantallaViaje" onClick={(e)=> handleClick(e)}>Ver estado de mi viaje</button>

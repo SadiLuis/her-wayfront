@@ -68,3 +68,15 @@ export const getViaje = (idViaje) => async (dispatch) => {
         console.log("No se encontro viaje con ese id ")
     }
 }
+
+export const getViajes = () => async (dispatch) => {
+    try {
+        const respuesta = await axios.get(`${SERVER}/viajes`)
+        return dispatch({
+            type: "VIAJES",
+            payload: respuesta.data
+        })
+    } catch (error) {
+        console.log("No se encontraron viajes ")
+    }
+}

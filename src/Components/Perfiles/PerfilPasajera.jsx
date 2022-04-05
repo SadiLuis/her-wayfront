@@ -6,7 +6,7 @@
 // import { useDropzone } from "react-dropzone";
 // import { useNavigate } from "react-router-dom";
 // import {useSelector , useDispatch} from 'react-redux'
-// import {getPasajeras , logout} from '../../actions/Usuarios'
+// import {login , logout} from '../../actions/Usuarios'
 // import {Loader} from '../Loader/Loader'
 // import {saveImages} from '../../Helpers/saveImage'
 

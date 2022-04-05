@@ -27,7 +27,7 @@ const HomeConductora = () => {
 
     useEffect(() => {
       if(conductoraLogueada.length>0){
-      dispatch(obtenerConductora(idConductora))
+      //dispatch(obtenerConductora(conductora.idConductora))
         dispatch(getPerfilConductora(conductoraLogueada[0].id))
     }else{
      console.log('error')

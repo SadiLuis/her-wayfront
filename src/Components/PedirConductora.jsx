@@ -54,8 +54,7 @@ export default function PedirConductora() {
                 automovil={elem.automovil}
                 patente={elem.patente}
                 habilitacion={elem.habilitacion}
-
-               //conectada={elem.conectada}
+                conectada={elem.conectada}
                  />
 
   

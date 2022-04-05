@@ -1,119 +1,118 @@
-import React, { useEffect } from "react";
-import { useState } from "react";
-import { useDispatch, useSelector } from "react-redux";
-import style from './Reviews.module.css';
-import ReactStars from "react-rating-stars-component";
-import {putReview , postReview , getReviews, deleteReview} from '../../actions/reviews';
+import React from "react";
 import Swal from 'sweetalert2';
+import { useEffect, useState } from "react";
+import {putReview , postReview , getReviews} from '../../actions/reviews'
+import { useDispatch, useSelector } from "react-redux";
+// import { useNavigate } from 'react-router-dom';
+import s from './CrearReviews.module.css'
+import { useParams } from "react-router-dom";
+import login_mujer from '../../image/login_mujer.png'
 
 
-const CrearReview = () => {
-    const dispatch = useDispatch();
-    const conductora = useSelector((state) => state.registroConductoraReducer.conducLogueada)
-    const reviews = useSelector((state) => state.reviewsReducer.todasLasreviews);
-    console.log('reviews :>> ', reviews);
-    const usuaria = useSelector((state) => state.loginRegistReducer.usuariaLogueada)
-   
-    console.log('user', usuaria);
 
+
+export default function Reviews () {
+    let { idViaje} = useParams()
+    const dispatch = useDispatch()
+    
+    idViaje='1GnT2gEn3i5yV49HAA7M';
+     const viaje = idViaje
+     console.log('idViaje :>> ', idViaje);
+
+    const conductora= useSelector((state) => state.perfilConductoraReducer.perfilConductora)
+    const reviews = useSelector((state) => state.reviewsReducer.reviews)
+    //const viaje = useSelector((state) => state.viajesReducer.)
+    
     const [input, setInput] = useState({
-        idConductora: '',
-        idPasajera: '',
-        conductora: "",
-        pasajera: "",
-        puntaje: "",
-        comentario: ""
+        idConductora: viaje[0].idConductora,
+        idPasajera: viaje[0].idPasajera,
+        conductora:viaje[0].conductora,
+        pasajera:viaje[0].pasajera,
+        comentario:'',
+        puntaje:''
     })
 
-           
+  //  const alo = reviews.filter(e => e.review.userId === user.id).length
+  //  console.log(user, "este mensaje es el que frao")
 
-    // cambio de comentarios
-    const handleOnChange = e => {
-        dispatch(putReview(conductora && conductora.id, usuaria.id, input))
-        setInput({
-            ...input,
-            [e.target.name]: e.target.value
-        })
-        console.log('input', input);
-    }
-
-    //cambio de rating o star o puntuacion
-    const ratingChanged = (nuevoRating) => {
-        // console.log('newRating :>> ', newRating);
-        setInput({
-            ...input,
-            puntaje: nuevoRating.toString()
-        })
-        console.log('input', input);
-    };
-
-    const handleSubmit = (e) => {           // funcion que enviara los datos de mi formulario 
-        e.preventDefault()
-        if (input.puntaje === '' ||  input.comentario === '') {
-            Swal.fire({
-                icon: 'error',
-                title: 'Ups.. Falta Ingresar la puntuación de ★★★★★ o su Comentario ',
-            })
-        } else {
-            dispatch(postReview(reviews.idConductora, input))
+    const handleSubmit = (e) => {
+      e.preventDefault()
+      if(input){
+      dispatch(postReview( conductora.idConductora, input))
             setInput({
-                idConductora:'' ,
-                idPasajera:'' ,
-                conductora: "",
-                pasajera: "",
-                puntaje: "",
-                comentario: ""
+              idConductora: viaje[0].idConductora,
+              idPasajera: viaje[0].idPasajera,
+              conductora:viaje[0].conductora,
+              pasajera:viaje[0].pasajera,
+              comentario:'',
+              puntaje:'',
             })
-            window.location = `/perfilConductora`
-        }     
-    }
+            Swal.fire({
+              icon: 'success',
+              title: 'Su Comentario se ha creado correctamente',
+            })
+          }else{
+            Swal.fire({
+              icon: 'error',
+              title: 'ups..su comentario no se ha procesado correctamente',
+            })
+          }
+          }
+       
 
+      useEffect(() => {
+        dispatch(getReviews(idViaje));     
+      }, []);  
 
-    useEffect(() => {
-        dispatch(getReviews(conductora))
-    }, [dispatch, conductora])
-
-
-    return (
-        <div>
-            <form className={style.form_review} onSubmit={handleSubmit}>
-                {/* ratings o stars */}
-                <div className={style.createStar}>
-                    <p>QUE TE PARECIÓ EL VIAJE?</p>
-                    <ReactStars
-                        count={5}
-                        onChange={ratingChanged}
-                        size={28}
-                        // activeColor="#ffd700"
-                        activeColor="rgb(236, 214, 13)"
-                        />
-                </div>
-                {/* caja del comentario */}
-                <div className={style.caja}>
-                    <textarea
-                        className={style.description}
-                        title="maximo 120 caracteres"
-                        placeholder="Ingrese su Comentario"
-                        // rows="3"
-                        // cols="70"
-                        resize="none"
-                        value={input.comentario}
-                        onChange={handleOnChange}
-                        name="comentario"
-                        maxLength="120"                
-                    >
-                    </textarea>
-                    <button
-                        type="submit"
-                        className={style.boton}
-                        title="Click aqui para enviar comentario"
-                    >
-                    Enviar Comentario
-                    </button>
-                </div>
-                
+    return(<>
+    <div className={s.container}>{/* la clase container ocupa el 80% de la pantalla y siempre esta centrada*/}
+      <div className="row">{/* row es para colocar todo el contenido en filas*/}
+        <div className="col-6 mx-auto">{/*col-6 indica que es una columna y su tamaño es de 6. luego el margin auto para que se centre*/}
+          <div>
+            <form className="row" style={{justifyContent:"space-between"}} onSubmit={handleSubmit}>
+              <textarea  className="form-control" style={{marginBottom:20}} type='text' placeholder="comentario..." rows="3"  value={input.commentary} onChange={e => setInput({ ...input, commentary: e.target.value })}></textarea>
+              <div style={{marginBottom:20}} className="btn-group col-3" >{/*agrupa los botones*/}
+                <label style={{marginRight:20}}>Calificacion</label>
+                <input className="form-input" type='number' max={5} min={1} placeholder="0" value={input.puntaje} required={true} onChange={e => setInput({ ...input, puntaje: e.target.value })} />
+              </div>
+              <div className="col-3 text-end" style={{marginLeft:50}} >
+              <button className="btn btn-primary">Comentar</button>
+              </div>
             </form>
+          </div>
+          <hr className="featurette-divider"/>
+          <div>
+            {reviews.length > 0 ?
+              reviews.map((re) => (
+                <div key={re.idPasajera} >
+                  <div className="be-img-comment" >	
+                      <img src={re.fotoPerfil ? re.fotoPerfil : login_mujer} alt="" className="be-ava-comment"/>
+                  </div>
+                  <div className="review-colomn" >
+                  <span className="be-comment-name">
+                      <h5 href="blog-detail-2.html">Nombre de usuario: {re.pasajera ? re.pasajera : "Juana 123"}</h5>
+                    </span>
+                    <div>
+                      <h6>Puntaje: {
+                             Number(re.puntaje)  === 1 ? <div><i className="fas fa-star"></i></div>
+                           : Number(re.puntaje)  === 2 ? <div><i className="fas fa-star"></i><i className="fas fa-star"></i></div>
+                           : Number(re.puntaje)  === 3 ? <div><i className="fas fa-star"></i><i className="fas fa-star"></i><i className="fas fa-star"></i></div>
+                           : Number(re.puntaje)  === 4 ? <div><i className="fas fa-star"></i><i className="fas fa-star"></i><i className="fas fa-star"></i><i className="fas fa-star"></i></div>
+                           : Number(re.puntaje)  === 5 ? <div><i className="fas fa-star"></i><i className="fas fa-star"></i><i className="fas fa-star"></i><i className="fas fa-star"></i><i className="fas fa-star"></i></div>
+                           : <p>1</p> 
+                        }</h6>
+                    </div>
+                    
+                    <p className="be-comment-text"><b>Comentario:</b> {re.comentario}</p>
+                  </div> 
+                </div>
+              )) 
+            :  null 
+            }{/*<h2>No hay comentarios</h2>*/}
+            </div>  
         </div>
+      </div>
+    </div>
+    </>
     )
 }
-export default CrearReview;
