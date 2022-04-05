@@ -39,7 +39,7 @@ export default function PedirConductora() {
      })
    }
     return (
-       
+
          <div className='container '>
             <NavBar/>
             <br />
@@ -50,10 +50,8 @@ export default function PedirConductora() {
             <div className='row'> 
             <div class="col-sm-6 col-xl-8 ">
           { conectadas.length ? (
-          <><div
-                >
-
-
+          <><div>
+                
                   {conectadas?.map(elem => {
                     return (
 
