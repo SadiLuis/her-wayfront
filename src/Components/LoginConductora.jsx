@@ -1,54 +1,154 @@
 //import { Button } from 'bootstrap'
-import React, { useState } from 'react'
-import { useDispatch } from 'react-redux';
+import React, { useState, useEffect } from 'react'
+import { useDispatch, useSelector } from 'react-redux';
 import { Link, useNavigate } from "react-router-dom";
 import { loginConductora } from '../actions/registroConductora';
 import { getPerfilConductora, pedirConductora } from "../actions/conductora"
 import uno from '../image/1.jpg'
 import dos from '../image/2.jpg'
 import tres from '../image/3.jpg'
+import Swal from "sweetalert2";
 import './LoginConductora.css'
 
 
 const initialLogin = {
     contrasena: '',
     email: ''
-}
-
-export default function LoginConductora() {
+  }
+  function validateEmail(value) {
+    let validRegex = /^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/;
+  
+    return validRegex.test(value);
+  }
+  
+  const validateForm = (form) => {
+    const { email, contrasena } = form;
+    const errors = {};
+  
+    if (!email.trim()) {
+      errors.email = "El email es requerido";
+    } else if (!validateEmail(email)) {
+      errors.email = "Email no válido";
+    }
+  
+    if (!contrasena.trim()) {
+      errors.contrasena = "La contraseña es requerida";
+    }
+  
+    return errors;
+  };
+  export default function Login() {
+  
     const [formlogin, setFormLogin] = useState(initialLogin)
-    const [error, setError] = useState()
+    const [error, setError] = useState({})
+    const[display, setDisplay] = useState(false)
+    const isAuthConductora = useSelector(state => state.registroConductoraReducer.isAuthConductora)
+    const conducLogueada = useSelector(state => state.registroConductoraReducer.conducLogueada)
     const navigate = useNavigate()
+  
     const dispatch = useDispatch()
-
-
+  
+  
+    useEffect(() => {
+      // Si ya está logueado que lo redireccione al dashboard
+      if( isAuthConductora && conducLogueada) {
+       console.log('entre')
+        setFormLogin(initialLogin);
+       navigate("/homeConductora")
+       let timerInterval
+  // Swal.fire({
+  //   icon:'success',
+  //   title: 'Bienvenido ' + user.displayName,
+  //   timer: 5500,
+  //   timerProgressBar: true,
+  //   didOpen: () => {
+  //     Swal.showLoading()
+  //     const b = Swal.getHtmlContainer().querySelector('b')
+  //     timerInterval = setInterval(() => {
+  //       b.textContent = Swal.getTimerLeft()
+  //     }, 100)
+  //   },
+  //   willClose: () => {
+  //     clearInterval(timerInterval)
+  //   }
+  // }).then((result) => {
+  //   /* Read more about handling dismissals below */
+  //   if (result.dismiss === Swal.DismissReason.timer) {
+  //     console.log('I was closed by the timer')
+  //   }
+  // })
+      }
+    }, [isAuthConductora, navigate, conducLogueada]);
+  
+  
+    
     const handleChange = (e) => {
-        setFormLogin({
-            ...formlogin,
-            [e.target.name]: e.target.value
-        })
-        const errors = {
-            ...error,
-            [e.target.name]: ''
-        }
-        setError(errors)
-
-        console.log(e.target.value)
+  
+      const { name, value } = e.target;
+  
+      const newForm = { ...formlogin, [name]: value };
+  
+      setFormLogin(newForm);
+      setError(validateForm(newForm));
     }
-
-
-    const handleSubmit = (e) => {
-        e.preventDefault()
-        const errors = {
-            ...error,
-            contrasena: '',
-            email: ''
-        }
-        setError(errors)
-        dispatch(loginConductora(formlogin))
-        console.log(formlogin)
-        navigate('/homeConductora')
+  
+    const handleSubmit = async (e) => {
+      e.preventDefault()
+      const errors = validateForm(formlogin);
+      setError(errors);
+  
+      if (Object.keys(errors).length) {
+         Swal.fire({
+          icon: 'error',
+          title: 'El formulario contiene errores',
+  
+         })
+      }else {
+  
+      dispatch(loginConductora(formlogin))
+       setDisplay(true)
+      console.log(formlogin)
+      }
     }
+// const initialLogin = {
+//     contrasena: '',
+//     email: ''
+// }
+
+// export default function LoginConductora() {
+//     const [formlogin, setFormLogin] = useState(initialLogin)
+//     const [error, setError] = useState()
+//     const navigate = useNavigate()
+//     const dispatch = useDispatch()
+
+
+//     const handleChange = (e) => {
+//         setFormLogin({
+//             ...formlogin,
+//             [e.target.name]: e.target.value
+//         })
+//         const errors = {
+//             ...error,
+//             [e.target.name]: ''
+//         }
+//         setError(errors)
+
+//         console.log(e.target.value)
+//     }
+
+
+//     const handleSubmit = (e) => {
+//         e.preventDefault()
+//         const errors = {
+//             ...error,
+//             contrasena: '',
+//             email: ''
+//         }
+//         setError(errors)
+//         dispatch(loginConductora(formlogin))
+//         console.log(formlogin)
+//         navigate('/homeConductora')
+//     }
 
 
     return (
@@ -88,12 +188,18 @@ export default function LoginConductora() {
                         <div class="mb-3">
                             {/* CORREO */}
                             <label htmlFor="exampleInputEmail1">Correo</label>
-                            <input type="email" class="form-control font-weight-bold" placeholder="Ingresa tu Correo" name='email' onChange={handleChange} value={formlogin.email} />
+                            <input type="email" class="form-control" placeholder="Ingresa tu Correo" name='email' onChange={handleChange} value={formlogin.email} />
+                            { error && error.email && (
+                                <span >{error.email}</span>
+                            )}
                             {/* Contraseña  */}
                         </div>
                         <div className="form-group">
                             <label htmlFor="exampleInputPassword1">Contraseña</label>
                             <input type="password" className="form-control" id="exampleInputPassword1" placeholder="Ingresa tu contraseña" name='contrasena' onChange={handleChange} value={formlogin.contrasena} />
+                            {error && error.contrasena && (
+                                <span >{error.contrasena}</span>
+                            )}
                             <div>
 
                                 <Link to='/resetPassword' style={{

@@ -21,7 +21,7 @@ const VerificarConductora = () => {
         return () => {
             dispatch(limpiarDetalle())
         }
-    }, [ id]);
+    }, [id]);
 
     const confirmarVerificacion = (ev) => {
         const confirmar = window.confirm("¿Estas seguro que deseas verificar este Usuario?")

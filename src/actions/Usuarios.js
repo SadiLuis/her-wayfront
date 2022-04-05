@@ -62,7 +62,6 @@ export function logout() {
     return { type: LOGOUT_USER }
 }
 
-
 export function login({ email, contrasena }) {
     return async (dispach) => {
         console.log('action')
@@ -78,13 +77,14 @@ export function login({ email, contrasena }) {
             const { data } = await axios.post(`${SERVER}/usuario/login`, body)
             const usuarias = await axios.get(`${SERVER}/usuario`)
             const infoUser = data.user
-            const filtroUsuarias = usuarias.data.filter((u) => data.user.email === u.email)
+            const filtroUsuarias = usuarias.data.filter((u) => infoUser.email === u.email)
             console.log('data', data)
             dispach({
                 type: LOGIN_USER_SUCCESS,
                 payload: infoUser,
-                usuariaLogueada: filtroUsuarias
-            })
+                usuariaLogueada: filtroUsuarias,
+            },
+            localStorage.setItem('usuarios', JSON.stringify(data)))
             console.log(data)
         } catch (error) {
             Swal.fire({
@@ -117,9 +117,7 @@ export function register ({
 
     return async function (dispatch) {
         try {
-
-            
-            
+        
             const body = {
                 nombre,
                 usuario,
@@ -139,7 +137,9 @@ export function register ({
             dispatch({
                 type: REGISTER_USER_SUCCESS,
                 payload: infoUser
-            })
+            },
+            localStorage.setItem('usuarios', JSON.stringify(data)))
+            
         } catch (error) {
             console.log(error)
             return dispatch({
@@ -179,22 +179,20 @@ export const reloadingPage = (payload)=> {
     }
 }
 
+// export const getPasajeras = () => {
+//     return async function (dispatch){
+//         try{
+//          const res = await axios.get(`${SERVER}/usuario`)
+//             dispatch({
+//                 type: GET_PASAJERA,
+//                 payload: res.data
+//             })
+//         } catch (error) {
+//           console.log(error)
+//         }
+//        }
 
-export const getPasajeras = () => {
-    return async function (dispatch){
-        try{
-         const res = await axios.get(`${SERVER}/usuario`)
-         console.log(res.data)
-            dispatch({
-                type: GET_PASAJERA,
-                payload: res.data
-            })
-        } catch (error) {
-          console.log(error)
-        }
-       }
-
-}
+// }
 
 export const updateFoto = async(foto , id)=> {
     const body = {fotoPerfil: foto}
@@ -212,6 +210,7 @@ export const updatePasajera = async(form , id)=> {
    
         try{
          const res = await axios.put(`${SERVER}/usuario/update/${id}`,form)
+         console.log(res)
          Swal.fire({
             icon: 'success',
             title: 'Perfil actualizado',
@@ -229,4 +228,3 @@ export const updatePasajera = async(form , id)=> {
         }
       
 }
-

@@ -19,7 +19,7 @@ const DarBajaConductora = () => {
         return () => {
             dispatch(limpiarDetalle())
         }
-    }, [id]);
+    }, [dispatch, id]);
 
     const darBajaConductora = () => {
         const confirmar = window.confirm("¿Estas seguro que deseas dar de baja este Usuario?")

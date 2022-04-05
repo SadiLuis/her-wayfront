@@ -60,11 +60,16 @@ export function cambiaEstadoViaje(payload){
 export const getViaje = (idViaje) => async (dispatch) => {
     try {
         const respuesta = await axios.get(`${SERVER}/viajes/${idViaje}`)
+        const resViajes = await axios.get(`${SERVER}/viajes`)
+        const viajeInfo = respuesta.data
+        const filtroViaje = resViajes.filter((v) => viajeInfo.idConductora === v.idConductora)
         return dispatch({
             type: "VIAJE_POR_IDVIAJE",
-            payload: respuesta.data
+            payload: respuesta.data,
+            viajeFiltradoId: filtroViaje
         })
     } catch (error) {
         console.log("No se encontro viaje con ese id ")
     }
 }
+

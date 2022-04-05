@@ -72,7 +72,7 @@ export function putReview(payload) {
 export function deleteReview(id){
     return async function (dispatch){
         try {
-            const eliminarReview = await axios.delete(`${SERVER}/reviews/delete`, id);
+            const eliminarReview = await axios.delete(`${SERVER}/reviews/delete/${id}`);
             return dispatch({
                 type: BORRAR_REVIEW,
                 payload: eliminarReview.data,

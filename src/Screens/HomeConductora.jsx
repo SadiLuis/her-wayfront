@@ -1,7 +1,8 @@
 import React, { useEffect, useState } from 'react';
 //import { useParams } from 'react-router-dom';
 import VistaMapConductora from '../Screens/VistaMapConductora';
-import {getPerfilConductora, cambiaEstadoConductora, obtenerConductora} from "../actions/conductora"
+import {getPerfilConductora, cambiaEstadoConductora, obtenerConductora} from "../actions/conductora";
+import {logoutConductora} from '../actions/registroConductora'
 import { useDispatch, useSelector } from 'react-redux';
 import {Loader} from '../Components/Loader/Loader';
 import Swal from "sweetalert2";
@@ -22,13 +23,12 @@ const HomeConductora = () => {
     const conductoraLogueada = useSelector((state) => state.registroConductoraReducer.conducLogueada)
     //console.log('conductoraLogueada', conductoraLogueada)
     let aux = useSelector((state) => state.perfilConductoraReducer.aux)
-    
-    //console.log(conductora)
+
    const [coordinate, setCoordinates]=useState({lat: 0, lng:0});
 
     useEffect(() => {
       if(conductoraLogueada.length>0){
-      dispatch(obtenerConductora(idConductora))
+      //dispatch(obtenerConductora(conductora.idConductora))
         dispatch(getPerfilConductora(conductoraLogueada[0].id))
     }else{
      console.log('error')
@@ -40,7 +40,7 @@ const HomeConductora = () => {
       navigator.geolocation.getCurrentPosition(({coords: {latitude, longitude}}) => {
          setCoordinates({ lat: latitude, lng: longitude}) 
       })
-    }, [] )
+    }, [aux] )
 
     function handleConnect(e){  
         e.preventDefault()
@@ -49,7 +49,6 @@ const HomeConductora = () => {
             estado: "conectar"
         }
         dispatch(cambiaEstadoConductora(payload))
-       
         
         setTimeout(function () {
             navigate("/viajeconductora");
@@ -75,6 +74,10 @@ const HomeConductora = () => {
           })
 
     }
+    const handleButton = () => {
+      dispatch(logoutConductora())
+      navigate('/home')
+  }
     return (
       <>
         {conductoraLogueada.length >0 ?(
@@ -89,7 +92,7 @@ const HomeConductora = () => {
         <button className="btn btn-primary" type="button" onClick={(e)=> handleDisconnect(e)}>DESCONECTARME</button>}
     
         <Button type="button" className="btn btn-block" onClick={(e)=> navigate('/perfilConductora')}> PERFIL </Button>
-        <Button type="button" className="btn btn-block" onClick={(e)=> navigate('/home')}> HOME </Button>
+        <Button type="button" className="btn btn-block" onClick={handleButton}> HOME </Button>
       
           <VistaMapConductora/>
       </>

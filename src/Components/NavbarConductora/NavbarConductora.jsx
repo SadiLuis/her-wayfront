@@ -4,7 +4,7 @@ import "./NavbarConductora.css";
 
 const Navbar = ( idConductora ) => {
 
-    const navbarLinks = [ { url: `/perfilConductora/${idConductora}` , title: "Perfil" }]
+    const navbarLinks = [ { url: `/perfilConductora${idConductora}` , title: "Perfil" }]
 
     return (
         <nav className="navbar">
@@ -20,7 +20,7 @@ const Navbar = ( idConductora ) => {
                     )
                 })}
             </ul>
-        </nav>
+        </nav >
     );
 };
 

@@ -55,20 +55,6 @@ export default function Login() {
      console.log('entre')
       setFormLogin(initialLogin);
      navigate("/mapa")
-    
-Swal.fire({
-  icon:'success',
-  title: 'Bienvenido ' + user.displayName,
-  timer: 5500,
-  timerProgressBar: true,
-  
-}).then((result) => {
-  /* Read more about handling dismissals below */
-  if (result.dismiss === Swal.DismissReason.timer) {
-    console.log('I was closed by the timer')
-  }
-})
-
      let timerInterval
 // Swal.fire({
 //   icon:'success',
@@ -91,7 +77,6 @@ Swal.fire({
 //     console.log('I was closed by the timer')
 //   }
 // })
-
     }
   }, [isAuth, navigate, user]);
 

@@ -25,7 +25,6 @@ const initialState = {
     filters: [],
     detail: [],
     error: '', 
-    usuariaLogueada:[]
 }
 
 export default function LoginRegisReducer(state = initialState, action) {
@@ -37,6 +36,7 @@ export default function LoginRegisReducer(state = initialState, action) {
                 detalleUsuario: action.payload
             }
             case LOGIN_USER_SUCCESS:
+
                 localStorage.setItem("token", action.payload.stsTokenManager.accessToken)
                 console.log(action.payload)
 
@@ -44,8 +44,7 @@ export default function LoginRegisReducer(state = initialState, action) {
                     ...state,
                     isAuth: true,
                     token: action.payload.stsTokenManager.accessToken,
-                    userInfo: action.payload,
-                    usuariaLogueada: action.usuariaLogueada
+                    userInfo: action.payload
                 }
             case REGISTER_USER_SUCCESS:
                 localStorage.setItem("token", action.payload.stsTokenManager.accessToken);
@@ -81,15 +80,15 @@ export default function LoginRegisReducer(state = initialState, action) {
                     resetPass: action.payload
                 }
                 
-                case GET_PASAJERA: 
-                const idPasajera = state.userInfo.uid
-                const pasajera = pasajera.filter(p => p.authId === idPasajera)
-                console.log(pasajera)
-            return {
-                ...state,
-                pasajera: pasajera
+            //     case GET_PASAJERA: 
+            //     const idPasajera = state.userInfo.uid
+            //     const pasajera = action.payload.filter(p => p.authId === idPasajera)
+            //     console.log(pasajera)
+            // return {
+            //     ...state,
+            //     pasajera: pasajera
 
-            }   
+            // }   
                       
                 
             default: return state;

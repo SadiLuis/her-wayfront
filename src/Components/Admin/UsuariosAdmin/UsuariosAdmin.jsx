@@ -18,7 +18,7 @@ export default function UsuariosAdmin() {
     
   useEffect(()=>{
     dispatch(obtenerConductoras())
-  }, [])
+  }, [dispatch])
 
   const conductoras = useSelector(state => state.adminReducer.conductoras);
   

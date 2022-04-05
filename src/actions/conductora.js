@@ -25,7 +25,7 @@ export function getPerfilConductora(id) {
     return async function (dispatch) {
     try{
             //const request = await axios.get(`http://localhost:3001/conductora/${id}`);
-            const request = await axios.get(`${SERVER}/conductora/${id}`);
+            const request = await axios.get(`${SERVER}/conductora/${id}`, tokenConductora())
             console.log(request.data)
             dispatch({ 
                 type: GET_PERFILC, 

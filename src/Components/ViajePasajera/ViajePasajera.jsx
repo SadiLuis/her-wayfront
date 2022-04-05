@@ -93,6 +93,7 @@ const ViajePasajera = () => {
     </Flex>
     <DetalleRecorrido conductora={viaje.idConductora}/>
     </div>
+    
   )
 }
 
