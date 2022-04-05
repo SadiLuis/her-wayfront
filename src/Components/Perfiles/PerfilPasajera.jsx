@@ -10,6 +10,7 @@ import {getPasajeras , logout} from '../../actions/Usuarios'
 import {Loader} from '../Loader/Loader'
 import {saveImages} from '../../Helpers/saveImage'
 export default function PerfilPasajera() {
+
     const pasajera = useSelector(state => state.LoginRegisReducer.pasajera)
     const [imagen , setImagen] = useState('')
     const navigate = useNavigate()
@@ -83,5 +84,6 @@ const { getRootProps, getInputProps} = useDropzone({
           }
          </div>
     )
+
 }
 

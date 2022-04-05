@@ -1,0 +1,16 @@
+.btn__blue{
+    background-color: #008CBA;
+    outline: none;
+}
+
+.btn__red{
+    background-color: #f44336;
+    color: white;
+    outline: none;
+}
+
+.btn__green{
+    background-color: #4CAF50;
+    outline: none;
+    color: rgb(2, 22, 10);
+}

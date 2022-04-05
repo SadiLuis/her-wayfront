@@ -1,8 +1,15 @@
 import React from 'react';
+import { useDispatch } from 'react-redux';
 import { Link } from 'react-router-dom';
+import { cerrarSesion } from '../../../actions/administrador';
 import styles from './NavbarAdmin.module.css';
 
 const NavbarAdmin = () => {
+
+  const dispatch = useDispatch();
+  const terminarSesion = () => {
+    dispatch(cerrarSesion());
+  }
   return (
     <div className={styles.admin}>
     <nav>
@@ -19,7 +26,7 @@ const NavbarAdmin = () => {
             <li><Link to={`../admin/altaAdmins`}>
               <span>Dar Alta Admins</span></Link>
               </li>
-             <li><span>Cerrar Sesion</span></li>
+             <li><Link to={`../admin`} onClick={terminarSesion}><span>Cerrar Sesion</span></Link></li>
              
         </ul>
     </nav>
