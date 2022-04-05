@@ -6,4 +6,6 @@
 .container__form{
     display: flex;
     flex-direction: column;
+    width: 200px;
+    gap: 10px;
 }

@@ -9,6 +9,7 @@
   padding-bottom: 6em;
   z-index: 9;
   overflow: hidden;
+  position: fixed;
   
   }
 

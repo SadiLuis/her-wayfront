@@ -7,13 +7,15 @@ import { GET_ALL_CONDUCTORAS,
     LIMPIAR_DETALLE,
     VERIFICAR_CONDUCTORA,
     DAR_BAJA_CONDUCTORA,
-    DAR_ALTA} from "./index";
+    DAR_ALTA,
+    CERRAR_SESION} from "./index";
 
 import axios from 'axios';
-import {SERVER} from './VariableGlobal'
+import Server from './VariableGlobal'
 
 
-
+// const SERVER = Server.SERVER;
+const SERVER = 'http://localhost:3001/';
 export function login({ email, contrasena }) {
     return async (dispatch) => {
         
@@ -26,9 +28,8 @@ export function login({ email, contrasena }) {
             // }
 
             const body = { email, contrasena }
-           
-            const { data } = await axios.post(`${SERVER}/admin/login`, body)
-
+            const { data } = await axios.post(`${SERVER}admin/login`, body)
+            console.log(data)
             const infoUser = data.user
             dispatch({
                 type: LOGIN_USER_SUCCESS,
@@ -45,10 +46,16 @@ export function login({ email, contrasena }) {
     
 }
 
+export const cerrarSesion =() =>{
+    return {
+        type: CERRAR_SESION
+    }
+}
+
 export const obtenerPasajeras = () => {
     return async (dispatch) => {
         try {
-            const res = await axios.get(`${SERVER}/admin/pasajeras`);
+            const res = await axios.get(`${SERVER}admin/pasajeras`);
             console.log(res)
             return dispatch ({type: OBTENER_TODAS_LAS_PASAJERAS, payload: res.data});
         } catch (error) {
@@ -60,7 +67,7 @@ export const obtenerPasajeras = () => {
 export const obtenerConductoras = () => {
     return async (dispatch) => {
         try {
-            const res = await axios.get(`${SERVER}/admin/`);
+            const res = await axios.get(`${SERVER}admin/`);
             
             return dispatch ({type: GET_ALL_CONDUCTORAS, payload: res.data});
         } catch (error) {
@@ -74,7 +81,7 @@ export const obtenerConductoras = () => {
 export const obtenerConductora = (id) => {
     return async (dispatch) => {
         try {
-            const res = await axios.get(`${SERVER}/admin/admin/${id}`);
+            const res = await axios.get(`${SERVER}admin/admin/${id}`);
             dispatch ({type: OBTENER_CONDUCTORA_POR_ID, payload: res.data});
         } catch (error) {
             console.log(error)
@@ -85,7 +92,7 @@ export const obtenerConductora = (id) => {
 export const obtenerPasajera = (id) => {
     return async (dispatch) => {
         try {
-            const res = await axios.get(`${SERVER}/admin/${id}`);
+            const res = await axios.get(`${SERVER}admin/${id}`);
             dispatch ({type: OBTENER_PASAJERA_POR_ID, payload: res.data});
         } catch (error) {
             console.log(error)
@@ -100,7 +107,8 @@ export const darBajaPasajeras = (id) => {
 export const darBajaConductoras = (id) => {
     return async (dispatch) => {
         try {
-            const res = await axios.get(`${SERVER}/admin/darBaja/${id}`);
+            console.log('first')
+            const res = await axios.get(`${SERVER}admin/darBajaConductora/${id}`);
             dispatch ({type: DAR_BAJA_CONDUCTORA, payload:res.data})
         } catch (error) {
             console.log(error)
@@ -111,7 +119,7 @@ export const darBajaConductoras = (id) => {
 export const verificarConductora = (id) => {
     return async (dispatch) => {
         try {
-            const res = await axios.get(`${SERVER}/admin/verificar/${id}`);
+            const res = await axios.get(`${SERVER}admin/verificarConductora/${id}`);
             dispatch ({type: VERIFICAR_CONDUCTORA, payload: res.data})
         } catch (error) {
             console.log(error);
@@ -126,11 +134,10 @@ export const limpiarDetalle = () => {
 }
 
 export const darAltaAdmin = (admin) => {
-    console.log(admin)
     return async (dispatch) => {
         
         try {
-            const res = await axios.post((`${SERVER}/admin/darAlta`, admin));
+            const res = await axios.post(`${SERVER}admin/darAlta`, admin);
             dispatch({type: DAR_ALTA, payload: res.data})
         } catch (error) {
             console.log(error)

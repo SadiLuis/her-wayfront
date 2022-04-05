@@ -62,9 +62,9 @@ const VerificarConductora = () => {
                 </section>
             </div>
            
-           {/* <img src={detalle.fotoDni}/> */}
+            <img src={detalle.fotoDni}/>
                
-               <button onClick={confirmarVerificacion}>Verificar</button>
+               <button onClick={confirmarVerificacion} className={styles.btn__blue}>Verificar</button>
         </div>
     </>
 
