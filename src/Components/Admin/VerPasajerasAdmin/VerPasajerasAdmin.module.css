@@ -1,11 +1,13 @@
 .container__main{
   display:grid;
   grid-template-columns: 1fr 4fr;
+  margin-right: 25px;
 }
 
 table {
+    margin:10px 0;
     font-family: arial, sans-serif;
-    border-collapse: collapse;
+    border:1px solid #c017b2;
     width: 100%;
   }
   

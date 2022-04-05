@@ -6,32 +6,36 @@ import {useNavigate} from 'react-router-dom';
 // import NavbarAdmin from '../Admin/NavbarAdmin/NavbarAdmin';
 import {Link} from 'react-router-dom'
 import styles from './MisViajes.module.css'
- 
+import { useParams } from 'react-router'; 
 
-function MisViajesPasajera() {
- const dispatch =useDispatch();
+function HistorialViajes() {
+    
+const { id } = useParams()
+
+const dispatch =useDispatch();
  const navigate = useNavigate()
  const viajes= useSelector(state => state.misViajesPasajeraReducer.misViajesPasajera);
+ const viajesPorId = useSelector(state => state.misViajesPasajeraReducer.viajesPorPasajera);
  const pasajera = useSelector(state => state.LoginRegisReducer.pasajera);
-    console.log(pasajera)
-    console.log(viajes)
+    
+    console.log(viajesPorId)
 
     
 
-  useEffect(()=>{
-       if(viajes){
-      dispatch(misViajesPasajera(viajes.idPasajera))
-      } else{
-           navigate("/home")
-    }
-    }, [  dispatch])
+//   useEffect(()=>{
+//        if(viajes){
+//       dispatch(misViajesPasajera(viajes.idPasajera))
+//       } else{
+//            navigate("/home")
+//     }
+//     }, [  dispatch])
 
   
-//     useEffect(()=>{
-//         if(pasajera){
-//        dispatch(viajesPorPasajera(pasajera.id));
-//        }
-//    }, [ dispatch, pasajera ]);
+    useEffect(()=>{
+        if(pasajera){
+       dispatch(viajesPorPasajera(id));
+       }
+   }, []);
   
   return (
       
@@ -49,8 +53,10 @@ function MisViajesPasajera() {
           <div className='container-fluid'>
               <div className='misViajes'>
                   
-                  {viajes.length ? (
+                  {viajesPorId.length ? (
                       <div>
+                                  {console.log("nombre pasajera", viajesPorId[0].nombrePasajera)}
+
                           <table className='table align-middle table-bordered table-striped'>
                               <thead>
                                   <tr>
@@ -63,14 +69,14 @@ function MisViajesPasajera() {
                                   </tr>
                               </thead>
                               <tbody>
-                                  {viajes.length ? (
-                                      viajes.map((viaje) => (
+                                  {viajesPorId.length ? (
+                                      viajesPorId.map((viaje) => (
                                           <tr key={viaje.id}>
                                               {/* <td>{viaje.fecha}</td>  */}
                                               <td>{viaje.nombrePasajera}</td>
                                               <td>{viaje.nombreConductora}</td>
-                                              <td>{viaje.origen}</td>
-                                              <td>{viaje.destino}</td>
+                                              <td>{viaje.direcOrigen}</td>
+                                              <td>{viaje.direcDestino}</td>
                                               <td>{viaje.precio}</td>
                                           </tr>
                                       ))
@@ -100,4 +106,4 @@ function MisViajesPasajera() {
   )};
 
 
-export default MisViajesPasajera;
+export default HistorialViajes;

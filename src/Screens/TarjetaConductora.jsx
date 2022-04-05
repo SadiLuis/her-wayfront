@@ -1,20 +1,21 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
-import styles from "./TarjetaConductora.module.css";
+// import styles from "./TarjetaConductora.module.css";
 import {HiOutlineChatAlt2} from "react-icons/hi";
 import {FaTaxi } from "react-icons/fa";
 import { useState , useEffect } from 'react';
 //import {getPasajeras} from '../actions/Usuarios'
 
-import {getPerfilConductora,pedirConductora} from '../actions/conductora'
+import {getPerfilConductora,pedirConductora} from '../actions/conductora';
 import {crearViaje} from '../actions/recorrido'
-import {useDispatch, useSelector} from 'react-redux'
+import {useDispatch, useSelector} from 'react-redux';
 // import Swal from "sweetalert2"
 
 
 
 
-export default function TarjetaConductoras({nombre,localidad, automovil, patente, habilitacion, conectada, id}) {
+
+export default function TarjetaConductoras({nombre,localidad, automovil, patente, fotoPerfil, id}) {
 
   const viaje = useSelector(state => state.recorridoReducer.datosMapa)
   const pasajera = useSelector(state => state.LoginRegisReducer.pasajera)
@@ -60,30 +61,29 @@ export default function TarjetaConductoras({nombre,localidad, automovil, patente
     } 
 
   return (
-    <div className={styles.tarjetaConductora}>
-    <div className={styles.tarjetaTop}><FaTaxi></FaTaxi></div>
-        <div className={styles.tarjetaConductoraBody}>
-    <div key={id}></div>
-    <h4> {nombre}</h4>
-    <p>Localidad: {localidad}</p>
-    <p>Vehículo: {automovil}</p>
-    <p> Patente: {patente}</p>
-    <p>Habilitación: {habilitacion}</p>
-    <p>Conectada:{conectada ? <p>Si</p> : <p>No disponible</p>}</p>
-   
-    <div className={styles.icono}>
-     
-    <HiOutlineChatAlt2 style={{fontSize:25}} ></HiOutlineChatAlt2> 
+    <div className='card mb-3 mw-100'>
+    <div className='row '>
+        <div className='col-md-4 '>
+        <img src={fotoPerfil } class="img-fluid rounded-start h-100" alt="foto perfil conductora"></img>
+        </div>
+        <div className='col-md-8'>
+          <div className='card-body'>
+          
+            <p className='card-text fw-bolder'>🙋‍♀️<b>Conductora</b> {nombre}</p>
+            <p className='card-text fw-bolder'>🏙<b>Localidad</b> {localidad}</p>
+            <p className='card-text fw-bolder'>🚖<b>Automóvil</b> {automovil}</p>
+            <p className='card-text fw-bolder'>🆔<b>Patente</b> {patente}</p>
+            <p className='card-text fw-bolder'>🗣<b>Comunicate con ella</b></p>
+            
+            <div class="d-grid gap-2">
+            <button class="btn btn-outline-success" type="button" name = "aceptar" onClick={()=> handleButton(data)}>Solicitar viaje</button>
+            </div>
+                  </div>  
+            </div>
+            </div>
+            </div>
     
-    </div>
-    </div>
-   <div className={styles.ubicacionBoton}>
-   
-    {/* quiero que cuando la pasajera haga click acá, vaya al componente recorrido.js que hizo Lore */}
-     <button className={styles.botonSolicitarViaje}onClick={()=>handleButton(data)}>Solicitar viaje</button> 
-      </div>
-
-    </div>
+     
   )
 
 }
