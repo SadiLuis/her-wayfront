@@ -24,6 +24,7 @@ const DetalleRecorrido = ({idConductora}) => {
         </section>
         
         <button className={styles.button__perfil} onClick={cancelarViaje}>Cancelar Viaje</button>
+
     </div>
   )
 }

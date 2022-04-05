@@ -50,7 +50,7 @@ export default function PedirConductora() {
     dispatch(filtrarPorCochecitos(payload))
   }
     return (
-       
+
          <div className='container '>
             <NavBar/>
             <br />
@@ -70,10 +70,8 @@ export default function PedirConductora() {
 
 
           { conectadas.length ? (
-          <><div
-                >
-
-
+          <><div>
+                
                   {conectadas?.map(elem => {
                     return (
 

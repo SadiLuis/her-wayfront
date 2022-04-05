@@ -1,16 +1,47 @@
+.div{
+    width: 100%;
+    height: 100%;
+    background-color: #b3afaf;
+    border-radius: 10px;
+    padding: 10px;
+    margin-top: 10px;
+    margin-left: -40px;
+}
+
+
+
+
 .btn__blue{
     background-color: #008CBA;
     outline: none;
+    color: #fff;
+    border-radius: 15px;
+}
+.btn__blue:hover{
+    background-color: #4c00ffcb;
+    color: #fff;
 }
 
+
 .btn__red{
-    background-color: #f44336;
+    background-color: #f48236;
     color: white;
     outline: none;
+    border-radius: 15px;
 }
+.btn__red:hover{
+    background-color: #ff0000cb;
+    color: #fff;
+}
+
 
 .btn__green{
     background-color: #4CAF50;
     outline: none;
-    color: rgb(2, 22, 10);
+    color: rgb(255, 255, 255);
+    border-radius: 15px;
+}
+.btn__green:hover{
+    background-color: #00ff00cb;
+    color: #fff;
 }
