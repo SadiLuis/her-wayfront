@@ -3,12 +3,8 @@ import {Grid} from '@material-ui/core';
 import Mapa from '../Components/GoogleMap/Map';
 import Swal from "sweetalert2"
 
-function ingresaDatos(){
-Swal.fire("Ingresá origen y destino de tu viaje")
-}
 
-
-function VistaMap() {
+function VistaMapConductora() {
     const [coordinates, setCoordinates] = useState({lat: 0, lng:0});
     const [bounds, setBounds] = useState(null);
   
@@ -17,10 +13,10 @@ function VistaMap() {
          setCoordinates({ lat: latitude, lng: longitude}) 
       })
     }, [])
+    
   return (
-      <>
-      {ingresaDatos()}
-   <div className='row conteiner p-4' >
+      
+      <div className='row conteiner p-4' >
       <div className='col-md-8'>
           <Grid item xs={12} md={8}>
             <Mapa 
@@ -31,8 +27,7 @@ function VistaMap() {
           </Grid>
       </div>
    </div> 
-    </>
+    
   )
 }
-
-export default VistaMap;
+export default VistaMapConductora

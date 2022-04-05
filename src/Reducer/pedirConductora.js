@@ -3,7 +3,7 @@ import { PEDIR_CONDUCTORA, DETALLE_CONDUCTORA } from "../actions";
 const initialState={
     conductoras:[],
     todasLasConductoras:[],
-    detalle:{}
+    detalle:[]
 }
 
 export default function pedirConductoraReducer(state=initialState, action){

@@ -25,7 +25,7 @@ import Swal from "sweetalert2";
 export function updateUser(newUser) {
     return async function (dispach) {
         try {
-            await axios.put(`${SERVER}${newUser.id}`, newUser, tokenUser())
+            await axios.put(`${SERVER}/${newUser.id}`, newUser, tokenUser())
             dispach(getuserDetails())
             return {
 
@@ -39,17 +39,17 @@ export function updateUser(newUser) {
 
 
 export function getuserDetails(id) {
-    return async function (dispach) {
+    return async function (dispatch) {
         try {
-            const res = await axios.get(`${SERVER}/usuario/${id}`, tokenUser())
+            const res = await axios.get(`${SERVER}/usuario/${id}`)
 
-            dispach({
+            dispatch({
                 type: GET_USER_DETAILS,
                 payload: res.data
             })
         } catch (error) {
             console.log(error)
-            dispach({
+            dispatch({
                 type: AUTHENTICATION_ERROR,
             })
 
@@ -74,14 +74,17 @@ export function login({ email, contrasena }) {
             // }
 
             const body = { email, contrasena }
-
             const { data } = await axios.post(`${SERVER}/usuario/login`, body)
-
+            const usuarias = await axios.get(`${SERVER}/usuario`)
             const infoUser = data.user
+            const filtroUsuarias = usuarias.data.filter((u) => infoUser.email === u.email)
+            console.log('data', data)
             dispach({
                 type: LOGIN_USER_SUCCESS,
-                payload: infoUser
-            })
+                payload: infoUser,
+                usuariaLogueada: filtroUsuarias,
+            },
+            localStorage.setItem('usuarios', JSON.stringify(data)))
             console.log(data)
         } catch (error) {
             Swal.fire({
@@ -92,8 +95,8 @@ export function login({ email, contrasena }) {
               })
             console.log(error)
             return dispach({
-                type: LOGIN_USER_ERROR,
-            })
+            type: LOGIN_USER_ERROR,
+        })
         }
     }    
     
@@ -114,9 +117,7 @@ export function register ({
 
     return async function (dispatch) {
         try {
-
-            
-            
+        
             const body = {
                 nombre,
                 usuario,
@@ -136,7 +137,9 @@ export function register ({
             dispatch({
                 type: REGISTER_USER_SUCCESS,
                 payload: infoUser
-            })
+            },
+            localStorage.setItem('usuarios', JSON.stringify(data)))
+            
         } catch (error) {
             console.log(error)
             return dispatch({
@@ -176,17 +179,52 @@ export const reloadingPage = (payload)=> {
     }
 }
 
-export const getPasajeras = () => {
-    return async function (dispatch){
+// export const getPasajeras = () => {
+//     return async function (dispatch){
+//         try{
+//          const res = await axios.get(`${SERVER}/usuario`)
+//             dispatch({
+//                 type: GET_PASAJERA,
+//                 payload: res.data
+//             })
+//         } catch (error) {
+//           console.log(error)
+//         }
+//        }
+
+// }
+
+export const updateFoto = async(foto , id)=> {
+    const body = {fotoPerfil: foto}
         try{
-         const res = await axios.get(`${SERVER}/usuario`)
-            dispatch({
-                type: GET_PASAJERA,
-                payload: res.data
-            })
+         const res = await axios.put(`${SERVER}/usuario/updateFoto/${id}`,body)
+            console.log(res)
+            
         } catch (error) {
           console.log(error)
         }
-       }
+      
+}
 
+export const updatePasajera = async(form , id)=> {
+   
+        try{
+         const res = await axios.put(`${SERVER}/usuario/update/${id}`,form)
+         console.log(res)
+         Swal.fire({
+            icon: 'success',
+            title: 'Perfil actualizado',
+        
+           
+          })
+            
+        } catch (error) {
+            Swal.fire({
+                icon: 'error',
+                title: 'Error al actualizar el perfil ',
+                
+               
+              })
+        }
+      
 }

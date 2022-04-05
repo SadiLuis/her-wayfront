@@ -19,7 +19,7 @@ export const getViajeRequerido = (idConductora) => async (dispatch) => {
 }
 
 
-export function aceptaRechazaViaje(payload){
+export function cambiaEstadoViaje(payload){
     let {id, decision} = payload
     
     
@@ -37,11 +37,39 @@ export function aceptaRechazaViaje(payload){
                 type: "RECHAZA_VIAJE",
                 payload: "rechaza viaje"
             })
+        } else if (decision === "enPuntoPartida") {
+            const llegue =  await axios.put(`${SERVER}/viajes/puntopartida/${id}`);
+            return dispatch({
+                type: "PUNTO_PARTIDA",
+                payload: "en punto partida"
+            })
+        }else if( decision === "finalizado") {
+            const final =  await axios.put(`${SERVER}/viajes/finalizado/${id}`);
+            return dispatch({
+                type: "FINALIZA_VIAJE",
+                payload: "FINZALIZA VIAJE"
+            })
         }
         }catch(error){
             console.log(error)
    
         }
     }  
-
 }
+
+export const getViaje = (idViaje) => async (dispatch) => {
+    try {
+        const respuesta = await axios.get(`${SERVER}/viajes/${idViaje}`)
+        const resViajes = await axios.get(`${SERVER}/viajes`)
+        const viajeInfo = respuesta.data
+        const filtroViaje = resViajes.filter((v) => viajeInfo.idConductora === v.idConductora)
+        return dispatch({
+            type: "VIAJE_POR_IDVIAJE",
+            payload: respuesta.data,
+            viajeFiltradoId: filtroViaje
+        })
+    } catch (error) {
+        console.log("No se encontro viaje con ese id ")
+    }
+}
+

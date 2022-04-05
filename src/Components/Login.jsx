@@ -41,14 +41,14 @@ export default function Login() {
 
   const [formlogin, setFormLogin] = useState(initialLogin)
   const [error, setError] = useState({})
-  const[display,setDisplay] = useState(false)
+  const[display, setDisplay] = useState(false)
   const isAuth = useSelector(state => state.LoginRegisReducer.isAuth)
   const user = useSelector(state => state.LoginRegisReducer.userInfo)
   const navigate = useNavigate()
-  
+
   const dispatch = useDispatch()
 
-  
+
   useEffect(() => {
     // Si ya está logueado que lo redireccione al dashboard
     if( isAuth && user) {
@@ -56,30 +56,32 @@ export default function Login() {
       setFormLogin(initialLogin);
      navigate("/mapa")
      let timerInterval
-Swal.fire({
-  icon:'success',
-  title: 'Bienvenido ' + user.displayName,
-  timer: 5500,
-  timerProgressBar: true,
-  didOpen: () => {
-    Swal.showLoading()
-    const b = Swal.getHtmlContainer().querySelector('b')
-    timerInterval = setInterval(() => {
-      b.textContent = Swal.getTimerLeft()
-    }, 100)
-  },
-  willClose: () => {
-    clearInterval(timerInterval)
-  }
-}).then((result) => {
-  /* Read more about handling dismissals below */
-  if (result.dismiss === Swal.DismissReason.timer) {
-    console.log('I was closed by the timer')
-  }
-})
+// Swal.fire({
+//   icon:'success',
+//   title: 'Bienvenido ' + user.displayName,
+//   timer: 5500,
+//   timerProgressBar: true,
+//   didOpen: () => {
+//     Swal.showLoading()
+//     const b = Swal.getHtmlContainer().querySelector('b')
+//     timerInterval = setInterval(() => {
+//       b.textContent = Swal.getTimerLeft()
+//     }, 100)
+//   },
+//   willClose: () => {
+//     clearInterval(timerInterval)
+//   }
+// }).then((result) => {
+//   /* Read more about handling dismissals below */
+//   if (result.dismiss === Swal.DismissReason.timer) {
+//     console.log('I was closed by the timer')
+//   }
+// })
     }
   }, [isAuth, navigate, user]);
 
+
+  
   const handleChange = (e) => {
 
     const { name, value } = e.target;
@@ -94,12 +96,12 @@ Swal.fire({
     e.preventDefault()
     const errors = validateForm(formlogin);
     setError(errors);
-   
+
     if (Object.keys(errors).length) {
        Swal.fire({
         icon: 'error',
         title: 'El formulario contiene errores',
-        
+
        })
     }else {
 
@@ -109,13 +111,7 @@ Swal.fire({
     }
   }
 
-  // useEffect(()=>{
-  //   dispatch(pedirConductora())
-  // }, [dispatch])
 
-  //const handleClickEntrar=(e)=>{
-  //  e.preventDefault();
-  //  navigate("/pedirConductora")
   return (
     <div class="row g-0 pt-3">
       <div class="col-lg-1"></div>
@@ -218,10 +214,10 @@ Swal.fire({
       <div class="col-lg-1"></div>
 
       {/* <div >
-      <button  className={styles.botonPedirConductora}   
+      <button  className={styles.botonPedirConductora}
      >
-    <Link to="/pedirconductora" style={{color:"#fff"}}> 
-   
+    <Link to="/pedirconductora" style={{color:"#fff"}}>
+
       Pedir Conductora
       </Link>
     </button>

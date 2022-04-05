@@ -6,9 +6,11 @@ import './PerfilPasajera.css'
 import { useDropzone } from "react-dropzone";
 import { useNavigate } from "react-router-dom";
 import {useSelector , useDispatch} from 'react-redux'
-import {getPasajeras , logout} from '../../actions/Usuarios'
+import {login , logout} from '../../actions/Usuarios'
 import {Loader} from '../Loader/Loader'
 import {saveImages} from '../../Helpers/saveImage'
+
+
 export default function PerfilPasajera() {
     const pasajera = useSelector(state => state.LoginRegisReducer.pasajera)
     const [imagen , setImagen] = useState('')
@@ -16,8 +18,8 @@ export default function PerfilPasajera() {
     const dispatch = useDispatch()
     console.log(pasajera)
     useEffect(()=>{
-       dispatch(getPasajeras())
-    },[dispatch], imagen)
+       //dispatch(getPasajeras())
+    },[], imagen)
 
   const handleButton = () => {
       dispatch(logout())
