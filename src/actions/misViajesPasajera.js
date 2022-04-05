@@ -20,6 +20,8 @@ export const misViajesPasajera = () => async (dispatch) => {
 export const viajesPorPasajera=(idPasajera) =>async (dispatch)=>{
     try{
         const respuesta2 = await axios.get(`${SERVER}/viajes/${idPasajera}`);
+
+       // const respuestaViajes= respuesta2.data.filter(elem=>elem.idPasajera)
         return dispatch({
             type: VIAJES_POR_PASAJERA,
             payload: respuesta2.data
