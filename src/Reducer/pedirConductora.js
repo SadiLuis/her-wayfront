@@ -1,10 +1,11 @@
-import { PEDIR_CONDUCTORA, DETALLE_CONDUCTORA, CONDUCTORAS_CONECTADAS } from "../actions";
+import { PEDIR_CONDUCTORA, DETALLE_CONDUCTORA, CONDUCTORAS_CONECTADAS, FILTRAR_POR_PREFERENCIAS_MASCOTAS } from "../actions";
 
 const initialState={
     conductoras:[],
     todasLasConductoras:[],
     detalle:{},
-    conductorasConectadas:[]
+    conductorasConectadas:[],
+   
 }
 
 export default function pedirConductoraReducer(state=initialState, action){
@@ -29,6 +30,16 @@ export default function pedirConductoraReducer(state=initialState, action){
                          ...state,
                          conductorasConectadas:payload
                      };
+                     case FILTRAR_POR_PREFERENCIAS_MASCOTAS:
+                         return {
+                             ...state,
+                             conductorasConectadas:payload
+                         }
+                         case "FILTRAR_POR_PREFERENCIAS_COCHECITOS":
+                         return {
+                             ...state,
+                             conductorasConectadas:payload
+                         }
 
 
             default:
