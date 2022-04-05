@@ -59,6 +59,8 @@ export default function PerfilConductora( ) {
                     </div>
                 </div>
             </div >
+            
+            <button class="btn btn-primary" onClick={() => navigate('/historialviajes/' + idConductoraLogueada[0].id )}>Historial de Viajes</button>
             <button className='logoutC' onClick={() => navigate('/home')}> Log out </button>
             <button className='volver' onClick={() => navigate('/homeConductora')}> Volver </button>
         </div >
