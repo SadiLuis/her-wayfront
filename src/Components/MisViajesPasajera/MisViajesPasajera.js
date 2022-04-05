@@ -24,7 +24,7 @@ function MisViajesPasajera() {
       } else{
            navigate("/home")
     }
-    }, [ viajes.idPasajera, dispatch])
+    }, [  dispatch])
 
   
 //     useEffect(()=>{
