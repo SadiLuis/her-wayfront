@@ -1,5 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import styles from './VerConductorasAdmin.module.css'
 
 
 const VerConductorasAdmin = ({ conductoras }) => {
@@ -28,7 +29,7 @@ const VerConductorasAdmin = ({ conductoras }) => {
             <td >{c.email}</td>
             {c.cuentaActiva?c.verificar ? (
               <td><Link to={`../admin/verificar/${c.id}`}>
-                <button>Verificar</button> 
+                <button className={styles.btn__blue}>Verificar</button> 
                 </Link></td>
             )
               : <td>{c.conectada ? 'Conectada' : 'No conectada'}</td>
@@ -36,12 +37,12 @@ const VerConductorasAdmin = ({ conductoras }) => {
             }
             <td>
               <Link to={`../admin/${c.id}`}>
-                <button>Ver Detalle</button>
+                <button className={styles.btn__green}>Ver Detalle</button>
               </Link>
             </td>
             {c.cuentaActiva?<td>
               <Link to={`../admin/darBajaConductora/${c.id}`}>
-                <button>Dar Baja</button>
+                <button className={styles.btn__red}>Dar Baja</button>
               </Link>
             </td>
             :<td></td>}
