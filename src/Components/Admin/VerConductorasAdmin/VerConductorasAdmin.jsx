@@ -9,8 +9,8 @@ const VerConductorasAdmin = ({ conductoras }) => {
   let i = 0;
   
   return (
-    <div>
-      <table>
+    <div className={styles.div} >
+      <table className={styles.table} >
         <tr>
           <th>Nombre</th>
           <th>Usuario</th>
