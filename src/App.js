@@ -40,7 +40,6 @@ import EstadoViajeConductora from './Components/viajes/EstadoViajeConductora';
 import PantallaViajePasajera from './Components/viajes/PantallaViajePasajera'
 import EstadoViajePasajera from './Components/viajes/EstadoViajePasajera';
 import EditarPerfilPas from './Components/Perfiles/EditarPerfilPas';
-import EditarPerfilPas from './Components/Perfiles/EditarPerfilPas'
 import HistorialViajes from './Components/MisViajesPasajera/HistorialViajes';
 
 
