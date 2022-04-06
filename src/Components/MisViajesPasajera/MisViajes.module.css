@@ -12,7 +12,7 @@
     z-index: 5;
 }
 .navbar h4{
-    color: white;
+    color: rgb(255, 255, 255);
     font-family: "Montserrat", sans-serif;
     font-size: 2rem;
     position: relative;
@@ -36,10 +36,17 @@
     text-decoration: none;
     border-style: groove;
     border-width: 1px 1px 1px 1px;    
-    border-color: rgba(245, 245, 245, 0.671);
+    border-color: rgba(0, 0, 0, 0.671);
     transition: 250ms;
     display: flex;
     position: relative;
     margin-left: 20px;
+}
+.categorias{
+   margin: 15px;
+   background-color: #646464;
+   padding: 10px;
+   color: white;
+   font-family: 'Montserrat', sans-serif;  
 }
 
