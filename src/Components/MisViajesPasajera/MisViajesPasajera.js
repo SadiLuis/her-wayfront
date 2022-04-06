@@ -53,7 +53,7 @@ function MisViajesPasajera() {
                       <div >
                           <table className='table align-middle table-bordered table-striped'>
                               <thead>
-                                  <tr>
+                                  <tr className={styles.categorias} >
                                       {/* <td className='h4'>Fecha</td> */}
                                       <td className='h4'>Pasajera</td>
                                       <td className='h4'>Conductora</td>
@@ -62,7 +62,7 @@ function MisViajesPasajera() {
                                       <td className='h4'>Precio</td>
                                   </tr>
                               </thead>
-                              <tbody>
+                              <tbody className={styles.info} >
                                   {viajes.length ? (
                                       viajes.map((viaje) => (
                                           <tr key={viaje.id}>
