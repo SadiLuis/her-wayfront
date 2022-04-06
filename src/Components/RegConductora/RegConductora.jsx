@@ -130,11 +130,8 @@ export default function CreateConductora(){
         }else{
             alert('rellenar los campos correctamente')
         }  
-       navigate('/homeConductora') 
-    
-
+       navigate('/loginConductora') 
     }
-   
          
     function handleChange(name ,value){
         console.log(conductora)
