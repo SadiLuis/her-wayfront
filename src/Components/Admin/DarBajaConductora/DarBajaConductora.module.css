@@ -11,18 +11,11 @@
     top: 10vh;
     left: 45vw;
 }
-.main__container{
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
-}
 .cards__container{
     display:flex;
     align-items: center;
     justify-content: center;
-    flex-wrap: wrap;
     gap: 10px;
-    margin-left: 50px;
 }
 .card{
     border: solid rgb(38, 2, 43);
@@ -33,7 +26,14 @@
     border-radius: 10px;
     overflow: hidden;
     margin-top: 10px;
-}       
+    margin: 25px;
+}   
+.card:hover{
+    background-color: rgb(209, 120, 250);
+    transform: scale(1.1) ;
+    transition: all 0.5s ease-in-out;
+}
+
 
 .card__header{
     position: relative;
@@ -63,8 +63,15 @@
 
 
 
+
 .btn__red{
-    background-color: #f44336;
+    width: 200px;
+    background-color: #f48236;
     color: white;
-    outline: none;
+    border-radius: 10px;
+}
+.btn__red:hover{
+    background-color: #ff0000;
+    color: white;
+    border-radius: 10px;
 }
