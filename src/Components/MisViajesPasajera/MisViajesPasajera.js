@@ -50,7 +50,7 @@ function MisViajesPasajera() {
               <div className='misViajes'>
                   
                   {viajes.length ? (
-                      <div>
+                      <div >
                           <table className='table align-middle table-bordered table-striped'>
                               <thead>
                                   <tr>
