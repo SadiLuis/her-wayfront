@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { Link, useNavigate } from "react-router-dom";
 import Swal from "sweetalert2";
 import { login } from '../../../actions/administrador';
+import style from './LoginAdm.module.css'
 
 
 const initialLogin = {
@@ -83,8 +84,8 @@ export default function Login() {
 
 
         return (
-            <div className='col-md-4'>
-                <div className='mt-5 ms-5'>
+            <div className={style.conteiner } >
+                <div className='w-50 mb-5 ms-5'>
                     <h1 className='text-center'>Login</h1>
                     <form onSubmit={handleSubmit} >
                         <div className="form-group"> {/* CORREO */}

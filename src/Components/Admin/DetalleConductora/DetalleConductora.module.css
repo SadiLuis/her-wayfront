@@ -26,7 +26,14 @@
     border-radius: 10px;
     overflow: hidden;
     margin-top: 10px;
-}       
+    margin: 25px;
+}   
+.card:hover{
+    background-color: rgb(209, 120, 250);
+    transform: scale(1.1) ;
+    transition: all 0.5s ease-in-out;
+}
+
 
 .card__header{
     position: relative;

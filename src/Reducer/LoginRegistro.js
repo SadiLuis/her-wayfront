@@ -82,15 +82,15 @@ export default function LoginRegisReducer(state = initialState, action) {
                     resetPass: action.payload
                 }
                 
-                case GET_PASAJERA: 
-                const idPasajera = state.userInfo.uid
-                const pasajera = action.payload.filter(p => p.authId === idPasajera)
-                console.log(pasajera)
-            return {
-                ...state,
-                pasajera: pasajera
+            //     case GET_PASAJERA: 
+            //     const idPasajera = state.userInfo.uid
+            //     const pasajera = action.payload.filter(p => p.authId === idPasajera)
+            //     console.log(pasajera)
+            // return {
+            //     ...state,
+            //     pasajera: pasajera
 
-            }   
+            // }   
                       
                 
             default: return state;

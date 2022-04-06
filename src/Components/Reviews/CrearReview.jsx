@@ -4,10 +4,9 @@ import { useEffect, useState } from "react";
 import {postReview , getReviews} from '../../actions/reviews'
 import { useDispatch, useSelector } from "react-redux";
 import s from './CrearReviews.module.css'
-import { Link, useNavigate, useParams } from "react-router-dom";
-//import login_mujer from '../../image/login_mujer.png'
-
-import { Button } from 'react-bootstrap';
+import { useNavigate, useParams } from "react-router-dom";
+import login_mujer from '../../image/login_mujer.png'
+import ReactStars from "react-rating-stars-component";
 
 
 
@@ -39,18 +38,13 @@ export default function Reviews () {
         puntaje:''
     })
 
-    const handleChangePuntaje = (e) => {
-      // console.log('newRating :>> ', newRating);
-      setInput({
-          ...input,
-          puntaje:  (e.target.value).toString()
-      })
-    
-  };
+    useEffect(() => {
+      dispatch(getReviews(idViaje));     
+    }, []);  
 
-  //  const alo = reviews.filter(e => e.review.userId === user.id).length
-  //  console.log(user, "este mensaje es el que frao")
 
+   
+ 
     const handleSubmit = (e) => {
       e.preventDefault()
       if(input){
@@ -73,20 +67,16 @@ export default function Reviews () {
               title: 'ups..su comentario no se ha procesado correctamente',
             })
           }
-          }
+        }
        
 
-      useEffect(() => {
-        dispatch(getReviews(idViaje));     
-      }, []);  
 
-console.log(reviews)
-
+console.log('input :>> ', input);
     return(
     <>
-    <div className={s.container}>{/* la clase container ocupa el 80% de la pantalla y siempre esta centrada*/}
-      <div className="row">{/* row es para colocar todo el contenido en filas*/}
-        <div className="col-6 mx-auto">{/*col-6 indica que es una columna y su tamaño es de 6. luego el margin auto para que se centre*/}
+    <div className={s.container}>
+      <div className="row">
+        <div className="col-6 mx-auto">
           <div>
             <form 
                 className="row" 
@@ -95,8 +85,10 @@ console.log(reviews)
               <textarea  
                     className="form-control" 
                     style={{marginBottom:20}} 
-                    type='text' placeholder="comentario..." 
-                    rows="3"  value={input.comentario} 
+                    type='text' 
+                    placeholder="comentario..." 
+                    rows="3"  
+                    value={input.comentario} 
                     onChange={e => setInput({ ...input, comentario: e.target.value })}>
               </textarea>
               <div style={{marginBottom:20}} className="btn-group col-3" >{/*agrupa los botones*/}
@@ -109,7 +101,7 @@ console.log(reviews)
                     placeholder="0" 
                     value={input.puntaje} 
                     required={true} 
-                    onChange={handleChangePuntaje} />
+                    onChange={e => setInput({ ...input, puntaje: e.target.value })} />
               </div>
               <div className="col-3 text-end" style={{marginLeft:50}} >
               <button className="btn btn-primary">Comentar</button>
@@ -122,26 +114,29 @@ console.log(reviews)
               reviews.map((re) => (
                 <div key={re.conductora} >
                   <div className="be-img-comment" >	
-                      {/* <img src={re.fotoPerfil ? re.fotoPerfil : login_mujer} alt="" className="be-ava-comment"/> */}
+                      <img src={re.fotoPerfil ? re.fotoPerfil : login_mujer} alt="" className="be-ava-comment"/>
                   </div>
                   <div className="review-colomn" >
                   <span className="be-comment-name">
                       <h5 href="blog-detail-2.html">Nombre de usuario: {re.pasajera ? re.pasajera : "Juana 123"}</h5>
                     </span>
                     <div>
-                      <h6 >Puntaje: {
-                               re.puntaje 
-                        }</h6>
-                    </div>
-                    
+                      <h6>Puntaje: { 
+                      <ReactStars
+                            count={5}
+                            value={re.puntaje}
+                            size={28}
+                            // activeColor="#ffd700"
+                            activeColor="rgb(0, 72, 181)"
+                      />}</h6>
+                      </div>
+                    </div> 
                     <p className="be-comment-text"><b>Comentario:</b> {re.comentario}</p>
-                  </div> 
-                </div>
+                  </div>
               )) 
             :  null 
             }{/*<h2>No hay comentarios</h2>*/}
             </div>  
-            
             <button className="btn btn-primary" onClick={() => navigate('/home')}>Inicio</button>
         </div>
       </div>

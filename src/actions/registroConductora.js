@@ -49,7 +49,7 @@ export function loginConductora({ email, contrasena }) {
                 conducLogueada: filterConductor
             },
             localStorage.setItem('conductoras', JSON.stringify(data)))
-            console.log(data)
+            
         } catch (error) {
             Swal.fire({
                 icon: 'error',

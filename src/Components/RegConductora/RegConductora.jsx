@@ -60,7 +60,7 @@ export function validate(conductora){
         errors.seguro='ingrese nombre del seguro y poliza'
     }
     if(!conductora.habilitacion){
-        errors.habilitacion='ingrese la hbilitacion correspondiete del vehiculo'
+        errors.habilitacion='ingrese la habilitación correspondiete del vehículo'
     }
     return errors
 }
@@ -86,6 +86,8 @@ export default function CreateConductora(){
         patente:"",
         seguro:"",
         habilitacion:"",
+        aceptaMascotas:"",
+        aceptaCochecito:""
     });
 
     const [errors, setErrors]=useState({})
@@ -124,9 +126,12 @@ export default function CreateConductora(){
         patente:"",
         seguro:"",
         habilitacion:"",
+        aceptaMascotas:"",
+        aceptaCochecito:"",
+        
         })
         dispatch(registroConductora(auxInput))
-        alert('usuario creado con exito, verifique su email par activar su cuenta')
+        alert('usuario creado con éxito')
         }else{
             alert('rellenar los campos correctamente')
         }  
@@ -144,7 +149,23 @@ export default function CreateConductora(){
             [name] : value,
         }))
     }
+    function handleSelectMascotas(e){
+        console.log(conductora)
+        setConductora({
+            ...conductora,
+            aceptaMascotas: e.target.value
+        })
+    }
 
+    function handleSelectCochecitos(e){
+        console.log(conductora)
+        setConductora({
+            ...conductora,
+            aceptaCochecito: e.target.value
+        })
+    }
+
+    
     return(
         <div className='row conteiner p-5'>
         <div className='col-md-8'>
@@ -359,7 +380,7 @@ export default function CreateConductora(){
                     )} 
                 </div>
                 <div className='form-group'>
-                <label htmlFor="exampleInputPassword1">Credencial de Identificacion *</label>
+                <label htmlFor="exampleInputPassword1">Credencial de Identificación *</label>
                 <input name='fotoDni' className="form-control"
                     id='fotoDni'
                     type='file'
@@ -426,8 +447,27 @@ export default function CreateConductora(){
                         </p>
                     )} 
                 </div>
+                <div>
+                <label>Acepta Mascotas:</label>
+                <select onChange={(e)=>handleSelectMascotas(e)}>
+                    <option value="false" name="aceptaMascotas" defaultValue={false}>Elige</option>
+                    <option value="true" name="aceptaMascotas"defaultValue={false}>Acepta</option>
+                    <option value="false" name="aceptaMascotas" defaultValue={false}>No Acepta</option>
+                    
+                </select>
+                </div>
+
+                <div>
+                <label>Acepta Cochecitos de bebés:</label>
+                <select onChange={(e)=>handleSelectCochecitos(e)}>
+                <option value="true" name="aceptaCochecito">Elige </option>
+                    <option value="true" name="aceptaCochecito">Acepta </option>
+                    <option value="false" name="aceptaCochecito">No Acepta</option>
+                    
+                </select>
+                </div>
                 <div className='form-group'>
-                <label htmlFor="exampleInputPassword1">Habilitacion *</label>
+                <label htmlFor="exampleInputPassword1">Habilitación *</label>
                 <input name='habilitacion' className="form-control"
                     id='habilitacion'
                     type='text'
@@ -442,6 +482,10 @@ export default function CreateConductora(){
                         </p>
                     )} 
                 </div>
+
+                
+
+                
                     
                     <button className="btn btn-primary" type='submit' 
                     style={{

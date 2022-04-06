@@ -101,6 +101,7 @@ const RecorridoPasajera = () => {
         </GoogleMap>
       </Box>
     </Flex>
+    
     <DetalleRecorrido conductora={conductora}/>
     </div>
   )

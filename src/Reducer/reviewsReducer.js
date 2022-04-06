@@ -7,6 +7,7 @@ import {
 
 const initialState = {
     reviews:[],
+    reviewsInfo: [],
     reviewsConductora: []
 }
 
@@ -16,13 +17,15 @@ export default function reviewsReducer(state = initialState, action){
         case CREAR_REVIEW:
             return {
                 ...state,
-                reviews: action.payload
+                reviews: action.payload,
+                reviewsInfo: action.reviewsInfo
             }
 
         case OBTENER_REVIEWS:
             return {
                 ...state,
-                reviews: action.payload
+                reviews: action.payload,
+                
             }
 
         case BORRAR_REVIEW:

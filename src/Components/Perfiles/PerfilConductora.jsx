@@ -59,12 +59,13 @@ export default function PerfilConductora( ) {
                         {/* <h4> cambiar contraseña </h4> */}
                         </span>
                         <br />
-                            <button className='logoutC'onClick={handleButton}> Log out </button>
+                            <button className='logoutC' onClick={() => navigate('/home')}> Log out </button>
                             <button className='volver' onClick={() => navigate('/homeConductora')}> Volver </button>
                         {/* <p className='editIcon'>Editar Perfíl</p> */}
                     </div>
                 </div>
             </div>
+
         </div>
     )
 };
