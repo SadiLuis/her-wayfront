@@ -1,3 +1,4 @@
+
 import React, { useState, useEffect , useCallback } from 'react'
 import { connect } from 'react-redux'
 import Image from '../../Media/placeholder.png'
@@ -40,10 +41,9 @@ const { getRootProps, getInputProps} = useDropzone({
     multiple: false,
     onDrop
 });
-  
 
-    return (
-         
+
+    return (         
         
         <div className='perfilCard'>
          {pasajera.length  ?
@@ -86,4 +86,5 @@ const { getRootProps, getInputProps} = useDropzone({
     )
 
 }
+
 

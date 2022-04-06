@@ -1,6 +1,6 @@
 import React, {useEffect} from 'react'
 import { useDispatch, useSelector } from 'react-redux';
-import { pedirConductora,detalleConductora, conductorasConectadas  } from '../actions/conductora';
+import { pedirConductora,detalleConductora, conductorasConectadas,filtrarPorMascotas, filtrarPorCochecitos  } from '../actions/conductora';
 import TarjetaConductora from '../Screens/TarjetaConductora';
 import {Loader} from './Loader/Loader'
 import {getPasajeras} from '../actions/Usuarios'
@@ -38,8 +38,19 @@ export default function PedirConductora() {
 
      })
    }
+
+   function handleClick(e){
+     e.preventDefault();
+     let payload= e.target.value;
+     dispatch(filtrarPorMascotas(payload))
+   }
+   function handleClickCochecitos(e){
+    e.preventDefault();
+    let payload= e.target.value;
+    dispatch(filtrarPorCochecitos(payload))
+  }
     return (
-       
+
          <div className='container '>
             <NavBar/>
             <br />
@@ -49,11 +60,18 @@ export default function PedirConductora() {
           <div className='container d-flex   align-items-center justify-content-center vh-50'>
             <div className='row'> 
             <div class="col-sm-6 col-xl-8 ">
+              <button onClick={handleClick} value="true" >Acepta Mascotas</button>
+              <button onClick={handleClick} value="false">No Acepta Mascotas</button>
+              <div>
+              <button onClick={handleClickCochecitos} value="true">Acepta Cochecitos</button>
+              <button onClick={handleClickCochecitos} value="false">No Acepta Cochecitos</button>
+              </div>
+
+
+
           { conectadas.length ? (
-          <><div
-                >
-
-
+          <><div>
+                
                   {conectadas?.map(elem => {
                     return (
 

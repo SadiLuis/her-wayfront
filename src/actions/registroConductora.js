@@ -15,7 +15,8 @@ export function registroConductora(payload){
                 return dispatch({
                     type: REGISTRO_CONDUCTORA,
                     create,
-                })
+                },
+                localStorage.setItem('conductoras', JSON.stringify(create)))
             // return create;
         }catch(err){
             console.log(err)
@@ -40,7 +41,8 @@ export function loginConductora({ email, contrasena }) {
                 type: LOGIN_CONDUCTORA,
                 payload: registroCond,
                 conducLogueada: filterConductor
-            })
+            },
+            localStorage.setItem('conductoras', JSON.stringify(data)))
             
         } catch (error) {
             console.log(error)
