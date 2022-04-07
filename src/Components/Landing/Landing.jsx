@@ -1,6 +1,7 @@
 import React from 'react';
 import './Landing.css';
 import MujerPasajera from '../../Media/MujerPasajera.JPG'
+import MujerPasajera2 from '../../Media/MujerPasajera2.JPG'
 import MujerLibre from '../../Media/mujerLibre.JPG'
 import PulgarArriba from '../../Media/pulgarArriba.JPG'
 import Slider from './Slider';
@@ -11,7 +12,7 @@ const Landing = () => {
         <div>
             <Navbar />
             <div className='mujerPasajera'>
-                <img src={MujerPasajera} alt='mujerPasajera' className='mujerPasajera_image' />
+                <img src={MujerPasajera2} alt='mujerPasajera' className='mujerPasajera_image' />
                 <p className='primerTexto'>Mujeres cuidando a mujeres. </p>
             </div>
             <div>

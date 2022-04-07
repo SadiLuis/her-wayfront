@@ -1,6 +1,6 @@
 //import { Button } from 'bootstrap'
 import React, { useEffect, useState } from 'react'
-import { useDispatch ,useSelector} from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { Link, useNavigate } from "react-router-dom";
 import { login } from '../actions/Usuarios';
 import uno from '../image/1.jpg'
@@ -41,7 +41,7 @@ export default function Login() {
 
   const [formlogin, setFormLogin] = useState(initialLogin)
   const [error, setError] = useState({})
-  const[display, setDisplay] = useState(false)
+  const [display, setDisplay] = useState(false)
   const isAuth = useSelector(state => state.LoginRegisReducer.isAuth)
   const user = useSelector(state => state.LoginRegisReducer.userInfo)
   const navigate = useNavigate()
@@ -51,53 +51,53 @@ export default function Login() {
 
   useEffect(() => {
     // Si ya está logueado que lo redireccione al dashboard
-    if( isAuth && user) {
-     console.log('entre')
+    if (isAuth && user) {
+      console.log('entre')
       setFormLogin(initialLogin);
-     navigate("/mapa")
+      navigate("/mapa")
 
-    
-Swal.fire({
-  icon:'success',
-  title: 'Bienvenido ' + user.displayName,
-  timer: 5500,
-  timerProgressBar: true,
-  
-}).then((result) => {
-  /* Read more about handling dismissals below */
-  if (result.dismiss === Swal.DismissReason.timer) {
-    console.log('I was closed by the timer')
-  }
-})
 
-     let timerInterval
-// Swal.fire({
-//   icon:'success',
-//   title: 'Bienvenido ' + user.displayName,
-//   timer: 5500,
-//   timerProgressBar: true,
-//   didOpen: () => {
-//     Swal.showLoading()
-//     const b = Swal.getHtmlContainer().querySelector('b')
-//     timerInterval = setInterval(() => {
-//       b.textContent = Swal.getTimerLeft()
-//     }, 100)
-//   },
-//   willClose: () => {
-//     clearInterval(timerInterval)
-//   }
-// }).then((result) => {
-//   /* Read more about handling dismissals below */
-//   if (result.dismiss === Swal.DismissReason.timer) {
-//     console.log('I was closed by the timer')
-//   }
-// })
+      Swal.fire({
+        icon: 'success',
+        title: 'Bienvenido ' + user.displayName,
+        timer: 5500,
+        timerProgressBar: true,
+
+      }).then((result) => {
+        /* Read more about handling dismissals below */
+        if (result.dismiss === Swal.DismissReason.timer) {
+          console.log('I was closed by the timer')
+        }
+      })
+
+      let timerInterval
+      // Swal.fire({
+      //   icon:'success',
+      //   title: 'Bienvenido ' + user.displayName,
+      //   timer: 5500,
+      //   timerProgressBar: true,
+      //   didOpen: () => {
+      //     Swal.showLoading()
+      //     const b = Swal.getHtmlContainer().querySelector('b')
+      //     timerInterval = setInterval(() => {
+      //       b.textContent = Swal.getTimerLeft()
+      //     }, 100)
+      //   },
+      //   willClose: () => {
+      //     clearInterval(timerInterval)
+      //   }
+      // }).then((result) => {
+      //   /* Read more about handling dismissals below */
+      //   if (result.dismiss === Swal.DismissReason.timer) {
+      //     console.log('I was closed by the timer')
+      //   }
+      // })
 
     }
   }, [isAuth, navigate, user]);
 
 
-  
+
   const handleChange = (e) => {
 
     const { name, value } = e.target;
@@ -114,16 +114,16 @@ Swal.fire({
     setError(errors);
 
     if (Object.keys(errors).length) {
-       Swal.fire({
+      Swal.fire({
         icon: 'error',
         title: 'El formulario contiene errores',
 
-       })
-    }else {
+      })
+    } else {
 
-    dispatch(login(formlogin))
-     setDisplay(true)
-    console.log(formlogin)
+      dispatch(login(formlogin))
+      setDisplay(true)
+      console.log(formlogin)
     }
   }
 
@@ -160,7 +160,7 @@ Swal.fire({
         <div class="title px-lg-5 pt-lg-4 pb-lg-3 p-4">
           <h1> Her-Way </h1>
         </div>
-        <div class='px-lg-5r py-lg-4 p-4'>
+        <div class='inputs px-lg-5r py-lg-4 p-4'>
           <h2>Login</h2>
           {/* FORM LOGIN */}
           <form onSubmit={handleSubmit} >
@@ -168,17 +168,17 @@ Swal.fire({
               {/* CORREO */}
               <label htmlFor="exampleInputEmail1">Correo</label>
               <input type="email" className="form-control" placeholder="Ingresa tu correo" name='email' onChange={handleChange} value={formlogin.email} />
-              { error && error.email && (
-              <span >{error.email}</span>
-            )}
+              {error && error.email && (
+                <span >{error.email}</span>
+              )}
               {/* Contraseña  */}
             </div>
             <div className="form-group">
               <label htmlFor="exampleInputPassword1">Contraseña</label>
               <input type="password" className="form-control" id="exampleInputPassword1" placeholder="Ingresa tu contraseña" name='contrasena' onChange={handleChange} value={formlogin.contrasena} />
               {error && error.contrasena && (
-              <span >{error.contrasena}</span>
-            )}
+                <span >{error.contrasena}</span>
+              )}
               <div>
 
                 <Link to='/resetPassword' style={{

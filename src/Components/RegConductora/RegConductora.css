@@ -9,9 +9,3 @@
 .tamaño {
     border-radius: 5px;
 }
-
-@media screen and (max-width: 1000px) {
-    .carousel {
-        display: none;
-    }
-}
