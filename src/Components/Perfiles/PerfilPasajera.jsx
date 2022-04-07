@@ -77,7 +77,7 @@ const { getRootProps, getInputProps} = useDropzone({
         <div class="main-content" id='mainContainer'>
            
          <div class="tab-content profile-page" >
-        		<button onClick={handleButton}>logout </button>
+	    {/*<button onClick={handleButton}>logout </button>*/}
         		<div class="container bootstrap snippets bootdey">
         			<div class="row">
         				<div class="col-6 ">
