@@ -28,6 +28,8 @@ export default function perfilConductoraReducer(state = initialState, action) {
                         ...state,
                         aux: action.payload
                     }    
+
+                
             
             default:
                 return state;

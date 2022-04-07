@@ -25,12 +25,12 @@ main{
     justify-content: center;
     align-items: center;
     gap: 1rem;
-    border: 2px solid #000;
+    border: 2px solid #f988ff;
     border-radius: 2rem;
     box-shadow: 3px 3px 5px #000000;
     margin-top: 20px;
     text-align: center;
-    background: linear-gradient(to right, #f988ff, #7f00b2);
+    
   }
   
   .containLR{

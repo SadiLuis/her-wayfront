@@ -46,39 +46,7 @@ export default function PerfilConductora() {
 
     return (
 
-        // <div className='perfilCard'>
-        //     <div className='upperContainer'>
-        //         <div className='imageContainer'>
-        //             <div key={idConductoraLogueada[0].id}></div>
-        //             <img src={idConductoraLogueada[0].fotoPerfil}
-        //                 alt='profile pic'
-        //                 height='100%'
-        //                 width='100px' />
-        //             <h1 className='usuario' > Conductora: {idConductoraLogueada[0].usuario} </h1>
-        //             {/* <div style={{ cursor: 'pointer' }}>
-        //         {/* </div> */}
-        //             <span className='lowerContainer'>
-        //                 <h2> Nombre: {idConductoraLogueada[0].nombre} </h2>
-        //                 <h2> Apellido: {idConductoraLogueada[0].apellido} </h2>
-        //                 <h4> E-mail: {idConductoraLogueada[0].email} </h4>
-        //                 <h4> País: {idConductoraLogueada[0].pais} </h4>
-        //                 <h4> Teléfono: {idConductoraLogueada[0].telefono} </h4>
-        //                 <h4> Provincia: {idConductoraLogueada[0].provincia} </h4>
-        //                 <h4> Localidad: {idConductoraLogueada[0].localidad} </h4>
-        //                 <br />
-        //                 <h2>Info Vehicular</h2>
-        //                 <h4> Automovil: {idConductoraLogueada[0].automovil} </h4>
-        //                 <h4> Patente: {idConductoraLogueada[0].patente} </h4>
-        //                 <h4> Habilitación: {idConductoraLogueada[0].habilitacion} </h4>
-        //                 {/* <h4> cambiar contraseña </h4> */}
-        //             </span>
-        //             <br />
-        //             <button className='logoutC' onClick={() => navigate('/home')}> Log out </button>
-        //             <button className='volver' onClick={() => navigate('/homeConductora')}> Volver </button>
-        //             {/* <p className='editIcon'>Editar Perfíl</p> */}
-        //         </div>
-        //     </div>
-        // </div >
+        
 
         <div class="container d-flex align-items-center justify-content-center vh-100" >
             <div class="row">
@@ -90,13 +58,13 @@ export default function PerfilConductora() {
                             <div class="row">
                                 <div class="col-6 ">
                                     <div class="user-info-left">
-                                        <h2>{idConductoraLogueada[0].nombre} <i class="fa fa-circle green-font online-icon"></i><sup class="sr-only">online</sup></h2>
-                                        <img class="img-responsive" src={idConductoraLogueada[0].fotoPerfil} alt="Profile Picture" style={{ width: '300px', height: '300px' }} />
-                                        <button {...getRootProps()} className="btn btn-block btn-success"><i class="fa fa-envelope-o"></i> Actualizar foto</button>
+                                        <h2>{conductora.nombre} <i class="fa fa-circle green-font online-icon"></i><sup class="sr-only">online</sup></h2>
+                                        <img class="img-responsive" src={conductora.fotoPerfil} alt="Profile Picture" style={{ width: '300px', height: '300px' }} />
+                                        {/* <button {...getRootProps()} className="btn btn-block btn-success"><i class="fa fa-envelope-o"></i> Actualizar foto</button>
                                         <input {...getInputProps()} />
                                         <div class="contact">
                                             <button className="btn btn-block btn-success" onClick={() => navigate('/editConductora')}><i class="fa fa-book" ></i> Editar perfil</button>
-                                        </div>
+                                        </div> */}
                                     </div>
                                 </div>
                                 <div class="col-12 col-xl-6 ">
@@ -105,15 +73,15 @@ export default function PerfilConductora() {
                                             <h3><i class="fa fa-square"></i> Informacion básica</h3>
                                             <p class="data-row">
                                                 <span class="data-name">Usuario</span>
-                                                <span class="data-value">{idConductoraLogueada[0].usuario}</span>
+                                                <span class="data-value">{conductora.usuario}</span>
                                             </p>
                                             <p class="data-row">
                                                 <span class="data-name">Provincia</span>
-                                                <span class="data-value">{idConductoraLogueada[0].provincia}</span>
+                                                <span class="data-value">{conductora.provincia}</span>
                                             </p>
                                             <p class="data-row">
                                                 <span class="data-name">Ciudad</span>
-                                                <span class="data-value">{idConductoraLogueada[0].localidad}</span>
+                                                <span class="data-value">{conductora.localidad}</span>
                                             </p>
 
 
@@ -123,15 +91,15 @@ export default function PerfilConductora() {
                                             <h3><i class="fa fa-square"></i> Información de contacto</h3>
                                             <p class="data-row">
                                                 <span class="data-name">Email</span>
-                                                <span class="data-value">{idConductoraLogueada[0].email}</span>
+                                                <span class="data-value">{conductora.email}</span>
                                             </p>
                                             <p class="data-row">
                                                 <span class="data-name">Telefono</span>
-                                                <span class="data-value">{idConductoraLogueada[0].telefono}</span>
+                                                <span class="data-value">{conductora.telefono}</span>
                                             </p>
                                             <p class="data-row">
                                                 <span class="data-name">Dirección</span>
-                                                <span class="data-value">{idConductoraLogueada[0].direccion}</span>
+                                                <span class="data-value">{conductora.direccion}</span>
                                             </p>
                                         </div>
 

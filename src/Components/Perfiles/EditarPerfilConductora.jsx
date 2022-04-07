@@ -4,6 +4,7 @@ import {updatePasajera} from '../../actions/Usuarios'
 import {useSelector ,useDispatch} from 'react-redux'
 import Swal from "sweetalert2";
 import style from './EditarPerfil.module.css'
+import { updateConductora } from "../../actions/conductora";
 
 
 function validateTlf(value) {
@@ -12,54 +13,16 @@ function validateTlf(value) {
     return regex.test(value);
  }
 
-function validateEmail(value) {
-    let validRegex = /^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/;
-  
-    return validRegex.test(value);
-  }
+
 
 
 const validateform = function (form) {
   const errors = {};
-  if (!form.nombre.trim()) {
-    errors.nombre = "Campo requerido";
-  } else if (form.nombre.length < 4) {
-    errors.nombre = "Mínimo 4 caracteres";
-  } else if (form.nombre.length > 25) {
-    errors.nombre = "Máximo 25 caracteres";
-  }
-
-  if (!form.usuario.trim()) {
-    errors.usuario = "Campo requerido";
-  } else if (form.usuario.length < 5) {
-    errors.usuario = "Mínimo 5 caracteres";
-  } else if (form.usuario.length > 15) {
-    errors.usuario = "Máximo 15 caracteres";
-  }
-
-  if (!form.contrasena.trim()) {
-    errors.contrasena = "Campo requerido";
-  } else if (form.contrasena.length < 6) {
-    errors.contrasena = "Mínimo 6 caracteres";
-  }
-
-  if (!form.email.trim()) {
-    errors.email = "Campo requerido";
-  } else if (!validateEmail(form.email)) {
-    errors.email = "Escriba un email válido";
-  }
-
-  if (!form.pais.trim()) {
-    errors.pais = "Campo requerido";
-  }
-
-  if (!form.provincia.trim()) {
-    errors.provincia = "Campo requerido";
-  }
+  
 
   if (!form.direccion.trim()) {
     errors.direccion = "Campo requerido";
-  } else if (form.direccion.length < 10) {
+  } else if (form.direccion.length < 5) {
     errors.direccion = "Mínimo 10 caracteres";
   } else if (form.direccion.length > 40) {
     errors.direccion = "Máximo 40 caracteres";
@@ -79,37 +42,55 @@ const validateform = function (form) {
 };
 
 export default function EditarPerfilConductora() {
-    const conductora = useSelector((state) => state.registroConductoraReducer.conducLogueada)
-    //const user = useSelector(state => state.LoginRegisReducer.userInfo)
+    const conductora = useSelector((state) => state.perfilConductoraReducer.perfilConductora)
+    const user = useSelector(state => state.registroConductoraReducer.conducLogueada[0].id)
   const navigate = useNavigate();
-  const [form, setForm] = useState({
- nombre: conductora[0].nombre,
-  usuario:conductora[0].usuario,
-  oldContrasena:conductora[0].contrasena,
-  contrasena: "",
-  confirm_contrasena: "",
-  email: conductora[0].email,
-  pais: conductora[0].pais,
-  provincia: conductora[0].provincia,
-  direccion: conductora[0].direccion,
-  telefono: conductora[0].telefono,
-  localidad: conductora[0].localidad});
-  const [errors, setErrors] = useState({});
-  const handleChange = (e) => {
-    const { name, value } = e.target;
 
-    const newform = { ...form, [name]: value };
-    setForm(newform);
-    const error = validateform(newform);
+  const dispatch = useDispatch()
+  const [button, setButton] = useState(true);
+  const [form, setForm] = useState({
+    nombre: conductora.nombre,
+     usuario:conductora.usuario,
+     oldContrasena:conductora?.contrasena,
+     contrasena: "",
+     confirm_contrasena: "",
+     email: conductora.email,
+     pais: conductora.pais,
+     provincia: conductora.provincia,
+     direccion: conductora?.direccion,
+     telefono: conductora?.telefono,
+     localidad: conductora.localidad});
+     const [errors, setErrors] = useState({
+       direccion: '',
+       telefono: '',
+       contrasena: ''
+     });
+  // useEffect(()=>{
+  //   form.direccion 
+  //   && form?.telefono.length > 0
+  //   && form?.oldContrasena.length > 0
+  //   && Object.keys(errors.direccion).length===0
+  //   && Object.keys(errors.telefono).length===0
+  //   && Object.keys(errors.oldContrasena).length===0
+  //   ? setButton(false)
+  //           : setButton(true)
+  // },[form,errors])
+  
+  const handleChange = (e) => {
+    setForm({
+      ...form,
+      [e.target.name]: e.target.value
+  })
+    const error = validateform(form);
     setErrors(error);
-    return newform;
+     return form;
+
+    
   };
 
   const handleSubmit = async(e) => {
     e.preventDefault();
      
-    const error = validateform(form);
-    setErrors(error)
     if (Object.keys(errors).length) {
         Swal.fire({
          icon: 'error',
@@ -120,8 +101,8 @@ export default function EditarPerfilConductora() {
     const userForm = { ...form };
     delete userForm.confirm_contrasena;
      console.log(userForm)
-     await updatePasajera(userForm  , conductora[0].id)
-     navigate('/perfilPasajera')
+    dispatch(updateConductora(userForm  ,user))
+     navigate(`/editConductora`)
  };
 
     
@@ -137,19 +118,18 @@ export default function EditarPerfilConductora() {
       <label>Nombre</label>
 
       <div className={style.containName}>
-      <input className={style.input} type="text" name="nombre" value={form.nombre} onChange={handleChange}/>
-                {errors.nombre && <span className={style.errName}>{errors.nombre}</span>}
+      <input className={style.input} type="text" name="nombre" disabled="true" value={form.nombre} onChange={handleChange}/>
       </div>
 
       <label>Usuario</label>
       <div className={style.containUser}>
-      <input className={style.input} type="text" name="usuario" value={form.usuario} onChange={handleChange}/>
-                {errors.usuario && <span className={style.errUser}>{errors.usuario}</span>}
+      <input className={style.input} disabled="true" type="text" name="usuario" value={form.usuario} onChange={handleChange}/>
+                
       </div>
 
       <label>Contraseña</label>
       <div className={style.containPass}>
-        <input className={style.input} type="text" name="oldContrasena" value={form.oldContrasena} onChange={handleChange}/>
+        <input className={style.input} type="text" disabled="true" name="oldContrasena" value={form.oldContrasena} onChange={handleChange}/>
                 {errors.contrasena && <span className={style.errPass}>{errors.contrasena}</span>}
       </div>
       <label>Nueva Contraseña</label>
@@ -171,19 +151,18 @@ export default function EditarPerfilConductora() {
       <div className={style.right}>
       <label>Email</label>
       <div className={style.containR} >
-        <input className={style.input} type="email" name="email" value={form.email} onChange={handleChange}/>
-        {errors.email && <span className={style.errEmail}>{errors.email}</span>}
+        <input className={style.input} type="email" disabled="true" name="email" value={form.email} onChange={handleChange}/>
+        
       </div>
       <label>País</label>
       <div className={style.containR}>
-        <input className={style.input} type="text" name="pais" value={form.pais} onChange={handleChange}/>
+        <input className={style.input} type="text" name="pais" disabled="true" value={form.pais} onChange={handleChange}/>
         {errors.pais && <span className={style.errR}>{errors.pais}</span>}
       </div>
 
       <label>Provincia</label>
       <div className={style.containR}>
-        <input className={style.input} type="text" name="provincia" value={form.provincia} onChange={handleChange}/>
-        {errors.provincia && <span className={style.errR}>{errors.provincia}</span>}
+        <input className={style.input} type="text" disabled="true" name="provincia" value={form.provincia} onChange={handleChange}/>
       </div>
 
       <label>Dirección</label>
@@ -199,19 +178,21 @@ export default function EditarPerfilConductora() {
       </div>
       <div className={style.contain_btns}>
         
-      <input
-              type="submit"
-              value="Actualizar"
-              className={style.btn_resgister}
-            />
+      <button className={style.btn_resgister} >Actualizar</button>
+              
+            
            </div>
            
       </div>
      </div>
-
-     
+      
+                <p> * campos obligatorios</p>
+               
+           
+         
      </form>
      </div>
     </main>
+    
   );
 }

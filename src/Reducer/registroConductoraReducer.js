@@ -31,6 +31,12 @@ export default function registroConductoraReducer (state = initialState, action)
                     registroCond: action.payload,
                     conducLogueada: action.conducLogueada
                 }
+
+                case 'UPDATE_CONDUCTORA':
+                    return{
+                        ...state,
+                        conducLogueada: action.payload
+                    }
                 
                 default:
                     return state;

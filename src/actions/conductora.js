@@ -167,6 +167,22 @@ export const filtrarPorCochecitos = (payload) => async (dispatch) => {
    
 }
 
+export const updateConductora =(form , id)=> 
+   async (dispatch) => {
+    try{
+     const res = await axios.put(`${SERVER}/conductora/update/${id}`,form)
+     console.log(res.data)
+     return dispatch({
+        type: 'UPDATE_CONDUCTORA',
+        payload: 'conductora actualizada'
+    })
+        
+    } catch (error) {
+        console.log(error)
+    }
+  
+}
+
 
 
 
