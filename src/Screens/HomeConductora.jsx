@@ -88,8 +88,8 @@ const HomeConductora = () => {
           <br />
           <h1>Bienvenida Conductora {conductoraLogueada[0].nombre} </h1>
           
-        {conductoraLogueada[0].conectada === false? <button className="btn btn-primary" type="button" onClick={(e)=> handleConnect(e)}>CONECTARME</button> :
-        <button className="btn btn-primary" type="button" onClick={(e)=> handleDisconnect(e)}>DESCONECTARME</button>}
+        {conductoraLogueada[0].conectada === false? <button className="btn btn-primary" type="button" onClick={(e)=> handleConnect(e)}>Empezar a trabajar</button> :
+        <button className="btn btn-primary" type="button" onClick={(e)=> handleConnect(e)}>Empezar a trabajar</button>}
     
         <Button type="button" className="btn btn-block" onClick={(e)=> navigate('/perfilConductora')}> PERFIL </Button>
         <Button type="button" className="btn btn-block" onClick={handleButton}> HOME </Button>
