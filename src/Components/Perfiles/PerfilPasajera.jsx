@@ -55,10 +55,10 @@ export default function PerfilPasajera() {
 
   const onDrop = useCallback(async(oFile) => {
     
-// //       console.log(oFile)
-// //      const urlImage = await saveImages(oFile[0]);
-// //       console.log(urlImage)
-// //       setImagen(urlImage)
+     console.log(oFile)
+     const urlImage = await saveImages(oFile[0]);
+      console.log(urlImage)
+       setImagen(urlImage)
     
 }, []);
 
