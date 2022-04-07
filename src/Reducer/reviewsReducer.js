@@ -31,7 +31,7 @@ export default function reviewsReducer(state = initialState, action){
         case BORRAR_REVIEW:
             return {
                 ...state,
-                reviews: action.payload
+                reviews: state.reviews.filter((r) => r.idReviews !== action.payload)
             }
 
         case OBTENER_REVIEWS_POR_CONDUCTORA:

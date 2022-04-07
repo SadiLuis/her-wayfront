@@ -2,7 +2,7 @@ import io from 'socket.io-client';
 import React, { useState, useEffect, useRef } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import Picker from 'emoji-picker-react';
-import moment from 'moment';
+//import moment from 'moment';
 import style from "./Chat.module.css";
 
 

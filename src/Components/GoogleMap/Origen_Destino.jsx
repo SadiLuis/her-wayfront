@@ -12,7 +12,8 @@ import {
   import {datosMapa} from '../../actions/recorrido'
 
 import Swal from 'sweetalert2'
-import { SkeletonText } from '@chakra-ui/react'
+import { IconButton, SkeletonText } from '@chakra-ui/react'
+import { FaLocationArrow } from 'react-icons/fa'
 
 
 const libraries = ['places'];
@@ -25,6 +26,8 @@ function OrigenDestino(){
   })
 
       const [directionsResponse, setDirectionsResponse] = useState(null)
+      const [map, setMap] = useState((null))
+      const [coordinates, setCoordinates] = useState({lat: 0, lng:0});
       const [distance, setDistance] = useState('')
       const [duration, setDuration] = useState('')
       const dispatch = useDispatch()
@@ -54,7 +57,7 @@ function OrigenDestino(){
               setDirectionsResponse(results)
               setDistance(results.routes[0].legs[0].distance.text)
               setDuration(results.routes[0].legs[0].duration.text)
-          
+              
             const data ={
               direcOrigen:results.routes[0].legs[0].start_address,
               direcDestino:results.routes[0].legs[0].end_address,
@@ -111,7 +114,9 @@ function OrigenDestino(){
                     <button
                             className='btn btn-outline-success' 
                             type='submit' 
-                            onClick={calculateRoute}>
+                            onClick={
+                              calculateRoute 
+                              }>
                         Trazar Ruta
                     </button>
 
@@ -127,11 +132,12 @@ function OrigenDestino(){
                 <div>            
                     <label htmlFor="distancia">
                             Distancia: {distance} 
-                    </label>
-                    
+                    </label>             
                     <label htmlFor="duracion">  
                             Duracion:{duration} 
                     </label>
+  
+                
                 </div>
             }
             {distance && 
