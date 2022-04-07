@@ -44,6 +44,7 @@ import EditarPerfilPas from './Components/Perfiles/EditarPerfilPas'
 import HistorialViajes from './Components/MisViajesPasajera/HistorialViajes';
 
 import HistorialConductoraViajes from './Components/MisViajesPasajera/HistorialConductoraviajes';
+import Chat from './Components/Chat/Chat';
 
 
 function App() {
@@ -92,7 +93,7 @@ function App() {
             <Route path="/editPasajera" element={<EditarPerfilPas />} />
             <Route path="/historialviajes/:id" element={<HistorialViajes />} />
             <Route path="/historialConductoraViajes/:id" element={<HistorialConductoraViajes />} />
-
+            <Route path="/chat" element={<Chat />} />
             
  
 
