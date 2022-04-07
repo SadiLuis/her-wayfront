@@ -36,6 +36,9 @@ function Mapa({setCoordinates, setBounds, coordinates}) {
       libraries,
     })
 
+    
+    console.log("cordenadas", coordinates)
+
     const [map, setMap] = useState((null))
     const [directionsResponse, setDirectionsResponse] = useState(null)
     const [distance, setDistance] = useState('')
@@ -107,76 +110,8 @@ function Mapa({setCoordinates, setBounds, coordinates}) {
       <div>
         
             <div class='container d-flex align-items-center justify-content-center vh-100'>
-          <Flex
-            position='relative'
-            justifyContent='normal'
-            marginTop='9%'
-            h='85vh'
-            w='50vw'
-            >
+          
             
-              {/* Google Map Box */}
-              <div className='card mb-3 mw-100'>
-              <div className='row '>
-                <div class="d-grid gap-2">
-                  
-              <VStack spacing={2} justifyContent='space-between'>
-            <Box flexGrow={1}>
-              <Autocomplete>
-                <Input 
-                    type='text' 
-                    placeholder='Origen' 
-                    ref={originRef} />
-              </Autocomplete>
-            </Box>
-            <Box flexGrow={1}>
-              <Autocomplete>
-                <Input
-                    type='text'
-                    placeholder='Destino'
-                    ref={destiantionRef}
-                />
-              </Autocomplete>
-            </Box>
-
-            <ButtonGroup>
-            <div className="d-grid gap-2">
-              <button 
-                    className='btn btn-outline-success' 
-                    type='submit' 
-                    onClick={calculateRoute}>
-                      Trazar Ruta
-              </button>
-              <button
-                    className='btn btn-outline-danger' 
-                    type='submit' 
-                    onClick={clearRoute}>
-                      Borrar Ruta 
-                </button>
-              </div>
-            </ButtonGroup>
-          </VStack>
-          
-        {distance && <VStack spacing={4} mt={4} justifyContent='space-between'>
-            <Text>Distancia: {distance} </Text>
-            <Text>Duracion: {duration} </Text>
-          
-          </VStack>
-          }
-          {distance && 
-              <button 
-                  className='btn btn-outline-success' 
-                  onClick={()=>{
-                    handleClickNavegar();
-                    handleSweetConfirmarViaje()
-                  }
-
-                  }
-              >Confirmar viaje</button>
-          } 
-        </div>
-      </div>
-    </div> 
               <GoogleMap
               center={coordinates}
               zoom={15}
@@ -198,7 +133,7 @@ function Mapa({setCoordinates, setBounds, coordinates}) {
                   <DirectionsRenderer directions={directionsResponse} />
               )}
             </GoogleMap>   
-        </Flex>
+        
         </div>
               </div>
         
@@ -207,3 +142,68 @@ function Mapa({setCoordinates, setBounds, coordinates}) {
     }
 
 export default Mapa;
+
+
+
+    //           {/* Google Map Box */}
+    //           <div className='card mb-3 mw-100'>
+    //           <div className='row '>
+    //             <div class="d-grid gap-2">
+                  
+    //           <VStack spacing={2} justifyContent='space-between'>
+    //         <Box flexGrow={1}>
+    //           <Autocomplete>
+    //             <Input 
+    //                 type='text' 
+    //                 placeholder='Origen' 
+    //                 ref={originRef} />
+    //           </Autocomplete>
+    //         </Box>
+    //         <Box flexGrow={1}>
+    //           <Autocomplete>
+    //             <Input
+    //                 type='text'
+    //                 placeholder='Destino'
+    //                 ref={destiantionRef}
+    //             />
+    //           </Autocomplete>
+    //         </Box>
+
+    //         <ButtonGroup>
+    //         <div className="d-grid gap-2">
+    //           <button 
+    //                 className='btn btn-outline-success' 
+    //                 type='submit' 
+    //                 onClick={calculateRoute}>
+    //                   Trazar Ruta
+    //           </button>
+    //           <button
+    //                 className='btn btn-outline-danger' 
+    //                 type='submit' 
+    //                 onClick={clearRoute}>
+    //                   Borrar Ruta 
+    //             </button>
+    //           </div>
+    //         </ButtonGroup>
+    //       </VStack>
+          
+    //     {distance && <VStack spacing={4} mt={4} justifyContent='space-between'>
+    //         <Text>Distancia: {distance} </Text>
+    //         <Text>Duracion: {duration} </Text>
+          
+    //       </VStack>
+    //       }
+    //       {distance && 
+    //           <button 
+    //               className='btn btn-outline-success' 
+    //               onClick={()=>{
+    //                 handleClickNavegar();
+    //                 handleSweetConfirmarViaje()
+    //               }
+
+    //               }
+    //           >Confirmar viaje</button>
+    //       } 
+    //     </div>
+    //   </div>
+    // </div> 

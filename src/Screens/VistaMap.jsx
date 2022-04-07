@@ -4,10 +4,9 @@ import { useDispatch, useSelector } from 'react-redux';
 import { getuserDetails } from '../actions/Usuarios';
 import { useNavigate } from 'react-router-dom';
 import Mapa from '../Components/GoogleMap/Map';
+import OrigenDestino from '../Components/GoogleMap/Origen_Destino'
 
-function ingresaDatos(){
-Swal.fire("Ingresá origen y destino de tu viaje")
-}
+import Navbar from '../Components/Landing/Navbar';
 
 
 function VistaMap() {
@@ -31,23 +30,57 @@ function VistaMap() {
       }
     },[])
 
-  return (
-      <>
+
+
+    return (
+    <div>
+            <Navbar />
+            <br />
+            <br />
+            <br />
             
-      {ingresaDatos()}
-   <div >
-      <div className='col-md-12'>
-            <Mapa 
-              setCoordinates={setCoordinates}
-              setBounds={setBounds}
-              coordinates={coordinates}
-              
-           />
-          </div>
+            
+            <div class='container d-flex align-items-center justify-content-center vh-100'>
+                 <div class='row'> 
+                        {/* Columna principal izquierda */}
+                        <div class="col-12 col-xl-6 ">
+                              <OrigenDestino />
+                        </div>    
+
+                         {/* Columna principal derecha */}
+                        <div class="col-12 col-xl-6 ">
+                                <Mapa 
+                                    setCoordinates={setCoordinates}
+                                    setBounds={setBounds}
+                                    coordinates={coordinates}
+                                    
+                                />
+                        </div>   
+
+                 </div>
+
+            </div>
       </div>
+    )
+
   
-    </>
-  )
+  // return (
+  //     <>
+            
+  //     {ingresaDatos()}
+  //  <div >
+  //     <div className='col-md-12'>
+  //           <Mapa 
+  //             setCoordinates={setCoordinates}
+  //             setBounds={setBounds}
+  //             coordinates={coordinates}
+              
+  //          />
+  //         </div>
+  //     </div>
+  
+  //   </>
+  // )
 }
 
 export default VistaMap;

@@ -30,6 +30,7 @@ function OrigenDestino(){
       const [coordinates, setCoordinates] = useState({lat: 0, lng:0});
       const [distance, setDistance] = useState('')
       const [duration, setDuration] = useState('')
+      const [distanceValue, setDistanceValue] = useState('')
       const dispatch = useDispatch()
       const navigate = useNavigate()
       const originRef = useRef()
@@ -57,6 +58,7 @@ function OrigenDestino(){
               setDirectionsResponse(results)
               setDistance(results.routes[0].legs[0].distance.text)
               setDuration(results.routes[0].legs[0].duration.text)
+              setDistanceValue(results.routes[0].legs[0].distance.value)
               
             const data ={
               direcOrigen:results.routes[0].legs[0].start_address,
@@ -88,55 +90,61 @@ function OrigenDestino(){
             navigate('/pedirconductora')
           }
 
-    return (
 
-         <div className='card mb-3 mw-100'>
-            <div className='row '>
-              <div class="d-grid gap-2">
+return (
+          <div class="card mb-3 mw-100" >
+      {/* <div class="row g-0"> */}
+        {/* <div class="col-md-5"> */}
+          {/* <h1>Imagen Perfil iba aca</h1> */}
+          {/* <img src={fotoPerfil} class="img-fluid rounded-start h-100" alt="foto perfil pasajera"></img> */}
+        {/* </div> */}  
+          <div class="col-md-12">
+              <div class="card-body">
+                <h5 class="card-title fs-1 fw-bold text-left">Ingresa los datos de tu viaje ✏</h5>
+                <br />
+                <p class="card-text fw-bolder">📍<b> Puntos de inicia y fin del recorrido:</b> </p>
+                
+                <div class="d-grid gap-2">
                 <Autocomplete>
-                <input 
-                    type='text' 
-                    placeholder='Origen' 
-                    ref={originRef} 
-                />
-                </Autocomplete>
-               <br/>
-                <Autocomplete>
-                    <input
-                        type='text'
-                        placeholder='Destino'
-                        ref={destiantionRef}
-                        />
-                </Autocomplete>
-                <br/>
+                 <input 
+                     type='text' 
+                     placeholder='Origen' 
+                     ref={originRef} 
+                 />
+                 </Autocomplete>
+                
+                 <Autocomplete>
+                     <input
+                         type='text'
+                         placeholder='Destino'
+                         ref={destiantionRef}
+                         />
+                 </Autocomplete>
 
-              <div className="d-grid gap-2">
-                    <button
-                            className='btn btn-outline-success' 
-                            type='submit' 
-                            onClick={
-                              calculateRoute 
-                              }>
-                        Trazar Ruta
-                    </button>
+                 <p class="card-text fw-bolder">🔎<b> Busca la mejor ruta:</b> </p>
 
-                    <button
-                            className='btn btn-outline-danger' 
-                            type='submit' 
-                            onClick={clearRoute}
-                            >Borrar Ruta
-                    </button>
-                </div>
-
-            {distance &&       
-                <div>            
-                    <label htmlFor="distancia">
-                            Distancia: {distance} 
-                    </label>             
-                    <label htmlFor="duracion">  
-                            Duracion:{duration} 
-                    </label>
-  
+                            
+                            <button
+                             className='btn btn-outline-success' 
+                             type='submit' 
+                             onClick={
+                               calculateRoute 
+                               }>
+                         Trazar ruta
+                     </button>
+                                      <button
+                             className='btn btn-outline-danger' 
+                             type='submit' 
+                             onClick={clearRoute}
+                             >Borrar Ruta
+                     </button>
+                          {distance &&       
+                          
+                <div>
+                  <p class="card-text fw-bolder">📏 Distancia <b> {distance}</b> </p>
+                  {console.log("distance", {distance})}
+                  <p class="card-text fw-bolder">🕓 Duracion estimada <b> {duration}</b> </p>
+                  {/* <p class="card-text fw-bolder">💸<b> Precio {(distanceValue * 0.04)}</b> </p>   */}
                 
                 </div>
             }
@@ -149,12 +157,82 @@ function OrigenDestino(){
               }      
             }
             
-            >Confirmar viaje</button>
+            >Ir a elegir mi conductora</button>
             } 
-        </div>
-      </div>    
-    </div>
-  )
+             
+                </div>
+              </div>
+            </div>
+      {/* </div> */}
+</div>
+)
+  //   return (
+
+  //        <div className='card mb-3 mw-100'>
+  //           <div className='row '>
+  //             <div class="d-grid gap-2">
+  //               <Autocomplete>
+  //               <input 
+  //                   type='text' 
+  //                   placeholder='Origen' 
+  //                   ref={originRef} 
+  //               />
+  //               </Autocomplete>
+  //              <br/>
+  //               <Autocomplete>
+  //                   <input
+  //                       type='text'
+  //                       placeholder='Destino'
+  //                       ref={destiantionRef}
+  //                       />
+  //               </Autocomplete>
+  //               <br/>
+
+  //             <div className="d-grid gap-2">
+  //                   <button
+  //                           className='btn btn-outline-success' 
+  //                           type='submit' 
+  //                           onClick={
+  //                             calculateRoute 
+  //                             }>
+  //                       Trazar Ruta
+  //                   </button>
+
+  //                   <button
+  //                           className='btn btn-outline-danger' 
+  //                           type='submit' 
+  //                           onClick={clearRoute}
+  //                           >Borrar Ruta
+  //                   </button>
+  //               </div>
+
+  //           {distance &&       
+  //               <div>            
+  //                   <label htmlFor="distancia">
+  //                           Distancia: {distance} 
+  //                   </label>             
+  //                   <label htmlFor="duracion">  
+  //                           Duracion:{duration} 
+  //                   </label>
+  
+                
+  //               </div>
+  //           }
+  //           {distance && 
+  //           <button 
+  //             className='btn btn-outline-success' 
+  //             onClick={()=>{
+  //                 handleClickNavegar();
+  //                 handleSweetConfirmarViaje()
+  //             }      
+  //           }
+            
+  //           >Confirmar viaje</button>
+  //           } 
+  //       </div>
+  //     </div>    
+  //   </div>
+  // )
 }
   
 export default OrigenDestino
