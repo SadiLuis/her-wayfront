@@ -111,7 +111,7 @@ export default function EditPerfil() {
       <h3 className={style.register}> ACTUALIZAR PERFIL </h3>
      <form className={style.form} onSubmit={handleSubmit}>
        <div className={style.info}>
-     <strong><i>Para una mayor seguridad , si desea cambiar su email debe mandar un mensaje solicitando el cambio y el motivo del mismo.</i></strong>
+     <strong><i>Para una mayor seguridad, si desea cambiar su email debe mandar un mensaje solicitando el cambio y el motivo del mismo.</i></strong>
         <p>Para solicitar el cambio de su email hacer click <Link to='/contacto'> aquí</Link> </p>
         </div>
         

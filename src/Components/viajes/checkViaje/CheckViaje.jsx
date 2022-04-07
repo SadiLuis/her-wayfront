@@ -29,7 +29,7 @@ export default function CheckViaje(props) {
     if(e.target.name === "enPuntoPartida") {
       dispatch(cambiaEstadoViaje(payload))
       Swal.fire({
-        title:"Avisaste que estas esperando en el punto de partida",
+        title:"Avisaste que estás esperando en el punto de partida",
         icon: 'success',
       })
     }  

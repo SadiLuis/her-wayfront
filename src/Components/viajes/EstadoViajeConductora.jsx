@@ -77,10 +77,10 @@ function EstadoViajeConductora() {
         dispatch(cambiaEstadoViaje(payload))
         
         Swal.fire({
-        title:"El viaje ha finalizado. Ya podés ver el importe acreditado en tu cuenta",
+        title:"El viaje ha finalizado con éxito. Buscá tu próximo viaje",
         icon: 'success',
       })
-      navigate("/viajeconductora")
+      navigate("/homeconductora")
     
       
 

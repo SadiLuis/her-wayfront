@@ -1,5 +1,5 @@
 import React from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
 // import styles from "./TarjetaConductora.module.css";
 import {HiOutlineChatAlt2} from "react-icons/hi";
 import {FaTaxi } from "react-icons/fa";
@@ -9,22 +9,23 @@ import { useState , useEffect } from 'react';
 import {getPerfilConductora,pedirConductora} from '../actions/conductora';
 import {crearViaje} from '../actions/recorrido'
 import {useDispatch, useSelector} from 'react-redux';
-// import Swal from "sweetalert2"
+ import Swal from "sweetalert2"
 
 
 
 
 
-export default function TarjetaConductoras({nombre,localidad, automovil, patente, fotoPerfil, id}) {
+export default function TarjetaConductoras({nombre,localidad, automovil, patente, fotoPerfil, id, puntaje}) {
 
   const viaje = useSelector(state => state.recorridoReducer.datosMapa)
   const pasajera = useSelector(state => state.LoginRegisReducer.usuariaLogueada[0])
+  const valoración= useSelector(state=>state.reviewsReducer.reviewsConductora)
+ const conductora= useSelector((state) => state.perfilConductoraReducer.perfilConductora)
   const dispatch = useDispatch()
   const navigate = useNavigate()
-  console.log(nombre,localidad)
+  console.log(valoración)
 
-  
-
+ 
     //console.log(id,'id')
   //   useEffect(()=>{
    
@@ -49,14 +50,18 @@ export default function TarjetaConductoras({nombre,localidad, automovil, patente
       nombreConductora: nombre,
       idPasajera: pasajera?.id,
       nombrePasajera: pasajera?.nombre,
-       precio: viaje?.results.routes[0].legs[0].distance.value * 0.04
+       precio: viaje?.results.routes[0].legs[0].distance.value * 0.04,
+    //  puntaje:valoración?.puntaje[0]
     } 
     
    
     const handleButton =(payload)=>{
-      dispatch(getPerfilConductora(payload.idConductora))
+      // dispatch(getPerfilConductora(payload.idConductora))
         dispatch(crearViaje(payload))
-      
+        Swal.fire({
+          title: "Has solicitado a tu conductora",
+          icon: "success"
+        })
         navigate('/checkpasajera/' + pasajera.id)
     } 
    
@@ -75,6 +80,8 @@ export default function TarjetaConductoras({nombre,localidad, automovil, patente
             <p className='card-text fw-bolder'>🚖<b>Automóvil</b> {automovil}</p>
             <p className='card-text fw-bolder'>🆔<b>Patente</b> {patente}</p>
             <p className='card-text fw-bolder'>🗣<b>Comunicate con ella</b></p>
+              {/* <p className='card-text fw-bolder'><b>Valoración</b>{puntaje}</p>
+             */}
             
             <div class="d-grid gap-2">
             <button class="btn btn-outline-success" type="button" name = "aceptar" onClick={()=> handleButton(data)}>Solicitar viaje</button>
