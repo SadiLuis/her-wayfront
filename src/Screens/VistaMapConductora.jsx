@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import {Grid} from '@material-ui/core';
-import Mapa from '../Components/GoogleMap/Map';
+import MapaConductora from '../Components/GoogleMap/MapaConductora';
 import Swal from "sweetalert2"
 
 
@@ -16,17 +16,17 @@ function VistaMapConductora() {
     
   return (
       
-      <div className='row conteiner p-4' >
-      <div className='col-md-8'>
-          <Grid item xs={12} md={8}>
-            <Mapa 
+      
+      <div className='col-md-12'>
+          
+            <MapaConductora
               setCoordinates={setCoordinates}
               setBounds={setBounds}
               coordinates={coordinates}
            />
-          </Grid>
+          
       </div>
-   </div> 
+    
     
   )
 }
