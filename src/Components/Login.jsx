@@ -54,7 +54,7 @@ export default function Login() {
     if( isAuth && user) {
      console.log('entre')
       setFormLogin(initialLogin);
-     navigate("/mapa")
+     navigate("/perfilPasajera")
      let timerInterval
 // Swal.fire({
 //   icon:'success',

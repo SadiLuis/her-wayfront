@@ -27,7 +27,7 @@ function VistaMap() {
     useEffect(()=>{
       if(usuariaLogueada ){
         //dispatch(obtenerConductora(conductora.idConductora))
-          dispatch(getuserDetails(usuariaLogueada[0].id))
+          dispatch(getuserDetails(usuariaLogueada[0]?.id))
       }
     },[])
 

@@ -8,7 +8,7 @@ main{
   
   .contain{
     width: 100%;
-    height: 120vh;
+    height: 99vh;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -19,7 +19,7 @@ main{
   
   .form{
     width: 60%;
-    height: 120vh;
+    height: 100vh;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -30,7 +30,7 @@ main{
     box-shadow: 3px 3px 5px #000000;
     margin-top: 20px;
     text-align: center;
-    background: linear-gradient(to right, #f988ff, #7f00b2);
+    background: linear-gradient(to right, #f7f7f7, #fdfbfe);
   }
   
   .containLR{
@@ -46,6 +46,7 @@ main{
     flex-direction: column;
     align-items: flex-end;
     gap: .1rem;
+    font-size: 1rem;
   
   }
   
@@ -55,6 +56,7 @@ main{
     flex-direction: column;
     align-items: flex-start;
     gap: .1rem;
+    font-size: 1rem;
   }
   
   .input{
@@ -96,6 +98,7 @@ main{
     transition: .3s all;
     display: flex;
     align-self: center;
+    padding-left: 42px;
   
   }
   .btn_resgister:hover{
@@ -150,7 +153,7 @@ main{
   }
   
   
-  .containName,
+  
   .containUser,
   .containPass,
   .containCpass,
@@ -160,6 +163,7 @@ main{
     height: 4rem;
     display: flex;
     justify-content: end;
+    
   }
   .errName,
   .errUser,
@@ -184,6 +188,31 @@ main{
     position: absolute;
     color: red;
     bottom: 0;
+  }
+  .info{
+    width: 70%;
+    
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+  .nombre {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    gap: 1rem;
+    
+  }
+  .containName {
+    position: relative;
+    width: 60%;
+    height: 4rem;
+    display: flex;
+    padding-left: 75px;
+    align-self: center;
+    justify-self: center;
   }
   
   @media (max-width:800px) {

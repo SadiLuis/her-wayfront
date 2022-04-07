@@ -56,7 +56,7 @@ export const AUTHENTICATION_ERROR="AUTHENTICATION_ERROR"
 export const UPDATE_USER="UPDATE_USER"
 export const RESET_PASSWORD="RESET_PASSWORD"
 export const RELOADING_PAG="RELOADING_PAG"
-
+export const DELETE_PASAJERA="DELETE_PASAJERA"
 
 ////////////////////////////////////////////////////////////////////////
 

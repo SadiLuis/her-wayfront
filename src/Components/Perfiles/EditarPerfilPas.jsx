@@ -12,11 +12,7 @@ function validateTlf(value) {
     return regex.test(value);
  }
 
-function validateEmail(value) {
-    let validRegex = /^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/;
-  
-    return validRegex.test(value);
-  }
+
 
 
 const validateform = function (form) {
@@ -42,21 +38,6 @@ const validateform = function (form) {
   } else if (form.contrasena.length < 6) {
     errors.contrasena = "Mínimo 6 caracteres";
   }
-
-  if (!form.email.trim()) {
-    errors.email = "Campo requerido";
-  } else if (!validateEmail(form.email)) {
-    errors.email = "Escriba un email válido";
-  }
-
-  if (!form.pais.trim()) {
-    errors.pais = "Campo requerido";
-  }
-
-  if (!form.provincia.trim()) {
-    errors.provincia = "Campo requerido";
-  }
-
   if (!form.direccion.trim()) {
     errors.direccion = "Campo requerido";
   } else if (form.direccion.length < 10) {
@@ -79,21 +60,19 @@ const validateform = function (form) {
 };
 
 export default function EditPerfil() {
-    const pasajera = useSelector(state => state.LoginRegisReducer.pasajera)
-    const user = useSelector(state => state.LoginRegisReducer.userInfo)
+    const pasajera = useSelector(state => state.LoginRegisReducer.usuariaLogueada)
+    
   const navigate = useNavigate();
   const [form, setForm] = useState({
- nombre: pasajera[0].nombre,
-  usuario:pasajera[0].usuario,
-  oldContrasena:pasajera[0].contrasena,
+ nombre: pasajera[0]?.nombre,
+  usuario:pasajera[0]?.usuario,
+  oldContrasena:pasajera[0]?.contrasena,
   contrasena: "",
   confirm_contrasena: "",
-  email: user.email,
-  pais: pasajera[0].pais,
-  provincia: pasajera[0].provincia,
-  direccion: pasajera[0].direccion,
-  telefono: pasajera[0].telefono,
-  localidad: pasajera[0].localidad});
+  email: pasajera[0]?.email,
+  direccion: pasajera[0]?.direccion,
+  telefono: pasajera[0]?.telefono,
+  });
   const [errors, setErrors] = useState({});
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -131,15 +110,23 @@ export default function EditPerfil() {
      <div className={style.contain}>
       <h3 className={style.register}> ACTUALIZAR PERFIL </h3>
      <form className={style.form} onSubmit={handleSubmit}>
+       <div className={style.info}>
+     <strong><i>Para una mayor seguridad , si desea cambiar su email debe mandar un mensaje solicitando el cambio y el motivo del mismo.</i></strong>
+        <p>Para solicitar el cambio de su email hacer click <Link to='/contacto'> aquí</Link> </p>
+        </div>
+        
+        <div className={style.nombre}>
+        <label>Nombre</label>
+<div className={style.containName}>
+<input className={style.input} type="text" name="nombre" value={form.nombre} onChange={handleChange}/>
+          {errors.nombre && <span className={style.errName}>{errors.nombre}</span>}
+    
+</div>
+</div>
      <div className={style.containLR}>
 
       <div className={style.left}>
-      <label>Nombre</label>
-
-      <div className={style.containName}>
-      <input className={style.input} type="text" name="nombre" value={form.nombre} onChange={handleChange}/>
-                {errors.nombre && <span className={style.errName}>{errors.nombre}</span>}
-      </div>
+     
 
       <label>Usuario</label>
       <div className={style.containUser}>
@@ -150,42 +137,16 @@ export default function EditPerfil() {
       <label>Contraseña</label>
       <div className={style.containPass}>
         <input className={style.input} type="text" name="oldContrasena" value={form.oldContrasena} onChange={handleChange}/>
-                {errors.contrasena && <span className={style.errPass}>{errors.contrasena}</span>}
+                
       </div>
       <label>Nueva Contraseña</label>
       <div className={style.containPass}>
         <input className={style.input} type="password" name="contrasena" value={form.contrasena} onChange={handleChange}/>
                 {errors.contrasena && <span className={style.errPass}>{errors.contrasena}</span>}
       </div>
-
-
-      <label>Confirmar contraseña</label>
-      <div className={style.containCpass} >
-        <input className={style.input} type="password" name="confirm_contrasena" value={form.confirm_contrasena} onChange={handleChange}/>
-        {errors.confirm_contrasena && <span className={style.errCpass}>{errors.confirm_contrasena}</span>}
-      </div>
-
-     
-
-      </div>
+ </div>
       <div className={style.right}>
-      <label>Email</label>
-      <div className={style.containR} >
-        <input className={style.input} type="email" name="email" value={form.email} onChange={handleChange}/>
-        {errors.email && <span className={style.errEmail}>{errors.email}</span>}
-      </div>
-      <label>País</label>
-      <div className={style.containR}>
-        <input className={style.input} type="text" name="pais" value={form.pais} onChange={handleChange}/>
-        {errors.pais && <span className={style.errR}>{errors.pais}</span>}
-      </div>
-
-      <label>Provincia</label>
-      <div className={style.containR}>
-        <input className={style.input} type="text" name="provincia" value={form.provincia} onChange={handleChange}/>
-        {errors.provincia && <span className={style.errR}>{errors.provincia}</span>}
-      </div>
-
+      
       <label>Dirección</label>
       <div className={style.containR}>
         <input className={style.input} type="text" name="direccion" value={form.direccion} onChange={handleChange}/>
@@ -196,6 +157,11 @@ export default function EditPerfil() {
       <div className={style.containR}>
         <input className={style.input} type="text" name="telefono" value={form.telefono} onChange={handleChange}/>
         {errors.telefono && <span className={style.errR}>{errors.telefono}</span>}
+      </div>
+      <label>Confirmar contraseña</label>
+      <div className={style.containR} >
+        <input className={style.input} type="password" name="confirm_contrasena" value={form.confirm_contrasena} onChange={handleChange}/>
+        {errors.confirm_contrasena && <span className={style.errCpass}>{errors.confirm_contrasena}</span>}
       </div>
       <div className={style.contain_btns}>
         

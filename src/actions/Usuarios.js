@@ -11,7 +11,7 @@ import {
     UPDATE_USER,
     GET_PASAJERA,
     //REFORCE_PASSWORD
-
+    DELETE_PASAJERA,
     RESET_PASSWORD,
     RELOADING_PAG,
    
@@ -179,7 +179,7 @@ export const reloadingPage = (payload)=> {
     }
 }
 
-export const getPasajeras = () => {
+export const getPasajera = () => {
     return async function (dispatch){
         try{
          const res = await axios.get(`${SERVER}/usuario`)
@@ -228,3 +228,11 @@ export const updatePasajera = async(form , id)=> {
         }
       
 }
+
+export const deletePasajera =  id => dispatch => {
+    return axios.delete(`${SERVER}/usuario/delete/${id}`)
+    .then(res => res.data)
+    .then(data => dispatch({type:DELETE_PASAJERA , payload: data}))
+    .catch(err => console.log(err))
+    
+    }
