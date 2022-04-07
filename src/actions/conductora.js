@@ -2,7 +2,7 @@ import {FILTRAR_CONDUCTORA_SEGUN_AUTO,
         PEDIR_CONDUCTORA,
         GET_PERFILC,
         DETALLE_CONDUCTORA,
-    CONDUCTORAS_CONECTADAS } from "./index"
+    CONDUCTORAS_CONECTADAS, FILTRAR_POR_PREFERENCIAS_MASCOTAS } from "./index"
 import tokenConductora from "../Helpers/TokenConductora";
 import axios from "axios";
 import {SERVER} from './VariableGlobal'
@@ -112,6 +112,63 @@ export const conductorasConectadas = () => async (dispatch) => {
     
    
 }
+//////////////
+
+export const filtrarPorMascotas = (payload) => async (dispatch) => {
+    let aux= true
+    if(payload=="true"){
+        aux= true
+    } else if(payload=="false"){
+         aux= false
+    }
+    
+    try {
+    // const respuesta= await axios.get("http://localhost:3001/conductora")
+         let conectadas = await axios.get(`${SERVER}/conductora`)
+         let conductorasfiltradas=  conectadas.data.filter(elem=>elem.conectada==true)
+         let filtroMascotas=  conductorasfiltradas.filter(elem=>elem.aceptaMascotas==aux )
+        console.log(filtroMascotas)
+        return dispatch({
+            type: FILTRAR_POR_PREFERENCIAS_MASCOTAS,
+            payload: filtroMascotas
+        })
+        
+    } catch (error) {
+        console.log("No se encontraron conductoras con esos criterios")
+    }
+    
+   
+}
+
+export const filtrarPorCochecitos = (payload) => async (dispatch) => {
+    let aux= true
+    if(payload=="true"){
+        aux= true
+    } else if(payload=="false"){
+         aux= false
+    }
+    try {
+        
+        
+         // const respuesta= await axios.get("http://localhost:3001/conductora")
+         let conectadas = await axios.get(`${SERVER}/conductora`)
+         let conductorasfiltradas=  conectadas.data.filter(elem=>elem.conectada==true)
+         let filtroCochecitos=  conductorasfiltradas.filter(elem=>elem.aceptaCochecito==aux )
+        console.log(filtroCochecitos)
+        return dispatch({
+            type: "FILTRAR_POR_PREFERENCIAS_COCHECITOS",
+            payload: filtroCochecitos
+        })
+        
+    } catch (error) {
+        console.log("No se encontraron conductoras con esos criterios")
+    }
+    
+   
+}
+
+
+
 
 
 

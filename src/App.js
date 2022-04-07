@@ -28,26 +28,20 @@ import VerificarConductora from './Components/Admin/VerificarUsuario/VerificarUs
 import DarBajaConductora from './Components/Admin/DarBajaConductora/DarBajaConductora';
 import AltaAdmins from './Components/Admin/AltaAdmins/AltaAdmins';
 import OrigenDestino from './Components/OrigenDestino/OrigenDestino';
-//import Reviews from './Components/Reviews/ReviewsConductora';
 
 import ViajeConductora from './Components/viajes/ViajeConductora'
 import LoginConGooglePasajera from './Components/LoginConGooglePasajera';
 import CrearReview from './Components/Reviews/CrearReview';
-
-
 import RecorridoPasajera from './Components/RecorridoPasajera/RecorridoPasajera';
-
 import ViajePasajera from './Components/ViajePasajera/ViajePasajera.jsx'
 import MisViajesPasajera from './Components/MisViajesPasajera/MisViajesPasajera';
-
 import EstadoViajeConductora from './Components/viajes/EstadoViajeConductora';
-
 import PantallaViajePasajera from './Components/viajes/PantallaViajePasajera'
 import EstadoViajePasajera from './Components/viajes/EstadoViajePasajera';
-
 import EditarPerfilPas from './Components/Perfiles/EditarPerfilPas'
 import HistorialViajes from './Components/MisViajesPasajera/HistorialViajes';
-import CardPasajera from './Components/viajes/CardPasajera/CardPasajera';
+
+import HistorialConductoraViajes from './Components/MisViajesPasajera/HistorialConductoraviajes';
 
 
 function App() {
@@ -95,6 +89,7 @@ function App() {
             <Route path="/viajepasajera/:idViaje" element={<EstadoViajePasajera />} />
             <Route path="/editPasajera" element={<EditarPerfilPas />} />
             <Route path="/historialviajes/:id" element={<HistorialViajes />} />
+            <Route path="/historialConductoraViajes/:id" element={<HistorialConductoraViajes />} />
 
             
  
