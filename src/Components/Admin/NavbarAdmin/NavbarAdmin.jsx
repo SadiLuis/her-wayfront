@@ -26,7 +26,7 @@ const NavbarAdmin = () => {
             <li><Link to={`../admin/altaAdmins`}>
               <span>Dar Alta Admins</span></Link>
               </li>
-             <li><Link to={`../admin`} onClick={terminarSesion}><span>Cerrar Sesion</span></Link></li>
+             <li><Link to={`../admin`} onClick={terminarSesion}><span>Cerrar Sesión</span></Link></li>
              
         </ul>
     </nav>

@@ -49,7 +49,7 @@ const validateform = function (form) {
   if (!form.telefono.trim()) {
     errors.telefono = "Campo requerido";
   } else if (!validateTlf(form.telefono)) {
-    errors.telefono = "Escriba un número de telefono válido";
+    errors.telefono = "Escriba un número de teléfono válido";
   }
 
   if (form.confirm_contrasena !== form.contrasena) {

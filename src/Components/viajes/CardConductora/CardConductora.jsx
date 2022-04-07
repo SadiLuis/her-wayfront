@@ -27,7 +27,7 @@ export default function CardConductora({nombre, automovil, patente, fotoPerfil, 
     if(e.target.name === "pantallaViaje") {
       //dispatch(cambiaEstadoViaje(payload))
       Swal.fire({
-        title:"Redirigiendote para que puedas ver el estado en el que se encuentra tu viaje",
+        title:"Redirigiéndote para que puedas ver el estado en el que se encuentra tu viaje",
         icon: 'success',
       })
       navigate("/viajepasajera/" + idViaje)
@@ -52,7 +52,7 @@ export default function CardConductora({nombre, automovil, patente, fotoPerfil, 
     <h5>La conductora está en camino</h5>
     <img width="100px" height="100px" src={fotoPerfil} alt="fotoConductora"></img>
     <p>Conductora: {nombre}</p>
-    <p>Automovil: {automovil} </p>
+    <p>Automóvil: {automovil} </p>
     <p>Patente: {patente}</p>
     <p>Estrellas: </p>
     

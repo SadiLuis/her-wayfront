@@ -34,7 +34,7 @@ function ResetPassword() {
         const handleSubmit = async(e)=>{
             e.preventDefault()
             if(state.email === '' || state.email === 'example@example.com'){
-             alert('Debes incluir un correo valido')
+             alert('Debes incluir un correo válido')
             }
             dispatch(resetPassword(state.email))
             
@@ -68,7 +68,7 @@ function ResetPassword() {
               <span className={styles.span}>Ingresa tu correo electrónico y te enviaremos un enlace para que recuperes el acceso a tu cuenta.</span>
               <input className={errInp} type='text' onChange={handleChange} icon={'f'}/>
               
-              <span className={err}>Introduce un correo valido</span>
+              <span className={err}>Introduce un correo válido</span>
               
               <input className={styles.btn} type='submit' value='Recuperar'/>
 
@@ -84,8 +84,8 @@ function ResetPassword() {
              </div>
             : <div className={styles.form}>
                 <h4 className={styles.name}>No está registrado con este email, </h4>
-                <h5 className={styles.span}>por favor ingrese un email válido</h5>
-                <button onClick={handleButton}>volver</button>
+                <h5 className={styles.span}>Por favor ingrese un email válido</h5>
+                <button onClick={handleButton}>Volver</button>
             </div>
         }
         </main>
