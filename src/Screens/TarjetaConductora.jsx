@@ -15,15 +15,15 @@ import {useDispatch, useSelector} from 'react-redux';
 
 
 
-export default function TarjetaConductoras({nombre,localidad, automovil, patente, fotoPerfil, id, puntaje}) {
+export default function TarjetaConductoras({nombre,localidad, automovil, patente, fotoPerfil, id, telefono}) {
 
   const viaje = useSelector(state => state.recorridoReducer.datosMapa)
   const pasajera = useSelector(state => state.LoginRegisReducer.usuariaLogueada[0])
   const valoración= useSelector(state=>state.reviewsReducer.reviewsConductora)
- const conductora= useSelector((state) => state.perfilConductoraReducer.perfilConductora)
+ const conductora= useSelector((state) => state.pedirConductoraReducer.todasLasConductoras)
   const dispatch = useDispatch()
   const navigate = useNavigate()
-  console.log(valoración)
+  console.log(conductora)
 
  
     //console.log(id,'id')
@@ -51,7 +51,7 @@ export default function TarjetaConductoras({nombre,localidad, automovil, patente
       idPasajera: pasajera?.id,
       nombrePasajera: pasajera?.nombre,
        precio: viaje?.results.routes[0].legs[0].distance.value * 0.04,
-    //  puntaje:valoración?.puntaje[0]
+    
     } 
     
    
@@ -79,9 +79,9 @@ export default function TarjetaConductoras({nombre,localidad, automovil, patente
             <p className='card-text fw-bolder'>🏙<b>Localidad</b> Córdoba</p>
             <p className='card-text fw-bolder'>🚖<b>Automóvil</b> {automovil}</p>
             <p className='card-text fw-bolder'>🆔<b>Patente</b> {patente}</p>
-            <p className='card-text fw-bolder'>🗣<b>Comunicate con ella</b></p>
-              {/* <p className='card-text fw-bolder'><b>Valoración</b>{puntaje}</p>
-             */}
+            <p className='card-text fw-bolder'>🗣<b>Comunicate con ella</b>{telefono}</p>
+              
+            
             
             <div class="d-grid gap-2">
             <button class="btn btn-outline-success" type="button" name = "aceptar" onClick={()=> handleButton(data)}>Solicitar viaje</button>
