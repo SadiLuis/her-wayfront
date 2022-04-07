@@ -89,6 +89,7 @@ const { getRootProps, getInputProps} = useDropzone({
         						<div class="contact">
         							<a className="btn btn-block btn-outline-danger" onClick={handleDelete}><i class="fa fa-envelope-o" ></i> Eliminar cuenta</a>
         							<a className="btn btn-block btn-outline-success" onClick={()=> navigate('/editPasajera')}><i class="fa fa-book" ></i> Editar perfil</a>
+									<button className='btn btn-block btn-outline-success' onClick={() => navigate("/historialViajes/" + pasajera[0].id)}> Ver historial de Viajes </button>
         						</div>
         					</div>
         				</div>
