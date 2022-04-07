@@ -5,12 +5,15 @@ import { useDispatch, useSelector } from 'react-redux';
 import { Loader } from '../Loader/Loader';
 import Swal from "sweetalert2";
 import CardConductora from './CardConductora/CardConductora';
+import { useParams } from 'react-router-dom';
 
 function PantallaViajePasajera() {
 
     //Harcode, esto hay que reemplazarlo por el id de la conductora logueada cuando funcion login
     let idConductora = "OOSg1YJ93xwIXqmviPg5" //el id de su doc de la coleccion conductorar en firebase
     let idPasajera = "y3Aq5F0FRDh6zJboLi3d"
+    
+    let idViaje = useParams()
     const dispatch = useDispatch()
 
     let conductora = useSelector((state) => state.perfilConductoraReducer.perfilConductora)

@@ -6,27 +6,28 @@ import { Loader } from '../Loader/Loader';
 import Swal from "sweetalert2";
 import CardPasajera from './CardPasajera/CardPasajera';
 import Navbar from '../Landing/Navbar';
+import { useParams } from 'react-router-dom';
 
 function ViajeConductora() {
 
-    //Harcode, esto hay que reemplazarlo por el id de la conductora logueada cuando funcion login
-    let idConductora = "OOSg1YJ93xwIXqmviPg5" //el id de su doc de la coleccion conductorar en firebase
+    let idConductora = useParams()
     const dispatch = useDispatch()
 
+    console.log("idConductora es", idConductora.id)
     let conductora = useSelector((state) => state.perfilConductoraReducer.perfilConductora)
     let viajeRequerido = useSelector((state) => state.viajesReducer.viajeRequeridoConductora)
     
 
     useEffect(() => {
-        dispatch(getPerfilConductora(idConductora))
-        dispatch(getViajeRequerido(idConductora))
+        dispatch(getPerfilConductora(idConductora.id))
+        dispatch(getViajeRequerido(idConductora.id))
     }, [])
 
     
     useEffect(() => {
         const interval = setInterval(() => {
-            dispatch(getViajeRequerido(idConductora));
-        }, 10000);
+            dispatch(getViajeRequerido(idConductora.id));
+        }, 5000);
         return () => clearInterval(interval);
       }, []);
 

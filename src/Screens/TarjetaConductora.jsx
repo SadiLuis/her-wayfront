@@ -18,7 +18,7 @@ import {useDispatch, useSelector} from 'react-redux';
 export default function TarjetaConductoras({nombre,localidad, automovil, patente, fotoPerfil, id}) {
 
   const viaje = useSelector(state => state.recorridoReducer.datosMapa)
-  const pasajera = useSelector(state => state.LoginRegisReducer.pasajera)
+  const pasajera = useSelector(state => state.LoginRegisReducer.usuariaLogueada[0])
   const dispatch = useDispatch()
   const navigate = useNavigate()
   console.log(nombre,localidad)
@@ -47,17 +47,17 @@ export default function TarjetaConductoras({nombre,localidad, automovil, patente
       idChat:"023545",
       idConductora: id,
       nombreConductora: nombre,
-      idPasajera: pasajera[0]?.id,
-      nombrePasajera: pasajera[0]?.nombre,
+      idPasajera: pasajera?.id,
+      nombrePasajera: pasajera?.nombre,
        precio: viaje?.results.routes[0].legs[0].distance.value * 0.04
     } 
     
    
     const handleButton =(payload)=>{
       dispatch(getPerfilConductora(payload.idConductora))
-        //dispatch(crearViaje(payload))
-
-        navigate('/viajeAceptado')
+        dispatch(crearViaje(payload))
+      
+        navigate('/checkpasajera/' + pasajera.id)
     } 
 
   return (
