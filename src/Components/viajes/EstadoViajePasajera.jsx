@@ -29,7 +29,7 @@ function EstadoViajePasajera() {
 
      useEffect(() => {
         dispatch(getViajeRequeridoPasajera(idPasajera))
-     }, [])
+     }, [idPasajera])
 
      
 
