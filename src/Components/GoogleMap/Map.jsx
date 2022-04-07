@@ -107,17 +107,16 @@ function Mapa({setCoordinates, setBounds, coordinates}) {
       <div>
         
             <div class='container d-flex align-items-center justify-content-center vh-100'>
-          <Flex
-            position='relative'
-            justifyContent='normal'
-            marginTop='9%'
-            h='85vh'
-            w='50vw'
-            >
+          
             
               {/* Google Map Box */}
               <div className='card mb-3 mw-100'>
               <div className='row '>
+                
+
+              <h5 class="card-title fs-3 fw-bold text-center">Ingresa los datos de tu viaje ✏</h5>
+                <br />
+                <p class="card-text fw-bolder text-center">📍<b> Puntos de inicia y fin del recorrido:</b> </p>
                 <div class="d-grid gap-2">
                   
               <VStack spacing={2} justifyContent='space-between'>
@@ -139,6 +138,8 @@ function Mapa({setCoordinates, setBounds, coordinates}) {
               </Autocomplete>
             </Box>
 
+            <p class="card-text fw-bolder">🔎<b> Busca la mejor ruta para el recorrido:</b> </p>
+
             <ButtonGroup>
             <div className="d-grid gap-2">
               <button 
@@ -157,11 +158,14 @@ function Mapa({setCoordinates, setBounds, coordinates}) {
             </ButtonGroup>
           </VStack>
           
-        {distance && <VStack spacing={4} mt={4} justifyContent='space-between'>
-            <Text>Distancia: {distance} </Text>
-            <Text>Duracion: {duration} </Text>
-          
-          </VStack>
+        {distance && 
+           <div>
+           <p class="card-text fw-bolder text-center">📏 Distancia <b> {distance}</b> </p>
+           {console.log("distance", {distance})}
+           <p class="card-text fw-bolder text-center">🕓 Duracion estimada <b> {duration}</b> </p>
+           {/* <p class="card-text fw-bolder">💸<b> Precio {(distanceValue * 0.04)}</b> </p>   */}
+         
+         </div>
           }
           {distance && 
               <button 
@@ -198,7 +202,7 @@ function Mapa({setCoordinates, setBounds, coordinates}) {
                   <DirectionsRenderer directions={directionsResponse} />
               )}
             </GoogleMap>   
-        </Flex>
+        
         </div>
               </div>
         

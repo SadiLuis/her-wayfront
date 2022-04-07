@@ -79,27 +79,55 @@ const HomeConductora = () => {
     navigate('/home')
   }
   return (
-    <>
+    <div>
       {conductoraLogueada.length > 0 ? (
-        < >
+        <div>
           <Navbar idConductora={conductoraLogueada[0].id} />
           <br />
           <br />
           <br />
-          <h1>Bienvenida Conductora {conductoraLogueada[0].nombre} </h1>
-          
-        {conductoraLogueada[0].conectada === false? <button className="btn btn-primary" type="button" onClick={(e)=> handleConnect(e)}>Empezar a trabajar</button> :
-        <button className="btn btn-primary" type="button" onClick={(e)=> handleConnect(e)}>Empezar a trabajar</button>}
-    
-        <Button type="button" className="btn btn-block" onClick={(e)=> navigate('/perfilConductora')}> PERFIL </Button>
-        <Button type="button" className="btn btn-block" onClick={handleButton}> HOME </Button>
+          <div class='container d-flex align-items-center justify-content-center vh-100'>
+                 <div class='row'> 
+                        {/* Columna principal izquierda */}
+                        <div class="col-12 col-xl-6 ">
+                        <div class="card mb-3 mw-100" >
       
-          <VistaMapConductora/>
-      </>
+          
+        
+          
+              <div class="card-body">
+                <h5 class="card-title fs-3 fw-bold text-center">Bienvenida Nuevamente!</h5>
+                <br />
+                <p class="card-text fw-bolder">🙋‍♀️<b> Conectate, hay miles de pasajeras requierendo viajes</b> </p>
+                
+                <br />
+                <div class="d-grid gap-2">
+                {conductoraLogueada[0].conectada === false? <button className="btn btn-primary" type="button" onClick={(e)=> handleConnect(e)}>Empezar a trabajar</button> :
+        <button className="btn btn-primary" type="button" onClick={(e)=> handleConnect(e)}>Empezar a trabajar</button>}
+                </div>
+              </div>
+            </div>
+      </div>
+</div>
+                        
+
+                         {/* Columna principal derecha */}
+                        <div class="col-12 col-xl-6 ">
+                            <VistaMapConductora/>
+                            {/* <img src="https://i.stack.imgur.com/ddX9U.png" alt="imagen mapa" className='h-100 w-100'  /> */}
+                        </div>   
+
+                 </div>
+
+            </div>
+
+
         ):( <Loader />) 
     }
-      </>
-  )
+    </div>
+    )
+      
 }
-
 export default HomeConductora
+
+
