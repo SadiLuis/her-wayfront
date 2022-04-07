@@ -36,15 +36,21 @@ function VistaMap() {
     <>
       <Navbar />
 
-      {ingresaDatos()}
+      <br />
+      <br />
+      <br />
       <div >
-        <div className='col-md-12'>
+      <div class='container d-flex align-items-center justify-content-center vh-100'>
+                 
+      <div className='col-md-12'>
           <Mapa
             setCoordinates={setCoordinates}
             setBounds={setBounds}
             coordinates={coordinates}
 
           />
+            </div>
+        
         </div>
       </div>
 
