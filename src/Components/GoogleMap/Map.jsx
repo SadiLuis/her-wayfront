@@ -129,6 +129,7 @@ function Mapa({setCoordinates, setBounds, coordinates}) {
           <Box flexGrow={1}>
             <Autocomplete>
               <Input
+                
                   type='text'
                   placeholder='Destino'
                   ref={destiantionRef}

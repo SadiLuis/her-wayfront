@@ -1,5 +1,5 @@
 import React from 'react';
-import { useNavigate } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 // import styles from "./TarjetaConductora.module.css";
 import {HiOutlineChatAlt2} from "react-icons/hi";
 import {FaTaxi } from "react-icons/fa";
@@ -73,7 +73,13 @@ export default function TarjetaConductoras({nombre,localidad, automovil, patente
             <p className='card-text fw-bolder'>🏙<b>Localidad</b> {localidad}</p>
             <p className='card-text fw-bolder'>🚖<b>Automóvil</b> {automovil}</p>
             <p className='card-text fw-bolder'>🆔<b>Patente</b> {patente}</p>
-            <p className='card-text fw-bolder'>🗣<b>Comunicate con ella</b></p>
+            <p className='card-text fw-bolder' > 
+            <Link to='/chat'>
+              <button >
+                <HiOutlineChatAlt2 className='mr-2'/>
+              </button>
+            </Link>
+            <b>Comunicate con ella</b></p>
             
             <div class="d-grid gap-2">
             <button class="btn btn-outline-success" type="button" name = "aceptar" onClick={()=> handleButton(data)}>Solicitar viaje</button>
