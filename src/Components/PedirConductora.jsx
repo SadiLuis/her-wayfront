@@ -120,6 +120,7 @@ export default function PedirConductora() {
                         localidad={elem.localidad}
                         automovil={elem.automovil}
                         patente={elem.patente}
+                        telefono={elem.telefono}
                          />
                     );
                   })}
