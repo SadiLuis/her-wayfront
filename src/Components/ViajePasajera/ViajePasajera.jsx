@@ -94,6 +94,7 @@ const ViajePasajera = () => {
     
     <DetalleRecorrido conductora={viaje.idConductora}/>
     </div>
+    
   )
 }
 

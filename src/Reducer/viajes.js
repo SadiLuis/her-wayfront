@@ -34,6 +34,7 @@ export default function viajesReducer(state = initialState, action) {
                         ...state,
                         viajeReqPasajera: action.payload
                     }                  
+
             default:
                 return state;
     }

@@ -2,9 +2,11 @@ import axios from 'axios';
 import {
     REGISTRO_CONDUCTORA,
     LOGIN_CONDUCTORA,
+    LOGOUT_CONDUCTORA
     //DETALLE
 } from './index'
 import { SERVER } from './VariableGlobal';
+import Swal from "sweetalert2";
 
 
 
@@ -24,7 +26,11 @@ export function registroConductora(payload){
     }
 }
 
-
+export function logoutConductora(){
+    return { 
+        type: LOGOUT_CONDUCTORA
+    }
+}
 
 export function loginConductora({ email, contrasena }) {
     return async (dispatch) => {
@@ -36,8 +42,6 @@ export function loginConductora({ email, contrasena }) {
             const conductoras = await axios.get(`${SERVER}/conductora`)
             const registroCond = data.user
             const filterConductor = conductoras.data.filter((c)=>data.user.email === c.email)
-            // console.log(filterConductor)
-            // console.log(data)
             dispatch({
                 type: LOGIN_CONDUCTORA,
                 payload: registroCond,
@@ -46,6 +50,12 @@ export function loginConductora({ email, contrasena }) {
             localStorage.setItem('conductoras', JSON.stringify(data)))
             
         } catch (error) {
+            Swal.fire({
+                icon: 'error',
+                title: 'Datos incorrectos',
+                text: 'La contraseña o el correo son incorrectos!',
+               
+              })
             console.log(error)
         }
     }

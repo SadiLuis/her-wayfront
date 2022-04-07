@@ -13,19 +13,20 @@ import tres from '../../image/3.jpg'
 
 
 export function validate(conductora){
-   
     let errors={};
-    if(!conductora.nombre){
+    if(!conductora.nombre && /\d/.test(conductora)){
         errors.nombre = 'debe ingresar nombre completo'
     }
-   
+    if(!conductora.apellido){
+        errors.apellido = ' debe ingresar apellido completo'
+    }
     if(!conductora.usuario){
         errors.usuario = ' debe ingresar un usuario'
     }
-    // if(!conductora.contrasena){
-    //     errors.contrasena = 'ingrese sus contraseña'
-    // }
-    if(!conductora.email){
+    if(!conductora.contrasena){
+        errors.contrasena = 'ingrese una contraseña que contenga letras y numeros'
+    }
+    if(!conductora.email && /\S+@\S+\.\S+/.test(conductora)){
         errors.email= 'debe ingresar un email valido'
     }
     if(!conductora.pais){
@@ -74,13 +75,13 @@ export default function CreateConductora(){
         usuario:"",
         contrasena:"",
         email:"",
+        telefono:"",
         pais:"",
         provincia:"",
+        localidad:"",
+        direccion:"",
         fotoPerfil:"",
         fotoDni:"",
-        direccion:"",
-        telefono:"",
-        localidad:"",
         automovil:"",
         patente:"",
         seguro:"",
@@ -106,7 +107,7 @@ export default function CreateConductora(){
     console.log('entro',auxInput)
          let errors = Object.keys(validate(conductora))
 
-        if(!errors.length !==0){
+        if(errors){
             
         setConductora({
         nombre:"",
@@ -114,13 +115,13 @@ export default function CreateConductora(){
         usuario:"",
         contrasena:"",
         email:"",
+        telefono:"",
         pais:"",
         provincia:"",
+        localidad:"",
+        direccion:"",
         fotoPerfil:"",
         fotoDni:"",
-        direccion:"",
-        telefono:"",
-        localidad:"",
         automovil:"",
         patente:"",
         seguro:"",
@@ -134,11 +135,8 @@ export default function CreateConductora(){
         }else{
             alert('rellenar los campos correctamente')
         }  
-       navigate('/perfilConductora') 
-    
-
+       navigate('/loginConductora') 
     }
-   
          
     function handleChange(name ,value){
         console.log(conductora)
@@ -209,10 +207,8 @@ export default function CreateConductora(){
                 <input name='nombre' className="form-control"
                     type='text'
                     value={conductora.nombre}
-
                     placeholder='ingrese su/s nombre/s'
                     onChange={(e)=>handleChange(e.target.name,e.target.value)}
-
                     required>
                     </input> 
                     {errors.nombre &&(
@@ -261,17 +257,17 @@ export default function CreateConductora(){
                     onChange={(e)=>handleChange(e.target.name ,e.target.value)}
                     required>
                     </input> 
-                    {/* {errors.contrasena &&(
+                    {errors.contrasena &&(
                         <p className="error">
                             {errors.contrasena}
                         </p>
-                    )}   */}
+                    )}  
                 </div>
                 <div className='form-group'>
                 <label htmlFor="exampleInputPassword1">Email *</label>
                 <input name='email'  className="form-control"
                     id='email'
-                    type='text'
+                    type='email'
                     value={conductora.email}
                     placeholder='ingrese su email'
                     onChange={(e)=>handleChange(e.target.name ,e.target.value)}
@@ -283,6 +279,23 @@ export default function CreateConductora(){
                         </p>
                     )}  
                 </div>
+                <div className='form-group'>
+                <label htmlFor="exampleInputPassword1">Telefono *</label>
+                <input name='telefono'  className="form-control"
+                    id='telefono'
+                    type='tel'
+                    value={conductora.telefono}
+                    placeholder='(Código de área) Número ej ... 011 para Bs. As.'
+                    onChange={(e)=>handleChange(e.target.name,e.target.value)}
+                    required>
+                    </input> 
+                    {errors.telefono &&(
+                        <p className="text-danger">
+                            {errors.telefono}
+                        </p>
+                    )}  
+                </div>
+
                 <div className='form-group'>
                 <label htmlFor="exampleInputPassword1">Pais *</label>
                 <input name='pais' className="form-control"
@@ -331,6 +344,22 @@ export default function CreateConductora(){
                         </p>
                     )} 
                 </div>
+                <div className='form-group'>
+                <label htmlFor="exampleInputPassword1" >Direccion *</label>
+                <input name='direccion' className="form-control"
+                    id='direccion'
+                    type='text'
+                    value={conductora.direccion}
+                    placeholder='domicilio real donde reside'
+                    onChange={(e)=>handleChange(e.target.name,e.target.value)}
+                    required>
+                    </input>  
+                    {errors.direccion &&(
+                        <p className="text-danger">
+                            {errors.direccion}
+                        </p>
+                    )} 
+                </div>
                 
                 {/* </div>*/} 
                 <div className='form-group'>
@@ -367,38 +396,8 @@ export default function CreateConductora(){
                         </p>
                     )} 
                 </div>
-                <div className='form-group'>
-                <label htmlFor="exampleInputPassword1" >Direccion *</label>
-                <input name='direccion' className="form-control"
-                    id='direccion'
-                    type='text'
-                    value={conductora.direccion}
-                    placeholder='domicilio real donde reside'
-                    onChange={(e)=>handleChange(e.target.name,e.target.value)}
-                    required>
-                    </input>  
-                    {errors.direccion &&(
-                        <p className="text-danger">
-                            {errors.direccion}
-                        </p>
-                    )} 
-                </div>
-                <div className='form-group'>
-                <label htmlFor="exampleInputPassword1">Telefono *</label>
-                <input name='telefono'  className="form-control"
-                    id='telefono'
-                    type='text'
-                    value={conductora.telefono}
-                    placeholder='numero telefonico con codigo de area ej ... 011 para Bs. As.'
-                    onChange={(e)=>handleChange(e.target.name,e.target.value)}
-                    required>
-                    </input> 
-                    {errors.telefono &&(
-                        <p className="text-danger">
-                            {errors.telefono}
-                        </p>
-                    )}  
-                </div>
+                
+               
                 
                 <div className='form-group'>
                 <label htmlFor="exampleInputPassword1">Vehiculo *</label>

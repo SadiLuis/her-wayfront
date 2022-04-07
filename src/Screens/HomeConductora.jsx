@@ -1,7 +1,8 @@
 import React, { useEffect, useState } from 'react';
 //import { useParams } from 'react-router-dom';
 import VistaMapConductora from '../Screens/VistaMapConductora';
-import {getPerfilConductora, cambiaEstadoConductora, obtenerConductora} from "../actions/conductora"
+import {getPerfilConductora, cambiaEstadoConductora, obtenerConductora} from "../actions/conductora";
+import {logoutConductora} from '../actions/registroConductora'
 import { useDispatch, useSelector } from 'react-redux';
 import {Loader} from '../Components/Loader/Loader';
 import Swal from "sweetalert2";
@@ -73,6 +74,10 @@ const HomeConductora = () => {
           })
 
     }
+    const handleButton = () => {
+      dispatch(logoutConductora())
+      navigate('/home')
+  }
     return (
       <>
         {conductoraLogueada.length >0 ?(
@@ -87,7 +92,7 @@ const HomeConductora = () => {
         <button className="btn btn-primary" type="button" onClick={(e)=> handleDisconnect(e)}>DESCONECTARME</button>}
     
         <Button type="button" className="btn btn-block" onClick={(e)=> navigate('/perfilConductora')}> PERFIL </Button>
-        <Button type="button" className="btn btn-block" onClick={(e)=> navigate('/home')}> HOME </Button>
+        <Button type="button" className="btn btn-block" onClick={handleButton}> HOME </Button>
       
           <VistaMapConductora/>
       </>

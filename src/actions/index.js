@@ -32,6 +32,7 @@ export const GET_PERFILC = 'GET_PERFILC'
 export const LOGIN_CONDUCTORA = 'LOGIN_CONDUCTORA'
 export const DETALLE = "DETALLE"
 export const REGISTRO_CONDUCTORA = "REGISTRO_CONDUCTORA"
+export const LOGOUT_CONDUCTORA ='LOGOUT_CONDUCTORA'
 //----------------------------------------------------
 
 

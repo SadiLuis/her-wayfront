@@ -1,6 +1,7 @@
 import React, { useEffect } from 'react'
 import { useDispatch, useSelector  } from 'react-redux'
 import { getPerfilConductora, obtenerConductora } from '../../actions/conductora'
+import {logoutConductora} from '../../actions/registroConductora'
 import Image from '../../Media/placeholder.png'
 import Navbar from '../Landing/Navbar'
 import { useNavigate, useParams } from "react-router-dom";
@@ -21,10 +22,13 @@ export default function PerfilConductora( ) {
     // let idConductora = "OOSg1YJ93xwIXqmviPg5"
     
     useEffect(() => {
-        dispatch(obtenerConductora(idConductora))
+        //dispatch(obtenerConductora(idConductora))
         dispatch(getPerfilConductora(idConductoraLogueada[0].id))
     }, [])
-
+    const handleButton = () => {
+        dispatch(logoutConductora())
+        navigate('/home')
+    }
 
     return (
         <div>
@@ -61,8 +65,8 @@ export default function PerfilConductora( ) {
                         {/* <p className='editIcon'>Editar Perfíl</p> */}
                     </div>
                 </div>
-            </div >
+            </div>
 
-        </div >
+        </div>
     )
 };

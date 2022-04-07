@@ -1,14 +1,15 @@
- .container{
+.container{
     width: 90%;
-    height: 80%;
-    padding: 20px;
+    height: 70%;
+    padding: 30px;
     margin: 20px;
-    background-color:#a6a6a6 ; 
+    background-color:#f9fafa94 ; 
 }  
 
 .review-colomn {
     padding: 5px;
-     border:2px solid #fcfafac9;
+    border:2px solid #000000;
+     border:2px solid #1a1919c9;
      margin: 5px;
      border-radius: 10px;
     }
@@ -26,6 +27,7 @@
         flex-direction: column;
         margin-left: 19%;
         align-content: space-around;
+
       }
       .left-column {
           width: 40%;
@@ -40,6 +42,7 @@
             }
             .be-comment-content {
                 margin-left: 80px;
+                background-color: #55c032;
                 }
                 
                 .be-comment-content span {
@@ -54,10 +57,10 @@
                 }
                 
                 .be-comment-content a {
-                color: #8d919c;
+                color: #45454e;
                 }
                 .btn btn-primary {
-                    box-shadow: #c5c8ce 2px 10px 10px;
+                    box-shadow: #cacaeb 2px 10px 10px;
                 }
                 
                 .be-comment-content span {
@@ -72,16 +75,16 @@
                 
                 .be-comment-time {
                 font-size: 11px;
-                color: #b4b7c1;
+                color: #a4a9b8;
                 }
                 
                 .be-comment-text {
                 font-size: 13px;
                 line-height: 18px;
-                color: #4b4d52;
+                color: #292a2b;
                 display: block;
-                background: #e1e1e2;
-                border: 1px solid #edeff2;
+                background: #636364;
+                border: 1px solid #949596;
                 padding: 15px 20px 20px 20px;
                 
                 }
@@ -107,5 +110,5 @@
          height: 90%;
         }
         .form-control {
-            box-shadow: #c5c7ce 2px 5px 5px;
+            box-shadow: #6f7070 2px 5px 5px;
         }

@@ -1,5 +1,6 @@
 import {REGISTRO_CONDUCTORA,
         LOGIN_CONDUCTORA,
+        LOGOUT_CONDUCTORA
 } from '../actions/index'
 
 
@@ -30,6 +31,15 @@ export default function registroConductoraReducer (state = initialState, action)
                     tokenConductora: action.payload.stsTokenManager.accessToken,
                     registroCond: action.payload,
                     conducLogueada: action.conducLogueada
+                }
+
+            case LOGOUT_CONDUCTORA:
+                localStorage.removeItem("token");
+                return{
+                    ...state,
+                    tokenCnductora: null,
+                    isAuthConductora: false,
+                    coducLogueada: null 
                 }
                 
                 default:

@@ -85,7 +85,6 @@ function App() {
             <Route path="/viajeAceptado" element={<ViajePasajera/>} />
             <Route path="/reviews/:idViaje" element={<CrearReview />} />
             <Route path="/reviews" element={<CrearReview />} />
-            <Route path="/reviews/:idViaje" element={<CrearReview />} />
             <Route path="/misViajesPasajera" element={<MisViajesPasajera />} />
             <Route path="/viajeconductora/:idViaje" element={<EstadoViajeConductora />} />
             <Route path="/pantallaviajepasajera" element={<PantallaViajePasajera />} />

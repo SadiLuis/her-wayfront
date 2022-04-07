@@ -59,6 +59,7 @@ export default function TarjetaConductoras({nombre,localidad, automovil, patente
       
         navigate('/checkpasajera/' + pasajera.id)
     } 
+   
 
   return (
     <div className='card mb-3 mw-100'>

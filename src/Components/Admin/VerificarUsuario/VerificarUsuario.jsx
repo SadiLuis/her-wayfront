@@ -22,7 +22,7 @@ const VerificarConductora = () => {
         return () => {
             dispatch(limpiarDetalle())
         }
-    }, [dispatch, id]);
+    }, [id]);
 
     const confirmarVerificacion = () => {
         //Confirmar que el usuario quiere dar de baja la conductora con sweetalert
