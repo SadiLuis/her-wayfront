@@ -47,6 +47,8 @@ import EstadoViajePasajera from './Components/viajes/EstadoViajePasajera';
 
 import EditarPerfilPas from './Components/Perfiles/EditarPerfilPas'
 import HistorialViajes from './Components/MisViajesPasajera/HistorialViajes';
+import CardPasajera from './Components/viajes/CardPasajera/CardPasajera';
+
 
 function App() {
 
@@ -93,6 +95,9 @@ function App() {
             <Route path="/viajepasajera/:idViaje" element={<EstadoViajePasajera />} />
             <Route path="/editPasajera" element={<EditarPerfilPas />} />
             <Route path="/historialviajes/:id" element={<HistorialViajes />} />
+
+            
+ 
 
 
 
