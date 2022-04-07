@@ -1,8 +1,9 @@
-import { MIS_VIAJES_PASAJERA, VIAJES_POR_PASAJERA } from "../actions";
+import { MIS_VIAJES_PASAJERA, VIAJES_POR_CONDUCTORA, VIAJES_POR_PASAJERA } from "../actions";
 
 const initialState={
     misViajesPasajera:[],
-    viajesPorPasajera:[]
+    viajesPorPasajera:[],
+    viajesPorConductora:[]
 }
 export default function misViajesPasajeraReducer(state=initialState, action){
     const {type, payload} = action;
@@ -20,6 +21,11 @@ export default function misViajesPasajeraReducer(state=initialState, action){
                     ...state,
                     viajesPorPasajera:payload
                 }
+                case VIAJES_POR_CONDUCTORA:
+                    return {
+                        ...state,
+                        viajesPorConductora:payload
+                    }
             
 
 
