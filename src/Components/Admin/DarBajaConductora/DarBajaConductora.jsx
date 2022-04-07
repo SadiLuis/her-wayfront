@@ -23,12 +23,25 @@ const DarBajaConductora = () => {
     }, [dispatch, id]);
 
     const darBajaConductora = () => {
-        
-        const confirmar = window.confirm("¿Estas seguro que deseas dar de baja este Usuario?")
-        if(confirmar){
-            dispatch(darBajaConductoras(id));
-            navigate('../admin/usuarios');
-        }
+        //Confirmar que el usuario quiere dar de baja la conductora con sweetalert
+        Swal.fire({
+            title: '¿Estás seguro?',
+            text: "¡No podrás revertir esto!",
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+        }).then((result) => {
+            if (result.value) {
+                dispatch(darBajaConductoras(id))
+                Swal.fire(
+                    '¡Eliminado!',
+                    'La conductora ha sido eliminada.',
+                    'success'
+                )
+                navigate('/admin/conductoras')
+            }
+        })
         
     };
 

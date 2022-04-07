@@ -70,7 +70,7 @@ export default function TarjetaConductoras({nombre,localidad, automovil, patente
           <div className='card-body'>
           
             <p className='card-text fw-bolder'>🙋‍♀️<b>Conductora</b> {nombre}</p>
-            <p className='card-text fw-bolder'>🏙<b>Localidad</b> {localidad}</p>
+            <p className='card-text fw-bolder'>🏙<b>Localidad</b> Córdoba</p>
             <p className='card-text fw-bolder'>🚖<b>Automóvil</b> {automovil}</p>
             <p className='card-text fw-bolder'>🆔<b>Patente</b> {patente}</p>
             <p className='card-text fw-bolder'>🗣<b>Comunicate con ella</b></p>
