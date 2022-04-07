@@ -26,10 +26,10 @@ export function validate(conductora){
         errors.contrasena = 'ingrese una contraseña que contenga letras y numeros'
     }
     if(!conductora.email && /\S+@\S+\.\S+/.test(conductora)){
-        errors.email= 'debe ingresar un email valido'
+        errors.email= 'debe ingresar un email válido'
     }
     if (!conductora.pais) {
-        errors.pais = 'debe ingresar el pais'
+        errors.pais = 'debe ingresar el país'
     }
     if (!conductora.provincia) {
         errors.provincia = 'debe ingresar la provincia donde reside'
@@ -41,22 +41,22 @@ export function validate(conductora){
         errors.fotoDni = 'seleccione DNI, permiso de Conducir o Pasaporte'
     }
     if (!conductora.direccion) {
-        errors.direccion = 'debe ingresar su direccion de residencia'
+        errors.direccion = 'debe ingresar su dirección de residencia'
     }
     if (!conductora.telefono) {
-        errors.telefono = 'Ingrese numero telefonico con codigo de area ej ... 011 para Bs. As.'
+        errors.telefono = 'Ingrese número telefónico con codigo de area ej ... 011 para Bs. As.'
     }
     if (!conductora.localidad) {
         errors.localidad = 'debe ingresear la localidad donde reside'
     }
     if (!conductora.automovil) {
-        errors.automovil = 'ingrese marca y modelo del vehiculo'
+        errors.automovil = 'ingrese marca y modelo del vehículo'
     }
     if (!conductora.patente) {
-        errors.patente = 'ingrese la patente del vehiculo'
+        errors.patente = 'ingrese la patente del vehículo'
     }
     if (!conductora.seguro) {
-        errors.seguro = 'ingrese nombre del seguro y poliza'
+        errors.seguro = 'ingrese nombre del seguro y póliza'
     }
 
     if(!conductora.habilitacion){
@@ -329,7 +329,7 @@ export default function CreateConductora() {
 
                     {/* </div>*/}
                     <div className='form-group'>
-                        <label htmlFor="exampleInputPassword1">&nbsp; Foto de Perfíl</label>
+                        <label htmlFor="exampleInputPassword1">&nbsp; Foto de Perfil</label>
                         <input name='fotoPerfil' className="form-control"
                             id='fotoPerfil'
                             type='file'
@@ -497,7 +497,7 @@ export default function CreateConductora() {
                         }}>Volver</button>
                     </Link> */}
                     <div div className="form-group form-check p-2 text-center">
-                        <small >El equipo de Her-Way nunca te pedira tu correo o contraseña. </small>
+                        <small >El equipo de Her-Way nunca te pedirá tu correo o contraseña. </small>
                     </div>
 
                 {/* </form> */}

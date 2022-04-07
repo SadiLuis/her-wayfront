@@ -209,7 +209,7 @@ const initialLogin = {
                                     fontWeight: 'bold'
 
                                 }} >
-                                    ¿ Olvidaste tu contraseña ?
+                                    ¿Olvidaste tu contraseña?
                                 </Link>
                             </div>
                         </div>
@@ -234,7 +234,7 @@ const initialLogin = {
                             </Link>
                         </div>
                         <div className="form-group form-check p-2 text-center">
-                            <small >El equipo de Her-Way nunca te pedira tu correo o contraseña. </small>
+                            <small >El equipo de Her-Way nunca te pedirá tu correo o contraseña. </small>
                             {/* <br />
                             <label className="form-check-label" htmlFor="exampleCheck1">Comprendo</label>
                             <input type="checkbox" className="form-check-input" id="exampleCheck1" /> */}
