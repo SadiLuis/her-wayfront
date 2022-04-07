@@ -40,6 +40,7 @@ import EstadoViajeConductora from './Components/viajes/EstadoViajeConductora';
 import PantallaViajePasajera from './Components/viajes/PantallaViajePasajera'
 import EstadoViajePasajera from './Components/viajes/EstadoViajePasajera';
 import EditarPerfilPas from './Components/Perfiles/EditarPerfilPas'
+import EditarPerfilConductora from './Components/Perfiles/EditarPerfilConductora';
 import HistorialViajes from './Components/MisViajesPasajera/HistorialViajes';
 
 
@@ -87,6 +88,7 @@ function App() {
             <Route path="/pantallaviajepasajera" element={<PantallaViajePasajera />} />
             <Route path="/viajepasajera/:idViaje" element={<EstadoViajePasajera />} />
             <Route path="/editPasajera" element={<EditarPerfilPas />} />
+            <Route path="/editConductora" element={<EditarPerfilConductora />} />
             <Route path="/historialviajes/:id" element={<HistorialViajes />} />
 
 

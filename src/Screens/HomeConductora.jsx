@@ -8,6 +8,7 @@ import Swal from "sweetalert2";
 import NavbarConductora from '../Components/NavbarConductora/NavbarConductora'
 import { useNavigate, useParams } from 'react-router-dom';
 import { Button } from 'react-bootstrap';
+import VerificarConductora from './VerificarConductora';
 
 
 const HomeConductora = () => {
@@ -75,8 +76,10 @@ const HomeConductora = () => {
     }
     return (
       <>
-        {conductoraLogueada.length >0 ?(
-          
+        {conductoraLogueada.length >0 ?
+        !conductoraLogueada[0].verificar?
+        (
+
           < >
           <NavbarConductora idConductora={conductoraLogueada[0].id} /> 
           <br />
@@ -92,7 +95,8 @@ const HomeConductora = () => {
       
           <VistaMapConductora/>
       </>
-        ):( <Loader />) 
+        ):(<VerificarConductora/>)
+        :( <Loader />) 
     }
       </>
   )
