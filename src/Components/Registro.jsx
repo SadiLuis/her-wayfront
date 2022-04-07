@@ -144,7 +144,7 @@ export default function Registro() {
           </div>
           {/* Foto */}
           <div class="mb-1">
-            <label htmlFor="exampleInputPassword1">&nbsp; Foto de Perfíl</label>
+            <label htmlFor="exampleInputPassword1">&nbsp; Foto de Perfil</label>
             <input type="file" className="form-control" id="exampleInputPassword1" placeholder="Nombre de usuario" name='fotoPerfil' onChange={(e) => handleChange(e.target.name, e.target.files[0])} />
           </div>
 
@@ -184,7 +184,7 @@ export default function Registro() {
           </div>
           <button type="submit" class="btn btn-primary w-100" >Registrarse</button>
           <div div className="form-group form-check p-2 text-center">
-            <small >El equipo de Her-Way nunca te pedira tu correo o contraseña. </small>
+            <small >El equipo de Her-Way nunca te pedirá tu correo o contraseña. </small>
           </div>
 
         </form>

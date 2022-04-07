@@ -89,14 +89,15 @@ const { getRootProps, getInputProps} = useDropzone({
         						<div class="contact">
         							<a className="btn btn-block btn-outline-danger" onClick={handleDelete}><i class="fa fa-envelope-o" ></i> Eliminar cuenta</a>
         							<a className="btn btn-block btn-outline-success" onClick={()=> navigate('/editPasajera')}><i class="fa fa-book" ></i> Editar perfil</a>
-									<a className='btn btn-block btn-outline-success' onClick={() => navigate("/historialViajes/" + pasajera[0].id)}> Ver historial de Viajes </a>
+                      <a className='btn btn-block btn-outline-success' onClick={() => navigate("/historialViajes/" + pasajera[0].id)}> Ver historial de Viajes </a>
+
         						</div>
         					</div>
         				</div>
         				<div class="col-12 col-xl-6 ">
         					<div class="user-info-right">
         						<div class="basic-info">
-        							<h3><i class="fa fa-square"></i> Informacion básica</h3>
+        							<h3><i class="fa fa-square"></i> Información básica</h3>
         							<p class="data-row">
         								<span class="data-name">Usuario</span>
         								<span class="data-value">{pasajera[0].usuario}</span>
@@ -120,7 +121,7 @@ const { getRootProps, getInputProps} = useDropzone({
         								<span class="data-value">{pasajera[0].email}</span>
         							</p>
         							<p class="data-row">
-        								<span class="data-name">Telefono</span>
+        								<span class="data-name">Teléfono</span>
         								<span class="data-value">{pasajera[0].telefono}</span>
         							</p>
         							<p class="data-row">

@@ -55,7 +55,7 @@ const BotonPago = (props) => {
           }, 3000);
           
           Swal.fire({
-            title:"Estas por ser redirigido al sitio de mercadoPago para concretar el pago",
+            title:"Estás por ser redirigido al sitio de mercadoPago para concretar el pago",
             icon: 'warning',
             showConfirmButton: true,
             confirmButtonText: 'Acepto!'

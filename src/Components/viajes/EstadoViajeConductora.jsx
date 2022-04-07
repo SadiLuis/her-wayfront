@@ -44,7 +44,7 @@ function EstadoViajeConductora() {
     if(e.target.name === "enPuntoPartida") {
       dispatch(cambiaEstadoViaje(payload))
       Swal.fire({
-        title:"Avisaste que estas esperando en el punto de partida",
+        title:"Avisaste que estás esperando en el punto de partida",
         icon: 'success',
       })
       
@@ -77,10 +77,10 @@ function EstadoViajeConductora() {
         dispatch(cambiaEstadoViaje(payload))
         
         Swal.fire({
-        title:"El viaje ha finalizado. Ya podes ver el importe acreditado en tu cuenta",
+        title:"El viaje ha finalizado con éxito. Buscá tu próximo viaje",
         icon: 'success',
       })
-      navigate("/viajeconductora")
+      navigate("/homeconductora")
     
       
 

@@ -38,15 +38,15 @@ const DetalleConductora = () => {
                     </p>
                     <p className={styles.card__text}>Email: 
                         <span>{detalle.email}</span></p>
-                    <p className={styles.card__text}>Pais: 
+                    <p className={styles.card__text}>País: 
                         <span>{detalle.pais}</span></p>
                     <p className={styles.card__text}>Provincia:
                     <span>{detalle.provincia}</span></p>
                     <p className={styles.card__text}>Localidad: 
                     <span>{detalle.localidad}</span></p>
-                    <p className={styles.card__text}>Direccion: 
+                    <p className={styles.card__text}>Dirección: 
                     <span>{detalle.direccion}</span></p>
-                    <p className={styles.card__text}>Telefono: 
+                    <p className={styles.card__text}>Teléfono: 
                     <span>{detalle.telefono}</span></p>
 
                 </section>
@@ -54,7 +54,7 @@ const DetalleConductora = () => {
             <div className={styles.card}>
                 <section className={styles.card__body}>
                     <h3>
-                        Detalle Automovil
+                        Detalle Automóvil
                     </h3>
 
                     <p className={styles.card__text}>Modelo: 
@@ -66,7 +66,7 @@ const DetalleConductora = () => {
                     <p className={styles.card__text}>Seguro: 
                     <span>{detalle.seguro}</span>
                     </p>
-                    <p className={styles.card__text}>Habilitecion: 
+                    <p className={styles.card__text}>Habilitación: 
                     <span>{detalle.habilitacion}</span>
                     </p>
                 </section>

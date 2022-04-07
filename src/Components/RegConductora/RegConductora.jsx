@@ -11,25 +11,25 @@ import tres from '../../image/3.jpg'
 
 //import { useStorage} from "reactfire"
 
-export function validate(conductora){
-    let errors={};
-    if(!conductora.nombre && /\d/.test(conductora)){
+export function validate(conductora) {
+    let errors = {};
+    if (!conductora.nombre && /\d/.test(conductora)) {
         errors.nombre = 'debe ingresar nombre completo'
     }
-    if(!conductora.apellido){
+    if (!conductora.apellido) {
         errors.apellido = ' debe ingresar apellido completo'
     }
-    if(!conductora.usuario){
+    if (!conductora.usuario) {
         errors.usuario = ' debe ingresar un usuario'
     }
-    if(!conductora.contrasena){
+    if (!conductora.contrasena) {
         errors.contrasena = 'ingrese una contraseña que contenga letras y numeros'
     }
-    if(!conductora.email && /\S+@\S+\.\S+/.test(conductora)){
-        errors.email= 'debe ingresar un email valido'
+    if (!conductora.email && /\S+@\S+\.\S+/.test(conductora)) {
+        errors.email = 'debe ingresar un email válido'
     }
     if (!conductora.pais) {
-        errors.pais = 'debe ingresar el pais'
+        errors.pais = 'debe ingresar el país'
     }
     if (!conductora.provincia) {
         errors.provincia = 'debe ingresar la provincia donde reside'
@@ -41,26 +41,26 @@ export function validate(conductora){
         errors.fotoDni = 'seleccione DNI, permiso de Conducir o Pasaporte'
     }
     if (!conductora.direccion) {
-        errors.direccion = 'debe ingresar su direccion de residencia'
+        errors.direccion = 'debe ingresar su dirección de residencia'
     }
     if (!conductora.telefono) {
-        errors.telefono = 'Ingrese numero telefonico con codigo de area ej ... 011 para Bs. As.'
+        errors.telefono = 'Ingrese número telefónico con codigo de area ej ... 011 para Bs. As.'
     }
     if (!conductora.localidad) {
         errors.localidad = 'debe ingresear la localidad donde reside'
     }
     if (!conductora.automovil) {
-        errors.automovil = 'ingrese marca y modelo del vehiculo'
+        errors.automovil = 'ingrese marca y modelo del vehículo'
     }
     if (!conductora.patente) {
-        errors.patente = 'ingrese la patente del vehiculo'
+        errors.patente = 'ingrese la patente del vehículo'
     }
     if (!conductora.seguro) {
-        errors.seguro = 'ingrese nombre del seguro y poliza'
+        errors.seguro = 'ingrese nombre del seguro y póliza'
     }
 
-    if(!conductora.habilitacion){
-        errors.habilitacion='ingrese la habilitación correspondiete del vehículo'
+    if (!conductora.habilitacion) {
+        errors.habilitacion = 'ingrese la habilitación correspondiete del vehículo'
     }
     return errors
 }
@@ -70,25 +70,25 @@ export default function CreateConductora() {
     const dispatch = useDispatch();
     const refFileInput = useRef();
 
-    const [conductora, setConductora]=useState({   //este es mi input
-        nombre:"",
-        apellido:"",
-        usuario:"",
-        contrasena:"",
-        email:"",
-        telefono:"",
-        pais:"",
-        provincia:"",
-        localidad:"",
-        direccion:"",
-        fotoPerfil:"",
-        fotoDni:"",
-        automovil:"",
-        patente:"",
-        seguro:"",
-        habilitacion:"",
-        aceptaMascotas:"",
-        aceptaCochecito:""
+    const [conductora, setConductora] = useState({   //este es mi input
+        nombre: "",
+        apellido: "",
+        usuario: "",
+        contrasena: "",
+        email: "",
+        telefono: "",
+        pais: "",
+        provincia: "",
+        localidad: "",
+        direccion: "",
+        fotoPerfil: "",
+        fotoDni: "",
+        automovil: "",
+        patente: "",
+        seguro: "",
+        habilitacion: "",
+        aceptaMascotas: "",
+        aceptaCochecito: ""
     });
 
     const [errors, setErrors] = useState({})
@@ -105,38 +105,38 @@ export default function CreateConductora() {
         auxInput.fotoPerfil = urlImage;
         auxInput.fotoDni = urlImage2
 
-        if(errors){
-            
-        setConductora({
-        nombre:"",
-        apellido:"",
-        usuario:"",
-        contrasena:"",
-        email:"",
-        telefono:"",
-        pais:"",
-        provincia:"",
-        localidad:"",
-        direccion:"",
-        fotoPerfil:"",
-        fotoDni:"",
-        automovil:"",
-        patente:"",
-        seguro:"",
-        habilitacion:"",
-        aceptaMascotas:"",
-        aceptaCochecito:"",
-        
-        })
-        dispatch(registroConductora(auxInput))
-        alert('usuario creado con éxito')
-        }else{
+        if (errors) {
+
+            setConductora({
+                nombre: "",
+                apellido: "",
+                usuario: "",
+                contrasena: "",
+                email: "",
+                telefono: "",
+                pais: "",
+                provincia: "",
+                localidad: "",
+                direccion: "",
+                fotoPerfil: "",
+                fotoDni: "",
+                automovil: "",
+                patente: "",
+                seguro: "",
+                habilitacion: "",
+                aceptaMascotas: "",
+                aceptaCochecito: "",
+
+            })
+            dispatch(registroConductora(auxInput))
+            alert('usuario creado con éxito')
+        } else {
             alert('rellenar los campos correctamente')
-        }  
-       navigate('/loginConductora') 
+        }
+        navigate('/loginConductora')
     }
-         
-    function handleChange(name ,value){
+
+    function handleChange(name, value) {
         console.log(conductora)
         setConductora({
             ...conductora,
@@ -147,15 +147,15 @@ export default function CreateConductora() {
             [name]: value,
         }))
     }
-    function handleSelectMascotas(e){
+    function handleSelectMascotas(e) {
         console.log(conductora)
         setConductora({
             ...conductora,
             aceptaMascotas: e.target.value
         })
     }
-  
-   function handleSelectCochecitos(e){
+
+    function handleSelectCochecitos(e) {
         console.log(conductora)
         setConductora({
             ...conductora,
@@ -329,7 +329,7 @@ export default function CreateConductora() {
 
                     {/* </div>*/}
                     <div className='form-group'>
-                        <label htmlFor="exampleInputPassword1">&nbsp; Foto de Perfíl</label>
+                        <label htmlFor="exampleInputPassword1">&nbsp; Foto de Perfil</label>
                         <input name='fotoPerfil' className="form-control"
                             id='fotoPerfil'
                             type='file'
@@ -427,6 +427,7 @@ export default function CreateConductora() {
                             </p>
                         )}
                     </div>
+
                     <div className='form-group'>
                         <label htmlFor="exampleInputPassword1">&nbsp; Seguro</label>
                         <input name='seguro' className="form-control"
@@ -443,48 +444,51 @@ export default function CreateConductora() {
                             </p>
                         )}
                     </div>
-           
-                <label>Acepta Mascotas:</label>
-                <select onChange={(e)=>handleSelectMascotas(e)}>
-                    <option value="false" name="aceptaMascotas" defaultValue={false}>Elige</option>
-                    <option value="true" name="aceptaMascotas"defaultValue={false}>Acepta</option>
-                    <option value="false" name="aceptaMascotas" defaultValue={false}>No Acepta</option>
-                    
-                </select>
-                </form>
-                </div>
+                    <br />
+                    <div class="pb-1">
+                        <label>&nbsp; Acepta Mascotas: &nbsp; </label>
+                        <select onChange={(e) => handleSelectMascotas(e)}>
+                            <option value="false" name="aceptaMascotas" defaultValue={false}>Elige</option>
+                            <option value="true" name="aceptaMascotas" defaultValue={false}>Acepta</option>
+                            <option value="false" name="aceptaMascotas" defaultValue={false}>No Acepta</option>
 
-                <div>
-                <label>Acepta Cochecitos de bebés:</label>
-                <select onChange={(e)=>handleSelectCochecitos(e)}>
-                <option value="true" name="aceptaCochecito">Elige </option>
-                    <option value="true" name="aceptaCochecito">Acepta </option>
-                    <option value="false" name="aceptaCochecito">No Acepta</option>
-                    
-                </select>
-                </div>
-                <div className='form-group'>
+                        </select>
+
+                    </div>
+
+
+                    <div >
+                        <label>&nbsp; Acepta Cochecitos de bebés: &nbsp; </label>
+                        <select onChange={(e) => handleSelectCochecitos(e)}>
+                            <option value="true" name="aceptaCochecito">Elige </option>
+                            <option value="true" name="aceptaCochecito">Acepta </option>
+                            <option value="false" name="aceptaCochecito">No Acepta</option>
+
+                        </select>
+                    </div>
+                    <br />
+                    <div className='form-group'>
                         <label htmlFor="exampleInputPassword1">&nbsp; Habilitación</label>
-                <input name='habilitacion' className="form-control"
-                    id='habilitacion'
-                    type='text'
-                    value={conductora.habilitacion}
-                    placeholder='habilitacion municipal'
-                    onChange={(e)=>handleChange(e.target.name,e.target.value)}
-                    required>
-                    </input>  
-                    {errors.habilitacion &&(
-                        <p className="text-danger">
-                            {errors.habilitacion}
-                        </p>
-                    )} 
-                </div>
+                        <input name='habilitacion' className="form-control"
+                            id='habilitacion'
+                            type='text'
+                            value={conductora.habilitacion}
+                            placeholder='habilitacion municipal'
+                            onChange={(e) => handleChange(e.target.name, e.target.value)}
+                            required>
+                        </input>
+                        {errors.habilitacion && (
+                            <p className="text-danger">
+                                {errors.habilitacion}
+                            </p>
+                        )}
+                    </div>
 
-                <br />
+                    <br />
 
                     <button class="btn btn-primary w-100" type='submit'
 
-               
+
                      /* disabled={conductora.nombre&&conductora.apellido&&conductora.usuario&&conductora.contrasena&&
                         conductora.direccion&&conductora.email&&conductora.fotoPerfil&&conductora.localidad&&conductora.pais&&conductora.automovil&&
                         conductora.patente&&conductora.habilitacion&&conductora.seguro&&conductora.provincia&&conductora.telefono&&conductora.fotoDni ? false : true} */>Registrarse</button>
@@ -497,11 +501,12 @@ export default function CreateConductora() {
                         }}>Volver</button>
                     </Link> */}
                     <div div className="form-group form-check p-2 text-center">
-                        <small >El equipo de Her-Way nunca te pedira tu correo o contraseña. </small>
+                        <small >El equipo de Her-Way nunca te pedirá tu correo o contraseña. </small>
                     </div>
-
-                {/* </form> */}
+                </form>
             </div>
+            {/* </form> */}
+        </div >
         // </div>
 
     )

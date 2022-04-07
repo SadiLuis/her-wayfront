@@ -24,7 +24,7 @@ const DetalleRecorrido = ({idConductora}) => {
         <p>Auto</p>
         <p>Modelo de auto: {conductora.automovil}</p>
         <p>Patente:{conductora.patente}</p>
-        <p>Habilitacion:{conductora.habilitacion}</p>
+        <p>Habilitación:{conductora.habilitacion}</p>
         </section>
 
         <button className={styles.button__perfil} onClick={cancelarViaje}>Cancelar Viaje</button>

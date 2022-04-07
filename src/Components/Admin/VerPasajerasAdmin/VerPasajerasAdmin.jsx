@@ -24,11 +24,11 @@ const VerPasajerasAdmin = () => {
           <th>Nombre</th>
           <th>Usuario</th>
           <th>Email</th>
-          <th>Direccion</th>
+          <th>Dirección</th>
           <th>Pais</th>
           <th>Provincia</th>
           <th>Localidad</th>
-          <th>Telefono</th>
+          <th>Teléfono</th>
         </tr>
 
         {pasajeras.map(p => (

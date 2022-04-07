@@ -53,7 +53,7 @@ export default function PerfilConductora( ) {
                         <h4> Localidad: {idConductoraLogueada[0].localidad} </h4>
                         <br />
                         <h2>Info Vehicular</h2>
-                        <h4> Automovil: {idConductoraLogueada[0].automovil} </h4>
+                        <h4> Automóvil: {idConductoraLogueada[0].automovil} </h4>
                         <h4> Patente: {idConductoraLogueada[0].patente} </h4>
                         <h4> Habilitación: {idConductoraLogueada[0].habilitacion} </h4>
                         {/* <h4> cambiar contraseña </h4> */}
@@ -65,7 +65,7 @@ export default function PerfilConductora( ) {
                     </div>
                 </div>
             </div>
-                            <button className='btn btn-block btn-outline-success' onClick={() => navigate("/historialConductoraViajes/" + idConductoraLogueada[0].id)}> Ver historial de Viajes </button>
+                            <button className='btn btn-block btn-outline-success' onClick={() => navigate("/historialConductoraViajes/" + idConductoraLogueada[0].id)}> Ver historial de viajes </button>
 
         </div>
     )

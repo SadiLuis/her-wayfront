@@ -89,7 +89,7 @@ export default function CheckViajePasajera(props) {
                 <br />
                 <p class="card-text fw-bolder">✔<b> Solicitaste un viaje 🙋‍♀️</b> </p>
                 <p class="card-text fw-bolder">⚪ La conductora aceptó el viaje ✍ </p>
-                <p class="card-text fw-bolder">⚪ La conductora llego al punto de partida 📍</p>
+                <p class="card-text fw-bolder">⚪ La conductora llegó al punto de partida 📍</p>
                 <p class="card-text fw-bolder">⚪ Inicia el recorrido ⚡</p>
                 <p class="card-text fw-bolder">⚪ El recorrido ha finalizado 🏁</p>
                 <br />
