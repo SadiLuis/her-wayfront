@@ -61,11 +61,11 @@ export default function PerfilConductora( ) {
                         <br />
                             <button className='logoutC' onClick={() => navigate('/home')}> Log out </button>
                             <button className='volver' onClick={() => navigate('/homeConductora')}> Volver </button>
-                            <button className='historialViajes' onClick={() => navigate("/historialConductoraViajes/" + idConductoraLogueada[0].id)}> Ver historial de Viajes </button>
                         {/* <p className='editIcon'>Editar Perfíl</p> */}
                     </div>
                 </div>
             </div>
+                            <button className='btn btn-block btn-outline-success' onClick={() => navigate("/historialConductoraViajes/" + idConductoraLogueada[0].id)}> Ver historial de Viajes </button>
 
         </div>
     )

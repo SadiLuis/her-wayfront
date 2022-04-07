@@ -451,6 +451,7 @@ export default function CreateConductora() {
                     <option value="false" name="aceptaMascotas" defaultValue={false}>No Acepta</option>
                     
                 </select>
+                </form>
                 </div>
 
                 <div>
@@ -499,9 +500,9 @@ export default function CreateConductora() {
                         <small >El equipo de Her-Way nunca te pedira tu correo o contraseña. </small>
                     </div>
 
-                </form>
+                {/* </form> */}
             </div>
-        </div>
+        // </div>
 
     )
 
