@@ -89,7 +89,7 @@ console.log('input :>> ', input);
                     onChange={e => setInput({ ...input, comentario: e.target.value })}>
               </textarea>
               <div style={{marginBottom:20}} className="btn-group col-3" >{/*agrupa los botones*/}
-                <label style={{marginRight:20}}>Calificacion</label>
+                <label style={{marginRight:20}}>Calificación</label>
                 <input 
                     className="form-input" 
                     type='number' 
