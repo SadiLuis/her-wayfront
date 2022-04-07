@@ -1,7 +1,7 @@
 import React from "react";
 import Swal from 'sweetalert2';
 import { useEffect, useState } from "react";
-import {postReview , getReviews} from '../../actions/reviews'
+import {postReview , getReviews, deleteReview} from '../../actions/reviews'
 import { useDispatch, useSelector } from "react-redux";
 import s from './CrearReviews.module.css'
 import { useNavigate, useParams } from "react-router-dom";
@@ -12,7 +12,7 @@ import ReactStars from "react-rating-stars-component";
 
 
 export default function Reviews () {
-    let { idViaje} = useParams()
+    let { idViaje, idConductora} = useParams()
     const dispatch = useDispatch()
     const navigate = useNavigate()
     
@@ -25,25 +25,23 @@ export default function Reviews () {
     //const viaje = useSelector((state) => state.viajesReducer.)
     
     const [input, setInput] = useState({
-        // idConductora: viaje[0].idConductora,
-        // idPasajera: viaje[0].idPasajera,
-        // conductora:viaje[0].conductora,
-        // pasajera:viaje[0].pasajera,
-       
-        idConductora:"OOSg1YJ93xwIXqmviPg5",
-        idPasajera:"LaoSjzi9oz46BRGTNUgk",
-        conductora:"carina perez",
-        pasajera:"lucrecia perez",
-        comentario:'',
-        puntaje:''
+      idConductora: viaje[0].idConductora,
+      idPasajera: viaje[0].idPasajera,
+      conductora:viaje[0].conductora,
+      pasajera:viaje[0].pasajera,
+     
+      // idConductora:"OOSg1YJ93xwIXqmviPg5",
+      // idPasajera:"LaoSjzi9oz46BRGTNUgk",
+      // conductora:"carina perez",
+      // pasajera:"lucrecia perez",
+      comentario:'',
+      puntaje:''
     })
 
     useEffect(() => {
-      dispatch(getReviews(idViaje));     
+      dispatch(getReviews());     
     }, []);  
 
-
-   
  
     const handleSubmit = (e) => {
       e.preventDefault()
@@ -68,7 +66,6 @@ export default function Reviews () {
             })
           }
         }
-       
 
 
 console.log('input :>> ', input);
@@ -108,6 +105,7 @@ console.log('input :>> ', input);
               </div>
             </form>
           </div>
+
           <hr className="featurette-divider"/>
           <div>
             {reviews.length > 0 ?
@@ -117,6 +115,7 @@ console.log('input :>> ', input);
                       <img src={re.fotoPerfil ? re.fotoPerfil : login_mujer} alt="" className="be-ava-comment"/>
                   </div>
                   <div className="review-colomn" >
+                  
                   <span className="be-comment-name">
                       <h5 href="blog-detail-2.html">Nombre de usuario: {re.pasajera ? re.pasajera : "Juana 123"}</h5>
                     </span>
@@ -127,7 +126,7 @@ console.log('input :>> ', input);
                             value={re.puntaje}
                             size={28}
                             // activeColor="#ffd700"
-                            activeColor="rgb(0, 72, 181)"
+                            activeColor="rgb(250, 200, 0)"
                       />}</h6>
                       </div>
                     </div> 
