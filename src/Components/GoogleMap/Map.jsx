@@ -8,6 +8,7 @@ import {
   Input,
   SkeletonText,
   Text,
+  VStack,
 } from '@chakra-ui/react'
 import { FaLocationArrow, FaTimes } from 'react-icons/fa'
 
@@ -23,6 +24,8 @@ import {useNavigate} from 'react-router-dom'
 import {useDispatch} from 'react-redux'
 import {datosMapa} from '../../actions/recorrido'
 import Swal from "sweetalert2"
+import Navbar from '../NavbarConductora/NavbarConductora'
+import OrigenDestino from './Origen_Destino'
 
 
 const libraries = ['places'];
@@ -97,110 +100,110 @@ function Mapa({setCoordinates, setBounds, coordinates}) {
       //}
 
 
-  return (
-    <Flex
-      position='relative'
-      flexDirection='column'
-      alignItems='center'
-      marginTop='20px'
-      h='100vh'
-      w='100vw'
-    >
-      <Box position='relative' left={0} top={0} h='100%' w='100%'>
-        {/* Google Map Box */}
-        <Box
-        p={4}
-        borderRadius='lg'
-        m={4}
-        bgColor='white'
-        shadow='base'
-        minW='container.md'
-        zIndex='1'
-      >
-        <HStack spacing={2} justifyContent='space-between'>
-          <Box flexGrow={1}>
-            <Autocomplete>
-              <Input 
-                  type='text' 
-                  placeholder='Origen' 
-                  ref={originRef} />
-            </Autocomplete>
-          </Box>
-          <Box flexGrow={1}>
-            <Autocomplete>
-              <Input
-                  type='text'
-                  placeholder='Destino'
-                  ref={destiantionRef}
-              />
-            </Autocomplete>
-          </Box>
-
-          <ButtonGroup>
-            <Button 
-                  colorScheme='blue' 
-                  type='submit' 
-                  onClick={calculateRoute}>
-              Trazar Ruta
-            </Button>
-            <IconButton
-                  aria-label='center back'
-                  icon={<FaTimes />}
-                  onClick={clearRoute}
-            />
-          </ButtonGroup>
-        </HStack>
-       {distance && <HStack spacing={4} mt={4} justifyContent='space-between'>
-          <Text>Distancia: {distance} </Text>
-          <Text>Duracion: {duration} </Text>
-          <IconButton
-              aria-label='center back'
-              icon={<FaLocationArrow />}
-              isRound
-              onClick={() => {
-                map.panTo(coordinates)
-                map.setZoom(15)
-              }}
-          />
-       
-        </HStack>
-      }
-      {distance && 
-      <button onClick={()=>{
-        handleClickNavegar();
-        handleSweetConfirmarViaje()
-      }
-
-      }
-         >Confirmar viaje</button>
-} 
-     
-      </Box>
-        <GoogleMap
-          center={coordinates}
-          zoom={15}
-          mapContainerStyle={{ width: '70%', height: '100%' }}
-          options={{
-            zoomControl: true,
-            streetViewControl: true,
-            mapTypeControl: true,
-            fullscreenControl: true,
-          }}
-          onChange={(e) => {
-            setCoordinates({lat: e.center.lat, lng: e.center.lng });
-            setBounds({ ne: e.marginBounds.ne, sw: e.marginBounds.sw})
-          }}
-          onLoad={map => setMap(map)}
-        >
-          <Marker position={coordinates} />
-          {directionsResponse && (
-            <DirectionsRenderer directions={directionsResponse} />
-          )}
-        </GoogleMap>
-      </Box>
       
-    </Flex>
-  )
-}
+
+
+    return (
+      <div>
+        
+            <div class='container d-flex align-items-center justify-content-center vh-100'>
+          <Flex
+            position='relative'
+            justifyContent='normal'
+            marginTop='9%'
+            h='85vh'
+            w='50vw'
+            >
+            
+              {/* Google Map Box */}
+              <div className='card mb-3 mw-100'>
+              <div className='row '>
+                <div class="d-grid gap-2">
+                  
+              <VStack spacing={2} justifyContent='space-between'>
+            <Box flexGrow={1}>
+              <Autocomplete>
+                <Input 
+                    type='text' 
+                    placeholder='Origen' 
+                    ref={originRef} />
+              </Autocomplete>
+            </Box>
+            <Box flexGrow={1}>
+              <Autocomplete>
+                <Input
+                    type='text'
+                    placeholder='Destino'
+                    ref={destiantionRef}
+                />
+              </Autocomplete>
+            </Box>
+
+            <ButtonGroup>
+            <div className="d-grid gap-2">
+              <button 
+                    className='btn btn-outline-success' 
+                    type='submit' 
+                    onClick={calculateRoute}>
+                      Trazar Ruta
+              </button>
+              <button
+                    className='btn btn-outline-danger' 
+                    type='submit' 
+                    onClick={clearRoute}>
+                      Borrar Ruta 
+                </button>
+              </div>
+            </ButtonGroup>
+          </VStack>
+          
+        {distance && <VStack spacing={4} mt={4} justifyContent='space-between'>
+            <Text>Distancia: {distance} </Text>
+            <Text>Duracion: {duration} </Text>
+          
+          </VStack>
+          }
+          {distance && 
+              <button 
+                  className='btn btn-outline-success' 
+                  onClick={()=>{
+                    handleClickNavegar();
+                    handleSweetConfirmarViaje()
+                  }
+
+                  }
+              >Confirmar viaje</button>
+          } 
+        </div>
+      </div>
+    </div> 
+              <GoogleMap
+              center={coordinates}
+              zoom={15}
+              mapContainerStyle={{ width: '75%', height: '97%' }}
+              options={{
+                zoomControl: true,
+                streetViewControl: true,
+                mapTypeControl: true,
+                fullscreenControl: true,
+              }}
+              onChange={(e) => {
+                setCoordinates({lat: e.center.lat, lng: e.center.lng });
+                setBounds({ ne: e.marginBounds.ne, sw: e.marginBounds.sw})
+              }}
+              onLoad={map => setMap(map)}
+            >
+              <Marker position={coordinates} />
+                {directionsResponse && (
+                  <DirectionsRenderer directions={directionsResponse} />
+              )}
+            </GoogleMap>   
+        </Flex>
+        </div>
+              </div>
+        
+      
+      )
+    }
 
 export default Mapa;

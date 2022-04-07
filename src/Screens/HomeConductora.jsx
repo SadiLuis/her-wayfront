@@ -33,7 +33,7 @@ const HomeConductora = () => {
     }else{
      console.log('error')
     }
-    }, [])
+    }, [conductora, aux])
     
     //console.log("se dispara el useEffect de getPerfilConductora",conductora)
     useEffect(() => {
@@ -51,7 +51,7 @@ const HomeConductora = () => {
         dispatch(cambiaEstadoConductora(payload))
         
         setTimeout(function () {
-            navigate("/viajeconductora");
+            navigate("/aceptaviajeconductora/" + conductoraLogueada[0].id);
           }, 3000);
         
           Swal.fire({

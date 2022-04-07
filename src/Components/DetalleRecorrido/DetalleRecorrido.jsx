@@ -28,7 +28,6 @@ const DetalleRecorrido = ({idConductora}) => {
         </section>
 
         <button className={styles.button__perfil} onClick={cancelarViaje}>Cancelar Viaje</button>
-        <button className={styles.button__perfill} onClick={reviews}>reviews</button>
     </div>
   )
 }

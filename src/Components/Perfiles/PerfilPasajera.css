@@ -1,45 +1,134 @@
-.perfilCard{
-    width: 100%;
-    height: max-content;
-    border-radius: 10px;
-    background: white;
-    box-shadow: 0px 1px 10px 1px black;
-    }
-    
-    .usuario{
-        position: absolute;
-        left: 120px;
-        top: 24px;
-    }
-    
-    .upperContainer{ 
-        height: max-content;
-        width: 100%;
-    border-radius: 10px 10px 0 0;
-        background: linear-gradient(to right, #f988ff, #7f00b2);
-    }
-    
-    .imageContainer{
-    background: none;
-    height: 100px;
-    width: 100px;
-    border-radius: 50%;
-    }
-    
-    .lowerContainer{
-        height: 100px;
-        width: 100%;
-        position: absolute;
-        top: 120px;
-        left: 20px;
-    }
-    
-    .editIcon{
-        object-position: right;
-    }
-    
-    .logoutP{
-        position: absolute;
-        top: 455px;
-        left: 20px;
-    }
+
+
+  #mainContainer{
+      border-color: black;
+      border: 2px solid;
+      padding: 55px ;
+      font-size: 13px;
+      background: #fefbfb;
+    margin-top:20px;
+    border-radius: 2rem;
+  }
+  
+  .nav.nav-tabs-custom-colored > li.active > a, 
+  .nav.nav-tabs-custom-colored > li.active > a:hover, 
+  .nav.nav-tabs-custom-colored > li.active > a:focus {
+    background-color: #296EAA;
+    color: #fff;
+    cursor: pointer;
+  }
+  
+  .tab-content.profile-page {
+    padding: 35px 15px;
+  }
+  
+  .profile .user-info-left {
+    text-align: center;
+  }
+  
+  .profile .user-info-left, 
+  .profile .user-info-right {
+    padding: 10px 0;
+  }
+  
+  .profile .user-info-left img {
+    border: 3px solid #fff;
+  }
+  
+  .profile .user-info-left h2 {
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-size: 1.3em;
+    margin-bottom: 20px;
+  }
+  
+  .user-info-left .btn{
+      border-radius:0px;    
+  }
+  
+  .profile .user-info-left ul.social a {
+    font-size: 20px;
+    color: #b9b9b9;
+  }
+  
+  .profile .user-info-right {
+    border-left: 1px solid #ddd;
+    padding-left: 30px;
+  }
+  .updateFoto{
+     width: 10px;
+  }
+
+  .profile h3, .activity h3, .settings h3 {
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-size: 1.2em;
+    margin-top: 0;
+    margin-bottom: 20px;
+  }
+  
+  .data-row .data-name, .data-row .data-value {
+    display: inline-block;
+    vertical-align: middle;
+    padding: 5px;
+    font-size: 1.2em;
+  }
+  
+  .data-row .data-name {
+    width: 12em;
+      color: #fff;
+    background-color: #ae82b9;
+    border-color: #ae82b9;
+    font-size: 1.2em;
+    vertical-align: top;
+  }
+  
+  ul.activity-list > li:not(:last-child) {
+    border-bottom: 1px solid #ddd;
+  }
+  
+  ul.activity-list > li {
+    padding: 15px;
+  }
+  
+  ul.activity-list > li .activity-icon {
+    display: inline-block;
+    vertical-align: middle;
+    -moz-border-radius: 30px;
+    -webkit-border-radius: 30px;
+    border-radius: 30px;
+    width: 34px;
+    height: 34px;
+    background-color: #e4e4e4;
+    font-size: 16px;
+    color: #656565;
+    line-height: 34px;
+    text-align: center;
+    margin-right: 10px;
+  }
+  
+  fieldset {
+    margin-bottom: 40px;
+  }
+  
+  hr {
+    border-top-color: #ddd;
+  }
+  
+  .form-horizontal .control-label {
+    text-align: left;
+  }
+  
+  .form-control, .input-group .form-control {
+    -moz-border-radius: 0;
+    -webkit-border-radius: 0;
+    border-radius: 0;
+    -moz-box-shadow: none;
+    -webkit-box-shadow: none;
+    box-shadow: none;
+  }
+  
+  .contact{
+    display: flex;
+    justify-content:space-around;
+    padding-right: 105px;
+    padding-top: 45px;
+  }

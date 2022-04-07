@@ -46,11 +46,11 @@ import {
             
             Acceder con Google
           </button>
-          <button 
+          {/* <button 
             type="submit"
             className='btn btn-primary'
               onClick={()=>signOut(auth)}>Cerrar Sesión</button>
-  
+   */}
          
         </Stack>
       </Container>

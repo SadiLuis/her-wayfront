@@ -2,7 +2,7 @@
     position: sticky;
     top: 0px;
     height: 70px;
-    background-color:#646464;
+    background-color: #646464;
     opacity: 0.75;
     display: flex;
     justify-content: space-between;
@@ -12,7 +12,7 @@
     z-index: 5;
 }
 
-.navbar__logo {
+.navbarLogo {
     color: white;
     font-family: "MonteCarlo", cursive;
     font-size: 2.5rem;
@@ -25,7 +25,7 @@
     list-style: none;
 }
 
-.navbarItem{
+.navbarItem {
     white-space: nowrap;
 }
 
@@ -37,9 +37,68 @@
     text-align: center;
     text-decoration: none;
     border-style: groove;
-    border-width: 1px 1px 1px 1px;    
+    border-width: 0px 0px 1px 0px;
     border-color: rgba(245, 245, 245, 0.671);
     transition: 250ms;
     position: relative;
-top: 7px;
+    top: 7px;
+    padding: 10px;
+    margin: 0px 5px;
+
+}
+
+.navbarLink:hover {
+    border-color: white;
+    transition: 250ms;
+}
+
+.navbarMenu {
+    color: white;
+    display: none;
+    cursor: pointer;
+}
+
+@media screen and (max-width: 800px) {
+    .navbarList {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-evenly;
+        align-items: center;
+        top: 70px;
+        left: -100%;
+        width: 100%;
+        height: 300px;
+        position: absolute;
+        transition: all 0.5s ease;
+    }
+
+    .navbarList--active {
+        left: 0;
+    }
+
+    .navbarMenu {
+        display: block;
+    }
+
+    .navbarItem {
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        border-radius: 0;
+        flex: 1;
+    }
+
+    .navbarLink {
+        display: flex;
+        height: 100%;
+        width: 100%;
+        justify-content: center;
+        align-items: center;
+        margin: 0px;
+        border-width: 0px;
+        background-color: #646464;
+        opacity: 0.80;
+        color: white;
+    }
 }

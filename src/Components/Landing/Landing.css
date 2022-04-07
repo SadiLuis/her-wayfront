@@ -4,14 +4,14 @@
     height: 100vh;
 }
 
-.mujerPasajera_image{
+.mujerPasajera_image {
     width: 100%;
     height: 100vh;
     object-fit: cover;
     position: absolute;
 }
 
-.primerTexto{
+.primerTexto {
     position: absolute;
     bottom: 15%;
     right: 10%;
@@ -20,8 +20,17 @@
     padding: 15px;
     font-family: 'Montserrat', sans-serif;
     font-weight: bold;
-    text-shadow: 0 0 5px #646464;
+    text-shadow: 0 0 7px #646464;
 }
 
-.Landing{
+@media screen and (max-width: 600px) {
+    .primerTexto {
+        font-size: 70px;
+    }
+}
+
+@media screen and (max-width: 400px) {
+    .primerTexto {
+        font-size: 30px;
+    }
 }

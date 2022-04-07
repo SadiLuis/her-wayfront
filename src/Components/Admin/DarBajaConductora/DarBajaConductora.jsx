@@ -5,6 +5,7 @@ import { useNavigate, useParams } from 'react-router-dom'
 import NavbarAdmin from '../NavbarAdmin/NavbarAdmin';
 import { darBajaConductoras, limpiarDetalle, obtenerConductora } from '../../../actions/administrador';
 import styles from './DarBajaConductora.module.css';
+import Swal from "sweetalert2";
 
 
 const DarBajaConductora = () => {
@@ -22,19 +23,35 @@ const DarBajaConductora = () => {
     }, [dispatch, id]);
 
     const darBajaConductora = () => {
-        const confirmar = window.confirm("¿Estas seguro que deseas dar de baja este Usuario?")
-        if(confirmar){
-            dispatch(darBajaConductoras(id));
-            navigate('../admin/usuarios');
-        }
+        //Confirmar que el usuario quiere dar de baja la conductora con sweetalert
+        Swal.fire({
+            title: '¿Estás seguro?',
+            text: "¡No podrás revertir esto!",
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+        }).then((result) => {
+            if (result.value) {
+                dispatch(darBajaConductoras(id))
+                Swal.fire(
+                    '¡Eliminado!',
+                    'La conductora ha sido eliminada.',
+                    'success'
+                )
+                navigate('/admin/conductoras')
+            }
+        })
         
     };
 
 
 
-    return (<>
+    return (<div className={styles.main__container}>
         <NavbarAdmin />
+       
         <div className={styles.cards__container}>
+            
             <div className={styles.card}>
                 <header className={styles.card__header}>
                     <img src={detalle.fotoPerfil} alt={'fotoPerfil'} className={styles.card__headerProfile} />
@@ -80,9 +97,10 @@ const DarBajaConductora = () => {
                     </p>
                 </section>
             </div>
-            <button onClick={darBajaConductora}>Dar baja</button>
+            <button onClick={darBajaConductora} className={styles.btn__red}>Dar baja</button>
         </div>
-    </>
+        
+    </div>
 
        
             

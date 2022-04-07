@@ -38,18 +38,17 @@ export function loginConductora({ email, contrasena }) {
         try {
             const body = { email, contrasena }
             const { data } = await axios.post(`${SERVER}/conductora/login`, body)
+           
             const conductoras = await axios.get(`${SERVER}/conductora`)
             const registroCond = data.user
             const filterConductor = conductoras.data.filter((c)=>data.user.email === c.email)
-            console.log(filterConductor)
-            console.log('data', data)
             dispatch({
                 type: LOGIN_CONDUCTORA,
                 payload: registroCond,
                 conducLogueada: filterConductor
             },
             localStorage.setItem('conductoras', JSON.stringify(data)))
-            console.log(data)
+            
         } catch (error) {
             Swal.fire({
                 icon: 'error',

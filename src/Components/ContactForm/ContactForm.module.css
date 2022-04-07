@@ -16,27 +16,15 @@
     align-items: center;
     left: 8px
 } 
-/* .boton {
-  background-color: rgb(76, 93, 105);
-  width: 6rem;
-  height: 2.2rem;
-  font-weight: bold;
-  border-radius: 2rem;
-  color: #e3e8f8;
-  border: none;
-  cursor: pointer;
-  box-shadow: 2px 2px 4px #000000;
-  margin-bottom: 8%;
-   
-} */
+ 
 
-.boton {
+ .boton {
   
-  background: rgba(245, 245, 245, 0.671);
+   background: rgba(245, 245, 245, 0.671);
       width: 8rem;
       height: 2.8rem;
       font-family: "Montserrat", sans-serif;
-       border-radius: 0.2rem; 
+       border-radius: 0.1rem; 
       color: #646464;
       border: none;
       cursor: pointer;
@@ -50,15 +38,17 @@
     border-width: 1px 1px 1px 1px;    
     border-color: rgba(245, 245, 245, 0.671);
     transition: 250ms;
-}
+} 
 
 .boton:hover {
   
     font-size: 1.2rem;
     transition: .3s all;
-    color: indigo;
+    color: purple;
+    background-color: #fff;
+    border-radius: 2px;
     font-weight: bolder;
-}
+} 
 .boton span {
     margin-right: 10px;
     

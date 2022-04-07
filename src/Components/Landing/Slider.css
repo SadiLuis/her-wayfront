@@ -1,4 +1,4 @@
-.slider{
+.slider {
     display: flex;
     align-items: center;
     margin: 20px;
@@ -7,18 +7,19 @@
     transition: 2s;
 }
 
-.sliderZoom{
+.sliderZoom {
     opacity: 1;
     transform: scale(100%);
     transition: 2s;
 }
 
-.imgSlider{
+.imgSlider {
     width: 60%;
 }
 
-.sliderTitle{
+.sliderTitle {
     flex: 1;
+    display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
@@ -26,4 +27,16 @@
     text-align: center;
     font-family: 'Montserrat', sans-serif;
     color: linear
+}
+
+@media screen and (max-width: 750px) {
+    .sliderTitle {
+        font-size: 25px;
+    }
+}
+
+@media screen and (max-width: 600px) {
+    .sliderTitle {
+        font-size: 20px;
+    }
 }

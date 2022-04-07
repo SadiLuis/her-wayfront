@@ -1,28 +1,79 @@
-.contenedor{
-    width: 90%;
-    height: 80%;
-    padding: 20px;
-    margin: 20px;
+.filtros{
+  font-family: "Montserrat", sans-serif;
+  font-size: 1rem;
+  font-weight: bold;
+  padding: 10px 20px ;
+  
+  
+  
+}
+.filtros h3, h4 {
+    font-weight: bold;
+    padding: 5px;
+}
+.filtros h2{
+    font-weight: bolder;
+    display:inline-flex;
+    position: relative;
+    align-items: flex-end;
     
-     background-color:#a6a6a6 ; 
-   
+}
 
-    /* display: -webkit-flex;
-    display: -ms-flexbox; */
-    display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
-     justify-content: center; 
-     align-items: center;
-     
+.mascotas, .cochecitos{
+    padding: 2px 20px;
+padding-bottom: 10px;
+display: inline-block;
+position: relative;
+margin-right: auto;
+margin-left: auto;
+
+}
+/* .cochecitos  h4{
+    border-left: 1px solid ;
     
-   } 
-/* le saqué el.h2{
-    display: flex;
-   flex-direction: row;
-  justify-content: center ; 
-    align-items: center;
-   margin-right: auto;
-   margin-left: auto; 
-   
 } */
+.filtros label{
+    padding-left: 5px;
+    font-size: 1rem;
+  font-weight: bold;
+  line-height: 1.1;
+  cursor: pointer;
+  
+}
+input[type="radio"] {
+    -webkit-appearance: none;
+    appearance: none;
+   background-color: #fff;
+    margin: 0;
+    font: inherit;
+    color: black;
+    width: 1.15em;
+    height: 1.15em;
+    border: 0.15em solid black;
+    border-radius: 50%;
+    transform: translateY(-0.01em);
+    cursor: pointer;
+    
+    
+  }
+  input[type="radio"]::before {
+    content: "";
+    width: 0.65em;
+    height: 0.65em;
+    border-radius: 50%;
+    transform: scale(0);
+    cursor: pointer;
+  }
+
+  input[type="radio"]:checked::before {
+    transform: scale(10);
+    cursor: pointer;
+  }
+  input[type="radio"]:focus {
+     outline: max(2px, 0.15em) solid purple;
+     cursor: pointer;
+  }
+  
+    
+
+

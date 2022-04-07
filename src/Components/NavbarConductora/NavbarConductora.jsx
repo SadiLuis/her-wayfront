@@ -1,11 +1,12 @@
 import React from 'react'
 import "./NavbarConductora.css";
+import { useNavigate, useParams } from 'react-router-dom';
 
 
 const Navbar = ( idConductora ) => {
-
-    const navbarLinks = [ { url: `/perfilConductora${idConductora}` , title: "Perfil" }]
-
+    //const {idConductora} = useParams()
+    const navbarLinks = [ { url: `/perfilConductora/${idConductora}` , title: "Perfil" }]
+    
     return (
         <nav className="navbar">
             <span className="navbar__logo">Her-Way</span>
@@ -20,7 +21,7 @@ const Navbar = ( idConductora ) => {
                     )
                 })}
             </ul>
-        </nav >
+        </nav>
     );
 };
 

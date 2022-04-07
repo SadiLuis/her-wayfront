@@ -8,9 +8,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import { cambiaEstadoViaje, getViaje } from '../../actions/viajes';
 import { useParams } from 'react-router';
-
-
-
+import CheckViaje from './checkViaje/CheckViaje'
 
 
 
@@ -32,7 +30,7 @@ function EstadoViajeConductora() {
      useEffect(() => {
         const interval = setInterval(() => {
             dispatch(getViaje(idViaje));
-        }, 3000);
+        }, 10000);
         return () => clearInterval(interval);
       }, []);
 
@@ -96,21 +94,66 @@ function EstadoViajeConductora() {
         <br />
         <br />
         {viaje.estadoViaje === "aceptado" ?   (
-            <div>
-            <img width={300} height={450} src={checkViajeAceptado} alt="check viaje aceptado"  />
-            <br />
-            <br />
-            <button className="btn btn-primary" type="button" name = "enPuntoPartida" onClick={(e)=> handleClick(e)}>Avisar que llegue!</button>
-            <button className="btn btn-primary" type="button" name = "rechazar" onClick={(e)=> handleClick(e)}>Cancelar Viaje</button>
+            <div class='container d-flex align-items-center justify-content-center vh-100'>
+            <div class='row'> 
+                   {/* Columna principal izquierda */}
+                   <div class="col-12 col-xl-6 ">
+                               <CheckViaje
+                                   estado={viaje.estadoViaje}
+                                   idViaje={idViaje}
+
+                               />
+                   </div>    
+
+                    {/* Columna principal derecha */}
+                   <div class="col-12 col-xl-6 ">
+                       <img src="https://i.stack.imgur.com/ddX9U.png" alt="imagen mapa" className='h-100 w-100'  />
+                   </div>   
+
             </div>
+
+       </div>
         ) 
         : viaje.estadoViaje === "enPuntoPartida" ? 
-        <div>
-        <img width={300} height={450} src={checkPuntoDePartida} alt="check punto de partida"  />
-        <br />
-        <br />
-        <button className="btn btn-primary" type="button" name = "finalizado" onClick={(e)=> handleFinalizar(e)}>En destino: viaje completado!</button>
-        </div>
+        <div class='container d-flex align-items-center justify-content-center vh-100'>
+            <div class='row'> 
+                   {/* Columna principal izquierda */}
+                   <div class="col-12 col-xl-6 ">
+                               <CheckViaje
+                                   estado={viaje.estadoViaje}
+                                   idViaje={idViaje}
+
+                               />
+                   </div>    
+
+                    {/* Columna principal derecha */}
+                   <div class="col-12 col-xl-6 ">
+                       <img src="https://i.stack.imgur.com/ddX9U.png" alt="imagen mapa" className='h-100 w-100'  />
+                   </div>   
+
+            </div>
+
+       </div>
+        : viaje.estadoViaje === "enCurso" ?
+        <div class='container d-flex align-items-center justify-content-center vh-100'>
+            <div class='row'> 
+                   {/* Columna principal izquierda */}
+                   <div class="col-12 col-xl-6 ">
+                               <CheckViaje
+                                   estado={viaje.estadoViaje}
+                                   idViaje={idViaje}
+
+                               />
+                   </div>    
+
+                    {/* Columna principal derecha */}
+                   <div class="col-12 col-xl-6 ">
+                       <img src="https://i.stack.imgur.com/ddX9U.png" alt="imagen mapa" className='h-100 w-100'  />
+                   </div>   
+
+            </div>
+
+       </div>
         : <Loader />
         } 
         {/* // : viaje.estadoViaje === "enCurso" ? 

@@ -1,6 +1,6 @@
 .admin nav{
  
-  background-color: #FFA8D9;
+  background-color: #807b7ebb;
   height: 100vh;
   width: 200px;
   font-weight: 400;
@@ -9,6 +9,7 @@
   padding-bottom: 6em;
   z-index: 9;
   overflow: hidden;
+  position: fixed;
   
   }
 
@@ -27,7 +28,7 @@
  }
 
  .admin nav ul li span {
-  color: rgba(255, 255, 255, 0.9);
+  color: rgba(0, 0, 0, 0.9);
   font-size: 1em;
   padding: 1.05em 1em;
   position: relative;
@@ -35,7 +36,9 @@
  }
 
  .admin nav ul li span:hover{
-   background-color: #e44f9c;
+   background-color: #aa286bd7;
+   transform: translateX(20px);
+    transition: all 0.3s ease-in-out;
  }
 
  .admin a{

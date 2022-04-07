@@ -1,36 +1,64 @@
 import React, { useState, useEffect , useCallback } from 'react'
-import { connect } from 'react-redux'
-import Image from '../../Media/placeholder.png'
+
 import Navbar from '../Landing/Navbar'
 import './PerfilPasajera.css'
 import { useDropzone } from "react-dropzone";
 import { useNavigate } from "react-router-dom";
 import {useSelector , useDispatch} from 'react-redux'
-import {login , logout} from '../../actions/Usuarios'
+import { getPasajera ,logout , deletePasajera} from '../../actions/Usuarios'
 import {Loader} from '../Loader/Loader'
 import {saveImages} from '../../Helpers/saveImage'
+import Swal from "sweetalert2";
+import {FaCamera } from "react-icons/fa";
 
 
 export default function PerfilPasajera() {
-    const pasajera = useSelector(state => state.LoginRegisReducer.pasajera)
+
+    const pasajera = useSelector(state => state.LoginRegisReducer.usuariaLogueada)
     const [imagen , setImagen] = useState('')
     const navigate = useNavigate()
     const dispatch = useDispatch()
     console.log(pasajera)
     useEffect(()=>{
-       //dispatch(getPasajeras())
-    },[], imagen)
+	
+	dispatch(getPasajera())
+    
+    },dispatch, imagen)
 
   const handleButton = () => {
       dispatch(logout())
       navigate('/home')
   }
+  const handleDelete = ()=> {
+    Swal.fire({
+        title: 'Estás segura?',
+        text: "Se eliminará toda la información!",
+        icon: 'warning',
+        showCancelButton: true,
+        confirmButtonColor: '#3085d6',
+        cancelButtonColor: '#d33',
+        confirmButtonText: 'Si, Eliminar!'
+      }).then((result) => {
+        if (result.isConfirmed) {
+            dispatch(deletePasajera(pasajera[0]?.id))
+			
+            navigate('/home')
+          Swal.fire(
+            'Deleted!',
+            'Su cuenta ha sido eliminada.',
+            'success'
+          )
+
+        }
+      })
+  }
+
   const onDrop = useCallback(async(oFile) => {
     
-      console.log(oFile)
+     console.log(oFile)
      const urlImage = await saveImages(oFile[0]);
       console.log(urlImage)
-      setImagen(urlImage)
+       setImagen(urlImage)
     
 }, []);
 
@@ -42,45 +70,76 @@ const { getRootProps, getInputProps} = useDropzone({
 });
   
     return (
-         
-        
-        <div className='perfilCard'>
-         {pasajera.length  ?
-         ( <div className='upperContainer'>
-                {/* <span className='editIcon'>Editar Perfíl</span> */}
-                <div className='imageContainer'>
-                    <img src={pasajera[0].fotoPerfil ? pasajera[0].fotoPerfil : imagen ? imagen : Image}
-                        alt='profile pic'
-                        height='100%'
-                        width='100px' />
-                   {/*  <h1 className='usuario'> Usuario: lolo </h1>
-                    <span className='lowerContainer'>
-                        <h2> Nombre: Lorena </h2>
-                        <h4> E-mail: lorena@gmail.com </h4>
-                        <h4> País: Arg </h4>
-                        <h4> Teléfono: 55599966 </h4>
-                        <h4> Provincia: Form </h4>
-                        <h4> Localidad: Fsa </h4> */}
-                    {/* </div> */}
-                        <div style={{ cursor: 'pointer' }}>
-                         <span className='lowerContainer'>
-                         <h1> Usuario: {pasajera[0].usuario} </h1> 
-                        <h2> Nombre: {pasajera[0].nombre} </h2>
-                        <h4> E-mail: {pasajera[0].email} </h4>
-                        <h4> País: {pasajera[0].pais} </h4>
-                        <h4> Teléfono: {pasajera[0].telefono} </h4>
-                        <h4> Provincia: {pasajera[0].provincia} </h4>
-                        <h4> Ciudad: {pasajera[0].localidad} </h4> 
-                    </span>
-                    </div>
-                </div>
-                <button className='logoutP' onClick={handleButton}> Log out </button>
-                <button {...getRootProps()} primary>Actualizar foto </button>
-                <input {...getInputProps()}/>
-                
-            </div>
-        ) : <Loader/>
-          }
-         </div>
-    )
+
+
+    <div class="container d-flex align-items-center justify-content-center vh-100" >
+   {pasajera.length ? ( <div class="row">
+        <div class="main-content" id='mainContainer'>
+           
+         <div class="tab-content profile-page" >
+        		<button onClick={handleButton}>logout </button>
+        		<div class="container bootstrap snippets bootdey">
+        			<div class="row">
+        				<div class="col-6 ">
+        					<div class="user-info-left">
+        						<h2>{pasajera[0].nombre} <i class="fa fa-circle green-font online-icon"></i><sup class="sr-only">online</sup></h2>
+        						<img class="img-responsive" src={pasajera[0].fotoPerfil} alt="Profile Picture" style={{width:'300px', height:'300px'}}/>
+                            <a class='updateFoto' {...getRootProps()} className="btn btn-block btn-success"><i class="fa fa-envelope-o"></i> Actualizar foto</a>
+        							<input {...getInputProps()}/>
+        						<div class="contact">
+        							<a className="btn btn-block btn-outline-danger" onClick={handleDelete}><i class="fa fa-envelope-o" ></i> Eliminar cuenta</a>
+        							<a className="btn btn-block btn-outline-success" onClick={()=> navigate('/editPasajera')}><i class="fa fa-book" ></i> Editar perfil</a>
+									<a className='btn btn-block btn-outline-success' onClick={() => navigate("/historialViajes/" + pasajera[0].id)}> Ver historial de Viajes </a>
+        						</div>
+        					</div>
+        				</div>
+        				<div class="col-12 col-xl-6 ">
+        					<div class="user-info-right">
+        						<div class="basic-info">
+        							<h3><i class="fa fa-square"></i> Informacion básica</h3>
+        							<p class="data-row">
+        								<span class="data-name">Usuario</span>
+        								<span class="data-value">{pasajera[0].usuario}</span>
+        							</p>
+        							<p class="data-row">
+        								<span class="data-name">Provincia</span>
+        								<span class="data-value">{pasajera[0].provincia}</span>
+        							</p>
+        							<p class="data-row">
+        								<span class="data-name">Ciudad</span>
+        								<span class="data-value">{pasajera[0].localidad}</span>
+        							</p>
+        							
+        							
+        							
+        						</div>
+        						<div class="basic-info">
+        							<h3><i class="fa fa-square"></i> Información de contacto</h3>
+        							<p class="data-row">
+        								<span class="data-name">Email</span>
+        								<span class="data-value">{pasajera[0].email}</span>
+        							</p>
+        							<p class="data-row">
+        								<span class="data-name">Telefono</span>
+        								<span class="data-value">{pasajera[0].telefono}</span>
+        							</p>
+        							<p class="data-row">
+        								<span class="data-name">Dirección</span>
+        								<span class="data-value">{pasajera[0].direccion}</span>
+        							</p>
+        						</div>
+        						
+        					</div>
+        				</div>
+        			</div>
+        		</div>
+        		
+             </div>
+        	</div>	
+        </div>
+   ) : <Loader />
+	}
+</div>
+)
 }
+
