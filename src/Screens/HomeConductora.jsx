@@ -9,8 +9,6 @@ import Swal from "sweetalert2";
 import Navbar from '../Components/Landing/Navbar'
 import { useNavigate, useParams } from 'react-router-dom';
 import { Button } from 'react-bootstrap';
-import VerificarConductora from './VerificarConductora';
-import CuentaDadaBaja from './CuentaDadaBaja';
 
 
 const HomeConductora = () => {
@@ -82,9 +80,7 @@ const HomeConductora = () => {
   }
   return (
     <div>
-      {conductoraLogueada.length > 0 ?
-        conductoraLogueada[0].cuentaActiva ?
-          !conductoraLogueada[0].verificar ?
+      {conductoraLogueada.length > 0 ? (
         <div>
           <Navbar idConductora={conductoraLogueada[0].id} />
           <br />
@@ -126,14 +122,11 @@ const HomeConductora = () => {
             </div>
 
 
-        ): (<VerificarConductora />)
-          : (<CuentaDadaBaja />)
-        : (<Loader />) 
+        ):( <Loader />) 
     }
     </div>
     )
       
 }
 export default HomeConductora
-
 
