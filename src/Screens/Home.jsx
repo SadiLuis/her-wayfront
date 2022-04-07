@@ -17,12 +17,6 @@ export default function Home() {
 
       <Container>
 
-        {/* <h1 className='herway' >  HER-WAY  </h1> */}
-
-        {/* <img src={mujeres} className="App-logo" alt="logo" /> */}
-
-
-
         <h1 className='title shadow-lg p-3 text-center rounded '> Her-Way </h1>
         <Row className="words mt-5">
           <Col lg={5} md={6} sm={12} className="box p-5 pb-5 m-auto shadow-lg rounded-lg text-center">

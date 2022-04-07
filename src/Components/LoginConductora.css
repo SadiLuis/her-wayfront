@@ -1,7 +1,17 @@
-.title{
+.title {
     color: white;
     font-family: "MonteCarlo", cursive;
-    background-color:#646464;
+    background-color: #646464;
     opacity: 0.75;
     border-radius: 5px;
+}
+
+.tamaño {
+    border-radius: 5px;
+}
+
+@media screen and (max-width: 1000px) {
+    .carousel {
+        display: none;
+    }
 }
