@@ -10,7 +10,7 @@ import {
     RESET_PASSWORD,
     RELOADING_PAG,
     GET_PASAJERA,
-          
+    DELETE_PASAJERA    
 } from "../actions/index";
 
 const initialState = {
@@ -25,6 +25,7 @@ const initialState = {
     filters: [],
     detail: [],
     error: '', 
+    usuariaLogueada: []
 }
 
 export default function LoginRegisReducer(state = initialState, action) {
@@ -44,7 +45,8 @@ export default function LoginRegisReducer(state = initialState, action) {
                     ...state,
                     isAuth: true,
                     token: action.payload.stsTokenManager.accessToken,
-                    userInfo: action.payload
+                    userInfo: action.payload,
+                    usuariaLogueada: action.usuariaLogueada
                 }
             case REGISTER_USER_SUCCESS:
                 localStorage.setItem("token", action.payload.stsTokenManager.accessToken);
@@ -58,12 +60,11 @@ export default function LoginRegisReducer(state = initialState, action) {
             case AUTHENTICATION_ERROR:
             case LOGOUT_USER:
                 localStorage.removeItem("token");
-                return {
-                    ...state,
-                    token: null,
-                    isAuth: false,
-                    detalleUsuario: null,
-                }
+                localStorage.removeItem("usuarios")
+                localStorage.removeItem("state")
+
+                return initialState
+
             case UPDATE_USER:
                 return {
                     ...state,
@@ -80,15 +81,23 @@ export default function LoginRegisReducer(state = initialState, action) {
                     resetPass: action.payload
                 }
                 
-                case GET_PASAJERA: 
-                const idPasajera = state.userInfo.uid
+                 case GET_PASAJERA: 
+                 const idPasajera = state.userInfo.uid
                 const pasajera = action.payload.filter(p => p.authId === idPasajera)
                 console.log(pasajera)
             return {
-                ...state,
-                pasajera: pasajera
+                 ...state,
+                usuariaLogueada: pasajera
 
-            }   
+           }   
+            case DELETE_PASAJERA: 
+            localStorage.clear()
+            localStorage.removeItem("token");
+            localStorage.removeItem("usuarios")
+            localStorage.removeItem("state")
+              console.log('state')
+
+            return initialState
                       
                 
             default: return state;

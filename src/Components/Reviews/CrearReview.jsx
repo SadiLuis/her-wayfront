@@ -1,119 +1,144 @@
-import React, { useEffect } from "react";
-import { useState } from "react";
-import { useDispatch, useSelector } from "react-redux";
-import style from './Reviews.module.css';
-import ReactStars from "react-rating-stars-component";
-import {putReview , postReview , getReviews, deleteReview} from '../../actions/reviews';
+import React from "react";
 import Swal from 'sweetalert2';
+import { useEffect, useState } from "react";
+import {postReview , getReviews, deleteReview} from '../../actions/reviews'
+import { useDispatch, useSelector } from "react-redux";
+import s from './CrearReviews.module.css'
+import { useNavigate, useParams } from "react-router-dom";
+import login_mujer from '../../image/login_mujer.png'
+import ReactStars from "react-rating-stars-component";
 
 
-const CrearReview = () => {
-    const dispatch = useDispatch();
-    const conductora = useSelector((state) => state.registroConductoraReducer.conducLogueada)
-    const reviews = useSelector((state) => state.reviewsReducer.todasLasreviews);
-    console.log('reviews :>> ', reviews);
-    const usuaria = useSelector((state) => state.loginRegistReducer.usuariaLogueada)
-   
-    console.log('user', usuaria);
 
+
+export default function Reviews () {
+    let { idViaje, idConductora} = useParams()
+    const dispatch = useDispatch()
+    const navigate = useNavigate()
+    
+    idViaje='"928y6n2mBkFLCRaB2T5n"';
+     const viaje = idViaje
+     console.log('idViaje :>> ', idViaje);
+
+    const conductora= useSelector((state) => state.perfilConductoraReducer.perfilConductora)
+    const reviews = useSelector((state) => state.reviewsReducer.reviews)
+    //const viaje = useSelector((state) => state.viajesReducer.)
+    
     const [input, setInput] = useState({
-        idConductora: '',
-        idPasajera: '',
-        conductora: "",
-        pasajera: "",
-        puntaje: "",
-        comentario: ""
+      idConductora: viaje[0].idConductora,
+      idPasajera: viaje[0].idPasajera,
+      conductora:viaje[0].conductora,
+      pasajera:viaje[0].pasajera,
+     
+      // idConductora:"OOSg1YJ93xwIXqmviPg5",
+      // idPasajera:"LaoSjzi9oz46BRGTNUgk",
+      // conductora:"carina perez",
+      // pasajera:"lucrecia perez",
+      comentario:'',
+      puntaje:''
     })
 
-           
-
-    // cambio de comentarios
-    const handleOnChange = e => {
-        dispatch(putReview(conductora && conductora.id, usuaria.id, input))
-        setInput({
-            ...input,
-            [e.target.name]: e.target.value
-        })
-        console.log('input', input);
-    }
-
-    //cambio de rating o star o puntuacion
-    const ratingChanged = (nuevoRating) => {
-        // console.log('newRating :>> ', newRating);
-        setInput({
-            ...input,
-            puntaje: nuevoRating.toString()
-        })
-        console.log('input', input);
-    };
-
-    const handleSubmit = (e) => {           // funcion que enviara los datos de mi formulario 
-        e.preventDefault()
-        if (input.puntaje === '' ||  input.comentario === '') {
-            Swal.fire({
-                icon: 'error',
-                title: 'Ups.. Falta Ingresar la puntuación de ★★★★★ o su Comentario ',
-            })
-        } else {
-            dispatch(postReview(reviews.idConductora, input))
-            setInput({
-                idConductora:'' ,
-                idPasajera:'' ,
-                conductora: "",
-                pasajera: "",
-                puntaje: "",
-                comentario: ""
-            })
-            window.location = `/perfilConductora`
-        }     
-    }
-
-
     useEffect(() => {
-        dispatch(getReviews(conductora))
-    }, [dispatch, conductora])
+      dispatch(getReviews());     
+    }, []);  
+
+ 
+    const handleSubmit = (e) => {
+      e.preventDefault()
+      if(input){
+      dispatch(postReview(input))
+            setInput({
+              idConductora: viaje[0].idConductora,
+              idPasajera: viaje[0].idPasajera,
+              conductora:viaje[0].conductora,
+              pasajera:viaje[0].pasajera,
+              comentario:'',
+              puntaje:'',
+            })
+            Swal.fire({
+              icon: 'success',
+              title: 'Su Comentario se ha creado correctamente',
+            })
+          }else{
+            Swal.fire({
+              icon: 'error',
+              title: 'ups..su comentario no se ha procesado correctamente',
+            })
+          }
+        }
 
 
-    return (
-        <div>
-            <form className={style.form_review} onSubmit={handleSubmit}>
-                {/* ratings o stars */}
-                <div className={style.createStar}>
-                    <p>QUE TE PARECIÓ EL VIAJE?</p>
-                    <ReactStars
-                        count={5}
-                        onChange={ratingChanged}
-                        size={28}
-                        // activeColor="#ffd700"
-                        activeColor="rgb(236, 214, 13)"
-                        />
-                </div>
-                {/* caja del comentario */}
-                <div className={style.caja}>
-                    <textarea
-                        className={style.description}
-                        title="maximo 120 caracteres"
-                        placeholder="Ingrese su Comentario"
-                        // rows="3"
-                        // cols="70"
-                        resize="none"
-                        value={input.comentario}
-                        onChange={handleOnChange}
-                        name="comentario"
-                        maxLength="120"                
-                    >
-                    </textarea>
-                    <button
-                        type="submit"
-                        className={style.boton}
-                        title="Click aqui para enviar comentario"
-                    >
-                    Enviar Comentario
-                    </button>
-                </div>
-                
+console.log('input :>> ', input);
+    return(
+    <>
+    <div className={s.container}>
+      <div className="row">
+        <div className="col-6 mx-auto">
+          <div>
+            <form 
+                className="row" 
+                style={{justifyContent:"space-between"}} 
+                onSubmit={handleSubmit}>
+              <textarea  
+                    className="form-control" 
+                    style={{marginBottom:20}} 
+                    type='text' 
+                    placeholder="comentario..." 
+                    rows="3"  
+                    value={input.comentario} 
+                    onChange={e => setInput({ ...input, comentario: e.target.value })}>
+              </textarea>
+              <div style={{marginBottom:20}} className="btn-group col-3" >{/*agrupa los botones*/}
+                <label style={{marginRight:20}}>Calificacion</label>
+                <input 
+                    className="form-input" 
+                    type='number' 
+                    max={5} 
+                    min={1} 
+                    placeholder="0" 
+                    value={input.puntaje} 
+                    required={true} 
+                    onChange={e => setInput({ ...input, puntaje: e.target.value })} />
+              </div>
+              <div className="col-3 text-end" style={{marginLeft:50}} >
+              <button className="btn btn-primary">Comentar</button>
+              </div>
             </form>
+          </div>
+
+          <hr className="featurette-divider"/>
+          <div>
+            {reviews.length > 0 ?
+              reviews.map((re) => (
+                <div key={re.conductora} >
+                  <div className="be-img-comment" >	
+                      <img src={re.fotoPerfil ? re.fotoPerfil : login_mujer} alt="" className="be-ava-comment"/>
+                  </div>
+                  <div className="review-colomn" >
+                  <span className="be-comment-name">
+                      <h5 href="blog-detail-2.html">Nombre de usuario: {re.pasajera ? re.pasajera : "Juana 123"}</h5>
+                    </span>
+                    <div>
+                      <h6>Puntaje: { 
+                      <ReactStars
+                            count={5}
+                            value={re.puntaje}
+                            size={28}
+                            // activeColor="#ffd700"
+                            activeColor="rgb(250, 200, 0)"
+                      />}</h6>
+                      </div>
+                    </div> 
+                    <p className="be-comment-text"><b>Comentario:</b> {re.comentario}</p>
+                  </div>
+              )) 
+            :  null 
+            }{/*<h2>No hay comentarios</h2>*/}
+            </div>  
+            <button className="btn btn-primary" onClick={() => navigate('/home')}>Inicio</button>
         </div>
+      </div>
+    </div>
+    </>
     )
 }
-export default CrearReview;

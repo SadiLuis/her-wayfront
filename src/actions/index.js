@@ -32,6 +32,7 @@ export const GET_PERFILC = 'GET_PERFILC'
 export const LOGIN_CONDUCTORA = 'LOGIN_CONDUCTORA'
 export const DETALLE = "DETALLE"
 export const REGISTRO_CONDUCTORA = "REGISTRO_CONDUCTORA"
+export const LOGOUT_CONDUCTORA ='LOGOUT_CONDUCTORA'
 //----------------------------------------------------
 
 
@@ -55,12 +56,16 @@ export const AUTHENTICATION_ERROR="AUTHENTICATION_ERROR"
 export const UPDATE_USER="UPDATE_USER"
 export const RESET_PASSWORD="RESET_PASSWORD"
 export const RELOADING_PAG="RELOADING_PAG"
-
+export const DELETE_PASAJERA="DELETE_PASAJERA"
 
 ////////////////////////////////////////////////////////////////////////
 
 export const MIS_VIAJES_PASAJERA="MIS_VIAJES_PASAJERA"
 export const VIAJES_POR_PASAJERA= "VIAJES_POR_PASAJERA"
+export const VIAJES_POR_CONDUCTORA="VIAJES_POR_CONDUCTORA"
 
 //////////
 export const CONDUCTORAS_CONECTADAS="CONDUCTORAS_CONECTADAS"
+
+///
+export const FILTRAR_POR_PREFERENCIAS_MASCOTAS="FILTRAR_POR_PREFERENCIAS_MASCOTAS"

@@ -1,4 +1,4 @@
-.botonPedirConductora{
+/* .botonPedirConductora{
     background-color: #e44f9c;
       width: 8rem;
       height: 2.8rem;
@@ -30,11 +30,11 @@
     border: none;
     font-weight: bold;
 }
-
+*/ 
 .title{
     color: white;
     font-family: "MonteCarlo", cursive;
     background-color:#646464;
     opacity: 0.75;
     border-radius: 5px;
-}
+} 

@@ -28,25 +28,24 @@ import VerificarConductora from './Components/Admin/VerificarUsuario/VerificarUs
 import DarBajaConductora from './Components/Admin/DarBajaConductora/DarBajaConductora';
 import AltaAdmins from './Components/Admin/AltaAdmins/AltaAdmins';
 import OrigenDestino from './Components/OrigenDestino/OrigenDestino';
-//import Reviews from './Components/Reviews/ReviewsConductora';
 
 import ViajeConductora from './Components/viajes/ViajeConductora'
 import LoginConGooglePasajera from './Components/LoginConGooglePasajera';
 import CrearReview from './Components/Reviews/CrearReview';
-
-
 import RecorridoPasajera from './Components/RecorridoPasajera/RecorridoPasajera';
-
 import ViajePasajera from './Components/ViajePasajera/ViajePasajera.jsx'
 import MisViajesPasajera from './Components/MisViajesPasajera/MisViajesPasajera';
-
 import EstadoViajeConductora from './Components/viajes/EstadoViajeConductora';
-
 import PantallaViajePasajera from './Components/viajes/PantallaViajePasajera'
 import EstadoViajePasajera from './Components/viajes/EstadoViajePasajera';
 
 import EditarPerfilPas from './Components/Perfiles/EditarPerfilPas'
+
 import HistorialViajes from './Components/MisViajesPasajera/HistorialViajes';
+
+import HistorialConductoraViajes from './Components/MisViajesPasajera/HistorialConductoraviajes';
+import Chat from './Components/Chat/Chat';
+
 
 function App() {
 
@@ -79,18 +78,23 @@ function App() {
             <Route path='/admin/altaAdmins' element={<AltaAdmins />} />
             <Route path="/homeConductora" element={<HomeConductora />} />
             <Route path="/contacto" element={<ContactForm />} />
-            <Route path="/viajeconductora" element={<ViajeConductora />} />
+            <Route path="/aceptaviajeconductora/:id" element={<ViajeConductora />} />
             <Route path="/viajepasajera" element={<ViajePasajera />} />
-            //<Route path="/viajeAceptado" element={<RecorridoPasajera />} />
+            <Route path="/viajeAceptado" element={<RecorridoPasajera />} />
             <Route path="/loginPasajeraConGoogle" element={<LoginConGooglePasajera />} />
             <Route path="/viajeAceptado" element={<ViajePasajera/>} />
-             //<Route path="/reviews" element={<CrearReview />} />
+            <Route path="/reviews/:idViaje" element={<CrearReview />} />
+            <Route path="/reviews" element={<CrearReview />} />
             <Route path="/misViajesPasajera" element={<MisViajesPasajera />} />
-             <Route path="/viajeconductora/:idViaje" element={<EstadoViajeConductora />} />
+            <Route path="/viajeconductora/:idViaje" element={<EstadoViajeConductora />} />
             <Route path="/pantallaviajepasajera" element={<PantallaViajePasajera />} />
-            <Route path="/viajepasajera/:idViaje" element={<EstadoViajePasajera />} />
+            <Route path="/checkpasajera/:idPasajera" element={<EstadoViajePasajera />} />
             <Route path="/editPasajera" element={<EditarPerfilPas />} />
             <Route path="/historialviajes/:id" element={<HistorialViajes />} />
+            <Route path="/historialConductoraViajes/:id" element={<HistorialConductoraViajes />} />
+            <Route path="/chat" element={<Chat />} />
+            
+ 
 
 
 

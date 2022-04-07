@@ -11,22 +11,22 @@ import tres from '../../image/3.jpg'
 
 //import { useStorage} from "reactfire"
 
-
-export function validate(conductora) {
-
-    let errors = {};
-    if (!conductora.nombre) {
+export function validate(conductora){
+    let errors={};
+    if(!conductora.nombre && /\d/.test(conductora)){
         errors.nombre = 'debe ingresar nombre completo'
     }
-
-    if (!conductora.usuario) {
+    if(!conductora.apellido){
+        errors.apellido = ' debe ingresar apellido completo'
+    }
+    if(!conductora.usuario){
         errors.usuario = ' debe ingresar un usuario'
     }
-    // if(!conductora.contrasena){
-    //     errors.contrasena = 'ingrese sus contraseña'
-    // }
-    if (!conductora.email) {
-        errors.email = 'debe ingresar un email valido'
+    if(!conductora.contrasena){
+        errors.contrasena = 'ingrese una contraseña que contenga letras y numeros'
+    }
+    if(!conductora.email && /\S+@\S+\.\S+/.test(conductora)){
+        errors.email= 'debe ingresar un email valido'
     }
     if (!conductora.pais) {
         errors.pais = 'debe ingresar el pais'
@@ -58,8 +58,9 @@ export function validate(conductora) {
     if (!conductora.seguro) {
         errors.seguro = 'ingrese nombre del seguro y poliza'
     }
-    if (!conductora.habilitacion) {
-        errors.habilitacion = 'ingrese la hbilitacion correspondiete del vehiculo'
+
+    if(!conductora.habilitacion){
+        errors.habilitacion='ingrese la habilitación correspondiete del vehículo'
     }
     return errors
 }
@@ -68,23 +69,26 @@ export default function CreateConductora() {
     const navigate = useNavigate()
     const dispatch = useDispatch();
     const refFileInput = useRef();
-    const [conductora, setConductora] = useState({   //este es mi input
-        nombre: "",
-        apellido: "",
-        usuario: "",
-        contrasena: "",
-        email: "",
-        pais: "",
-        provincia: "",
-        fotoPerfil: "",
-        fotoDni: "",
-        direccion: "",
-        telefono: "",
-        localidad: "",
-        automovil: "",
-        patente: "",
-        seguro: "",
-        habilitacion: "",
+
+    const [conductora, setConductora]=useState({   //este es mi input
+        nombre:"",
+        apellido:"",
+        usuario:"",
+        contrasena:"",
+        email:"",
+        telefono:"",
+        pais:"",
+        provincia:"",
+        localidad:"",
+        direccion:"",
+        fotoPerfil:"",
+        fotoDni:"",
+        automovil:"",
+        patente:"",
+        seguro:"",
+        habilitacion:"",
+        aceptaMascotas:"",
+        aceptaCochecito:""
     });
 
     const [errors, setErrors] = useState({})
@@ -101,41 +105,38 @@ export default function CreateConductora() {
         auxInput.fotoPerfil = urlImage;
         auxInput.fotoDni = urlImage2
 
-        console.log('entro', auxInput)
-        let errors = Object.keys(validate(conductora))
-
-        if (!errors.length !== 0) {
-
-            setConductora({
-                nombre: "",
-                apellido: "",
-                usuario: "",
-                contrasena: "",
-                email: "",
-                pais: "",
-                provincia: "",
-                fotoPerfil: "",
-                fotoDni: "",
-                direccion: "",
-                telefono: "",
-                localidad: "",
-                automovil: "",
-                patente: "",
-                seguro: "",
-                habilitacion: "",
-            })
-            dispatch(registroConductora(auxInput))
-            alert('usuario creado con exito')
-        } else {
+        if(errors){
+            
+        setConductora({
+        nombre:"",
+        apellido:"",
+        usuario:"",
+        contrasena:"",
+        email:"",
+        telefono:"",
+        pais:"",
+        provincia:"",
+        localidad:"",
+        direccion:"",
+        fotoPerfil:"",
+        fotoDni:"",
+        automovil:"",
+        patente:"",
+        seguro:"",
+        habilitacion:"",
+        aceptaMascotas:"",
+        aceptaCochecito:"",
+        
+        })
+        dispatch(registroConductora(auxInput))
+        alert('usuario creado con éxito')
+        }else{
             alert('rellenar los campos correctamente')
-        }
-        navigate('/perfilConductora')
-
-
+        }  
+       navigate('/loginConductora') 
     }
-
-
-    function handleChange(name, value) {
+         
+    function handleChange(name ,value){
         console.log(conductora)
         setConductora({
             ...conductora,
@@ -145,6 +146,21 @@ export default function CreateConductora() {
             ...conductora,
             [name]: value,
         }))
+    }
+    function handleSelectMascotas(e){
+        console.log(conductora)
+        setConductora({
+            ...conductora,
+            aceptaMascotas: e.target.value
+        })
+    }
+  
+   function handleSelectCochecitos(e){
+        console.log(conductora)
+        setConductora({
+            ...conductora,
+            aceptaCochecito: e.target.value
+        })
     }
 
     return (
@@ -427,26 +443,47 @@ export default function CreateConductora() {
                             </p>
                         )}
                     </div>
-                    <div className='form-group'>
+           
+                <label>Acepta Mascotas:</label>
+                <select onChange={(e)=>handleSelectMascotas(e)}>
+                    <option value="false" name="aceptaMascotas" defaultValue={false}>Elige</option>
+                    <option value="true" name="aceptaMascotas"defaultValue={false}>Acepta</option>
+                    <option value="false" name="aceptaMascotas" defaultValue={false}>No Acepta</option>
+                    
+                </select>
+                </div>
+
+                <div>
+                <label>Acepta Cochecitos de bebés:</label>
+                <select onChange={(e)=>handleSelectCochecitos(e)}>
+                <option value="true" name="aceptaCochecito">Elige </option>
+                    <option value="true" name="aceptaCochecito">Acepta </option>
+                    <option value="false" name="aceptaCochecito">No Acepta</option>
+                    
+                </select>
+                </div>
+                <div className='form-group'>
                         <label htmlFor="exampleInputPassword1">&nbsp; Habilitación</label>
-                        <input name='habilitacion' className="form-control"
-                            id='habilitacion'
-                            type='text'
-                            value={conductora.habilitacion}
-                            placeholder='Habilitación municipal'
-                            onChange={(e) => handleChange(e.target.name, e.target.value)}
-                            required>
-                        </input>
-                        {errors.habilitacion && (
-                            <p className="text-danger">
-                                {errors.habilitacion}
-                            </p>
-                        )}
-                    </div>
-                    <br />
+                <input name='habilitacion' className="form-control"
+                    id='habilitacion'
+                    type='text'
+                    value={conductora.habilitacion}
+                    placeholder='habilitacion municipal'
+                    onChange={(e)=>handleChange(e.target.name,e.target.value)}
+                    required>
+                    </input>  
+                    {errors.habilitacion &&(
+                        <p className="text-danger">
+                            {errors.habilitacion}
+                        </p>
+                    )} 
+                </div>
+
+                <br />
 
                     <button class="btn btn-primary w-100" type='submit'
 
+               
                      /* disabled={conductora.nombre&&conductora.apellido&&conductora.usuario&&conductora.contrasena&&
                         conductora.direccion&&conductora.email&&conductora.fotoPerfil&&conductora.localidad&&conductora.pais&&conductora.automovil&&
                         conductora.patente&&conductora.habilitacion&&conductora.seguro&&conductora.provincia&&conductora.telefono&&conductora.fotoDni ? false : true} */>Registrarse</button>

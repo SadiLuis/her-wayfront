@@ -1,6 +1,6 @@
 import React, {useEffect} from 'react'
 import { useDispatch, useSelector } from 'react-redux';
-import { pedirConductora,detalleConductora, conductorasConectadas  } from '../actions/conductora';
+import { pedirConductora,detalleConductora, conductorasConectadas,filtrarPorMascotas, filtrarPorCochecitos  } from '../actions/conductora';
 import TarjetaConductora from '../Screens/TarjetaConductora';
 import {Loader} from './Loader/Loader'
 import {getPasajeras} from '../actions/Usuarios'
@@ -9,6 +9,8 @@ import { Link } from 'react-router-dom';
 
 import Swal from "sweetalert2";
 import NavBar from "../Components/Landing/Navbar"
+import {MdStroller} from "react-icons/md";
+import {FaDog} from "react-icons/fa"
 
  
 export default function PedirConductora() {
@@ -38,8 +40,24 @@ export default function PedirConductora() {
 
      })
    }
+
+   function handleClick(e){
+     e.preventDefault();
+     let payload= e.target.value;
+     dispatch(filtrarPorMascotas(payload))
+   }
+   function handleClickCochecitos(e){
+    e.preventDefault();
+    let payload= e.target.value;
+    dispatch(filtrarPorCochecitos(payload))
+  }
+  
+    function traertodasconectadas(e){
+      e.preventDefault();
+      dispatch(conductorasConectadas())
+    }
     return (
-       
+
          <div className='container '>
             <NavBar/>
             <br />
@@ -48,12 +66,49 @@ export default function PedirConductora() {
            <span>{handleSubmitPedirConductora}</span>  
           <div className='container d-flex   align-items-center justify-content-center vh-50'>
             <div className='row'> 
-            <div class="col-sm-6 col-xl-8 ">
+            <div className="col ">
+                <h2 >Seleccioná:</h2>
+              <div className={styles.filtros}>
+
+                <div className={styles.mascotas}> 
+                  <h4>Llevás mascotas?<FaDog></FaDog></h4>
+             
+              <div className={styles.uno}>
+              <input onChange={handleClick} type="radio" name="aceptaMacotas" value="true" id="true"></input>
+              <label for="true">Llevo mascota</label>
+              </div>
+              <div className={styles.dos}>
+             <input onChange={handleClick} type="radio" name="aceptaMacotas" value="false" id="false"></input>
+             <label for="false">No llevo mascota </label>
+             </div>
+             
+              
+              </div>
+              
+              <div className={styles.cochecitos}>
+                <h4>Llevás cochecito?<MdStroller></MdStroller></h4>
+                <div className={styles.uno}>
+                <input onChange={handleClickCochecitos} type="radio" name="aceptaCochecito" value="true"></input>
+                
+                <label for="true">Llevo cochecito</label>
+                </div>
+                <div className={styles.dos}>
+              <input onChange={handleClickCochecitos} type="radio" name="aceptaCochecito" value="false"></input>
+              <label for="false">No llevo cochecito</label>
+              </div>
+              
+              
+              
+              </div>
+              
+              <button type="button" className="btn btn-outline-success" onClick={traertodasconectadas} >Traer todas las conductoras disponibles</button>
+              </div>
+
+
+
           { conectadas.length ? (
-          <><div
-                >
-
-
+          <><div>
+                
                   {conectadas?.map(elem => {
                     return (
 

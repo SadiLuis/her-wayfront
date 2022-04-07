@@ -91,8 +91,10 @@ const ViajePasajera = () => {
         </GoogleMap>
       </Box>
     </Flex>
+    
     <DetalleRecorrido conductora={viaje.idConductora}/>
     </div>
+    
   )
 }
 

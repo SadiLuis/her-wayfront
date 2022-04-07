@@ -43,6 +43,12 @@ export function cambiaEstadoViaje(payload){
                 type: "PUNTO_PARTIDA",
                 payload: "en punto partida"
             })
+        }else if (decision === "enCurso") {
+            const enCuso =  await axios.put(`${SERVER}/viajes/enCurso/${id}`);
+            return dispatch({
+                type: "INICIA_EL_RECORRIDO",
+                payload: "INICIA_EL_RECORRIDO"
+            })
         }else if( decision === "finalizado") {
             const final =  await axios.put(`${SERVER}/viajes/finalizado/${id}`);
             return dispatch({
@@ -60,11 +66,39 @@ export function cambiaEstadoViaje(payload){
 export const getViaje = (idViaje) => async (dispatch) => {
     try {
         const respuesta = await axios.get(`${SERVER}/viajes/${idViaje}`)
+        const resViajes = await axios.get(`${SERVER}/viajes`)
+        const viajeInfo = respuesta.data
+        const filtroViaje = resViajes.filter((v) => viajeInfo.idConductora === v.idConductora)
         return dispatch({
             type: "VIAJE_POR_IDVIAJE",
-            payload: respuesta.data
+            payload: respuesta.data,
+            viajeFiltradoId: filtroViaje
         })
     } catch (error) {
         console.log("No se encontro viaje con ese id ")
+    }
+}
+
+export const getViajes = () => async (dispatch) => {
+    try {
+        const respuesta = await axios.get(`${SERVER}/viajes`)
+        return dispatch({
+            type: "VIAJES",
+            payload: respuesta.data
+        })
+    } catch (error) {
+        console.log("No se encontraron viajes ")
+    }
+}
+
+export const getViajeRequeridoPasajera = (idPasajera) => async (dispatch) => {
+    try {
+        const respuesta = await axios.get(`${SERVER}/viajes/requeridoPasajera/${idPasajera}`)
+        return dispatch({
+            type: "VIAJE_REQUERIDO_PASAJERA",
+            payload: respuesta.data
+        })
+    } catch (error) {
+        console.log("No se encontraron conductoras")
     }
 }

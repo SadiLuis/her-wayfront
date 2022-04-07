@@ -14,7 +14,8 @@ export function postReview(body) {
             const crearReview = await axios.post(`${SERVER}/reviews/create`, body);
                 return dispatch({
                     type: CREAR_REVIEW,
-                    payload: crearReview.data,
+                    payload: crearReview,
+                
                 });
         } catch (error) {
              console.log(error);
@@ -38,6 +39,23 @@ export function getReviews() {
         }
     }
 };
+
+export function getReviewId(id) {
+    return async function (dispatch){
+        try {
+            const obtenerReviewId = await axios.get(`${SERVER}/reviews/${id}`)
+            //console.log('obtenerReview', obtenerReview)
+            return dispatch ({
+                type: OBTENER_REVIEWS,
+                payload: obtenerReviewId.data,
+            })       
+        } catch (error) {
+            console.log('error', error)     
+        }
+    }
+};
+
+
 
 export function getReviewsDeConductora(idConductora) {
     return async function (dispatch) {
@@ -72,7 +90,7 @@ export function putReview(payload) {
 export function deleteReview(id){
     return async function (dispatch){
         try {
-            const eliminarReview = await axios.delete(`${SERVER}/reviews/delete`, id);
+            const eliminarReview = await axios.delete(`${SERVER}/reviews/delete/${id}`);
             return dispatch({
                 type: BORRAR_REVIEW,
                 payload: eliminarReview.data,

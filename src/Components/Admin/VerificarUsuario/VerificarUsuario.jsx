@@ -5,6 +5,7 @@ import { useNavigate, useParams } from 'react-router-dom'
 import { limpiarDetalle, obtenerConductora, verificarConductora } from '../../../actions/administrador';
 import NavbarAdmin from '../NavbarAdmin/NavbarAdmin';
 import styles from './VerificarUsuario.module.css'
+import swal from 'sweetalert2';
 //import imgDni from '../../../assets/nuevo-dni-ejemplo.jpg';
 
 
@@ -21,14 +22,29 @@ const VerificarConductora = () => {
         return () => {
             dispatch(limpiarDetalle())
         }
-    }, [dispatch, id]);
+    }, [id]);
 
-    const confirmarVerificacion = (ev) => {
-        const confirmar = window.confirm("¿Estas seguro que deseas verificar este Usuario?")
-        if(confirmar){
-            dispatch(verificarConductora(id));
-            navigate('../admin/usuarios');
-        }
+    const confirmarVerificacion = () => {
+        //Confirmar que el usuario quiere dar de baja la conductora con sweetalert
+        swal.fire({
+            title: '¿Estás seguro?',
+            text: "¡No podrás revertir esto!",
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+        }).then((result) => {
+            if (result.value) {
+                dispatch(verificarConductora(id))
+                swal.fire(
+                    '¡Verificado!',
+                    'La conductora ha sido verificada.',
+                    'success'
+                )
+                navigate('/admin/conductoras')
+            }
+        })
+        
     }
 
 

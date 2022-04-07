@@ -45,7 +45,7 @@ const dispatch =useDispatch();
         <h4>Viajes Realizados</h4>
             <ul className={styles.navbarList}>
          <li>   <Link to="/home" className={styles.navbarLink}>Home</Link></li>
-           <li> <Link to="/admin/usuarios" className={styles.navbarLink}>Volver</Link></li>
+           <li> <Link to="/perfilPasajera" className={styles.navbarLink}>Volver</Link></li>
             </ul>
 
           </div>

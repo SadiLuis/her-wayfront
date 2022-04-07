@@ -12,6 +12,10 @@ const DetalleRecorrido = ({idConductora}) => {
         // dispatch(cancelar(idViaje));
          navigate('/mapa')
     }
+    const reviews=()=>{
+      navigate('/reviews')
+    }
+
   return (
     <div className={styles.card__perfil}>
         <img src={conductora.fotoPerfil} alt='Foto perfil' className={styles.img__perfil} />
@@ -22,7 +26,7 @@ const DetalleRecorrido = ({idConductora}) => {
         <p>Patente:{conductora.patente}</p>
         <p>Habilitacion:{conductora.habilitacion}</p>
         </section>
-        
+
         <button className={styles.button__perfil} onClick={cancelarViaje}>Cancelar Viaje</button>
     </div>
   )
