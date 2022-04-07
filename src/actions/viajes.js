@@ -43,6 +43,12 @@ export function cambiaEstadoViaje(payload){
                 type: "PUNTO_PARTIDA",
                 payload: "en punto partida"
             })
+        }else if (decision === "enCurso") {
+            const enCuso =  await axios.put(`${SERVER}/viajes/enCurso/${id}`);
+            return dispatch({
+                type: "INICIA_EL_RECORRIDO",
+                payload: "INICIA_EL_RECORRIDO"
+            })
         }else if( decision === "finalizado") {
             const final =  await axios.put(`${SERVER}/viajes/finalizado/${id}`);
             return dispatch({
@@ -82,5 +88,17 @@ export const getViajes = () => async (dispatch) => {
         })
     } catch (error) {
         console.log("No se encontraron viajes ")
+    }
+}
+
+export const getViajeRequeridoPasajera = (idPasajera) => async (dispatch) => {
+    try {
+        const respuesta = await axios.get(`${SERVER}/viajes/requeridoPasajera/${idPasajera}`)
+        return dispatch({
+            type: "VIAJE_REQUERIDO_PASAJERA",
+            payload: respuesta.data
+        })
+    } catch (error) {
+        console.log("No se encontraron conductoras")
     }
 }

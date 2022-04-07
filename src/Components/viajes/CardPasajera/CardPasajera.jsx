@@ -36,22 +36,24 @@ export default function CardPasajera({nombrePasajera, precio, fotoPerfil, distan
         title:"Has denegado el viaje",
         icon: 'success',
       })
-      navigate("/viajeconductora")
+      navigate("/homeconductora")
     }
   }  
     return (
   <div class="card mb-3 mw-100" >
       <div class="row g-0">
-        <div class="col-md-4">
+        <div class="col-md-5">
           <img src={fotoPerfil} class="img-fluid rounded-start h-100" alt="foto perfil pasajera"></img>
         </div>
-          <div class="col-md-8">
+          <div class="col-md-7">
               <div class="card-body">
-                <h5 class="card-title fs-4 fw-bold">Te han solicitado un viaje 🚗</h5>
+                <h5 class="card-title fs-5 fw-bold text-center">Te han solicitado un viaje 🚗</h5>
+                <br />
                 <p class="card-text fw-bolder">🙋‍♀️<b> Pasajera</b> {nombrePasajera}</p>
                 <p class="card-text fw-bolder">💰<b> Precio</b> ${precio}</p>
                 <p class="card-text fw-bolder">🚩<b> Desde</b> {origen}</p>
                 <p class="card-text fw-bolder">🏁<b> Hasta</b> {destino}</p>
+                <br />
                 <div class="d-grid gap-2">
                     <button class="btn btn-outline-success" type="button" name = "aceptar" onClick={(e)=> handleClick(e)}>Aceptar el viaje</button>
                     <button class="btn btn-outline-danger" type="button" name = "rechazar" onClick={(e)=> handleClick(e)}>Prefiero tomar otro viaje</button>

@@ -115,7 +115,6 @@ console.log('input :>> ', input);
                       <img src={re.fotoPerfil ? re.fotoPerfil : login_mujer} alt="" className="be-ava-comment"/>
                   </div>
                   <div className="review-colomn" >
-                  
                   <span className="be-comment-name">
                       <h5 href="blog-detail-2.html">Nombre de usuario: {re.pasajera ? re.pasajera : "Juana 123"}</h5>
                     </span>

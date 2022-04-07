@@ -6,7 +6,7 @@ const initialState = {
     viajeRequeridoConductora: false,
     viajeRequeridoConductoraDetalle: [],
     viajePorId: [],
-    viajeFiltradoId: []
+    viajeReqPasajera: []
 
 
 }
@@ -27,9 +27,14 @@ export default function viajesReducer(state = initialState, action) {
                 case "VIAJE_POR_IDVIAJE":
                     return {
                         ...state,
-                        viajePorId: action.payload,
-                        viajeFiltradoId: action.viajeFiltradoId
-                    }              
+                        viajePorId: action.payload
+                    }
+                case "VIAJE_REQUERIDO_PASAJERA":
+                    return {
+                        ...state,
+                        viajeReqPasajera: action.payload
+                    }                  
+
             default:
                 return state;
     }

@@ -1,5 +1,5 @@
 .botonPedirConductora{
-    background-color: #e44f9c;
+   
       width: 8rem;
       height: 2.8rem;
       
@@ -25,7 +25,7 @@
       
 }
 .botonPedirConductora:hover{
-    background-color: #ff69b4;
+ 
     color: white ;
     border: none;
     font-weight: bold;

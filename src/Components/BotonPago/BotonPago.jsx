@@ -7,9 +7,10 @@ import {ACCESS_TOKEN, urlMercadoPago}  from "../../utilsPago"
 
 
 
-const BotonPago = ({precio}) => {
+const BotonPago = (props) => {
 
-
+  let precio = props.precio
+  let idConductora = props.idConductora
   
      const  body = {
   payer_email: "test_user_71811293@testuser.com",
@@ -26,7 +27,7 @@ const BotonPago = ({precio}) => {
   back_urls: {
     failure: "/failure",
     pending: "/pending",
-    success: "http://localhost:3000/reviews"
+    success: "http://localhost:3000/reviews/" + idConductora
   },
   payment_methods: {
       excluded_payment_types: [
