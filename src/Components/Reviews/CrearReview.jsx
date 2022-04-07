@@ -1,7 +1,7 @@
 import React from "react";
 import Swal from 'sweetalert2';
 import { useEffect, useState } from "react";
-import {postReview , getReviews} from '../../actions/reviews'
+import {postReview , getReviews, deleteReview} from '../../actions/reviews'
 import { useDispatch, useSelector } from "react-redux";
 import s from './CrearReviews.module.css'
 import { useNavigate, useParams } from "react-router-dom";
@@ -12,7 +12,7 @@ import ReactStars from "react-rating-stars-component";
 
 
 export default function Reviews () {
-    let { idViaje} = useParams()
+    let { idViaje, idConductora} = useParams()
     const dispatch = useDispatch()
     const navigate = useNavigate()
     
@@ -39,7 +39,7 @@ export default function Reviews () {
     })
 
     useEffect(() => {
-      dispatch(getReviews(idViaje));     
+      dispatch(getReviews());     
     }, []);  
 
 
@@ -68,7 +68,9 @@ export default function Reviews () {
             })
           }
         }
-       
+
+
+        
 
 
 console.log('input :>> ', input);
@@ -118,6 +120,7 @@ console.log('input :>> ', input);
                       <img src={re.fotoPerfil ? re.fotoPerfil : login_mujer} alt="" className="be-ava-comment"/>
                   </div>
                   <div className="review-colomn" >
+                   
                   <span className="be-comment-name">
                       <h5 href="blog-detail-2.html">Nombre de usuario: {re.pasajera ? re.pasajera : "Juana 123"}</h5>
                     </span>

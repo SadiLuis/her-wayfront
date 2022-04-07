@@ -9,7 +9,7 @@ import {
   SkeletonText,
   Text,
 } from '@chakra-ui/react'
-import { FaLocationArrow, FaTimes } from 'react-icons/fa'
+
 
 import {
   useJsApiLoader,
@@ -23,6 +23,8 @@ import {useNavigate} from 'react-router-dom'
 import {useDispatch} from 'react-redux'
 import {datosMapa} from '../../actions/recorrido'
 import Swal from "sweetalert2"
+import OrigenDestino from './Origen_Destino'
+import Navbar from '../Landing/Navbar'
 
 
 const libraries = ['places'];
@@ -40,6 +42,7 @@ function Mapa({setCoordinates, setBounds, coordinates}) {
     const dispatch = useDispatch()
     const navigate = useNavigate()
     const originRef = useRef()
+    
   
     const destiantionRef = useRef()
 
@@ -47,160 +50,50 @@ function Mapa({setCoordinates, setBounds, coordinates}) {
       return <SkeletonText />
     }
 
-      async function calculateRoute() {
-        if (originRef.current.value === '' || destiantionRef.current.value === '') {
-          return
-        }
-          // eslint-disable-next-line no-undef
-          const directionsService = new google.maps.DirectionsService()
-          const results = await directionsService.route({
-            origin: originRef.current.value,
-            destination: destiantionRef.current.value,
-            // eslint-disable-next-line no-undef
-            travelMode: google.maps.TravelMode.DRIVING,
-          })
-        setDirectionsResponse(results)
-        setDistance(results.routes[0].legs[0].distance.text)
-        setDuration(results.routes[0].legs[0].duration.text)
-        const data ={
-            direcOrigen:results.routes[0].legs[0].start_address,
-            direcDestino:results.routes[0].legs[0].end_address,
-            coordDestino:results.routes[0].legs[0].end_location,
-            coordOrigen:results.routes[0].legs[0].start_location,
-            results
-        }
-        //console.log(data)
-        dispatch(datosMapa(data))
-      }
-
-      function clearRoute() {
-        setDirectionsResponse(null)
-        setDistance('')
-        setDuration('')
-        originRef.current.value = ''
-        destiantionRef.current.value = ''
-      }
-
-      function handleSweetConfirmarViaje(e){
-        Swal.fire({
-          icon:"success",
-          title:"Has solicitado el viaje correctamente",
-          text:"A continuación podrás elegir la conductora que realizará el viaje"
-        })
-      }
-      function handleClickNavegar(){
-        navigate('/pedirconductora')
-      }
-      //function ambos(){
-      //  handleClickNavegar()
-      //  handleSweetConfirmarViaje()
-      //}
+      
 
 
   return (
-    <Flex
-      position='relative'
-      flexDirection='column'
-      alignItems='center'
-      marginTop='20px'
-      h='100vh'
-      w='100vw'
-    >
-      <Box position='relative' left={0} top={0} h='100%' w='100%'>
-        {/* Google Map Box */}
-        <Box
-        p={4}
-        borderRadius='lg'
-        m={4}
-        bgColor='white'
-        shadow='base'
-        minW='container.md'
-        zIndex='1'
-      >
-        <HStack spacing={2} justifyContent='space-between'>
-          <Box flexGrow={1}>
-            <Autocomplete>
-              <Input 
-                  type='text' 
-                  placeholder='Origen' 
-                  ref={originRef} />
-            </Autocomplete>
-          </Box>
-          <Box flexGrow={1}>
-            <Autocomplete>
-              <Input
-                  type='text'
-                  placeholder='Destino'
-                  ref={destiantionRef}
-              />
-            </Autocomplete>
-          </Box>
-
-          <ButtonGroup>
-            <Button 
-                  colorScheme='blue' 
-                  type='submit' 
-                  onClick={calculateRoute}>
-              Trazar Ruta
-            </Button>
-            <IconButton
-                  aria-label='center back'
-                  icon={<FaTimes />}
-                  onClick={clearRoute}
-            />
-          </ButtonGroup>
-        </HStack>
-       {distance && <HStack spacing={4} mt={4} justifyContent='space-between'>
-          <Text>Distancia: {distance} </Text>
-          <Text>Duracion: {duration} </Text>
-          <IconButton
-              aria-label='center back'
-              icon={<FaLocationArrow />}
-              isRound
-              onClick={() => {
-                map.panTo(coordinates)
-                map.setZoom(15)
+    <div>
+        <Navbar /> 
+          <div class='container d-flex align-items-center justify-content-center vh-100'>
+        <Flex
+          position='relative'
+          justifyContent='normal'
+          marginTop='9%'
+          h='85vh'
+          w='50vw'
+          >
+            <OrigenDestino />
+            {/* Google Map Box */}
+           
+            <GoogleMap
+              center={coordinates}
+              zoom={15}
+              mapContainerStyle={{ width: '75%', height: '97%' }}
+              options={{
+                zoomControl: true,
+                streetViewControl: true,
+                mapTypeControl: true,
+                fullscreenControl: true,
               }}
-          />
-       
-        </HStack>
-      }
-      {distance && 
-      <button onClick={()=>{
-        handleClickNavegar();
-        handleSweetConfirmarViaje()
-      }
-
-      }
-         >Confirmar viaje</button>
-} 
-     
-      </Box>
-        <GoogleMap
-          center={coordinates}
-          zoom={15}
-          mapContainerStyle={{ width: '70%', height: '100%' }}
-          options={{
-            zoomControl: true,
-            streetViewControl: true,
-            mapTypeControl: true,
-            fullscreenControl: true,
-          }}
-          onChange={(e) => {
-            setCoordinates({lat: e.center.lat, lng: e.center.lng });
-            setBounds({ ne: e.marginBounds.ne, sw: e.marginBounds.sw})
-          }}
-          onLoad={map => setMap(map)}
-        >
-          <Marker position={coordinates} />
-          {directionsResponse && (
-            <DirectionsRenderer directions={directionsResponse} />
-          )}
-        </GoogleMap>
-      </Box>
+              onChange={(e) => {
+                setCoordinates({lat: e.center.lat, lng: e.center.lng });
+                setBounds({ ne: e.marginBounds.ne, sw: e.marginBounds.sw})
+              }}
+              onLoad={map => setMap(map)}
+            >
+              <Marker position={coordinates} />
+                {directionsResponse && (
+                  <DirectionsRenderer directions={directionsResponse} />
+              )}
+            </GoogleMap>   
+        </Flex>
+        </div>
+              </div>
+        
       
-    </Flex>
-  )
-}
+      )
+    }
 
 export default Mapa;
