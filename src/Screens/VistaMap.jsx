@@ -41,6 +41,7 @@ function VistaMap() {
               setCoordinates={setCoordinates}
               setBounds={setBounds}
               coordinates={coordinates}
+              
            />
           </div>
       </div>
